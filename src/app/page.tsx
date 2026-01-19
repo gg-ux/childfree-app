@@ -42,7 +42,7 @@ export default function Home() {
               <h1 className="font-display text-fluid-h1 text-foreground mb-6 leading-[0.9] tracking-tight">
                 Find your people.
                 <br />
-                <span className="text-forest">Thrive childfree.</span>
+                Thrive childfree.
               </h1>
 
               <p className="theme-body text-muted text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
@@ -138,7 +138,7 @@ export default function Home() {
               <h1 className="font-display text-fluid-h1 text-foreground mb-6 leading-[0.9] tracking-tight">
                 Find your people.
                 <br />
-                <span className="text-forest">Thrive childfree.</span>
+                Thrive childfree.
               </h1>
 
               <p className="theme-body text-muted text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
