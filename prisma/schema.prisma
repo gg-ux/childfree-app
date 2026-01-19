@@ -354,3 +354,17 @@ model PromptTemplate {
 
   @@index([category, isActive])
 }
+
+// ============================================
+// WAITLIST
+// ============================================
+
+model WaitlistEntry {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  source      String?  // Where they signed up (hero, footer, etc.)
+  createdAt   DateTime @default(now())
+
+  @@index([email])
+  @@index([createdAt])
+}

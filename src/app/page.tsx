@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { FrostedCard } from "@/components/ui/frosted-card";
 import { Logo } from "@/components/ui/logo";
 import { TextDecode } from "@/components/ui/text-decode";
+import { WaitlistForm } from "@/components/ui/waitlist-form";
 
 export default function Home() {
   return (
@@ -48,14 +49,7 @@ export default function Home() {
                 Connect with childfree adults who share your values. Make friends, find love, and build community all in one place.
               </p>
 
-              <form className="flex flex-col sm:flex-row gap-3 w-full max-w-md">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="w-full sm:flex-1 px-4 h-12 rounded-lg border border-[rgba(0,0,0,0.2)] bg-background text-base placeholder:text-muted-light focus:outline-none focus:border-forest transition-colors duration-300"
-                />
-                <Button type="submit" variant="accent" className="w-full sm:w-auto h-12 shrink-0">Join the waitlist</Button>
-              </form>
+              <WaitlistForm source="hero" />
             </div>
 
             {/* Floating Profile Cards */}
@@ -348,14 +342,7 @@ export default function Home() {
               city.
             </p>
 
-            <form className="flex flex-col sm:flex-row gap-3 w-full max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full sm:flex-1 px-4 h-12 rounded-lg border border-[rgba(0,0,0,0.2)] bg-background text-base placeholder:text-muted-light focus:outline-none focus:border-forest transition-colors duration-300"
-              />
-              <Button type="submit" variant="accent" className="w-full sm:w-auto h-12 shrink-0">Join the waitlist</Button>
-            </form>
+            <WaitlistForm source="cta" className="mx-auto" />
 
             <p className="theme-caption text-muted mt-6">
               We respect your privacy. Unsubscribe at any time.
