@@ -1,0 +1,36 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Concept G: Minimal Linked Bloom -->
+  <!-- Two simple curved petals that interlock/overlap at their base -->
+  <!-- Forms both a flower AND a link symbol -->
+
+  <g transform="translate(100, 95)">
+    <!-- Left petal - teardrop that curves right at bottom -->
+    <path
+      d="M0 8
+         C-8 8 -16 0 -20 -12
+         C-24 -24 -20 -40 -8 -44
+         C4 -48 14 -36 14 -24
+         C14 -12 6 0 0 8Z"
+      fill="#5835B0"
+    />
+
+    <!-- Right petal - teardrop that curves left at bottom, interlocking -->
+    <path
+      d="M0 8
+         C8 8 16 0 20 -12
+         C24 -24 20 -40 8 -44
+         C-4 -48 -14 -36 -14 -24
+         C-14 -12 -6 0 0 8Z"
+      fill="#BF92F0"
+    />
+
+    <!-- Center overlap creates the "link" visually -->
+    <!-- Small highlight at connection point -->
+    <circle cx="0" cy="-4" r="5" fill="#FAF8F4"/>
+    <circle cx="0" cy="-4" r="2.5" fill="#D78F8D"/>
+  </g>
+
+  <text x="100" y="175" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#666">G: Linked Bloom (minimal)</text>
+
+</svg>

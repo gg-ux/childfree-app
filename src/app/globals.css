@@ -1,26 +1,227 @@
 @import "tailwindcss";
 
+/* Grace Guo Design System for Flourish */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary - Forest */
+  --forest: #2F7255;
+  --forest-light: #4A8B6A;
+
+  /* Secondary Palette (cheerful accents) */
+  --coral: #E07850;
+  --marigold: #E9A035;
+  --blush: #F2C4B3;
+
+  /* Backgrounds - clean neutrals */
+  --background: #FFFFFF;
+  --foreground: #1A1A1A;
+
+  /* Borders */
+  --border: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.12);
+
+  /* Muted */
+  --muted: #6B6B6B;
+  --muted-light: #9A9A9A;
+}
+
+.dark {
+  --forest: #4A8B6A;
+  --forest-light: #6AAA85;
+  --background: #0A0A0A;
+  --foreground: #FAFAFA;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.12);
+  --muted: #9A9A9A;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Primary */
+  --color-forest: var(--forest);
+  --color-forest-light: var(--forest-light);
+
+  /* Secondary (cheerful accents) */
+  --color-coral: var(--coral);
+  --color-marigold: var(--marigold);
+  --color-blush: var(--blush);
+
+  /* Borders */
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  /* Muted */
+  --color-muted: var(--muted);
+  --color-muted-light: var(--muted-light);
+
+  /* Animation */
+  --ease-organic: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Typography - Satoshi for everything */
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/Satoshi-Variable.woff2') format('woff2');
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
+  font-feature-settings: 'ss01' on, 'ss02' on;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography utilities */
+.font-display {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Fluid typography */
+.text-fluid-display {
+  font-size: clamp(3rem, 8vw, 5rem);
+}
+
+.text-fluid-h1 {
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+}
+
+.text-fluid-h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.font-mono {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 500;
+}
+
+.theme-heading {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.theme-body {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 450;
+  line-height: 1.6;
+}
+
+.theme-caption {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.theme-muted {
+  color: var(--muted);
+}
+
+/* Organic easing */
+.ease-organic {
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Frosted glass effect */
+.frosted {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid var(--border);
+}
+
+/* Grain texture overlay */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* Container */
+.container-main {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-main {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-main {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-light);
+}
+
+/* Selection */
+::selection {
+  background: var(--forest);
+  color: white;
+}
+
+/* Float animations for decorative elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-5deg);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 5s ease-in-out infinite;
+  animation-delay: 1s;
 }

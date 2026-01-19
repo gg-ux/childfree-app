@@ -1,0 +1,40 @@
+<svg width="500" height="200" viewBox="0 0 500 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Full logo lockups with wordmark -->
+
+  <!-- Horizontal lockup - colored -->
+  <g transform="translate(30, 50)">
+    <!-- Icon -->
+    <g transform="translate(30, 22)">
+      <path d="M0 -4 Q-14 -14 -10 -28 Q-6 -40 0 -40 Q6 -40 10 -28 Q14 -14 0 -4Z" fill="#5835B0"/>
+      <path d="M-2 2 Q-13 -6 -27 0 Q-38 6 -35 16 Q-32 26 -20 26 Q-9 26 -2 2Z" fill="#BF92F0"/>
+      <path d="M2 2 Q13 -6 27 0 Q38 6 35 16 Q32 26 20 26 Q9 26 2 2Z" fill="#D78F8D"/>
+      <circle cx="0" cy="3" r="5" fill="#FAF8F4"/>
+    </g>
+    <!-- Wordmark -->
+    <text x="75" y="35" font-family="Satoshi, -apple-system, sans-serif" font-size="28" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">flourish</text>
+  </g>
+
+  <!-- Horizontal lockup - outlined -->
+  <g transform="translate(280, 50)">
+    <g transform="translate(30, 22)">
+      <path d="M0 -4 Q-14 -14 -10 -28 Q-6 -40 0 -40 Q6 -40 10 -28 Q14 -14 0 -4Z" fill="none" stroke="#5835B0" stroke-width="2"/>
+      <path d="M-2 2 Q-13 -6 -27 0 Q-38 6 -35 16 Q-32 26 -20 26 Q-9 26 -2 2Z" fill="none" stroke="#BF92F0" stroke-width="2"/>
+      <path d="M2 2 Q13 -6 27 0 Q38 6 35 16 Q32 26 20 26 Q9 26 2 2Z" fill="none" stroke="#D78F8D" stroke-width="2"/>
+      <circle cx="0" cy="3" r="4" fill="#5835B0"/>
+    </g>
+    <text x="75" y="35" font-family="Satoshi, -apple-system, sans-serif" font-size="28" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">flourish</text>
+  </g>
+
+  <!-- Stacked lockup -->
+  <g transform="translate(170, 140)">
+    <g transform="translate(80, -20)">
+      <path d="M0 -4 Q-14 -14 -10 -28 Q-6 -40 0 -40 Q6 -40 10 -28 Q14 -14 0 -4Z" fill="#5835B0"/>
+      <path d="M-2 2 Q-13 -6 -27 0 Q-38 6 -35 16 Q-32 26 -20 26 Q-9 26 -2 2Z" fill="#BF92F0"/>
+      <path d="M2 2 Q13 -6 27 0 Q38 6 35 16 Q32 26 20 26 Q9 26 2 2Z" fill="#D78F8D"/>
+      <circle cx="0" cy="3" r="5" fill="#FAF8F4"/>
+    </g>
+    <text x="80" y="40" text-anchor="middle" font-family="Satoshi, -apple-system, sans-serif" font-size="24" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">flourish</text>
+  </g>
+
+</svg>

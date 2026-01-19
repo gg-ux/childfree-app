@@ -1,0 +1,28 @@
+<svg width="180" height="44" viewBox="0 0 180 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="forestGradientDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3D8B6A"/>
+      <stop offset="100%" stop-color="#87AA61"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 4-ring flower icon -->
+  <g transform="translate(22, 22)">
+    <circle cx="-8" cy="-8" r="14" fill="none" stroke="url(#forestGradientDark)" stroke-width="2.5"/>
+    <circle cx="8" cy="-8" r="14" fill="none" stroke="url(#forestGradientDark)" stroke-width="2.5"/>
+    <circle cx="-8" cy="8" r="14" fill="none" stroke="url(#forestGradientDark)" stroke-width="2.5"/>
+    <circle cx="8" cy="8" r="14" fill="none" stroke="url(#forestGradientDark)" stroke-width="2.5"/>
+    <circle cx="0" cy="0" r="5" fill="url(#forestGradientDark)"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text
+    x="52"
+    y="28"
+    font-family="Satoshi, -apple-system, sans-serif"
+    font-size="22"
+    font-weight="500"
+    letter-spacing="-0.02em"
+    fill="#FAF8F4"
+  >flourish</text>
+</svg>

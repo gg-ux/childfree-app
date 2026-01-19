@@ -1,0 +1,42 @@
+<svg width="500" height="150" viewBox="0 0 500 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Monochrome versions to test icon versatility -->
+
+  <!-- Style 2 (soft rounded) - filled mono dark -->
+  <g transform="translate(80, 75)">
+    <path d="M0 -6 Q-20 -20 -14 -40 Q-8 -55 0 -55 Q8 -55 14 -40 Q20 -20 0 -6Z" fill="#1A1A1A"/>
+    <path d="M-3 3 Q-18 -8 -38 0 Q-52 8 -48 22 Q-44 36 -28 36 Q-12 36 -3 3Z" fill="#1A1A1A"/>
+    <path d="M3 3 Q18 -8 38 0 Q52 8 48 22 Q44 36 28 36 Q12 36 3 3Z" fill="#1A1A1A"/>
+    <circle cx="0" cy="4" r="7" fill="#FAF8F4"/>
+    <text x="0" y="65" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">Filled dark</text>
+  </g>
+
+  <!-- Style 2 - filled mono light (for dark bg) -->
+  <g transform="translate(180, 75)">
+    <rect x="-55" y="-60" width="110" height="110" fill="#1A1A1A" rx="8"/>
+    <path d="M0 -6 Q-20 -20 -14 -40 Q-8 -55 0 -55 Q8 -55 14 -40 Q20 -20 0 -6Z" fill="#FAF8F4"/>
+    <path d="M-3 3 Q-18 -8 -38 0 Q-52 8 -48 22 Q-44 36 -28 36 Q-12 36 -3 3Z" fill="#FAF8F4"/>
+    <path d="M3 3 Q18 -8 38 0 Q52 8 48 22 Q44 36 28 36 Q12 36 3 3Z" fill="#FAF8F4"/>
+    <circle cx="0" cy="4" r="7" fill="#1A1A1A"/>
+    <text x="0" y="65" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">Filled light</text>
+  </g>
+
+  <!-- Style 2 - outlined mono -->
+  <g transform="translate(300, 75)">
+    <path d="M0 -6 Q-20 -20 -14 -40 Q-8 -55 0 -55 Q8 -55 14 -40 Q20 -20 0 -6Z" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
+    <path d="M-3 3 Q-18 -8 -38 0 Q-52 8 -48 22 Q-44 36 -28 36 Q-12 36 -3 3Z" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
+    <path d="M3 3 Q18 -8 38 0 Q52 8 48 22 Q44 36 28 36 Q12 36 3 3Z" fill="none" stroke="#1A1A1A" stroke-width="2.5"/>
+    <circle cx="0" cy="4" r="5" fill="#1A1A1A"/>
+    <text x="0" y="65" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">Outlined</text>
+  </g>
+
+  <!-- Style 2 - brand color filled -->
+  <g transform="translate(420, 75)">
+    <path d="M0 -6 Q-20 -20 -14 -40 Q-8 -55 0 -55 Q8 -55 14 -40 Q20 -20 0 -6Z" fill="#5835B0"/>
+    <path d="M-3 3 Q-18 -8 -38 0 Q-52 8 -48 22 Q-44 36 -28 36 Q-12 36 -3 3Z" fill="#5835B0"/>
+    <path d="M3 3 Q18 -8 38 0 Q52 8 48 22 Q44 36 28 36 Q12 36 3 3Z" fill="#5835B0"/>
+    <circle cx="0" cy="4" r="7" fill="#FAF8F4"/>
+    <text x="0" y="65" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">Brand mono</text>
+  </g>
+
+</svg>

@@ -1,0 +1,143 @@
+<svg width="700" height="400" viewBox="0 0 700 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <!-- Forest-based gradients -->
+    <linearGradient id="forestGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2F7255"/>
+      <stop offset="100%" stop-color="#87AA61"/>
+    </linearGradient>
+
+    <linearGradient id="forestGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2F7255"/>
+      <stop offset="50%" stop-color="#5A9A7A"/>
+      <stop offset="100%" stop-color="#87AA61"/>
+    </linearGradient>
+
+    <linearGradient id="forestGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1F5240"/>
+      <stop offset="100%" stop-color="#2F7255"/>
+    </linearGradient>
+
+    <!-- Forest + warm accent -->
+    <linearGradient id="forestWarm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2F7255"/>
+      <stop offset="100%" stop-color="#DBA166"/>
+    </linearGradient>
+
+    <!-- Forest + rose -->
+    <linearGradient id="forestRose" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2F7255"/>
+      <stop offset="100%" stop-color="#D78F8D"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ROW 1: Forest gradient variations -->
+
+  <!-- Forest to Peridot -->
+  <g transform="translate(100, 90)">
+    <circle cx="-14" cy="-14" r="22" fill="none" stroke="url(#forestGrad1)" stroke-width="3"/>
+    <circle cx="14" cy="-14" r="22" fill="none" stroke="url(#forestGrad1)" stroke-width="3"/>
+    <circle cx="-14" cy="14" r="22" fill="none" stroke="url(#forestGrad1)" stroke-width="3"/>
+    <circle cx="14" cy="14" r="22" fill="none" stroke="url(#forestGrad1)" stroke-width="3"/>
+    <circle cx="0" cy="0" r="8" fill="url(#forestGrad1)"/>
+    <text x="0" y="60" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">Forest → Peridot</text>
+  </g>
+
+  <!-- Forest 3-stop -->
+  <g transform="translate(250, 90)">
+    <circle cx="-14" cy="-14" r="22" fill="none" stroke="url(#forestGrad2)" stroke-width="3"/>
+    <circle cx="14" cy="-14" r="22" fill="none" stroke="url(#forestGrad2)" stroke-width="3"/>
+    <circle cx="-14" cy="14" r="22" fill="none" stroke="url(#forestGrad2)" stroke-width="3"/>
+    <circle cx="14" cy="14" r="22" fill="none" stroke="url(#forestGrad2)" stroke-width="3"/>
+    <circle cx="0" cy="0" r="8" fill="url(#forestGrad2)"/>
+    <text x="0" y="60" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">Forest 3-stop</text>
+  </g>
+
+  <!-- Forest to Gold (warm) -->
+  <g transform="translate(400, 90)">
+    <circle cx="-14" cy="-14" r="22" fill="none" stroke="url(#forestWarm)" stroke-width="3"/>
+    <circle cx="14" cy="-14" r="22" fill="none" stroke="url(#forestWarm)" stroke-width="3"/>
+    <circle cx="-14" cy="14" r="22" fill="none" stroke="url(#forestWarm)" stroke-width="3"/>
+    <circle cx="14" cy="14" r="22" fill="none" stroke="url(#forestWarm)" stroke-width="3"/>
+    <circle cx="0" cy="0" r="8" fill="url(#forestWarm)"/>
+    <text x="0" y="60" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">Forest → Gold</text>
+  </g>
+
+  <!-- Forest to Rose -->
+  <g transform="translate(550, 90)">
+    <circle cx="-14" cy="-14" r="22" fill="none" stroke="url(#forestRose)" stroke-width="3"/>
+    <circle cx="14" cy="-14" r="22" fill="none" stroke="url(#forestRose)" stroke-width="3"/>
+    <circle cx="-14" cy="14" r="22" fill="none" stroke="url(#forestRose)" stroke-width="3"/>
+    <circle cx="14" cy="14" r="22" fill="none" stroke="url(#forestRose)" stroke-width="3"/>
+    <circle cx="0" cy="0" r="8" fill="url(#forestRose)"/>
+    <text x="0" y="60" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">Forest → Rose</text>
+  </g>
+
+
+  <!-- ROW 2: Filled versions -->
+
+  <g transform="translate(100, 220)">
+    <circle cx="-14" cy="-14" r="22" fill="url(#forestGrad1)"/>
+    <circle cx="14" cy="-14" r="22" fill="url(#forestGrad1)"/>
+    <circle cx="-14" cy="14" r="22" fill="url(#forestGrad1)"/>
+    <circle cx="14" cy="14" r="22" fill="url(#forestGrad1)"/>
+    <circle cx="0" cy="0" r="9" fill="#FAF8F4"/>
+    <text x="0" y="60" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">Filled</text>
+  </g>
+
+  <g transform="translate(250, 220)">
+    <circle cx="-14" cy="-14" r="22" fill="url(#forestWarm)"/>
+    <circle cx="14" cy="-14" r="22" fill="url(#forestWarm)"/>
+    <circle cx="-14" cy="14" r="22" fill="url(#forestWarm)"/>
+    <circle cx="14" cy="14" r="22" fill="url(#forestWarm)"/>
+    <circle cx="0" cy="0" r="9" fill="#FAF8F4"/>
+    <text x="0" y="60" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">Filled warm</text>
+  </g>
+
+  <!-- Solid forest (no gradient) -->
+  <g transform="translate(400, 220)">
+    <circle cx="-14" cy="-14" r="22" fill="none" stroke="#2F7255" stroke-width="3"/>
+    <circle cx="14" cy="-14" r="22" fill="none" stroke="#2F7255" stroke-width="3"/>
+    <circle cx="-14" cy="14" r="22" fill="none" stroke="#2F7255" stroke-width="3"/>
+    <circle cx="14" cy="14" r="22" fill="none" stroke="#2F7255" stroke-width="3"/>
+    <circle cx="0" cy="0" r="8" fill="#2F7255"/>
+    <text x="0" y="60" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">Solid forest</text>
+  </g>
+
+  <!-- On dark bg -->
+  <g transform="translate(550, 220)">
+    <rect x="-50" y="-50" width="100" height="100" fill="#1A1A1A" rx="8"/>
+    <circle cx="-14" cy="-14" r="22" fill="none" stroke="url(#forestGrad1)" stroke-width="3"/>
+    <circle cx="14" cy="-14" r="22" fill="none" stroke="url(#forestGrad1)" stroke-width="3"/>
+    <circle cx="-14" cy="14" r="22" fill="none" stroke="url(#forestGrad1)" stroke-width="3"/>
+    <circle cx="14" cy="14" r="22" fill="none" stroke="url(#forestGrad1)" stroke-width="3"/>
+    <circle cx="0" cy="0" r="8" fill="#87AA61"/>
+    <text x="0" y="60" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">On dark</text>
+  </g>
+
+
+  <!-- ROW 3: Wordmark lockups -->
+
+  <g transform="translate(120, 350)">
+    <g transform="translate(24, 0)">
+      <circle cx="-10" cy="-10" r="16" fill="none" stroke="url(#forestGrad1)" stroke-width="2.5"/>
+      <circle cx="10" cy="-10" r="16" fill="none" stroke="url(#forestGrad1)" stroke-width="2.5"/>
+      <circle cx="-10" cy="10" r="16" fill="none" stroke="url(#forestGrad1)" stroke-width="2.5"/>
+      <circle cx="10" cy="10" r="16" fill="none" stroke="url(#forestGrad1)" stroke-width="2.5"/>
+      <circle cx="0" cy="0" r="6" fill="url(#forestGrad1)"/>
+    </g>
+    <text x="68" y="8" font-family="Satoshi, -apple-system, sans-serif" font-size="28" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">flourish</text>
+  </g>
+
+  <g transform="translate(420, 350)">
+    <g transform="translate(24, 0)">
+      <circle cx="-10" cy="-10" r="16" fill="url(#forestWarm)"/>
+      <circle cx="10" cy="-10" r="16" fill="url(#forestWarm)"/>
+      <circle cx="-10" cy="10" r="16" fill="url(#forestWarm)"/>
+      <circle cx="10" cy="10" r="16" fill="url(#forestWarm)"/>
+      <circle cx="0" cy="0" r="6" fill="#FAF8F4"/>
+    </g>
+    <text x="68" y="8" font-family="Satoshi, -apple-system, sans-serif" font-size="28" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">flourish</text>
+  </g>
+
+</svg>

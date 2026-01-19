@@ -1,0 +1,115 @@
+<svg width="700" height="350" viewBox="0 0 700 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <rect width="700" height="350" fill="#F5F2EC"/>
+
+  <!-- Simplified versions -->
+
+  <!-- A1: Branch - 2 leaf pairs only -->
+  <g transform="translate(100, 150)">
+    <rect x="-5" y="-55" width="10" height="110" rx="5" fill="#2F7255"/>
+    <ellipse cx="-30" cy="-35" rx="26" ry="16" transform="rotate(-30 -30 -35)" fill="#2F7255"/>
+    <ellipse cx="30" cy="-35" rx="26" ry="16" transform="rotate(30 30 -35)" fill="#2F7255"/>
+    <ellipse cx="-32" cy="15" rx="28" ry="17" transform="rotate(-30 -32 15)" fill="#2F7255"/>
+    <ellipse cx="32" cy="15" rx="28" ry="17" transform="rotate(30 32 15)" fill="#2F7255"/>
+    <text x="0" y="85" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#2D2D2A">A1: 2 pairs</text>
+  </g>
+
+  <!-- A2: Branch - 3 pairs, more compact -->
+  <g transform="translate(230, 150)">
+    <rect x="-4" y="-50" width="8" height="100" rx="4" fill="#2F7255"/>
+    <ellipse cx="-24" cy="-38" rx="20" ry="12" transform="rotate(-35 -24 -38)" fill="#2F7255"/>
+    <ellipse cx="24" cy="-38" rx="20" ry="12" transform="rotate(35 24 -38)" fill="#2F7255"/>
+    <ellipse cx="-26" cy="-5" rx="22" ry="13" transform="rotate(-35 -26 -5)" fill="#2F7255"/>
+    <ellipse cx="26" cy="-5" rx="22" ry="13" transform="rotate(35 26 -5)" fill="#2F7255"/>
+    <ellipse cx="-24" cy="28" rx="20" ry="12" transform="rotate(-35 -24 28)" fill="#2F7255"/>
+    <ellipse cx="24" cy="28" rx="20" ry="12" transform="rotate(35 24 28)" fill="#2F7255"/>
+    <text x="0" y="85" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#2D2D2A">A2: 3 pairs compact</text>
+  </g>
+
+  <!-- B1: Dandelion - 8 seeds -->
+  <g transform="translate(370, 150)">
+    <rect x="-3" y="22" width="6" height="35" rx="3" fill="#2F7255"/>
+    <circle cx="0" cy="0" r="12" fill="#2F7255"/>
+
+    <g><rect x="-2" y="-42" width="4" height="28" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-52" rx="10" ry="14" fill="#2F7255"/></g>
+    <g transform="rotate(45 0 0)"><rect x="-2" y="-42" width="4" height="28" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-52" rx="10" ry="14" fill="#2F7255"/></g>
+    <g transform="rotate(90 0 0)"><rect x="-2" y="-42" width="4" height="28" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-52" rx="10" ry="14" fill="#2F7255"/></g>
+    <g transform="rotate(135 0 0)"><rect x="-2" y="-42" width="4" height="28" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-52" rx="10" ry="14" fill="#2F7255"/></g>
+    <g transform="rotate(180 0 0)"><rect x="-2" y="-42" width="4" height="28" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-52" rx="10" ry="14" fill="#2F7255"/></g>
+    <g transform="rotate(225 0 0)"><rect x="-2" y="-42" width="4" height="28" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-52" rx="10" ry="14" fill="#2F7255"/></g>
+    <g transform="rotate(270 0 0)"><rect x="-2" y="-42" width="4" height="28" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-52" rx="10" ry="14" fill="#2F7255"/></g>
+    <g transform="rotate(315 0 0)"><rect x="-2" y="-42" width="4" height="28" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-52" rx="10" ry="14" fill="#2F7255"/></g>
+
+    <circle cx="0" cy="0" r="6" fill="#F5F2EC"/>
+    <text x="0" y="85" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#2D2D2A">B1: 8 seeds</text>
+  </g>
+
+  <!-- B2: Dandelion - no stem, icon only -->
+  <g transform="translate(500, 150)">
+    <circle cx="0" cy="8" r="14" fill="#2F7255"/>
+
+    <g transform="translate(0, 8)">
+      <g><rect x="-2" y="-48" width="4" height="30" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-58" rx="11" ry="15" fill="#2F7255"/></g>
+      <g transform="rotate(45 0 0)"><rect x="-2" y="-48" width="4" height="30" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-58" rx="11" ry="15" fill="#2F7255"/></g>
+      <g transform="rotate(90 0 0)"><rect x="-2" y="-48" width="4" height="30" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-58" rx="11" ry="15" fill="#2F7255"/></g>
+      <g transform="rotate(135 0 0)"><rect x="-2" y="-48" width="4" height="30" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-58" rx="11" ry="15" fill="#2F7255"/></g>
+      <g transform="rotate(180 0 0)"><rect x="-2" y="-48" width="4" height="30" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-58" rx="11" ry="15" fill="#2F7255"/></g>
+      <g transform="rotate(225 0 0)"><rect x="-2" y="-48" width="4" height="30" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-58" rx="11" ry="15" fill="#2F7255"/></g>
+      <g transform="rotate(270 0 0)"><rect x="-2" y="-48" width="4" height="30" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-58" rx="11" ry="15" fill="#2F7255"/></g>
+      <g transform="rotate(315 0 0)"><rect x="-2" y="-48" width="4" height="30" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-58" rx="11" ry="15" fill="#2F7255"/></g>
+    </g>
+
+    <circle cx="0" cy="8" r="7" fill="#F5F2EC"/>
+    <text x="0" y="95" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#2D2D2A">B2: No stem</text>
+  </g>
+
+  <!-- B3: Dandelion - circles instead of ovals -->
+  <g transform="translate(620, 150)">
+    <rect x="-3" y="22" width="6" height="35" rx="3" fill="#2F7255"/>
+    <circle cx="0" cy="0" r="14" fill="#2F7255"/>
+
+    <g><rect x="-2" y="-40" width="4" height="24" rx="2" fill="#2F7255"/><circle cx="0" cy="-52" r="12" fill="#2F7255"/></g>
+    <g transform="rotate(45 0 0)"><rect x="-2" y="-40" width="4" height="24" rx="2" fill="#2F7255"/><circle cx="0" cy="-52" r="12" fill="#2F7255"/></g>
+    <g transform="rotate(90 0 0)"><rect x="-2" y="-40" width="4" height="24" rx="2" fill="#2F7255"/><circle cx="0" cy="-52" r="12" fill="#2F7255"/></g>
+    <g transform="rotate(135 0 0)"><rect x="-2" y="-40" width="4" height="24" rx="2" fill="#2F7255"/><circle cx="0" cy="-52" r="12" fill="#2F7255"/></g>
+    <g transform="rotate(180 0 0)"><rect x="-2" y="-40" width="4" height="24" rx="2" fill="#2F7255"/><circle cx="0" cy="-52" r="12" fill="#2F7255"/></g>
+    <g transform="rotate(225 0 0)"><rect x="-2" y="-40" width="4" height="24" rx="2" fill="#2F7255"/><circle cx="0" cy="-52" r="12" fill="#2F7255"/></g>
+    <g transform="rotate(270 0 0)"><rect x="-2" y="-40" width="4" height="24" rx="2" fill="#2F7255"/><circle cx="0" cy="-52" r="12" fill="#2F7255"/></g>
+    <g transform="rotate(315 0 0)"><rect x="-2" y="-40" width="4" height="24" rx="2" fill="#2F7255"/><circle cx="0" cy="-52" r="12" fill="#2F7255"/></g>
+
+    <circle cx="0" cy="0" r="7" fill="#F5F2EC"/>
+    <text x="0" y="85" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#2D2D2A">B3: Circles</text>
+  </g>
+
+
+  <!-- Wordmark lockups -->
+
+  <g transform="translate(150, 310)">
+    <g transform="translate(-8, -8) scale(0.28)">
+      <rect x="-5" y="-55" width="10" height="110" rx="5" fill="#2F7255"/>
+      <ellipse cx="-30" cy="-35" rx="26" ry="16" transform="rotate(-30 -30 -35)" fill="#2F7255"/>
+      <ellipse cx="30" cy="-35" rx="26" ry="16" transform="rotate(30 30 -35)" fill="#2F7255"/>
+      <ellipse cx="-32" cy="15" rx="28" ry="17" transform="rotate(-30 -32 15)" fill="#2F7255"/>
+      <ellipse cx="32" cy="15" rx="28" ry="17" transform="rotate(30 32 15)" fill="#2F7255"/>
+    </g>
+    <text x="28" y="5" font-family="Satoshi, -apple-system, sans-serif" font-size="26" font-weight="500" letter-spacing="-0.02em" fill="#2D2D2A">flourish</text>
+  </g>
+
+  <g transform="translate(420, 310)">
+    <g transform="translate(-5, -5) scale(0.25)">
+      <rect x="-3" y="22" width="6" height="35" rx="3" fill="#2F7255"/>
+      <circle cx="0" cy="0" r="12" fill="#2F7255"/>
+      <g><rect x="-2" y="-42" width="4" height="28" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-52" rx="10" ry="14" fill="#2F7255"/></g>
+      <g transform="rotate(45 0 0)"><rect x="-2" y="-42" width="4" height="28" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-52" rx="10" ry="14" fill="#2F7255"/></g>
+      <g transform="rotate(90 0 0)"><rect x="-2" y="-42" width="4" height="28" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-52" rx="10" ry="14" fill="#2F7255"/></g>
+      <g transform="rotate(135 0 0)"><rect x="-2" y="-42" width="4" height="28" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-52" rx="10" ry="14" fill="#2F7255"/></g>
+      <g transform="rotate(180 0 0)"><rect x="-2" y="-42" width="4" height="28" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-52" rx="10" ry="14" fill="#2F7255"/></g>
+      <g transform="rotate(225 0 0)"><rect x="-2" y="-42" width="4" height="28" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-52" rx="10" ry="14" fill="#2F7255"/></g>
+      <g transform="rotate(270 0 0)"><rect x="-2" y="-42" width="4" height="28" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-52" rx="10" ry="14" fill="#2F7255"/></g>
+      <g transform="rotate(315 0 0)"><rect x="-2" y="-42" width="4" height="28" rx="2" fill="#2F7255"/><ellipse cx="0" cy="-52" rx="10" ry="14" fill="#2F7255"/></g>
+      <circle cx="0" cy="0" r="6" fill="#F5F2EC"/>
+    </g>
+    <text x="25" y="5" font-family="Satoshi, -apple-system, sans-serif" font-size="26" font-weight="500" letter-spacing="-0.02em" fill="#2D2D2A">flourish</text>
+  </g>
+
+</svg>

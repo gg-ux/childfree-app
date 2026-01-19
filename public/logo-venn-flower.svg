@@ -1,0 +1,60 @@
+<svg width="800" height="200" viewBox="0 0 800 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Variation 1: Solid circles, transparency on overlap -->
+  <g transform="translate(80, 100)">
+    <circle cx="0" cy="-12" r="22" fill="#5835B0" opacity="0.85"/>
+    <circle cx="-19" cy="10" r="22" fill="#BF92F0" opacity="0.85"/>
+    <circle cx="19" cy="10" r="22" fill="#D78F8D" opacity="0.85"/>
+    <text x="0" y="60" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">1: Transparent overlap</text>
+  </g>
+
+  <!-- Variation 2: Tighter overlap, forms clear flower -->
+  <g transform="translate(200, 100)">
+    <circle cx="0" cy="-10" r="20" fill="#5835B0"/>
+    <circle cx="-17" cy="9" r="20" fill="#BF92F0"/>
+    <circle cx="17" cy="9" r="20" fill="#D78F8D"/>
+    <!-- White center to show bloom -->
+    <circle cx="0" cy="2" r="8" fill="#FAF8F4"/>
+    <circle cx="0" cy="2" r="4" fill="#DBA166"/>
+    <text x="0" y="60" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">2: Center bloom</text>
+  </g>
+
+  <!-- Variation 3: Softer, more blended -->
+  <g transform="translate(320, 100)">
+    <circle cx="0" cy="-11" r="21" fill="#5835B0" opacity="0.7"/>
+    <circle cx="-18" cy="10" r="21" fill="#BF92F0" opacity="0.7"/>
+    <circle cx="18" cy="10" r="21" fill="#D78F8D" opacity="0.7"/>
+    <text x="0" y="60" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">3: Soft blend</text>
+  </g>
+
+  <!-- Variation 4: Outlined style -->
+  <g transform="translate(440, 100)">
+    <circle cx="0" cy="-11" r="20" fill="none" stroke="#5835B0" stroke-width="3"/>
+    <circle cx="-17" cy="10" r="20" fill="none" stroke="#BF92F0" stroke-width="3"/>
+    <circle cx="17" cy="10" r="20" fill="none" stroke="#D78F8D" stroke-width="3"/>
+    <circle cx="0" cy="2" r="5" fill="#5835B0"/>
+    <text x="0" y="60" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">4: Outlined</text>
+  </g>
+
+  <!-- Variation 5: Mix - fills with accent strokes -->
+  <g transform="translate(560, 100)">
+    <circle cx="0" cy="-11" r="20" fill="#5835B0" opacity="0.15"/>
+    <circle cx="-17" cy="10" r="20" fill="#BF92F0" opacity="0.15"/>
+    <circle cx="17" cy="10" r="20" fill="#D78F8D" opacity="0.15"/>
+    <circle cx="0" cy="-11" r="20" fill="none" stroke="#5835B0" stroke-width="2"/>
+    <circle cx="-17" cy="10" r="20" fill="none" stroke="#BF92F0" stroke-width="2"/>
+    <circle cx="17" cy="10" r="20" fill="none" stroke="#D78F8D" stroke-width="2"/>
+    <circle cx="0" cy="2" r="4" fill="#5835B0"/>
+    <text x="0" y="60" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">5: Fill + stroke</text>
+  </g>
+
+  <!-- Variation 6: Gradient feel with single color family -->
+  <g transform="translate(680, 100)">
+    <circle cx="0" cy="-11" r="20" fill="#5835B0"/>
+    <circle cx="-17" cy="10" r="20" fill="#7B5DC9"/>
+    <circle cx="17" cy="10" r="20" fill="#BF92F0"/>
+    <circle cx="0" cy="2" r="7" fill="#FAF8F4"/>
+    <text x="0" y="60" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">6: Amethyst gradient</text>
+  </g>
+
+</svg>

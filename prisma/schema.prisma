@@ -1,0 +1,356 @@
+// Flourish - Childfree Community Platform
+// Database Schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ============================================
+// USER & AUTHENTICATION
+// ============================================
+
+model User {
+  id            String    @id @default(cuid())
+  clerkId       String    @unique // Clerk user ID
+  email         String    @unique
+  phone         String?   @unique
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  lastActiveAt  DateTime  @default(now())
+  status        UserStatus @default(PENDING)
+
+  profile       Profile?
+  sentLikes     Like[]     @relation("SentLikes")
+  receivedLikes Like[]     @relation("ReceivedLikes")
+  matches1      Match[]    @relation("MatchUser1")
+  matches2      Match[]    @relation("MatchUser2")
+  sentMessages  Message[]  @relation("SentMessages")
+  events        Event[]    @relation("EventCreator")
+  eventRsvps    EventRsvp[]
+  reportsMade   Report[]   @relation("Reporter")
+  reportsReceived Report[] @relation("ReportedUser")
+
+  @@index([clerkId])
+  @@index([email])
+}
+
+enum UserStatus {
+  PENDING       // Awaiting profile review
+  ACTIVE        // Approved and active
+  SUSPENDED     // Temporarily suspended
+  DELETED       // Soft deleted
+}
+
+// ============================================
+// PROFILE
+// ============================================
+
+model Profile {
+  id                String   @id @default(cuid())
+  userId            String   @unique
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  displayName       String
+  birthdate         DateTime
+  gender            String
+  genderPreferences String[] // Array of genders interested in
+
+  childfreeStatus   ChildfreeStatus
+  relationshipStatus RelationshipStatus
+  seeking           SeekingType[]
+
+  bio               String?  @db.Text
+
+  // Location (city-level for privacy)
+  locationCity      String?
+  locationLat       Float?
+  locationLng       Float?
+
+  // Preferences
+  ageMin            Int      @default(18)
+  ageMax            Int      @default(99)
+  distanceMax       Int      @default(50) // miles
+
+  // Verification & Premium
+  isVerified        Boolean  @default(false)
+  isPremium         Boolean  @default(false)
+  premiumUntil      DateTime?
+
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  photos            Photo[]
+  prompts           Prompt[]
+
+  @@index([locationLat, locationLng])
+  @@index([childfreeStatus])
+  @@index([seeking])
+}
+
+enum ChildfreeStatus {
+  CHOICE        // Childfree by choice
+  STERILIZED    // Childfree and sterilized
+  CIRCUMSTANCE  // Childless by circumstance
+  PARENT_DONE   // Parent but done having kids
+}
+
+enum RelationshipStatus {
+  SINGLE
+  RELATIONSHIP
+  COMPLICATED
+  ENM           // Ethically non-monogamous
+}
+
+enum SeekingType {
+  DATING
+  FRIENDSHIP
+  COMMUNITY
+}
+
+// ============================================
+// PHOTOS & PROMPTS
+// ============================================
+
+model Photo {
+  id          String   @id @default(cuid())
+  profileId   String
+  profile     Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  url         String
+  position    Int      // Order in profile (0 = primary)
+  isVerified  Boolean  @default(false)
+
+  createdAt   DateTime @default(now())
+
+  likes       Like[]   @relation("LikedPhoto")
+
+  @@index([profileId])
+}
+
+model Prompt {
+  id          String   @id @default(cuid())
+  profileId   String
+  profile     Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  promptType  String   // e.g., "ideal_weekend", "childfree_moment"
+  answer      String   @db.Text
+  position    Int      // Order in profile
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  likes       Like[]   @relation("LikedPrompt")
+
+  @@index([profileId])
+}
+
+// ============================================
+// LIKES & MATCHES
+// ============================================
+
+model Like {
+  id            String      @id @default(cuid())
+  fromUserId    String
+  fromUser      User        @relation("SentLikes", fields: [fromUserId], references: [id], onDelete: Cascade)
+  toUserId      String
+  toUser        User        @relation("ReceivedLikes", fields: [toUserId], references: [id], onDelete: Cascade)
+
+  contentType   LikeContentType
+  photoId       String?
+  photo         Photo?      @relation("LikedPhoto", fields: [photoId], references: [id])
+  promptId      String?
+  prompt        Prompt?     @relation("LikedPrompt", fields: [promptId], references: [id])
+
+  message       String?     @db.Text // Optional intro message
+
+  createdAt     DateTime    @default(now())
+
+  @@unique([fromUserId, toUserId])
+  @@index([toUserId])
+  @@index([fromUserId])
+}
+
+enum LikeContentType {
+  PROFILE
+  PHOTO
+  PROMPT
+}
+
+model Match {
+  id            String      @id @default(cuid())
+  user1Id       String
+  user1         User        @relation("MatchUser1", fields: [user1Id], references: [id], onDelete: Cascade)
+  user2Id       String
+  user2         User        @relation("MatchUser2", fields: [user2Id], references: [id], onDelete: Cascade)
+
+  status        MatchStatus @default(ACTIVE)
+  matchedAt     DateTime    @default(now())
+  lastMessageAt DateTime?
+
+  messages      Message[]
+
+  @@unique([user1Id, user2Id])
+  @@index([user1Id])
+  @@index([user2Id])
+}
+
+enum MatchStatus {
+  ACTIVE
+  UNMATCHED
+  BLOCKED
+}
+
+// ============================================
+// MESSAGING
+// ============================================
+
+model Message {
+  id          String        @id @default(cuid())
+  matchId     String
+  match       Match         @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  senderId    String
+  sender      User          @relation("SentMessages", fields: [senderId], references: [id], onDelete: Cascade)
+
+  content     String        @db.Text
+  contentType MessageContentType @default(TEXT)
+
+  createdAt   DateTime      @default(now())
+  readAt      DateTime?
+
+  @@index([matchId])
+  @@index([senderId])
+  @@index([createdAt])
+}
+
+enum MessageContentType {
+  TEXT
+  PHOTO
+  VOICE
+  VIDEO_CALL
+}
+
+// ============================================
+// EVENTS
+// ============================================
+
+model Event {
+  id            String      @id @default(cuid())
+  creatorId     String
+  creator       User        @relation("EventCreator", fields: [creatorId], references: [id], onDelete: Cascade)
+
+  title         String
+  description   String      @db.Text
+  eventType     EventType
+
+  locationCity    String?
+  locationAddress String?
+  locationLat     Float?
+  locationLng     Float?
+
+  startsAt      DateTime
+  endsAt        DateTime?
+  maxAttendees  Int?
+
+  isOfficial    Boolean     @default(false) // App-hosted vs user-created
+  status        EventStatus @default(DRAFT)
+
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  rsvps         EventRsvp[]
+
+  @@index([startsAt])
+  @@index([locationCity])
+  @@index([status])
+}
+
+enum EventType {
+  VIRTUAL
+  IN_PERSON
+}
+
+enum EventStatus {
+  DRAFT
+  PUBLISHED
+  CANCELLED
+  COMPLETED
+}
+
+model EventRsvp {
+  id        String      @id @default(cuid())
+  eventId   String
+  event     Event       @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  status    RsvpStatus  @default(GOING)
+  createdAt DateTime    @default(now())
+
+  @@unique([eventId, userId])
+  @@index([eventId])
+  @@index([userId])
+}
+
+enum RsvpStatus {
+  GOING
+  MAYBE
+  NOT_GOING
+}
+
+// ============================================
+// REPORTING & MODERATION
+// ============================================
+
+model Report {
+  id              String       @id @default(cuid())
+  reporterId      String
+  reporter        User         @relation("Reporter", fields: [reporterId], references: [id], onDelete: Cascade)
+  reportedUserId  String
+  reportedUser    User         @relation("ReportedUser", fields: [reportedUserId], references: [id], onDelete: Cascade)
+
+  reason          ReportReason
+  details         String?      @db.Text
+  status          ReportStatus @default(PENDING)
+
+  createdAt       DateTime     @default(now())
+  reviewedAt      DateTime?
+
+  @@index([reportedUserId])
+  @@index([status])
+}
+
+enum ReportReason {
+  FAKE
+  HARASSMENT
+  NOT_CHILDFREE
+  INAPPROPRIATE
+  SPAM
+  OTHER
+}
+
+enum ReportStatus {
+  PENDING
+  REVIEWED
+  ACTIONED
+  DISMISSED
+}
+
+// ============================================
+// PROMPT TEMPLATES (Reference data)
+// ============================================
+
+model PromptTemplate {
+  id          String   @id @default(cuid())
+  category    String   // 'dating', 'friendship', 'lifestyle'
+  promptText  String
+  isActive    Boolean  @default(true)
+  position    Int      @default(0)
+
+  createdAt   DateTime @default(now())
+
+  @@index([category, isActive])
+}

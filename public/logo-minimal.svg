@@ -1,0 +1,126 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Super minimal geometric - clean shapes only -->
+
+  <!-- A: Two circles + stem (simplest) -->
+  <g transform="translate(80, 100)">
+    <rect x="-4" y="0" width="8" height="50" fill="#1A1A1A"/>
+    <circle cx="-20" cy="-15" r="22" fill="#1A1A1A"/>
+    <circle cx="20" cy="-15" r="22" fill="#1A1A1A"/>
+    <text x="0" y="80" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">A</text>
+  </g>
+
+  <!-- B: Three circles (clover) + stem -->
+  <g transform="translate(180, 100)">
+    <rect x="-4" y="5" width="8" height="45" fill="#1A1A1A"/>
+    <circle cx="0" cy="-25" r="20" fill="#1A1A1A"/>
+    <circle cx="-22" cy="0" r="18" fill="#1A1A1A"/>
+    <circle cx="22" cy="0" r="18" fill="#1A1A1A"/>
+    <text x="0" y="80" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">B</text>
+  </g>
+
+  <!-- C: Quarter circle pair -->
+  <g transform="translate(280, 100)">
+    <rect x="-4" y="5" width="8" height="45" fill="#1A1A1A"/>
+    <path d="M-4 -35 L-4 5 A40 40 0 0 1 -44 -35 Z" fill="#1A1A1A"/>
+    <path d="M4 -35 L4 5 A40 40 0 0 0 44 -35 Z" fill="#1A1A1A"/>
+    <text x="0" y="80" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">C</text>
+  </g>
+
+  <!-- D: Semicircles stacked -->
+  <g transform="translate(380, 100)">
+    <rect x="-4" y="10" width="8" height="40" fill="#1A1A1A"/>
+    <path d="M-35 10 A35 35 0 0 1 35 10 Z" fill="#1A1A1A"/>
+    <path d="M-25 -5 A25 25 0 0 1 25 -5 Z" fill="#1A1A1A"/>
+    <circle cx="0" cy="-22" r="14" fill="#1A1A1A"/>
+    <text x="0" y="80" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">D</text>
+  </g>
+
+  <!-- E: Single leaf + stem -->
+  <g transform="translate(480, 100)">
+    <rect x="-4" y="0" width="8" height="50" fill="#1A1A1A"/>
+    <ellipse cx="0" cy="-25" rx="22" ry="32" fill="#1A1A1A"/>
+    <text x="0" y="80" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">E</text>
+  </g>
+
+  <!-- F: Abstract bloom (4 quarter circles) -->
+  <g transform="translate(560, 100)">
+    <path d="M0 0 L0 -35 A35 35 0 0 1 35 0 Z" fill="#1A1A1A"/>
+    <path d="M0 0 L35 0 A35 35 0 0 1 0 35 Z" fill="#1A1A1A"/>
+    <path d="M0 0 L0 35 A35 35 0 0 1 -35 0 Z" fill="#1A1A1A"/>
+    <path d="M0 0 L-35 0 A35 35 0 0 1 0 -35 Z" fill="#1A1A1A"/>
+    <circle cx="0" cy="0" r="12" fill="#FAF8F4"/>
+    <text x="0" y="80" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">F</text>
+  </g>
+
+
+  <!-- ROW 2: Gradient versions -->
+
+  <defs>
+    <linearGradient id="gf" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#2F7255"/>
+      <stop offset="100%" stop-color="#87AA61"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(80, 250)">
+    <rect x="-4" y="0" width="8" height="50" fill="url(#gf)"/>
+    <circle cx="-20" cy="-15" r="22" fill="url(#gf)"/>
+    <circle cx="20" cy="-15" r="22" fill="url(#gf)"/>
+  </g>
+
+  <g transform="translate(180, 250)">
+    <rect x="-4" y="5" width="8" height="45" fill="url(#gf)"/>
+    <circle cx="0" cy="-25" r="20" fill="url(#gf)"/>
+    <circle cx="-22" cy="0" r="18" fill="url(#gf)"/>
+    <circle cx="22" cy="0" r="18" fill="url(#gf)"/>
+  </g>
+
+  <g transform="translate(280, 250)">
+    <rect x="-4" y="5" width="8" height="45" fill="url(#gf)"/>
+    <path d="M-4 -35 L-4 5 A40 40 0 0 1 -44 -35 Z" fill="url(#gf)"/>
+    <path d="M4 -35 L4 5 A40 40 0 0 0 44 -35 Z" fill="url(#gf)"/>
+  </g>
+
+  <g transform="translate(380, 250)">
+    <rect x="-4" y="10" width="8" height="40" fill="url(#gf)"/>
+    <path d="M-35 10 A35 35 0 0 1 35 10 Z" fill="url(#gf)"/>
+    <path d="M-25 -5 A25 25 0 0 1 25 -5 Z" fill="url(#gf)"/>
+    <circle cx="0" cy="-22" r="14" fill="url(#gf)"/>
+  </g>
+
+  <g transform="translate(480, 250)">
+    <rect x="-4" y="0" width="8" height="50" fill="url(#gf)"/>
+    <ellipse cx="0" cy="-25" rx="22" ry="32" fill="url(#gf)"/>
+  </g>
+
+  <g transform="translate(560, 250)">
+    <path d="M0 0 L0 -35 A35 35 0 0 1 35 0 Z" fill="url(#gf)"/>
+    <path d="M0 0 L35 0 A35 35 0 0 1 0 35 Z" fill="url(#gf)"/>
+    <path d="M0 0 L0 35 A35 35 0 0 1 -35 0 Z" fill="url(#gf)"/>
+    <path d="M0 0 L-35 0 A35 35 0 0 1 0 -35 Z" fill="url(#gf)"/>
+    <circle cx="0" cy="0" r="12" fill="#FAF8F4"/>
+  </g>
+
+
+  <!-- Wordmarks -->
+  <g transform="translate(120, 370)">
+    <g transform="scale(0.6)">
+      <rect x="-4" y="5" width="8" height="45" fill="url(#gf)"/>
+      <path d="M-4 -35 L-4 5 A40 40 0 0 1 -44 -35 Z" fill="url(#gf)"/>
+      <path d="M4 -35 L4 5 A40 40 0 0 0 44 -35 Z" fill="url(#gf)"/>
+    </g>
+    <text x="45" y="8" font-family="Satoshi, -apple-system, sans-serif" font-size="26" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">flourish</text>
+  </g>
+
+  <g transform="translate(380, 370)">
+    <g transform="scale(0.55)">
+      <rect x="-4" y="5" width="8" height="45" fill="url(#gf)"/>
+      <circle cx="0" cy="-25" r="20" fill="url(#gf)"/>
+      <circle cx="-22" cy="0" r="18" fill="url(#gf)"/>
+      <circle cx="22" cy="0" r="18" fill="url(#gf)"/>
+    </g>
+    <text x="40" y="8" font-family="Satoshi, -apple-system, sans-serif" font-size="26" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">flourish</text>
+  </g>
+
+</svg>

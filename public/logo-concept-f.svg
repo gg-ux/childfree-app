@@ -1,0 +1,38 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Concept F: Two People Blooming Together -->
+  <!-- Two abstract figures/petals that lean into each other, forming a flower shape -->
+  <!-- The negative space between them creates a bloom -->
+
+  <g transform="translate(100, 100)">
+    <!-- Left figure/petal - curves outward then inward -->
+    <path
+      d="M-4 30
+         C-24 30 -40 10 -40 -10
+         C-40 -30 -24 -45 -4 -45
+         C-4 -45 -12 -20 -12 0
+         C-12 20 -4 30 -4 30Z"
+      fill="#5835B0"
+    />
+
+    <!-- Right figure/petal - mirrors left -->
+    <path
+      d="M4 30
+         C24 30 40 10 40 -10
+         C40 -30 24 -45 4 -45
+         C4 -45 12 -20 12 0
+         C12 20 4 30 4 30Z"
+      fill="#BF92F0"
+    />
+
+    <!-- Shared bloom/connection point at top (negative space creates this) -->
+    <!-- Small accent where they nearly meet at top -->
+    <circle cx="0" cy="-38" r="6" fill="#D78F8D"/>
+
+    <!-- Ground/root connection -->
+    <ellipse cx="0" cy="34" rx="8" ry="4" fill="#DBA166"/>
+  </g>
+
+  <text x="100" y="175" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#666">F: Two Blooming Together</text>
+
+</svg>

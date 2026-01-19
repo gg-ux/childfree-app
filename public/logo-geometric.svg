@@ -1,0 +1,166 @@
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <linearGradient id="fGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#2F7255"/>
+      <stop offset="100%" stop-color="#87AA61"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Style: Bold geometric, solid fills, Scandinavian/Bauhaus -->
+
+  <!-- 1: Upward bloom - 3 leaves from center stem -->
+  <g transform="translate(100, 80)">
+    <!-- Center stem -->
+    <rect x="-4" y="0" width="8" height="60" fill="url(#fGrad)"/>
+    <!-- Top leaf (pointing up) -->
+    <ellipse cx="0" cy="-20" rx="16" ry="24" fill="url(#fGrad)"/>
+    <!-- Left leaf -->
+    <ellipse cx="-20" cy="20" rx="14" ry="22" transform="rotate(-30 -20 20)" fill="url(#fGrad)"/>
+    <!-- Right leaf -->
+    <ellipse cx="20" cy="20" rx="14" ry="22" transform="rotate(30 20 20)" fill="url(#fGrad)"/>
+    <text x="0" y="90" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">1</text>
+  </g>
+
+  <!-- 2: Alternating leaves (like fern but simpler) -->
+  <g transform="translate(220, 80)">
+    <rect x="-3" y="-40" width="6" height="80" fill="url(#fGrad)"/>
+    <!-- Leaves alternating -->
+    <ellipse cx="-18" cy="-25" rx="10" ry="16" transform="rotate(-20 -18 -25)" fill="url(#fGrad)"/>
+    <ellipse cx="18" cy="-5" rx="10" ry="16" transform="rotate(20 18 -5)" fill="url(#fGrad)"/>
+    <ellipse cx="-18" cy="15" rx="10" ry="16" transform="rotate(-20 -18 15)" fill="url(#fGrad)"/>
+    <text x="0" y="90" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">2</text>
+  </g>
+
+  <!-- 3: Geometric quarter-circle leaves -->
+  <g transform="translate(340, 80)">
+    <!-- Four quarter circles arranged as bloom -->
+    <path d="M0 0 L0 -30 A30 30 0 0 1 30 0 Z" fill="url(#fGrad)"/>
+    <path d="M0 0 L30 0 A30 30 0 0 1 0 30 Z" fill="url(#fGrad)"/>
+    <path d="M0 0 L0 30 A30 30 0 0 1 -30 0 Z" fill="url(#fGrad)"/>
+    <path d="M0 0 L-30 0 A30 30 0 0 1 0 -30 Z" fill="url(#fGrad)"/>
+    <!-- Center circle cutout (negative space) -->
+    <circle cx="0" cy="0" r="10" fill="#FAF8F4"/>
+    <text x="0" y="90" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">3</text>
+  </g>
+
+  <!-- 4: Simple 3-petal with stem -->
+  <g transform="translate(460, 80)">
+    <!-- Stem -->
+    <rect x="-4" y="10" width="8" height="30" fill="url(#fGrad)"/>
+    <!-- Three petals -->
+    <circle cx="0" cy="-20" r="18" fill="url(#fGrad)"/>
+    <circle cx="-22" cy="5" r="16" fill="url(#fGrad)"/>
+    <circle cx="22" cy="5" r="16" fill="url(#fGrad)"/>
+    <text x="0" y="90" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">4</text>
+  </g>
+
+  <!-- 5: Abstract growing sprout -->
+  <g transform="translate(580, 80)">
+    <!-- Main upward teardrop -->
+    <path d="M0 40 Q-20 0 0 -40 Q20 0 0 40 Z" fill="url(#fGrad)"/>
+    <!-- Small side leaf left -->
+    <ellipse cx="-22" cy="10" rx="12" ry="18" transform="rotate(-40 -22 10)" fill="url(#fGrad)"/>
+    <!-- Small side leaf right -->
+    <ellipse cx="22" cy="10" rx="12" ry="18" transform="rotate(40 22 10)" fill="url(#fGrad)"/>
+    <text x="0" y="90" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">5</text>
+  </g>
+
+  <!-- 6: Symmetric tulip-like -->
+  <g transform="translate(700, 80)">
+    <!-- Two curved petals -->
+    <path d="M0 -35 Q-25 -20 -20 10 Q-10 5 0 10 Q10 5 20 10 Q25 -20 0 -35 Z" fill="url(#fGrad)"/>
+    <!-- Stem -->
+    <rect x="-4" y="10" width="8" height="30" fill="url(#fGrad)"/>
+    <!-- Side leaves -->
+    <ellipse cx="-18" cy="25" rx="10" ry="14" transform="rotate(-30 -18 25)" fill="url(#fGrad)"/>
+    <ellipse cx="18" cy="25" rx="10" ry="14" transform="rotate(30 18 25)" fill="url(#fGrad)"/>
+    <text x="0" y="90" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">6</text>
+  </g>
+
+
+  <!-- ROW 2: More abstract/minimal -->
+
+  <!-- 7: Four leaves radiating (like clover but geometric) -->
+  <g transform="translate(100, 250)">
+    <ellipse cx="0" cy="-22" rx="14" ry="22" fill="url(#fGrad)"/>
+    <ellipse cx="22" cy="0" rx="22" ry="14" fill="url(#fGrad)"/>
+    <ellipse cx="0" cy="22" rx="14" ry="22" fill="url(#fGrad)"/>
+    <ellipse cx="-22" cy="0" rx="22" ry="14" fill="url(#fGrad)"/>
+    <circle cx="0" cy="0" r="8" fill="#FAF8F4"/>
+    <text x="0" y="90" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">7</text>
+  </g>
+
+  <!-- 8: Minimal sprout (2 leaves + stem) -->
+  <g transform="translate(220, 250)">
+    <rect x="-3" y="-10" width="6" height="50" fill="url(#fGrad)"/>
+    <ellipse cx="-20" cy="-20" rx="12" ry="20" transform="rotate(-25 -20 -20)" fill="url(#fGrad)"/>
+    <ellipse cx="20" cy="-20" rx="12" ry="20" transform="rotate(25 20 -20)" fill="url(#fGrad)"/>
+    <text x="0" y="90" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">8</text>
+  </g>
+
+  <!-- 9: Stacked semicircles (growth layers) -->
+  <g transform="translate(340, 250)">
+    <path d="M-30 20 A30 30 0 0 1 30 20 Z" fill="url(#fGrad)"/>
+    <path d="M-22 10 A22 22 0 0 1 22 10 Z" fill="url(#fGrad)"/>
+    <path d="M-14 0 A14 14 0 0 1 14 0 Z" fill="url(#fGrad)"/>
+    <circle cx="0" cy="-10" r="10" fill="url(#fGrad)"/>
+    <rect x="-4" y="20" width="8" height="20" fill="url(#fGrad)"/>
+    <text x="0" y="90" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">9</text>
+  </g>
+
+  <!-- 10: Simple bloom with 6 petals -->
+  <g transform="translate(460, 250)">
+    <ellipse cx="0" cy="-20" rx="10" ry="18" fill="url(#fGrad)"/>
+    <ellipse cx="17" cy="-10" rx="10" ry="18" transform="rotate(60 17 -10)" fill="url(#fGrad)"/>
+    <ellipse cx="17" cy="10" rx="10" ry="18" transform="rotate(120 17 10)" fill="url(#fGrad)"/>
+    <ellipse cx="0" cy="20" rx="10" ry="18" fill="url(#fGrad)"/>
+    <ellipse cx="-17" cy="10" rx="10" ry="18" transform="rotate(-120 -17 10)" fill="url(#fGrad)"/>
+    <ellipse cx="-17" cy="-10" rx="10" ry="18" transform="rotate(-60 -17 -10)" fill="url(#fGrad)"/>
+    <circle cx="0" cy="0" r="8" fill="#FAF8F4"/>
+    <text x="0" y="90" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">10</text>
+  </g>
+
+  <!-- 11: Y-shaped sprout -->
+  <g transform="translate(580, 250)">
+    <rect x="-4" y="0" width="8" height="40" fill="url(#fGrad)"/>
+    <path d="M0 0 L-25 -35 L-15 -35 L0 -10 L15 -35 L25 -35 L0 0 Z" fill="url(#fGrad)"/>
+    <circle cx="-20" cy="-40" r="12" fill="url(#fGrad)"/>
+    <circle cx="20" cy="-40" r="12" fill="url(#fGrad)"/>
+    <text x="0" y="90" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">11</text>
+  </g>
+
+  <!-- 12: Abstract connected leaves -->
+  <g transform="translate(700, 250)">
+    <!-- Two overlapping rounded shapes -->
+    <path d="M-15 -30 Q-35 -15 -15 0 Q-35 15 -15 30 Q0 15 0 0 Q0 -15 -15 -30 Z" fill="url(#fGrad)"/>
+    <path d="M15 -30 Q35 -15 15 0 Q35 15 15 30 Q0 15 0 0 Q0 -15 15 -30 Z" fill="url(#fGrad)"/>
+    <text x="0" y="90" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#666">12</text>
+  </g>
+
+
+  <!-- ROW 3: Wordmark lockups for favorites -->
+
+  <g transform="translate(200, 420)">
+    <!-- #8 with wordmark -->
+    <g transform="translate(0, -10)">
+      <rect x="-2" y="-8" width="4" height="36" fill="url(#fGrad)"/>
+      <ellipse cx="-14" cy="-14" rx="9" ry="15" transform="rotate(-25 -14 -14)" fill="url(#fGrad)"/>
+      <ellipse cx="14" cy="-14" rx="9" ry="15" transform="rotate(25 14 -14)" fill="url(#fGrad)"/>
+    </g>
+    <text x="50" y="8" font-family="Satoshi, -apple-system, sans-serif" font-size="26" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">flourish</text>
+  </g>
+
+  <g transform="translate(500, 420)">
+    <!-- #7 with wordmark -->
+    <g transform="translate(0, -5) scale(0.7)">
+      <ellipse cx="0" cy="-22" rx="14" ry="22" fill="url(#fGrad)"/>
+      <ellipse cx="22" cy="0" rx="22" ry="14" fill="url(#fGrad)"/>
+      <ellipse cx="0" cy="22" rx="14" ry="22" fill="url(#fGrad)"/>
+      <ellipse cx="-22" cy="0" rx="22" ry="14" fill="url(#fGrad)"/>
+      <circle cx="0" cy="0" r="8" fill="#FAF8F4"/>
+    </g>
+    <text x="45" y="8" font-family="Satoshi, -apple-system, sans-serif" font-size="26" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">flourish</text>
+  </g>
+
+</svg>
