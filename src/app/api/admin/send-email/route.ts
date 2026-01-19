@@ -3,17 +3,32 @@ import { Resend } from "resend";
 
 export const dynamic = "force-dynamic";
 
+async function checkAdminAuth(request: NextRequest) {
+  const { db } = await import("@/lib/db");
+  const sessionToken = request.cookies.get("admin_session")?.value;
+
+  if (!sessionToken) return null;
+
+  const session = await db.adminSession.findUnique({
+    where: { token: sessionToken },
+  });
+
+  if (!session || new Date() > session.expiresAt) return null;
+
+  return session.email;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const { db } = await import("@/lib/db");
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    const { key, ids } = await request.json();
-
-    // Auth check
-    if (key !== process.env.ADMIN_KEY && key !== "abundance") {
+    const adminEmail = await checkAdminAuth(request);
+    if (!adminEmail) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+
+    const { ids } = await request.json();
 
     if (!ids || !Array.isArray(ids) || ids.length === 0) {
       return NextResponse.json({ error: "No entries selected" }, { status: 400 });

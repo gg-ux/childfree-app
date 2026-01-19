@@ -2,15 +2,27 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
+async function checkAdminAuth(request: NextRequest) {
+  const { db } = await import("@/lib/db");
+  const sessionToken = request.cookies.get("admin_session")?.value;
+
+  if (!sessionToken) return null;
+
+  const session = await db.adminSession.findUnique({
+    where: { token: sessionToken },
+  });
+
+  if (!session || new Date() > session.expiresAt) return null;
+
+  return session.email;
+}
+
 export async function GET(request: NextRequest) {
   try {
     const { db } = await import("@/lib/db");
 
-    // Simple auth check via query param (for now)
-    const { searchParams } = new URL(request.url);
-    const key = searchParams.get("key");
-
-    if (key !== process.env.ADMIN_KEY && key !== "abundance") {
+    const adminEmail = await checkAdminAuth(request);
+    if (!adminEmail) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 

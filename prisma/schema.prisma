@@ -15,15 +15,16 @@ datasource db {
 
 model User {
   id            String    @id @default(cuid())
-  clerkId       String    @unique // Clerk user ID
   email         String    @unique
   phone         String?   @unique
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   lastActiveAt  DateTime  @default(now())
   status        UserStatus @default(PENDING)
+  onboardingStep Int       @default(0) // Track onboarding progress
 
   profile       Profile?
+  sessions      UserSession[]
   sentLikes     Like[]     @relation("SentLikes")
   receivedLikes Like[]     @relation("ReceivedLikes")
   matches1      Match[]    @relation("MatchUser1")
@@ -34,7 +35,6 @@ model User {
   reportsMade   Report[]   @relation("Reporter")
   reportsReceived Report[] @relation("ReportedUser")
 
-  @@index([clerkId])
   @@index([email])
 }
 
@@ -106,9 +106,14 @@ enum RelationshipStatus {
 }
 
 enum SeekingType {
-  DATING
-  FRIENDSHIP
-  COMMUNITY
+  DATING_SERIOUS      // Looking for long-term partnership
+  DATING_CASUAL       // Open to casual dating
+  DATING_OPEN         // Open to whatever develops
+  FRIENDSHIP          // Platonic connections
+  ACTIVITY_PARTNERS   // Hiking, gym, events companions
+  TRAVEL_BUDDIES      // Childfree travel companions
+  PROFESSIONAL        // Career networking
+  COMMUNITY           // Local childfree community
 }
 
 // ============================================
@@ -370,4 +375,58 @@ model WaitlistEntry {
   @@index([email])
   @@index([createdAt])
   @@index([emailSent])
+}
+
+// ============================================
+// ADMIN AUTH
+// ============================================
+
+model AdminToken {
+  id        String   @id @default(cuid())
+  email     String
+  token     String   @unique
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([token])
+  @@index([email])
+}
+
+model AdminSession {
+  id        String   @id @default(cuid())
+  email     String
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([token])
+}
+
+// ============================================
+// USER AUTH (Magic Link)
+// ============================================
+
+model UserToken {
+  id        String   @id @default(cuid())
+  email     String
+  token     String   @unique
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([token])
+  @@index([email])
+}
+
+model UserSession {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([token])
+  @@index([userId])
 }
