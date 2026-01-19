@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Add to waitlist
-    await db.waitlistEntry.create({
+    const entry = await db.waitlistEntry.create({
       data: {
         email: email.toLowerCase(),
         source: source || "website",
@@ -62,6 +62,12 @@ export async function POST(request: NextRequest) {
           </p>
         </div>
       `,
+    });
+
+    // Mark email as sent
+    await db.waitlistEntry.update({
+      where: { id: entry.id },
+      data: { emailSent: true, emailSentAt: new Date() },
     });
 
     return NextResponse.json(

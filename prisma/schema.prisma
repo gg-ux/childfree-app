@@ -360,11 +360,14 @@ model PromptTemplate {
 // ============================================
 
 model WaitlistEntry {
-  id          String   @id @default(cuid())
-  email       String   @unique
-  source      String?  // Where they signed up (hero, footer, etc.)
-  createdAt   DateTime @default(now())
+  id          String    @id @default(cuid())
+  email       String    @unique
+  source      String?   // Where they signed up (hero, footer, etc.)
+  emailSent   Boolean   @default(false)
+  emailSentAt DateTime?
+  createdAt   DateTime  @default(now())
 
   @@index([email])
   @@index([createdAt])
+  @@index([emailSent])
 }
