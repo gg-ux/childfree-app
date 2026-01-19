@@ -59,18 +59,19 @@ export default function Home() {
             </div>
 
             {/* Floating Profile Cards */}
-            <div className="relative h-[400px] lg:h-[500px] hidden md:block">
+            <div className="relative h-[280px] md:h-[400px] lg:h-[500px]">
               {/* Card 2 - Left (behind) */}
-              <div className="absolute top-24 left-4 w-48 bg-white rounded-2xl shadow-lg border border-border overflow-hidden -rotate-6 hover:rotate-0 transition-transform duration-500 z-10">
+              <div className="absolute top-16 md:top-24 left-0 md:left-4 w-32 md:w-48 bg-white rounded-2xl shadow-lg border border-border overflow-hidden -rotate-6 hover:rotate-0 transition-transform duration-500 z-10">
                 <div className="aspect-[3/4] bg-gradient-to-br from-coral/20 to-coral/5 flex items-center justify-center">
-                  <div className="w-14 h-14 rounded-full bg-coral/20 flex items-center justify-center">
-                    <Heart size={24} className="text-coral" />
+                  <div className="w-10 md:w-14 h-10 md:h-14 rounded-full bg-coral/20 flex items-center justify-center">
+                    <Heart size={20} className="text-coral md:hidden" />
+                    <Heart size={24} className="text-coral hidden md:block" />
                   </div>
                 </div>
-                <div className="p-3">
-                  <p className="font-medium text-foreground text-sm">Alex, 27</p>
-                  <p className="text-xs text-muted mb-2">3 miles away</p>
-                  <div className="flex flex-wrap gap-1">
+                <div className="p-2 md:p-3">
+                  <p className="font-medium text-foreground text-xs md:text-sm">Alex, 27</p>
+                  <p className="text-[10px] md:text-xs text-muted mb-1 md:mb-2">3 miles away</p>
+                  <div className="flex flex-wrap gap-1 hidden md:flex">
                     <span className="text-[11px] px-2 py-0.5 rounded-full bg-foreground/8 text-foreground/70 font-semibold inline-flex items-center gap-1">
                       <MagnifyingGlass size={10} weight="bold" />
                       Chosen family
@@ -80,16 +81,17 @@ export default function Home() {
               </div>
 
               {/* Card 3 - Right (behind) */}
-              <div className="absolute top-24 right-4 w-48 bg-white rounded-2xl shadow-lg border border-border overflow-hidden rotate-6 hover:rotate-0 transition-transform duration-500 z-10">
+              <div className="absolute top-16 md:top-24 right-0 md:right-4 w-32 md:w-48 bg-white rounded-2xl shadow-lg border border-border overflow-hidden rotate-6 hover:rotate-0 transition-transform duration-500 z-10">
                 <div className="aspect-[3/4] bg-gradient-to-br from-marigold/20 to-marigold/5 flex items-center justify-center">
-                  <div className="w-14 h-14 rounded-full bg-marigold/20 flex items-center justify-center">
-                    <CalendarBlank size={24} className="text-marigold" />
+                  <div className="w-10 md:w-14 h-10 md:h-14 rounded-full bg-marigold/20 flex items-center justify-center">
+                    <CalendarBlank size={20} className="text-marigold md:hidden" />
+                    <CalendarBlank size={24} className="text-marigold hidden md:block" />
                   </div>
                 </div>
-                <div className="p-3">
-                  <p className="font-medium text-foreground text-sm">Jordan, 38</p>
-                  <p className="text-xs text-muted mb-2">8 miles away</p>
-                  <div className="flex flex-wrap gap-1">
+                <div className="p-2 md:p-3">
+                  <p className="font-medium text-foreground text-xs md:text-sm">Jordan, 38</p>
+                  <p className="text-[10px] md:text-xs text-muted mb-1 md:mb-2">8 miles away</p>
+                  <div className="flex flex-wrap gap-1 hidden md:flex">
                     <span className="text-[11px] px-2 py-0.5 rounded-full bg-foreground/8 text-foreground/70 font-semibold inline-flex items-center gap-1">
                       <MagnifyingGlass size={10} weight="bold" />
                       Travel partner
@@ -99,16 +101,17 @@ export default function Home() {
               </div>
 
               {/* Card 1 - Main (front) */}
-              <div className="absolute top-12 left-1/2 -translate-x-1/2 w-56 bg-white rounded-2xl shadow-xl border border-border overflow-hidden hover:scale-[1.02] transition-transform duration-500 z-20">
+              <div className="absolute top-4 md:top-12 left-1/2 -translate-x-1/2 w-40 md:w-56 bg-white rounded-2xl shadow-xl border border-border overflow-hidden hover:scale-[1.02] transition-transform duration-500 z-20">
                 <div className="aspect-[3/4] bg-gradient-to-br from-forest/20 to-forest/5 flex items-center justify-center relative">
-                  <div className="w-16 h-16 rounded-full bg-forest/20 flex items-center justify-center">
-                    <Users size={28} className="text-forest" />
+                  <div className="w-12 md:w-16 h-12 md:h-16 rounded-full bg-forest/20 flex items-center justify-center">
+                    <Users size={22} className="text-forest md:hidden" />
+                    <Users size={28} className="text-forest hidden md:block" />
                   </div>
                 </div>
-                <div className="p-4">
-                  <p className="font-medium text-foreground">Sarah, 52</p>
-                  <p className="text-sm text-muted mb-2">5 miles away</p>
-                  <div className="flex flex-wrap gap-1.5">
+                <div className="p-3 md:p-4">
+                  <p className="font-medium text-foreground text-sm md:text-base">Sarah, 52</p>
+                  <p className="text-xs md:text-sm text-muted mb-1 md:mb-2">5 miles away</p>
+                  <div className="flex flex-wrap gap-1.5 hidden md:flex">
                     <span className="text-[11px] px-2 py-0.5 rounded-full bg-foreground/8 text-foreground/70 font-semibold inline-flex items-center gap-1">
                       <MagnifyingGlass size={10} weight="bold" />
                       DINK partner
@@ -118,7 +121,7 @@ export default function Home() {
               </div>
 
               {/* Connection lines - subtle */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20" viewBox="0 0 400 500">
+              <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20 hidden md:block" viewBox="0 0 400 500">
                 <path d="M200 100 Q 100 200 80 280" stroke="#2F7255" strokeWidth="2" fill="none" strokeDasharray="4 4" />
                 <path d="M200 100 Q 300 200 320 280" stroke="#2F7255" strokeWidth="2" fill="none" strokeDasharray="4 4" />
               </svg>
