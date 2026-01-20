@@ -56,14 +56,15 @@ export default function Home() {
             <div className="relative h-[280px] md:h-[400px] lg:h-[500px]">
               {/* Card 2 - Left (behind) */}
               <div className="absolute top-16 md:top-24 left-0 md:left-4 w-32 md:w-48 bg-white rounded-2xl shadow-lg border border-border overflow-hidden -rotate-6 hover:rotate-0 transition-transform duration-500 z-10">
-                <div className="aspect-[3/4] bg-gradient-to-br from-coral/20 to-coral/5 flex items-center justify-center">
-                  <div className="w-10 md:w-14 h-10 md:h-14 rounded-full bg-coral/20 flex items-center justify-center">
-                    <Heart size={20} className="text-coral md:hidden" />
-                    <Heart size={24} className="text-coral hidden md:block" />
-                  </div>
+                <div className="aspect-[3/4] bg-gradient-to-br from-coral/20 to-coral/5 overflow-hidden">
+                  <img
+                    src="/assets/home/girl02.png"
+                    alt="Profile"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="p-2 md:p-3">
-                  <p className="font-medium text-foreground text-xs md:text-sm">Alex, 27</p>
+                  <p className="font-medium text-foreground text-xs md:text-sm">Alex, 24</p>
                   <p className="text-[10px] md:text-xs text-muted mb-1 md:mb-2">3 miles away</p>
                   <div className="flex flex-wrap gap-1 hidden md:flex">
                     <span className="text-[11px] px-2 py-0.5 rounded-full bg-foreground/8 text-foreground/70 font-semibold inline-flex items-center gap-1">
@@ -76,14 +77,15 @@ export default function Home() {
 
               {/* Card 3 - Right (behind) */}
               <div className="absolute top-16 md:top-24 right-0 md:right-4 w-32 md:w-48 bg-white rounded-2xl shadow-lg border border-border overflow-hidden rotate-6 hover:rotate-0 transition-transform duration-500 z-10">
-                <div className="aspect-[3/4] bg-gradient-to-br from-marigold/20 to-marigold/5 flex items-center justify-center">
-                  <div className="w-10 md:w-14 h-10 md:h-14 rounded-full bg-marigold/20 flex items-center justify-center">
-                    <CalendarBlank size={20} className="text-marigold md:hidden" />
-                    <CalendarBlank size={24} className="text-marigold hidden md:block" />
-                  </div>
+                <div className="aspect-[3/4] bg-gradient-to-br from-marigold/20 to-marigold/5 overflow-hidden">
+                  <img
+                    src="/assets/home/guy02.png"
+                    alt="Profile"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="p-2 md:p-3">
-                  <p className="font-medium text-foreground text-xs md:text-sm">Jordan, 38</p>
+                  <p className="font-medium text-foreground text-xs md:text-sm">Jordan, 48</p>
                   <p className="text-[10px] md:text-xs text-muted mb-1 md:mb-2">8 miles away</p>
                   <div className="flex flex-wrap gap-1 hidden md:flex">
                     <span className="text-[11px] px-2 py-0.5 rounded-full bg-foreground/8 text-foreground/70 font-semibold inline-flex items-center gap-1">
@@ -96,14 +98,15 @@ export default function Home() {
 
               {/* Card 1 - Main (front) */}
               <div className="absolute top-4 md:top-12 left-1/2 -translate-x-1/2 w-40 md:w-56 bg-white rounded-2xl shadow-xl border border-border overflow-hidden hover:scale-[1.02] transition-transform duration-500 z-20">
-                <div className="aspect-[3/4] bg-gradient-to-br from-forest/20 to-forest/5 flex items-center justify-center relative">
-                  <div className="w-12 md:w-16 h-12 md:h-16 rounded-full bg-forest/20 flex items-center justify-center">
-                    <Users size={22} className="text-forest md:hidden" />
-                    <Users size={28} className="text-forest hidden md:block" />
-                  </div>
+                <div className="aspect-[3/4] bg-gradient-to-br from-forest/20 to-forest/5 overflow-hidden">
+                  <img
+                    src="/assets/home/girl01.png"
+                    alt="Profile"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="p-3 md:p-4">
-                  <p className="font-medium text-foreground text-sm md:text-base">Sarah, 52</p>
+                  <p className="font-medium text-foreground text-sm md:text-base">Sarah, 32</p>
                   <p className="text-xs md:text-sm text-muted mb-1 md:mb-2">5 miles away</p>
                   <div className="flex flex-wrap gap-1.5 hidden md:flex">
                     <span className="text-[11px] px-2 py-0.5 rounded-full bg-foreground/8 text-foreground/70 font-semibold inline-flex items-center gap-1">

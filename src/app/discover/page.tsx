@@ -35,7 +35,7 @@ export default function DiscoverPage() {
           return;
         }
 
-        if (data.user.onboardingStep < 5) {
+        if (data.user.onboardingStep < 4) {
           router.push("/onboarding");
           return;
         }

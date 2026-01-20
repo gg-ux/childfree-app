@@ -68,7 +68,7 @@ export async function POST(request: NextRequest) {
     });
 
     // Determine where to redirect
-    const needsOnboarding = !user.profile || user.onboardingStep < 5;
+    const needsOnboarding = !user.profile || user.onboardingStep < 4;
 
     const response = NextResponse.json({
       success: true,

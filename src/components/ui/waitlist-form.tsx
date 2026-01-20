@@ -60,12 +60,12 @@ export function WaitlistForm({ source = "website", className }: WaitlistFormProp
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email"
           disabled={status === "loading"}
-          className="w-full sm:flex-1 px-4 h-12 rounded-lg border border-[rgba(0,0,0,0.2)] bg-background text-base placeholder:text-muted-light focus:outline-none focus:border-forest transition-colors duration-300 disabled:opacity-50"
+          className="w-full sm:flex-1 px-4 h-14 rounded-xl border border-border bg-background text-base placeholder:text-muted/50 focus:outline-none focus:border-forest transition-colors duration-300 disabled:opacity-50"
         />
         <Button
           type="submit"
           variant="accent"
-          className="w-full sm:w-auto h-12 shrink-0"
+          className="w-full sm:w-auto h-14 shrink-0"
           disabled={status === "loading"}
         >
           {status === "loading" ? "Joining..." : "Join the waitlist"}

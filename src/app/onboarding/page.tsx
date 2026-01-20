@@ -5,80 +5,58 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
+import { Select } from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
+import { ChipSelector } from "@/components/ui/chip-selector";
+import { PromptPicker } from "@/components/ui/prompt-picker";
+import {
+  INTERESTS,
+  MUSIC_GENRES,
+  PETS_OPTIONS,
+  DIET_OPTIONS,
+  DRINKING_OPTIONS,
+  VALUES,
+  PROMPTS,
+} from "@/lib/constants/profile-options";
 import {
   ArrowRight,
   ArrowLeft,
-  Check,
-  User,
   Heart,
   Users,
-  MagnifyingGlass,
+  Backpack,
+  GlobeHemisphereWest,
 } from "@phosphor-icons/react";
 
-const TOTAL_STEPS = 5;
+const TOTAL_STEPS = 4;
 
-// Connection type options based on research
+// Connection type options
 const CONNECTION_TYPES = [
   {
-    value: "DATING_SERIOUS",
-    label: "Serious Dating",
-    description: "Looking for a long-term childfree partner",
-    icon: "heart",
-  },
-  {
-    value: "DATING_CASUAL",
-    label: "Casual Dating",
-    description: "Open to dating without commitment pressure",
-    icon: "heart",
-  },
-  {
-    value: "DATING_OPEN",
-    label: "Open to Either",
-    description: "Let things develop naturally",
-    icon: "heart",
+    value: "DATING",
+    label: "Dating",
+    description: "Find a childfree partner",
+    icon: Heart,
   },
   {
     value: "FRIENDSHIP",
     label: "Friendship",
     description: "Platonic connections with childfree people",
-    icon: "users",
+    icon: Users,
   },
   {
     value: "ACTIVITY_PARTNERS",
     label: "Activity Partners",
     description: "Hiking, gym, events, travel companions",
-    icon: "users",
+    icon: Backpack,
   },
   {
     value: "COMMUNITY",
-    label: "Local Community",
-    description: "Connect with childfree folks nearby",
-    icon: "users",
+    label: "Community",
+    description: "Connect with childfree folks everywhere",
+    icon: GlobeHemisphereWest,
   },
 ];
 
-const CHILDFREE_STATUSES = [
-  {
-    value: "CHOICE",
-    label: "Childfree by choice",
-    description: "I've chosen not to have children",
-  },
-  {
-    value: "STERILIZED",
-    label: "Childfree & sterilized",
-    description: "I've had a permanent procedure",
-  },
-  {
-    value: "CIRCUMSTANCE",
-    label: "Childless by circumstance",
-    description: "Due to life circumstances, not by choice",
-  },
-  {
-    value: "PARENT_DONE",
-    label: "Empty nester",
-    description: "My children are grown and independent",
-  },
-];
 
 const GENDERS = [
   { value: "woman", label: "Woman" },
@@ -86,6 +64,29 @@ const GENDERS = [
   { value: "nonbinary", label: "Non-binary" },
   { value: "other", label: "Other" },
 ];
+
+const MONTHS = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+const MONTH_OPTIONS = MONTHS.map((month, i) => ({
+  value: String(i + 1).padStart(2, "0"),
+  label: month,
+}));
+
+const currentYear = new Date().getFullYear();
+const YEARS = Array.from({ length: 82 }, (_, i) => currentYear - 18 - i); // 18-99 years old
+const YEAR_OPTIONS = YEARS.map((year) => ({
+  value: String(year),
+  label: String(year),
+}));
+
+const DAYS = Array.from({ length: 31 }, (_, i) => i + 1);
+const DAY_OPTIONS = DAYS.map((day) => ({
+  value: String(day).padStart(2, "0"),
+  label: String(day),
+}));
 
 export default function OnboardingPage() {
   const router = useRouter();
@@ -96,11 +97,23 @@ export default function OnboardingPage() {
 
   // Form state
   const [displayName, setDisplayName] = useState("");
-  const [birthdate, setBirthdate] = useState("");
+  const [birthMonth, setBirthMonth] = useState("");
+  const [birthDay, setBirthDay] = useState("");
+  const [birthYear, setBirthYear] = useState("");
   const [gender, setGender] = useState("");
-  const [childfreeStatus, setChildfreeStatus] = useState("");
   const [seeking, setSeeking] = useState<string[]>([]);
-  const [bio, setBio] = useState("");
+
+  // Step 3: Profile content
+  const [selectedPrompt, setSelectedPrompt] = useState("");
+  const [promptAnswer, setPromptAnswer] = useState("");
+  const [interests, setInterests] = useState<string[]>([]);
+  const [musicGenres, setMusicGenres] = useState<string[]>([]);
+  const [pets, setPets] = useState("");
+  const [diet, setDiet] = useState("");
+  const [drinking, setDrinking] = useState("");
+  const [values, setValues] = useState<string[]>([]);
+
+  // Step 3: Preferences (kept from before)
   const [genderPreferences, setGenderPreferences] = useState<string[]>([]);
   const [ageMin, setAgeMin] = useState(21);
   const [ageMax, setAgeMax] = useState(55);
@@ -122,7 +135,7 @@ export default function OnboardingPage() {
         const onboardingRes = await fetch("/api/onboarding");
         const onboardingData = await onboardingRes.json();
 
-        if (onboardingData.step >= 5) {
+        if (onboardingData.step >= 4) {
           router.push("/discover");
           return;
         }
@@ -136,15 +149,29 @@ export default function OnboardingPage() {
         if (onboardingData.profile) {
           const p = onboardingData.profile;
           if (p.displayName) setDisplayName(p.displayName);
-          if (p.birthdate) setBirthdate(new Date(p.birthdate).toISOString().split("T")[0]);
+          if (p.birthdate) {
+            const d = new Date(p.birthdate);
+            setBirthMonth(String(d.getMonth() + 1).padStart(2, "0"));
+            setBirthDay(String(d.getDate()).padStart(2, "0"));
+            setBirthYear(String(d.getFullYear()));
+          }
           if (p.gender) setGender(p.gender);
-          if (p.childfreeStatus) setChildfreeStatus(p.childfreeStatus);
-          if (p.seeking) setSeeking(p.seeking);
-          if (p.bio) setBio(p.bio);
+                    if (p.seeking) setSeeking(p.seeking);
+          if (p.interests) setInterests(p.interests);
+          if (p.musicGenres) setMusicGenres(p.musicGenres);
+          if (p.pets) setPets(p.pets);
+          if (p.diet) setDiet(p.diet);
+          if (p.drinking) setDrinking(p.drinking);
+          if (p.values) setValues(p.values);
           if (p.genderPreferences) setGenderPreferences(p.genderPreferences);
           if (p.ageMin) setAgeMin(p.ageMin);
           if (p.ageMax) setAgeMax(p.ageMax);
           if (p.locationCity) setLocationCity(p.locationCity);
+          // Load prompt if exists
+          if (p.prompts && p.prompts.length > 0) {
+            setSelectedPrompt(p.prompts[0].promptType);
+            setPromptAnswer(p.prompts[0].answer);
+          }
         }
       } catch {
         router.push("/auth/signup");
@@ -186,12 +213,13 @@ export default function OnboardingPage() {
 
     switch (step) {
       case 1:
-        if (!displayName || !birthdate || !gender) {
+        if (!displayName || !birthMonth || !birthDay || !birthYear || !gender) {
           setError("Please fill in all fields");
           return;
         }
-        // Validate age (18+)
-        const age = new Date().getFullYear() - new Date(birthdate).getFullYear();
+        // Construct birthdate and validate age (18+)
+        const birthdate = `${birthYear}-${birthMonth}-${birthDay}`;
+        const age = new Date().getFullYear() - parseInt(birthYear);
         if (age < 18) {
           setError("You must be 18 or older");
           return;
@@ -200,24 +228,26 @@ export default function OnboardingPage() {
         break;
 
       case 2:
-        if (!childfreeStatus) {
-          setError("Please select your childfree status");
-          return;
-        }
-        success = await saveStep(2, { childfreeStatus });
-        break;
-
-      case 3:
         if (seeking.length === 0) {
           setError("Please select at least one connection type");
           return;
         }
-        success = await saveStep(3, { seeking });
+        success = await saveStep(2, { seeking });
         break;
 
-      case 4:
-        success = await saveStep(4, {
-          bio,
+      case 3:
+        if (!selectedPrompt || promptAnswer.length < 10) {
+          setError("Please answer a prompt (at least 10 characters)");
+          return;
+        }
+        success = await saveStep(3, {
+          prompt: { type: selectedPrompt, answer: promptAnswer },
+          interests,
+          musicGenres,
+          pets: pets || null,
+          diet: diet || null,
+          drinking: drinking || null,
+          values,
           genderPreferences,
           ageMin,
           ageMax,
@@ -225,8 +255,8 @@ export default function OnboardingPage() {
         });
         break;
 
-      case 5:
-        success = await saveStep(5, {});
+      case 4:
+        success = await saveStep(4, {});
         if (success) {
           router.push("/discover");
           return;
@@ -263,6 +293,23 @@ export default function OnboardingPage() {
     );
   };
 
+  // Check if current step is valid for enabling Continue button
+  const isStepValid = () => {
+    switch (step) {
+      case 1:
+        return displayName && birthMonth && birthDay && birthYear && gender;
+      case 2:
+        return seeking.length > 0;
+      case 3:
+        // Prompt is required, others optional
+        return selectedPrompt && promptAnswer.length >= 10;
+      case 4:
+        return true; // Completion
+      default:
+        return false;
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -279,7 +326,7 @@ export default function OnboardingPage() {
           <Link href="/">
             <Logo variant="full" size="sm" />
           </Link>
-          <span className="text-sm text-muted">
+          <span className="text-sm text-muted font-medium">
             Step {step} of {TOTAL_STEPS}
           </span>
         </div>
@@ -299,40 +346,45 @@ export default function OnboardingPage() {
           {/* Step 1: Basic Info */}
           {step === 1 && (
             <div className="animate-fadeIn">
-              <div className="w-14 h-14 bg-forest/20 rounded-full flex items-center justify-center mb-6">
-                <User size={28} className="text-forest" />
-              </div>
               <h1 className="font-display text-2xl md:text-3xl text-foreground mb-2">
-                Let&apos;s get to know you
+                Hey there, nice to meet you
               </h1>
               <p className="theme-body text-muted mb-8">
-                This helps us personalize your experience.
+                Tell us a little about yourself
               </p>
 
               <div className="space-y-5">
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    First name
-                  </label>
-                  <input
-                    type="text"
-                    value={displayName}
-                    onChange={(e) => setDisplayName(e.target.value)}
-                    placeholder="How should we call you?"
-                    className="w-full px-4 h-14 rounded-xl border border-border bg-background text-base focus:outline-none focus:border-forest transition-colors"
-                  />
-                </div>
+                <Input
+                  label="Display name"
+                  value={displayName}
+                  onChange={(e) => setDisplayName(e.target.value)}
+                  placeholder="What should we call you?"
+                />
 
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Birthday
                   </label>
-                  <input
-                    type="date"
-                    value={birthdate}
-                    onChange={(e) => setBirthdate(e.target.value)}
-                    className="w-full px-4 h-14 rounded-xl border border-border bg-background text-base focus:outline-none focus:border-forest transition-colors"
-                  />
+                  <div className="grid grid-cols-3 gap-3">
+                    <Select
+                      value={birthMonth}
+                      onChange={setBirthMonth}
+                      options={MONTH_OPTIONS}
+                      placeholder="Month"
+                    />
+                    <Select
+                      value={birthDay}
+                      onChange={setBirthDay}
+                      options={DAY_OPTIONS}
+                      placeholder="Day"
+                    />
+                    <Select
+                      value={birthYear}
+                      onChange={setBirthYear}
+                      options={YEAR_OPTIONS}
+                      placeholder="Year"
+                    />
+                  </div>
                 </div>
 
                 <div>
@@ -360,213 +412,218 @@ export default function OnboardingPage() {
           )}
 
           {/* Step 2: Childfree Status */}
+          {/* Step 2: Looking For */}
           {step === 2 && (
             <div className="animate-fadeIn">
-              <div className="w-14 h-14 bg-forest/20 rounded-full flex items-center justify-center mb-6">
-                <Check size={28} className="text-forest" />
-              </div>
-              <h1 className="font-display text-2xl md:text-3xl text-foreground mb-2">
-                Your childfree journey
-              </h1>
-              <p className="theme-body text-muted mb-8">
-                We&apos;re all here for different reasons. Which describes you?
-              </p>
-
-              <div className="space-y-3">
-                {CHILDFREE_STATUSES.map((status) => (
-                  <button
-                    key={status.value}
-                    onClick={() => setChildfreeStatus(status.value)}
-                    className={`w-full px-5 py-4 rounded-xl border text-left transition-all ${
-                      childfreeStatus === status.value
-                        ? "border-forest bg-forest/10"
-                        : "border-border hover:border-forest/50"
-                    }`}
-                  >
-                    <span
-                      className={`block font-medium ${
-                        childfreeStatus === status.value
-                          ? "text-forest"
-                          : "text-foreground"
-                      }`}
-                    >
-                      {status.label}
-                    </span>
-                    <span className="block text-sm text-muted mt-0.5">
-                      {status.description}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Step 3: Looking For */}
-          {step === 3 && (
-            <div className="animate-fadeIn">
-              <div className="w-14 h-14 bg-forest/20 rounded-full flex items-center justify-center mb-6">
-                <MagnifyingGlass size={28} className="text-forest" />
-              </div>
               <h1 className="font-display text-2xl md:text-3xl text-foreground mb-2">
                 What are you looking for?
               </h1>
               <p className="theme-body text-muted mb-8">
-                Select all that apply. You can always change this later.
+                Select all that apply — you can always change this later
               </p>
 
               <div className="space-y-3">
-                {CONNECTION_TYPES.map((type) => (
-                  <button
-                    key={type.value}
-                    onClick={() => toggleSeeking(type.value)}
-                    className={`w-full px-5 py-4 rounded-xl border text-left transition-all flex items-start gap-4 ${
-                      seeking.includes(type.value)
-                        ? "border-forest bg-forest/10"
-                        : "border-border hover:border-forest/50"
-                    }`}
-                  >
-                    <div
-                      className={`w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                        seeking.includes(type.value)
-                          ? "border-forest bg-forest"
-                          : "border-border"
+                {CONNECTION_TYPES.map((type) => {
+                  const Icon = type.icon;
+                  const isSelected = seeking.includes(type.value);
+                  return (
+                    <button
+                      key={type.value}
+                      onClick={() => toggleSeeking(type.value)}
+                      className={`w-full px-5 py-4 rounded-xl border text-left transition-all flex items-center gap-4 ${
+                        isSelected
+                          ? "border-forest bg-forest/10"
+                          : "border-border hover:border-forest/50"
                       }`}
                     >
-                      {seeking.includes(type.value) && (
-                        <Check size={14} weight="bold" className="text-white" />
-                      )}
-                    </div>
-                    <div>
-                      <span
-                        className={`block font-medium ${
-                          seeking.includes(type.value)
-                            ? "text-forest"
-                            : "text-foreground"
+                      <div
+                        className={`w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 ${
+                          isSelected ? "bg-forest/20" : "bg-foreground/5"
                         }`}
                       >
-                        {type.label}
-                      </span>
-                      <span className="block text-sm text-muted mt-0.5">
-                        {type.description}
-                      </span>
-                    </div>
-                  </button>
-                ))}
+                        <Icon
+                          size={22}
+                          weight="duotone"
+                          className={isSelected ? "text-forest" : "text-muted"}
+                        />
+                      </div>
+                      <div>
+                        <span
+                          className={`block text-lg font-semibold ${
+                            isSelected ? "text-forest" : "text-foreground"
+                          }`}
+                        >
+                          {type.label}
+                        </span>
+                        <span className="block text-base text-muted mt-0.5">
+                          {type.description}
+                        </span>
+                      </div>
+                    </button>
+                  );
+                })}
               </div>
             </div>
           )}
 
-          {/* Step 4: Bio & Preferences */}
-          {step === 4 && (
+          {/* Step 3: Profile Content */}
+          {step === 3 && (
             <div className="animate-fadeIn">
-              <div className="w-14 h-14 bg-forest/20 rounded-full flex items-center justify-center mb-6">
-                <Heart size={28} className="text-forest" />
-              </div>
               <h1 className="font-display text-2xl md:text-3xl text-foreground mb-2">
                 A bit more about you
               </h1>
               <p className="theme-body text-muted mb-8">
-                These are optional but help others find you.
+                Help others get to know you better
               </p>
 
-              <div className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Bio{" "}
-                    <span className="text-muted font-normal">(optional)</span>
-                  </label>
-                  <textarea
-                    value={bio}
-                    onChange={(e) => setBio(e.target.value)}
-                    placeholder="Share a bit about yourself..."
-                    rows={3}
-                    maxLength={500}
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-base focus:outline-none focus:border-forest transition-colors resize-none"
-                  />
-                  <span className="text-xs text-muted mt-1 block text-right">
-                    {bio.length}/500
-                  </span>
-                </div>
+              <div className="space-y-8">
+                {/* Profile Prompt (Required) */}
+                <PromptPicker
+                  label="Profile prompt"
+                  required
+                  prompts={PROMPTS}
+                  selectedPrompt={selectedPrompt}
+                  answer={promptAnswer}
+                  onPromptChange={setSelectedPrompt}
+                  onAnswerChange={setPromptAnswer}
+                />
 
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Interested in
-                  </label>
-                  <div className="flex flex-wrap gap-2">
-                    {GENDERS.map((g) => (
-                      <button
-                        key={g.value}
-                        onClick={() => toggleGenderPref(g.value)}
-                        className={`px-4 py-2 rounded-full border text-sm transition-all ${
-                          genderPreferences.includes(g.value)
-                            ? "border-forest bg-forest/10 text-forest"
-                            : "border-border hover:border-forest/50"
-                        }`}
-                      >
-                        {g.label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
+                {/* Interests */}
+                <ChipSelector
+                  label="Interests"
+                  hint="select up to 10"
+                  options={INTERESTS}
+                  selected={interests}
+                  onChange={setInterests}
+                  max={10}
+                />
 
+                {/* Music */}
+                <ChipSelector
+                  label="Music"
+                  hint="optional"
+                  options={MUSIC_GENRES}
+                  selected={musicGenres}
+                  onChange={setMusicGenres}
+                  max={5}
+                />
+
+                {/* Lifestyle */}
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Age range
+                  <label className="block text-sm font-medium text-foreground mb-3">
+                    Lifestyle <span className="text-muted font-normal">(optional)</span>
                   </label>
-                  <div className="flex items-center gap-4">
-                    <input
-                      type="number"
-                      value={ageMin}
-                      onChange={(e) =>
-                        setAgeMin(Math.max(18, parseInt(e.target.value) || 18))
-                      }
-                      min={18}
-                      max={99}
-                      className="w-20 px-3 h-12 rounded-lg border border-border bg-background text-center focus:outline-none focus:border-forest"
+                  <div className="grid grid-cols-2 gap-3">
+                    <Select
+                      value={pets}
+                      onChange={setPets}
+                      options={PETS_OPTIONS}
+                      placeholder="Pets"
                     />
-                    <span className="text-muted">to</span>
-                    <input
-                      type="number"
-                      value={ageMax}
-                      onChange={(e) =>
-                        setAgeMax(Math.min(99, parseInt(e.target.value) || 99))
-                      }
-                      min={18}
-                      max={99}
-                      className="w-20 px-3 h-12 rounded-lg border border-border bg-background text-center focus:outline-none focus:border-forest"
+                    <Select
+                      value={diet}
+                      onChange={setDiet}
+                      options={DIET_OPTIONS}
+                      placeholder="Diet"
+                    />
+                    <Select
+                      value={drinking}
+                      onChange={setDrinking}
+                      options={DRINKING_OPTIONS}
+                      placeholder="Drinking"
                     />
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    City{" "}
-                    <span className="text-muted font-normal">(optional)</span>
-                  </label>
-                  <input
-                    type="text"
-                    value={locationCity}
-                    onChange={(e) => setLocationCity(e.target.value)}
-                    placeholder="e.g. San Francisco"
-                    className="w-full px-4 h-14 rounded-xl border border-border bg-background text-base focus:outline-none focus:border-forest transition-colors"
-                  />
+                {/* Values */}
+                <ChipSelector
+                  label="Values"
+                  hint="optional"
+                  options={VALUES}
+                  selected={values}
+                  onChange={setValues}
+                  max={5}
+                />
+
+                {/* Preferences Section */}
+                <div className="pt-4 border-t border-border">
+                  <h2 className="text-lg font-semibold text-foreground mb-4">
+                    Preferences
+                  </h2>
+
+                  <div className="space-y-6">
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-2">
+                        Interested in
+                      </label>
+                      <div className="flex flex-wrap gap-2">
+                        {GENDERS.map((g) => (
+                          <button
+                            key={g.value}
+                            onClick={() => toggleGenderPref(g.value)}
+                            className={`px-4 py-2 rounded-full border text-sm transition-all ${
+                              genderPreferences.includes(g.value)
+                                ? "border-forest bg-forest/10 text-forest"
+                                : "border-border hover:border-forest/50"
+                            }`}
+                          >
+                            {g.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-foreground mb-2">
+                        Age range
+                      </label>
+                      <div className="flex items-center gap-4">
+                        <input
+                          type="number"
+                          value={ageMin}
+                          onChange={(e) =>
+                            setAgeMin(Math.max(18, parseInt(e.target.value) || 18))
+                          }
+                          min={18}
+                          max={99}
+                          className="w-20 px-3 h-14 rounded-xl border border-border bg-background text-center text-base focus:outline-none focus:border-forest transition-colors"
+                        />
+                        <span className="text-muted">to</span>
+                        <input
+                          type="number"
+                          value={ageMax}
+                          onChange={(e) =>
+                            setAgeMax(Math.min(99, parseInt(e.target.value) || 99))
+                          }
+                          min={18}
+                          max={99}
+                          className="w-20 px-3 h-14 rounded-xl border border-border bg-background text-center text-base focus:outline-none focus:border-forest transition-colors"
+                        />
+                      </div>
+                    </div>
+
+                    <Input
+                      label="City"
+                      hint="optional"
+                      value={locationCity}
+                      onChange={(e) => setLocationCity(e.target.value)}
+                      placeholder="e.g. San Francisco"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           )}
 
-          {/* Step 5: Complete */}
-          {step === 5 && (
+          {/* Step 4: Complete */}
+          {step === 4 && (
             <div className="animate-fadeIn text-center py-8">
-              <div className="w-20 h-20 bg-forest/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Users size={40} className="text-forest" />
-              </div>
               <h1 className="font-display text-2xl md:text-3xl text-foreground mb-3">
                 You&apos;re all set, {displayName}!
               </h1>
               <p className="theme-body text-muted mb-8 max-w-sm mx-auto">
-                Welcome to Flourish. Your profile is ready. Let&apos;s find your
-                people.
+                Welcome to Flourish — your profile is ready, let&apos;s find your
+                people
               </p>
 
               <div className="bg-foreground/5 rounded-2xl p-6 text-left max-w-sm mx-auto">
@@ -577,14 +634,6 @@ export default function OnboardingPage() {
                   <p>
                     <span className="text-muted">Name:</span>{" "}
                     <span className="text-foreground">{displayName}</span>
-                  </p>
-                  <p>
-                    <span className="text-muted">Status:</span>{" "}
-                    <span className="text-foreground">
-                      {CHILDFREE_STATUSES.find(
-                        (s) => s.value === childfreeStatus
-                      )?.label || childfreeStatus}
-                    </span>
                   </p>
                   <p>
                     <span className="text-muted">Looking for:</span>{" "}
@@ -620,7 +669,7 @@ export default function OnboardingPage() {
               disabled={saving}
               className="gap-2"
             >
-              <ArrowLeft size={18} weight="bold" />
+              <ArrowLeft size={16} />
               Back
             </Button>
           ) : (
@@ -630,7 +679,7 @@ export default function OnboardingPage() {
           <Button
             variant="accent"
             onClick={handleNext}
-            disabled={saving}
+            disabled={saving || !isStepValid()}
             className="gap-2 min-w-[120px]"
           >
             {saving ? (
@@ -640,7 +689,7 @@ export default function OnboardingPage() {
             ) : (
               <>
                 Continue
-                <ArrowRight size={18} weight="bold" />
+                <ArrowRight size={16} />
               </>
             )}
           </Button>

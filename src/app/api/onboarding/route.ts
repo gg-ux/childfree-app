@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
             displayName,
             birthdate: new Date(birthdate),
             gender,
-            childfreeStatus: "CHOICE", // Default, will be set in step 2
+            childfreeStatus: "CHOICE", // Default, can be changed in settings
             relationshipStatus: "SINGLE", // Default
             seeking: [],
           },
@@ -68,27 +68,6 @@ export async function POST(request: NextRequest) {
       }
 
       case 2: {
-        // Childfree status
-        const { childfreeStatus } = data;
-
-        if (!childfreeStatus) {
-          return NextResponse.json({ error: "Missing childfree status" }, { status: 400 });
-        }
-
-        await db.profile.update({
-          where: { userId: user.id },
-          data: { childfreeStatus },
-        });
-
-        await db.user.update({
-          where: { id: user.id },
-          data: { onboardingStep: 2 },
-        });
-
-        break;
-      }
-
-      case 3: {
         // What you're looking for
         const { seeking, relationshipStatus } = data;
 
@@ -106,20 +85,48 @@ export async function POST(request: NextRequest) {
 
         await db.user.update({
           where: { id: user.id },
-          data: { onboardingStep: 3 },
+          data: { onboardingStep: 2 },
         });
 
         break;
       }
 
-      case 4: {
-        // Bio and preferences
-        const { bio, genderPreferences, ageMin, ageMax, distanceMax, locationCity } = data;
+      case 3: {
+        // Profile content and preferences
+        const {
+          prompt,
+          interests,
+          musicGenres,
+          pets,
+          diet,
+          drinking,
+          values,
+          genderPreferences,
+          ageMin,
+          ageMax,
+          distanceMax,
+          locationCity,
+        } = data;
 
+        // Get the profile
+        const profile = await db.profile.findUnique({
+          where: { userId: user.id },
+        });
+
+        if (!profile) {
+          return NextResponse.json({ error: "Profile not found" }, { status: 400 });
+        }
+
+        // Update profile with new fields
         await db.profile.update({
           where: { userId: user.id },
           data: {
-            bio: bio || null,
+            interests: interests || [],
+            musicGenres: musicGenres || [],
+            pets: pets || null,
+            diet: diet || null,
+            drinking: drinking || null,
+            values: values || [],
             genderPreferences: genderPreferences || [],
             ageMin: ageMin || 18,
             ageMax: ageMax || 99,
@@ -128,20 +135,47 @@ export async function POST(request: NextRequest) {
           },
         });
 
+        // Create or update prompt
+        if (prompt && prompt.type && prompt.answer) {
+          // Check if prompt already exists
+          const existingPrompt = await db.prompt.findFirst({
+            where: { profileId: profile.id },
+          });
+
+          if (existingPrompt) {
+            await db.prompt.update({
+              where: { id: existingPrompt.id },
+              data: {
+                promptType: prompt.type,
+                answer: prompt.answer,
+              },
+            });
+          } else {
+            await db.prompt.create({
+              data: {
+                profileId: profile.id,
+                promptType: prompt.type,
+                answer: prompt.answer,
+                position: 0,
+              },
+            });
+          }
+        }
+
         await db.user.update({
           where: { id: user.id },
-          data: { onboardingStep: 4 },
+          data: { onboardingStep: 3 },
         });
 
         break;
       }
 
-      case 5: {
+      case 4: {
         // Complete onboarding - mark user as active
         await db.user.update({
           where: { id: user.id },
           data: {
-            onboardingStep: 5,
+            onboardingStep: 4,
             status: "ACTIVE",
           },
         });
@@ -175,6 +209,7 @@ export async function GET(request: NextRequest) {
 
     const profile = await db.profile.findUnique({
       where: { userId: user.id },
+      include: { prompts: true },
     });
 
     return NextResponse.json({
@@ -188,11 +223,21 @@ export async function GET(request: NextRequest) {
             seeking: profile.seeking,
             relationshipStatus: profile.relationshipStatus,
             bio: profile.bio,
+            interests: profile.interests,
+            musicGenres: profile.musicGenres,
+            pets: profile.pets,
+            diet: profile.diet,
+            drinking: profile.drinking,
+            values: profile.values,
             genderPreferences: profile.genderPreferences,
             ageMin: profile.ageMin,
             ageMax: profile.ageMax,
             distanceMax: profile.distanceMax,
             locationCity: profile.locationCity,
+            prompts: profile.prompts.map((p) => ({
+              promptType: p.promptType,
+              answer: p.answer,
+            })),
           }
         : null,
     });

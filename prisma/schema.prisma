@@ -65,6 +65,24 @@ model Profile {
 
   bio               String?  @db.Text
 
+  // Interests & Hobbies
+  interests         String[]
+
+  // Lifestyle
+  pets              String?
+  diet              String?
+  drinking          String?
+  smoking           String?
+  cannabis          String?
+  workStyle         String?
+
+  // Music
+  musicGenres       String[]
+
+  // Values
+  values            String[]
+  dealBreakers      String[]
+
   // Location (city-level for privacy)
   locationCity      String?
   locationLat       Float?
@@ -106,14 +124,10 @@ enum RelationshipStatus {
 }
 
 enum SeekingType {
-  DATING_SERIOUS      // Looking for long-term partnership
-  DATING_CASUAL       // Open to casual dating
-  DATING_OPEN         // Open to whatever develops
+  DATING              // Find a childfree partner
   FRIENDSHIP          // Platonic connections
   ACTIVITY_PARTNERS   // Hiking, gym, events companions
-  TRAVEL_BUDDIES      // Childfree travel companions
-  PROFESSIONAL        // Career networking
-  COMMUNITY           // Local childfree community
+  COMMUNITY           // Connect with childfree folks
 }
 
 // ============================================
