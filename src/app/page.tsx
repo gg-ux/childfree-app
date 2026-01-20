@@ -58,7 +58,7 @@ export default function Home() {
               <div className="absolute top-16 md:top-24 left-0 md:left-[15%] lg:left-4 w-32 md:w-48 bg-white rounded-2xl shadow-lg border border-border overflow-hidden -rotate-6 hover:rotate-0 transition-transform duration-500 z-10">
                 <div className="aspect-[3/4] bg-gradient-to-br from-coral/20 to-coral/5 overflow-hidden">
                   <img
-                    src="/assets/home/girl02.png"
+                    src="/assets/home/girl02.webp"
                     alt="Profile"
                     className="w-full h-full object-cover"
                   />
@@ -79,7 +79,7 @@ export default function Home() {
               <div className="absolute top-16 md:top-24 right-0 md:right-[15%] lg:right-4 w-32 md:w-48 bg-white rounded-2xl shadow-lg border border-border overflow-hidden rotate-6 hover:rotate-0 transition-transform duration-500 z-10">
                 <div className="aspect-[3/4] bg-gradient-to-br from-marigold/20 to-marigold/5 overflow-hidden">
                   <img
-                    src="/assets/home/guy-dog.png"
+                    src="/assets/home/guy-dog.webp"
                     alt="Profile"
                     className="w-full h-full object-cover"
                   />
@@ -100,7 +100,7 @@ export default function Home() {
               <div className="absolute top-4 md:top-12 left-1/2 -translate-x-1/2 w-40 md:w-56 bg-white rounded-2xl shadow-xl border border-border overflow-hidden hover:scale-[1.02] transition-transform duration-500 z-20">
                 <div className="aspect-[3/4] bg-gradient-to-br from-forest/20 to-forest/5 overflow-hidden">
                   <img
-                    src="/assets/home/girl01.png"
+                    src="/assets/home/girl01.webp"
                     alt="Profile"
                     className="w-full h-full object-cover"
                   />
@@ -291,7 +291,7 @@ export default function Home() {
             {/* Group image */}
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
               <img
-                src="/assets/home/group01.png"
+                src="/assets/home/group01.webp"
                 alt="Friends enjoying time together"
                 className="w-full h-full object-cover"
               />
