@@ -30,10 +30,10 @@ export default function Home() {
       </nav>
 
       {/* Hero Section - Option A: Floating Profile Cards */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
+      <section className="pt-20 pb-16 md:pt-28 md:pb-24 overflow-hidden">
         <div className="container-main">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div>
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div className="order-2 lg:order-1">
               <p className="theme-caption text-foreground mb-6 inline-flex items-center gap-2">
                 <ShootingStar size={16} weight="fill" className="text-marigold" />
                 Launching mid 2026
@@ -53,9 +53,9 @@ export default function Home() {
             </div>
 
             {/* Floating Profile Cards */}
-            <div className="relative h-[280px] md:h-[400px] lg:h-[500px]">
-              {/* Card 2 - Left (behind) */}
-              <div className="absolute top-16 md:top-24 left-0 md:left-4 w-32 md:w-48 bg-white rounded-2xl shadow-lg border border-border overflow-hidden -rotate-6 hover:rotate-0 transition-transform duration-500 z-10">
+            <div className="relative h-[280px] md:h-[400px] lg:h-[500px] order-1 lg:order-2 mb-8 md:mb-12 lg:mb-0">
+              {/* Card 2 - Left (behind) - Alex */}
+              <div className="absolute top-16 md:top-24 left-0 md:left-[15%] lg:left-4 w-32 md:w-48 bg-white rounded-2xl shadow-lg border border-border overflow-hidden -rotate-6 hover:rotate-0 transition-transform duration-500 z-10">
                 <div className="aspect-[3/4] bg-gradient-to-br from-coral/20 to-coral/5 overflow-hidden">
                   <img
                     src="/assets/home/girl02.png"
@@ -66,7 +66,7 @@ export default function Home() {
                 <div className="p-2 md:p-3">
                   <p className="font-medium text-foreground text-xs md:text-sm">Alex, 24</p>
                   <p className="text-[10px] md:text-xs text-muted mb-1 md:mb-2">3 miles away</p>
-                  <div className="flex flex-wrap gap-1 hidden md:flex">
+                  <div className="flex flex-wrap gap-1">
                     <span className="text-[11px] px-2 py-0.5 rounded-full bg-foreground/8 text-foreground/70 font-semibold inline-flex items-center gap-1">
                       <MagnifyingGlass size={10} weight="bold" />
                       Chosen family
@@ -75,11 +75,11 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Card 3 - Right (behind) */}
-              <div className="absolute top-16 md:top-24 right-0 md:right-4 w-32 md:w-48 bg-white rounded-2xl shadow-lg border border-border overflow-hidden rotate-6 hover:rotate-0 transition-transform duration-500 z-10">
+              {/* Card 3 - Right (behind) - Jordan */}
+              <div className="absolute top-16 md:top-24 right-0 md:right-[15%] lg:right-4 w-32 md:w-48 bg-white rounded-2xl shadow-lg border border-border overflow-hidden rotate-6 hover:rotate-0 transition-transform duration-500 z-10">
                 <div className="aspect-[3/4] bg-gradient-to-br from-marigold/20 to-marigold/5 overflow-hidden">
                   <img
-                    src="/assets/home/guy02.png"
+                    src="/assets/home/guy-dog.png"
                     alt="Profile"
                     className="w-full h-full object-cover"
                   />
@@ -87,7 +87,7 @@ export default function Home() {
                 <div className="p-2 md:p-3">
                   <p className="font-medium text-foreground text-xs md:text-sm">Jordan, 48</p>
                   <p className="text-[10px] md:text-xs text-muted mb-1 md:mb-2">8 miles away</p>
-                  <div className="flex flex-wrap gap-1 hidden md:flex">
+                  <div className="flex flex-wrap gap-1">
                     <span className="text-[11px] px-2 py-0.5 rounded-full bg-foreground/8 text-foreground/70 font-semibold inline-flex items-center gap-1">
                       <MagnifyingGlass size={10} weight="bold" />
                       Travel partner
@@ -108,7 +108,7 @@ export default function Home() {
                 <div className="p-3 md:p-4">
                   <p className="font-medium text-foreground text-sm md:text-base">Sarah, 32</p>
                   <p className="text-xs md:text-sm text-muted mb-1 md:mb-2">5 miles away</p>
-                  <div className="flex flex-wrap gap-1.5 hidden md:flex">
+                  <div className="flex flex-wrap gap-1.5">
                     <span className="text-[11px] px-2 py-0.5 rounded-full bg-foreground/8 text-foreground/70 font-semibold inline-flex items-center gap-1">
                       <MagnifyingGlass size={10} weight="bold" />
                       DINK partner
@@ -219,7 +219,7 @@ export default function Home() {
       <section id="how-it-works" className="pt-20 pb-12 md:pt-28 md:pb-16">
         <div className="container-main">
           <div className="max-w-2xl mb-16">
-            <h2 className="font-display text-fluid-h2 text-foreground mb-6 tracking-tight">
+            <h2 className="font-display text-fluid-h2 text-foreground mb-6 leading-[0.9] tracking-tight">
               More than a dating app.
             </h2>
             <p className="theme-body text-muted text-lg md:text-xl leading-relaxed">
@@ -275,7 +275,7 @@ export default function Home() {
                 <h3 className="theme-heading text-xl text-foreground mb-2">
                   {feature.title}
                 </h3>
-                <p className="theme-body text-base text-muted leading-relaxed">
+                <p className="theme-body text-base text-muted leading-snug">
                   {feature.description}
                 </p>
               </FrostedCard>
@@ -288,13 +288,17 @@ export default function Home() {
       <section className="py-20 md:py-28">
         <div className="container-main">
           <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Image placeholder */}
-            <div className="relative aspect-[4/3] rounded-2xl bg-gradient-to-br from-forest/10 to-forest/5 border border-border flex items-center justify-center">
-              <p className="theme-caption text-muted">Image</p>
+            {/* Group image */}
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+              <img
+                src="/assets/home/group01.png"
+                alt="Friends enjoying time together"
+                className="w-full h-full object-cover"
+              />
             </div>
             {/* Text content */}
             <div>
-              <h2 className="font-display text-fluid-h2 text-foreground mb-6 tracking-tight">
+              <h2 className="font-display text-fluid-h2 text-foreground mb-6 leading-[0.9] tracking-tight">
                 A family you choose.
               </h2>
               <p className="theme-body text-muted text-lg md:text-xl leading-relaxed">
@@ -337,7 +341,7 @@ export default function Home() {
 
         <div className="container-main relative z-10">
           <div className="max-w-xl mx-auto text-center">
-            <h2 className="font-display text-fluid-h2 text-foreground mb-6 tracking-tight">
+            <h2 className="font-display text-fluid-h2 text-foreground mb-6 leading-[0.9] tracking-tight">
               Ready to flourish?
             </h2>
             <p className="theme-body text-muted text-lg mb-10">
