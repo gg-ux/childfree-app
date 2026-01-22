@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
 
     // Send email
     await resend.emails.send({
-      from: "Chosn <onboarding@resend.dev>",
+      from: "Chosn <hello@chosn.co>",
       to: email,
       subject: "Your Chosn Admin Login Link",
       html: `

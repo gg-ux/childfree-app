@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
 
     // Send confirmation email
     await resend.emails.send({
-      from: "Chosn <onboarding@resend.dev>",
+      from: "Chosn <hello@chosn.co>",
       to: email,
       subject: "You're on the Chosn waitlist!",
       html: `

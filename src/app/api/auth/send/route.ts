@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
     const verifyUrl = `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/auth/verify?token=${token}`;
 
     await resend.emails.send({
-      from: "Chosn <onboarding@resend.dev>",
+      from: "Chosn <hello@chosn.co>",
       to: email,
       subject: "Sign in to Chosn",
       html: `

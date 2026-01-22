@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
     for (const entry of entries) {
       try {
         await resend.emails.send({
-          from: "Chosn <onboarding@resend.dev>",
+          from: "Chosn <hello@chosn.co>",
           to: entry.email,
           subject: "You're on the Chosn waitlist!",
           html: `
