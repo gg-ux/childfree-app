@@ -66,8 +66,8 @@ const Logo = React.forwardRef<SVGSVGElement, LogoProps>(
           y="23"
           dominantBaseline="middle"
           fontFamily="Satoshi, -apple-system, sans-serif"
-          fontSize="28"
-          fontWeight="600"
+          fontSize="30"
+          fontWeight="700"
           letterSpacing="-0.01em"
           fill={textColor}
         >
