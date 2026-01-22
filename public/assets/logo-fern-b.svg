@@ -1,0 +1,13 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fern with curved elegant leaves - 2 pairs like reference -->
+  <!-- Central stem -->
+  <rect x="18" y="10" width="4" height="28" fill="#2F7255"/>
+
+  <!-- Bottom pair -->
+  <path d="M18 32 C16 34 10 35 5 32 C3 29 4 26 6 26 C10 27 16 29 18 30 Z" fill="#2F7255"/>
+  <path d="M22 32 C24 34 30 35 35 32 C37 29 36 26 34 26 C30 27 24 29 22 30 Z" fill="#2F7255"/>
+
+  <!-- Top pair -->
+  <path d="M18 22 C16 24 11 25 6 22 C4 19 5 16 7 16 C11 17 16 19 18 20 Z" fill="#2F7255"/>
+  <path d="M22 22 C24 24 29 25 34 22 C36 19 35 16 33 16 C29 17 24 19 22 20 Z" fill="#2F7255"/>
+</svg>

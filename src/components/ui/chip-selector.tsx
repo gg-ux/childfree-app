@@ -39,7 +39,7 @@ export function ChipSelector({
       {label && (
         <label className="block text-sm font-medium text-foreground mb-3">
           {label}
-          {hint && <span className="text-muted font-normal"> ({hint})</span>}
+          {hint && <span className="text-muted font-medium"> ({hint})</span>}
         </label>
       )}
       <div className="flex flex-wrap gap-2">
@@ -54,7 +54,7 @@ export function ChipSelector({
               onClick={() => !isDisabled && toggleOption(option.value)}
               disabled={isDisabled}
               className={cn(
-                "px-4 py-2 rounded-full border text-sm transition-all",
+                "px-4 py-2 rounded-full border text-sm font-[450] transition-all",
                 isSelected
                   ? "border-forest bg-forest/10 text-forest"
                   : "border-border hover:border-forest/50 text-foreground",

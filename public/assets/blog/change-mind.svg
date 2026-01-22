@@ -1,0 +1,61 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- "But What If You Change Your Mind?" - Head with brain and cycling arrows -->
+
+  <!-- Left - coral with see-saw (weighing options, back and forth) -->
+  <rect x="0" y="0" width="750" height="600" fill="#D4654A"/>
+  <g transform="translate(375, 300)">
+    <!-- Fulcrum/pivot (triangle) - connected to plank -->
+    <polygon points="0,50 -45,120 45,120" fill="#2F7255"/>
+
+    <!-- See-saw plank (animated rocking) -->
+    <g>
+      <animateTransform
+        attributeName="transform"
+        type="rotate"
+        values="-12;12;-12"
+        dur="2s"
+        repeatCount="indefinite"
+        calcMode="spline"
+        keySplines="0.45 0.05 0.55 0.95; 0.45 0.05 0.55 0.95"
+      />
+      <rect x="-170" y="-12" width="340" height="24" rx="4" fill="#F8F7F4"/>
+      <!-- Left ball (on top of plank) -->
+      <circle cx="-140" cy="-52" r="40" fill="#D9A441"/>
+      <!-- Right ball (on top of plank) -->
+      <circle cx="140" cy="-52" r="40" fill="#2F7255"/>
+    </g>
+  </g>
+
+  <!-- Top right - gold with compass -->
+  <rect x="750" y="0" width="450" height="300" fill="#D9A441"/>
+  <g transform="translate(975, 150)">
+    <!-- Smaller compass -->
+    <circle cx="0" cy="0" r="90" fill="#F8F7F4"/>
+    <circle cx="0" cy="0" r="75" fill="#D9A441"/>
+    <circle cx="0" cy="0" r="60" fill="#F8F7F4"/>
+    <!-- Compass needle (animated wobble) -->
+    <g>
+      <animateTransform
+        attributeName="transform"
+        type="rotate"
+        values="0;15;-10;5;0"
+        dur="3s"
+        repeatCount="indefinite"
+        calcMode="spline"
+        keySplines="0.4 0 0.6 1; 0.4 0 0.6 1; 0.4 0 0.6 1; 0.4 0 0.6 1"
+      />
+      <polygon points="0,-50 -12,0 0,-8 12,0" fill="#2F7255"/>
+      <polygon points="0,50 -12,0 0,8 12,0" fill="#D4654A"/>
+    </g>
+    <!-- Center -->
+    <circle cx="0" cy="0" r="8" fill="#2F7255"/>
+  </g>
+
+  <!-- Bottom right - green with half circles -->
+  <rect x="750" y="300" width="450" height="300" fill="#2F7255"/>
+  <g transform="translate(975, 450)">
+    <path d="M-80 50 A80 80 0 0 1 80 50" fill="#D9A441"/>
+    <path d="M-55 50 A55 55 0 0 1 55 50" fill="#D4654A"/>
+    <path d="M-30 50 A30 30 0 0 1 30 50" fill="#F8F7F4"/>
+  </g>
+</svg>

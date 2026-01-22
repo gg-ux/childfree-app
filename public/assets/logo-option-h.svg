@@ -1,0 +1,10 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Option H: Simple vesica piscis heart - two overlapping circles suggesting heart -->
+  <!-- Left circle -->
+  <circle cx="17" cy="20" r="13" fill="#2F7255"/>
+  <!-- Right circle -->
+  <circle cx="31" cy="20" r="13" fill="#D4654A"/>
+  <!-- Overlap creates vesica piscis in middle -->
+  <!-- Bottom point leaf -->
+  <ellipse cx="24" cy="38" rx="6" ry="10" fill="#D9A441"/>
+</svg>

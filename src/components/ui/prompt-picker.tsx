@@ -36,8 +36,6 @@ export function PromptPicker({
     label: p.text,
   }));
 
-  const selectedPromptText = prompts.find((p) => p.value === selectedPrompt)?.text;
-
   return (
     <div className={className}>
       {label && (
@@ -55,9 +53,6 @@ export function PromptPicker({
         />
         {selectedPrompt && (
           <div className="animate-fadeIn">
-            <p className="text-sm text-muted mb-2 italic">
-              &ldquo;{selectedPromptText}&rdquo;
-            </p>
             <Textarea
               value={answer}
               onChange={(e) => onAnswerChange(e.target.value)}

@@ -49,7 +49,6 @@ export const MUSIC_GENRES = [
   { value: "rock", label: "Rock" },
   { value: "indie", label: "Indie" },
   { value: "alternative", label: "Alternative" },
-  { value: "electronic", label: "Electronic" },
   { value: "hip-hop", label: "Hip-Hop" },
   { value: "rnb", label: "R&B" },
   { value: "jazz", label: "Jazz" },
@@ -63,6 +62,17 @@ export const MUSIC_GENRES = [
   { value: "latin", label: "Latin" },
   { value: "kpop", label: "K-Pop" },
   { value: "lofi", label: "Lo-fi" },
+  // Electronic
+  { value: "house", label: "House" },
+  { value: "deep-house", label: "Deep House" },
+  { value: "techno", label: "Techno" },
+  { value: "drum-and-bass", label: "Drum & Bass" },
+  { value: "electro", label: "Electro" },
+  { value: "hyperpop", label: "Hyperpop" },
+  { value: "edm", label: "EDM" },
+  { value: "trance", label: "Trance" },
+  { value: "dubstep", label: "Dubstep" },
+  { value: "ambient", label: "Ambient" },
 ];
 
 export const PETS_OPTIONS = [

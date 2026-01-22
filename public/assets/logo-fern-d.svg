@@ -1,0 +1,13 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fern - bold rounded leaves exactly like reference style -->
+  <!-- Central stem -->
+  <path d="M20 38 L20 8" stroke="#2F7255" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Bottom pair - full rounded leaves -->
+  <path d="M20 32 Q16 32 12 34 Q6 36 3 33 Q2 29 5 27 Q9 26 14 28 Q18 30 20 30" fill="#2F7255"/>
+  <path d="M20 32 Q24 32 28 34 Q34 36 37 33 Q38 29 35 27 Q31 26 26 28 Q22 30 20 30" fill="#2F7255"/>
+
+  <!-- Top pair -->
+  <path d="M20 22 Q16 22 13 24 Q8 26 5 23 Q4 19 7 17 Q11 16 15 18 Q18 20 20 20" fill="#2F7255"/>
+  <path d="M20 22 Q24 22 27 24 Q32 26 35 23 Q36 19 33 17 Q29 16 25 18 Q22 20 20 20" fill="#2F7255"/>
+</svg>

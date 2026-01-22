@@ -1,0 +1,13 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Option I: 4 petals arranged to form heart silhouette -->
+  <!-- Top left petal (heart lobe) -->
+  <ellipse cx="15" cy="16" rx="7" ry="12" fill="#2F7255" transform="rotate(-35 15 16)"/>
+  <!-- Top right petal (heart lobe) -->
+  <ellipse cx="33" cy="16" rx="7" ry="12" fill="#D4654A" transform="rotate(35 33 16)"/>
+  <!-- Bottom left petal (toward point) -->
+  <ellipse cx="18" cy="30" rx="6" ry="12" fill="#2F7255" transform="rotate(20 18 30)"/>
+  <!-- Bottom right petal (toward point) -->
+  <ellipse cx="30" cy="30" rx="6" ry="12" fill="#D4654A" transform="rotate(-20 30 30)"/>
+  <!-- Center gold accent -->
+  <circle cx="24" cy="22" r="5" fill="#D9A441"/>
+</svg>

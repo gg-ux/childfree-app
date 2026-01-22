@@ -23,9 +23,17 @@ export default function Home() {
           <Link href="/">
             <Logo variant="full" size="sm" />
           </Link>
-          <Button asChild size="sm" variant="accent">
-            <Link href="/sign-up">Join waitlist</Link>
-          </Button>
+          <div className="flex items-center gap-6">
+            <Link
+              href="/blog"
+              className="text-base font-medium text-muted hover:text-foreground transition-colors"
+            >
+              Blog
+            </Link>
+            <Button asChild variant="accent">
+              <Link href="/sign-up">Join waitlist</Link>
+            </Button>
+          </div>
         </div>
       </nav>
 
@@ -197,7 +205,7 @@ export default function Home() {
             {[
               { value: "60M+", label: "Childfree adults in the US" },
               { value: "1 in 5", label: "US adults are childfree by choice" },
-              { value: "2x", label: "Growth in 20 years" },
+              { value: "14% → 29%", label: "Childfree adults since 2002" },
             ].map((stat, index) => (
               <div key={stat.label}>
                 <div className="font-display text-3xl md:text-4xl text-foreground mb-2 tracking-tight">
@@ -310,36 +318,8 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 md:py-28 relative overflow-hidden">
-        {/* Floating dandelion seeds */}
-        <div className="absolute inset-0 pointer-events-none">
-          <svg className="absolute top-8 left-[10%] w-6 h-6 text-forest/20 animate-float" viewBox="0 0 24 24" fill="currentColor">
-            <circle cx="12" cy="4" r="3" />
-            <line x1="12" y1="7" x2="12" y2="20" stroke="currentColor" strokeWidth="1.5" />
-          </svg>
-          <svg className="absolute top-16 right-[15%] w-5 h-5 text-coral/20 animate-float-delayed" viewBox="0 0 24 24" fill="currentColor">
-            <circle cx="12" cy="4" r="3" />
-            <line x1="12" y1="7" x2="12" y2="20" stroke="currentColor" strokeWidth="1.5" />
-          </svg>
-          <svg className="absolute bottom-20 left-[20%] w-4 h-4 text-marigold/20 animate-float" viewBox="0 0 24 24" fill="currentColor">
-            <circle cx="12" cy="4" r="3" />
-            <line x1="12" y1="7" x2="12" y2="20" stroke="currentColor" strokeWidth="1.5" />
-          </svg>
-          <svg className="absolute bottom-32 right-[12%] w-5 h-5 text-forest/15 animate-float-delayed" viewBox="0 0 24 24" fill="currentColor">
-            <circle cx="12" cy="4" r="3" />
-            <line x1="12" y1="7" x2="12" y2="20" stroke="currentColor" strokeWidth="1.5" />
-          </svg>
-          <svg className="absolute top-1/2 left-[5%] w-4 h-4 text-blush/30 animate-float" viewBox="0 0 24 24" fill="currentColor">
-            <circle cx="12" cy="4" r="3" />
-            <line x1="12" y1="7" x2="12" y2="20" stroke="currentColor" strokeWidth="1.5" />
-          </svg>
-          <svg className="absolute top-1/3 right-[8%] w-6 h-6 text-forest/10 animate-float-delayed" viewBox="0 0 24 24" fill="currentColor">
-            <circle cx="12" cy="4" r="3" />
-            <line x1="12" y1="7" x2="12" y2="20" stroke="currentColor" strokeWidth="1.5" />
-          </svg>
-        </div>
-
-        <div className="container-main relative z-10">
+      <section className="py-20 md:py-28">
+        <div className="container-main">
           <div className="max-w-xl mx-auto text-center">
             <h2 className="font-display text-fluid-h2 text-foreground mb-6 leading-[0.9] tracking-tight">
               Ready to flourish?

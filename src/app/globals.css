@@ -131,7 +131,7 @@ body {
 .theme-secondary {
   font-family: 'Satoshi', sans-serif;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 450;
   line-height: 1.5;
   color: var(--muted);
 }
@@ -139,6 +139,15 @@ body {
 /* Organic easing */
 .ease-organic {
   transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 /* Frosted glass effect */

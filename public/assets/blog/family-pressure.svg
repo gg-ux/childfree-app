@@ -1,0 +1,63 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- "Dealing with Family Pressure" - Resilience/boundaries theme -->
+  <!-- Layout: L-shaped arrangement -->
+
+  <!-- Main left - coral with plant pushing through weight -->
+  <rect x="0" y="0" width="700" height="600" fill="#D4654A"/>
+  <g transform="translate(350, 300)">
+    <!-- Heavy blocks pressing down -->
+    <rect x="-120" y="-160" width="240" height="50" rx="6" fill="#2F7255"/>
+    <rect x="-100" y="-100" width="200" height="40" rx="6" fill="#2F7255"/>
+
+    <!-- Strong plant pushing through -->
+    <rect x="-8" y="-50" width="16" height="200" fill="#F8F7F4"/>
+    <!-- Leaves showing strength -->
+    <ellipse cx="-45" cy="20" rx="35" ry="16" fill="#F8F7F4" transform="rotate(-25 -45 20)"/>
+    <ellipse cx="45" cy="60" rx="35" ry="16" fill="#F8F7F4" transform="rotate(25 45 60)"/>
+    <ellipse cx="-40" cy="100" rx="30" ry="14" fill="#F8F7F4" transform="rotate(-20 -40 100)"/>
+
+    <!-- Flower blooming above the weight -->
+    <g transform="translate(0, -200)">
+      <circle cx="0" cy="-25" r="28" fill="#D9A441"/>
+      <circle cx="27" cy="-8" r="28" fill="#D9A441"/>
+      <circle cx="17" cy="22" r="28" fill="#D9A441"/>
+      <circle cx="-17" cy="22" r="28" fill="#D9A441"/>
+      <circle cx="-27" cy="-8" r="28" fill="#D9A441"/>
+      <circle cx="0" cy="0" r="18" fill="#F8F7F4"/>
+    </g>
+  </g>
+
+  <!-- Top right - gold with shield pattern -->
+  <rect x="700" y="0" width="500" height="300" fill="#D9A441"/>
+  <g transform="translate(950, 150)">
+    <!-- Decorative shield (protection) -->
+    <path d="M0 -90 L75 -65 L75 30 Q75 90 0 110 Q-75 90 -75 30 L-75 -65 Z" fill="#F8F7F4"/>
+    <path d="M0 -60 L50 -42 L50 20 Q50 60 0 75 Q-50 60 -50 20 L-50 -42 Z" fill="#2F7255"/>
+    <!-- Inner flower on shield -->
+    <circle cx="0" cy="0" r="20" fill="#D4654A"/>
+    <circle cx="0" cy="0" r="10" fill="#F8F7F4"/>
+  </g>
+
+  <!-- Bottom right - green with dot pattern (community support) -->
+  <rect x="700" y="300" width="500" height="300" fill="#2F7255"/>
+  <g fill="#F8F7F4">
+    <!-- Scattered supportive dots -->
+    <circle cx="780" cy="380" r="12"/>
+    <circle cx="850" cy="400" r="10"/>
+    <circle cx="920" cy="370" r="14"/>
+    <circle cx="990" cy="390" r="11"/>
+    <circle cx="1060" cy="360" r="13"/>
+    <circle cx="1120" cy="385" r="10"/>
+    <circle cx="810" cy="460" r="11"/>
+    <circle cx="880" cy="480" r="13"/>
+    <circle cx="950" cy="450" r="12"/>
+    <circle cx="1020" cy="470" r="10"/>
+    <circle cx="1090" cy="445" r="14"/>
+    <circle cx="770" cy="540" r="13"/>
+    <circle cx="840" cy="520" r="10"/>
+    <circle cx="910" cy="550" r="12"/>
+    <circle cx="980" cy="530" r="11"/>
+    <circle cx="1050" cy="555" r="10"/>
+    <circle cx="1120" cy="525" r="12"/>
+  </g>
+</svg>

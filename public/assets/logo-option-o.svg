@@ -1,0 +1,12 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Option O: Seed of life flower - pointed petals like vesica piscis -->
+  <g transform="translate(24, 24)" stroke="#2F7255" stroke-width="1.5" fill="none">
+    <!-- 6 pointed petals (lens/eye shapes) -->
+    <path d="M0 -4 Q6 -14 0 -22 Q-6 -14 0 -4"/>
+    <path d="M0 -4 Q6 -14 0 -22 Q-6 -14 0 -4" transform="rotate(60)"/>
+    <path d="M0 -4 Q6 -14 0 -22 Q-6 -14 0 -4" transform="rotate(120)"/>
+    <path d="M0 -4 Q6 -14 0 -22 Q-6 -14 0 -4" transform="rotate(180)"/>
+    <path d="M0 -4 Q6 -14 0 -22 Q-6 -14 0 -4" transform="rotate(240)"/>
+    <path d="M0 -4 Q6 -14 0 -22 Q-6 -14 0 -4" transform="rotate(300)"/>
+  </g>
+</svg>

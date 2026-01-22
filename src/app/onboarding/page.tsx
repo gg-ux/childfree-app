@@ -5,19 +5,11 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
-import { Select } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { ChipSelector } from "@/components/ui/chip-selector";
+import { Select } from "@/components/ui/select";
 import { PromptPicker } from "@/components/ui/prompt-picker";
-import {
-  INTERESTS,
-  MUSIC_GENRES,
-  PETS_OPTIONS,
-  DIET_OPTIONS,
-  DRINKING_OPTIONS,
-  VALUES,
-  PROMPTS,
-} from "@/lib/constants/profile-options";
+import { PhotoUpload } from "@/components/ui/photo-upload";
+import { PROMPTS } from "@/lib/constants/profile-options";
 import {
   ArrowRight,
   ArrowLeft,
@@ -27,7 +19,7 @@ import {
   GlobeHemisphereWest,
 } from "@phosphor-icons/react";
 
-const TOTAL_STEPS = 4;
+const TOTAL_STEPS = 5;
 
 // Connection type options
 const CONNECTION_TYPES = [
@@ -103,21 +95,12 @@ export default function OnboardingPage() {
   const [gender, setGender] = useState("");
   const [seeking, setSeeking] = useState<string[]>([]);
 
-  // Step 3: Profile content
+  // Step 3: Profile prompt
   const [selectedPrompt, setSelectedPrompt] = useState("");
   const [promptAnswer, setPromptAnswer] = useState("");
-  const [interests, setInterests] = useState<string[]>([]);
-  const [musicGenres, setMusicGenres] = useState<string[]>([]);
-  const [pets, setPets] = useState("");
-  const [diet, setDiet] = useState("");
-  const [drinking, setDrinking] = useState("");
-  const [values, setValues] = useState<string[]>([]);
 
-  // Step 3: Preferences (kept from before)
-  const [genderPreferences, setGenderPreferences] = useState<string[]>([]);
-  const [ageMin, setAgeMin] = useState(21);
-  const [ageMax, setAgeMax] = useState(55);
-  const [locationCity, setLocationCity] = useState("");
+  // Step 4: Photos
+  const [photos, setPhotos] = useState<{ id?: string; url: string; position: number }[]>([]);
 
   // Check auth and load existing data
   useEffect(() => {
@@ -135,7 +118,7 @@ export default function OnboardingPage() {
         const onboardingRes = await fetch("/api/onboarding");
         const onboardingData = await onboardingRes.json();
 
-        if (onboardingData.step >= 4) {
+        if (onboardingData.step >= 5) {
           router.push("/discover");
           return;
         }
@@ -156,21 +139,15 @@ export default function OnboardingPage() {
             setBirthYear(String(d.getFullYear()));
           }
           if (p.gender) setGender(p.gender);
-                    if (p.seeking) setSeeking(p.seeking);
-          if (p.interests) setInterests(p.interests);
-          if (p.musicGenres) setMusicGenres(p.musicGenres);
-          if (p.pets) setPets(p.pets);
-          if (p.diet) setDiet(p.diet);
-          if (p.drinking) setDrinking(p.drinking);
-          if (p.values) setValues(p.values);
-          if (p.genderPreferences) setGenderPreferences(p.genderPreferences);
-          if (p.ageMin) setAgeMin(p.ageMin);
-          if (p.ageMax) setAgeMax(p.ageMax);
-          if (p.locationCity) setLocationCity(p.locationCity);
+          if (p.seeking) setSeeking(p.seeking);
           // Load prompt if exists
           if (p.prompts && p.prompts.length > 0) {
             setSelectedPrompt(p.prompts[0].promptType);
             setPromptAnswer(p.prompts[0].answer);
+          }
+          // Load photos if exist
+          if (p.photos && p.photos.length > 0) {
+            setPhotos(p.photos);
           }
         }
       } catch {
@@ -242,21 +219,20 @@ export default function OnboardingPage() {
         }
         success = await saveStep(3, {
           prompt: { type: selectedPrompt, answer: promptAnswer },
-          interests,
-          musicGenres,
-          pets: pets || null,
-          diet: diet || null,
-          drinking: drinking || null,
-          values,
-          genderPreferences,
-          ageMin,
-          ageMax,
-          locationCity,
         });
         break;
 
       case 4:
+        // Photos step - require at least one photo unless skipping
+        if (photos.length === 0) {
+          setError("Please upload at least one photo");
+          return;
+        }
         success = await saveStep(4, {});
+        break;
+
+      case 5:
+        success = await saveStep(5, {});
         if (success) {
           router.push("/discover");
           return;
@@ -277,16 +253,17 @@ export default function OnboardingPage() {
     }
   };
 
-  const toggleSeeking = (value: string) => {
-    setSeeking((prev) =>
-      prev.includes(value)
-        ? prev.filter((v) => v !== value)
-        : [...prev, value]
-    );
+  const handleSkip = async () => {
+    // Skip current step and go to next
+    const success = await saveStep(step, {});
+    if (success) {
+      setStep(step + 1);
+      setError("");
+    }
   };
 
-  const toggleGenderPref = (value: string) => {
-    setGenderPreferences((prev) =>
+  const toggleSeeking = (value: string) => {
+    setSeeking((prev) =>
       prev.includes(value)
         ? prev.filter((v) => v !== value)
         : [...prev, value]
@@ -301,9 +278,10 @@ export default function OnboardingPage() {
       case 2:
         return seeking.length > 0;
       case 3:
-        // Prompt is required, others optional
         return selectedPrompt && promptAnswer.length >= 10;
       case 4:
+        return photos.length > 0;
+      case 5:
         return true; // Completion
       default:
         return false;
@@ -326,7 +304,7 @@ export default function OnboardingPage() {
           <Link href="/">
             <Logo variant="full" size="sm" />
           </Link>
-          <span className="text-sm text-muted font-medium">
+          <span className="text-sm text-muted font-[450]">
             Step {step} of {TOTAL_STEPS}
           </span>
         </div>
@@ -396,7 +374,7 @@ export default function OnboardingPage() {
                       <button
                         key={g.value}
                         onClick={() => setGender(g.value)}
-                        className={`px-4 py-3 rounded-xl border text-left transition-all ${
+                        className={`px-4 py-3 rounded-xl border text-left font-[450] transition-all ${
                           gender === g.value
                             ? "border-forest bg-forest/10 text-forest"
                             : "border-border hover:border-forest/50"
@@ -455,7 +433,7 @@ export default function OnboardingPage() {
                         >
                           {type.label}
                         </span>
-                        <span className="block text-base text-muted mt-0.5">
+                        <span className="block text-base font-[450] text-muted mt-0.5">
                           {type.description}
                         </span>
                       </div>
@@ -466,187 +444,107 @@ export default function OnboardingPage() {
             </div>
           )}
 
-          {/* Step 3: Profile Content */}
+          {/* Step 3: Profile Prompt */}
           {step === 3 && (
             <div className="animate-fadeIn">
               <h1 className="font-display text-2xl md:text-3xl text-foreground mb-2">
-                A bit more about you
+                One more thing
               </h1>
               <p className="theme-body text-muted mb-8">
-                Help others get to know you better
+                Answer a prompt to help others get to know you
               </p>
 
-              <div className="space-y-8">
-                {/* Profile Prompt (Required) */}
-                <PromptPicker
-                  label="Profile prompt"
-                  required
-                  prompts={PROMPTS}
-                  selectedPrompt={selectedPrompt}
-                  answer={promptAnswer}
-                  onPromptChange={setSelectedPrompt}
-                  onAnswerChange={setPromptAnswer}
-                />
-
-                {/* Interests */}
-                <ChipSelector
-                  label="Interests"
-                  hint="select up to 10"
-                  options={INTERESTS}
-                  selected={interests}
-                  onChange={setInterests}
-                  max={10}
-                />
-
-                {/* Music */}
-                <ChipSelector
-                  label="Music"
-                  hint="optional"
-                  options={MUSIC_GENRES}
-                  selected={musicGenres}
-                  onChange={setMusicGenres}
-                  max={5}
-                />
-
-                {/* Lifestyle */}
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-3">
-                    Lifestyle <span className="text-muted font-normal">(optional)</span>
-                  </label>
-                  <div className="grid grid-cols-2 gap-3">
-                    <Select
-                      value={pets}
-                      onChange={setPets}
-                      options={PETS_OPTIONS}
-                      placeholder="Pets"
-                    />
-                    <Select
-                      value={diet}
-                      onChange={setDiet}
-                      options={DIET_OPTIONS}
-                      placeholder="Diet"
-                    />
-                    <Select
-                      value={drinking}
-                      onChange={setDrinking}
-                      options={DRINKING_OPTIONS}
-                      placeholder="Drinking"
-                    />
-                  </div>
-                </div>
-
-                {/* Values */}
-                <ChipSelector
-                  label="Values"
-                  hint="optional"
-                  options={VALUES}
-                  selected={values}
-                  onChange={setValues}
-                  max={5}
-                />
-
-                {/* Preferences Section */}
-                <div className="pt-4 border-t border-border">
-                  <h2 className="text-lg font-semibold text-foreground mb-4">
-                    Preferences
-                  </h2>
-
-                  <div className="space-y-6">
-                    <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
-                        Interested in
-                      </label>
-                      <div className="flex flex-wrap gap-2">
-                        {GENDERS.map((g) => (
-                          <button
-                            key={g.value}
-                            onClick={() => toggleGenderPref(g.value)}
-                            className={`px-4 py-2 rounded-full border text-sm transition-all ${
-                              genderPreferences.includes(g.value)
-                                ? "border-forest bg-forest/10 text-forest"
-                                : "border-border hover:border-forest/50"
-                            }`}
-                          >
-                            {g.label}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
-                        Age range
-                      </label>
-                      <div className="flex items-center gap-4">
-                        <input
-                          type="number"
-                          value={ageMin}
-                          onChange={(e) =>
-                            setAgeMin(Math.max(18, parseInt(e.target.value) || 18))
-                          }
-                          min={18}
-                          max={99}
-                          className="w-20 px-3 h-14 rounded-xl border border-border bg-background text-center text-base focus:outline-none focus:border-forest transition-colors"
-                        />
-                        <span className="text-muted">to</span>
-                        <input
-                          type="number"
-                          value={ageMax}
-                          onChange={(e) =>
-                            setAgeMax(Math.min(99, parseInt(e.target.value) || 99))
-                          }
-                          min={18}
-                          max={99}
-                          className="w-20 px-3 h-14 rounded-xl border border-border bg-background text-center text-base focus:outline-none focus:border-forest transition-colors"
-                        />
-                      </div>
-                    </div>
-
-                    <Input
-                      label="City"
-                      hint="optional"
-                      value={locationCity}
-                      onChange={(e) => setLocationCity(e.target.value)}
-                      placeholder="e.g. San Francisco"
-                    />
-                  </div>
-                </div>
-              </div>
+              <PromptPicker
+                prompts={PROMPTS}
+                selectedPrompt={selectedPrompt}
+                answer={promptAnswer}
+                onPromptChange={setSelectedPrompt}
+                onAnswerChange={setPromptAnswer}
+              />
             </div>
           )}
 
-          {/* Step 4: Complete */}
+          {/* Step 4: Photo */}
           {step === 4 && (
-            <div className="animate-fadeIn text-center py-8">
-              <h1 className="font-display text-2xl md:text-3xl text-foreground mb-3">
-                You&apos;re all set, {displayName}!
+            <div className="animate-fadeIn">
+              <h1 className="font-display text-2xl md:text-3xl text-foreground mb-2">
+                Add a profile photo
               </h1>
-              <p className="theme-body text-muted mb-8 max-w-sm mx-auto">
-                Welcome to Flourish — your profile is ready, let&apos;s find your
-                people
+              <p className="theme-body text-muted mb-8">
+                A photo helps others see who they're connecting with
               </p>
 
-              <div className="bg-foreground/5 rounded-2xl p-6 text-left max-w-sm mx-auto">
-                <h3 className="font-medium text-foreground mb-3">
-                  Your profile summary
-                </h3>
-                <div className="space-y-2 text-sm">
-                  <p>
-                    <span className="text-muted">Name:</span>{" "}
-                    <span className="text-foreground">{displayName}</span>
-                  </p>
-                  <p>
-                    <span className="text-muted">Looking for:</span>{" "}
-                    <span className="text-foreground">
-                      {seeking
-                        .map(
-                          (s) =>
-                            CONNECTION_TYPES.find((t) => t.value === s)?.label
-                        )
-                        .filter(Boolean)
-                        .join(", ")}
+              <PhotoUpload
+                photos={photos}
+                onChange={setPhotos}
+                maxPhotos={1}
+              />
+            </div>
+          )}
+
+          {/* Step 5: Complete */}
+          {step === 5 && (
+            <div className="animate-fadeIn py-8">
+              <div className="text-center mb-8">
+                <h1 className="font-display text-2xl md:text-3xl text-foreground mb-3">
+                  You&apos;re all set, {displayName}!
+                </h1>
+                <p className="theme-body text-muted max-w-sm mx-auto">
+                  Welcome to Flourish — your profile is ready, let&apos;s find your
+                  people
+                </p>
+              </div>
+
+              <div className="bg-foreground/5 rounded-2xl p-6 max-w-sm mx-auto">
+                {/* Photo */}
+                {photos.length > 0 && (
+                  <div className="flex justify-center mb-5">
+                    <img
+                      src={photos[0].url}
+                      alt={displayName}
+                      className="w-24 h-24 rounded-full object-cover"
+                    />
+                  </div>
+                )}
+
+                <div className="space-y-4 text-sm font-[450]">
+                  <div className="flex justify-between items-start">
+                    <span className="text-muted">Name</span>
+                    <span className="text-foreground text-right">{displayName}</span>
+                  </div>
+
+                  <div className="flex justify-between items-start">
+                    <span className="text-muted">Age</span>
+                    <span className="text-foreground text-right">
+                      {birthYear ? new Date().getFullYear() - parseInt(birthYear) : "—"}
                     </span>
-                  </p>
+                  </div>
+
+                  <div className="flex justify-between items-start">
+                    <span className="text-muted">Gender</span>
+                    <span className="text-foreground text-right capitalize">
+                      {GENDERS.find((g) => g.value === gender)?.label || "—"}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between items-start">
+                    <span className="text-muted">Looking for</span>
+                    <span className="text-foreground text-right max-w-[180px]">
+                      {seeking
+                        .map((s) => CONNECTION_TYPES.find((t) => t.value === s)?.label)
+                        .filter(Boolean)
+                        .join(", ") || "—"}
+                    </span>
+                  </div>
+
+                  {selectedPrompt && promptAnswer && (
+                    <div className="pt-3 border-t border-border">
+                      <p className="text-muted mb-2">
+                        {PROMPTS.find((p) => p.value === selectedPrompt)?.text || selectedPrompt}
+                      </p>
+                      <p className="text-foreground">{promptAnswer}</p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -654,7 +552,7 @@ export default function OnboardingPage() {
 
           {/* Error */}
           {error && (
-            <p className="text-red-500 text-sm mt-4 text-center">{error}</p>
+            <p className="text-red-500 text-sm font-[450] mt-4 text-center">{error}</p>
           )}
         </div>
       </div>
@@ -676,23 +574,34 @@ export default function OnboardingPage() {
             <div />
           )}
 
-          <Button
-            variant="accent"
-            onClick={handleNext}
-            disabled={saving || !isStepValid()}
-            className="gap-2 min-w-[120px]"
-          >
-            {saving ? (
-              "Saving..."
-            ) : step === TOTAL_STEPS ? (
-              "Start exploring"
-            ) : (
-              <>
-                Continue
-                <ArrowRight size={16} />
-              </>
+          <div className="flex items-center gap-3">
+            {step === 3 && (
+              <Button
+                variant="ghost"
+                onClick={handleSkip}
+                disabled={saving}
+              >
+                Skip for now
+              </Button>
             )}
-          </Button>
+            <Button
+              variant="accent"
+              onClick={handleNext}
+              disabled={saving || !isStepValid()}
+              className="gap-2 min-w-[120px]"
+            >
+              {saving ? (
+                "Saving..."
+              ) : step === TOTAL_STEPS ? (
+                "Start exploring"
+              ) : (
+                <>
+                  Continue
+                  <ArrowRight size={16} />
+                </>
+              )}
+            </Button>
+          </div>
         </div>
       </div>
     </div>

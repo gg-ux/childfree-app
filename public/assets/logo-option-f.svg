@@ -1,0 +1,11 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Option F: Two petal clusters forming heart shape -->
+  <!-- Left cluster (2 petals) -->
+  <ellipse cx="14" cy="16" rx="6" ry="12" fill="#2F7255" transform="rotate(-45 14 16)"/>
+  <ellipse cx="14" cy="16" rx="6" ry="12" fill="#2F7255" transform="rotate(45 14 16)"/>
+  <!-- Right cluster (2 petals) -->
+  <ellipse cx="34" cy="16" rx="6" ry="12" fill="#D4654A" transform="rotate(-45 34 16)"/>
+  <ellipse cx="34" cy="16" rx="6" ry="12" fill="#D4654A" transform="rotate(45 34 16)"/>
+  <!-- Bottom point petal -->
+  <ellipse cx="24" cy="34" rx="6" ry="14" fill="#D9A441"/>
+</svg>

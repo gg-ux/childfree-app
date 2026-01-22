@@ -92,21 +92,8 @@ export async function POST(request: NextRequest) {
       }
 
       case 3: {
-        // Profile content and preferences
-        const {
-          prompt,
-          interests,
-          musicGenres,
-          pets,
-          diet,
-          drinking,
-          values,
-          genderPreferences,
-          ageMin,
-          ageMax,
-          distanceMax,
-          locationCity,
-        } = data;
+        // Profile prompt
+        const { prompt } = data;
 
         // Get the profile
         const profile = await db.profile.findUnique({
@@ -117,27 +104,8 @@ export async function POST(request: NextRequest) {
           return NextResponse.json({ error: "Profile not found" }, { status: 400 });
         }
 
-        // Update profile with new fields
-        await db.profile.update({
-          where: { userId: user.id },
-          data: {
-            interests: interests || [],
-            musicGenres: musicGenres || [],
-            pets: pets || null,
-            diet: diet || null,
-            drinking: drinking || null,
-            values: values || [],
-            genderPreferences: genderPreferences || [],
-            ageMin: ageMin || 18,
-            ageMax: ageMax || 99,
-            distanceMax: distanceMax || 50,
-            locationCity: locationCity || null,
-          },
-        });
-
         // Create or update prompt
         if (prompt && prompt.type && prompt.answer) {
-          // Check if prompt already exists
           const existingPrompt = await db.prompt.findFirst({
             where: { profileId: profile.id },
           });
@@ -171,11 +139,21 @@ export async function POST(request: NextRequest) {
       }
 
       case 4: {
+        // Photos step - photos are uploaded separately via /api/upload
+        await db.user.update({
+          where: { id: user.id },
+          data: { onboardingStep: 4 },
+        });
+
+        break;
+      }
+
+      case 5: {
         // Complete onboarding - mark user as active
         await db.user.update({
           where: { id: user.id },
           data: {
-            onboardingStep: 4,
+            onboardingStep: 5,
             status: "ACTIVE",
           },
         });
@@ -190,8 +168,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: true, step });
   } catch (error) {
     console.error("Onboarding error:", error);
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
     return NextResponse.json(
-      { error: "Failed to save progress" },
+      { error: "Failed to save progress", details: errorMessage },
       { status: 500 }
     );
   }
@@ -209,7 +188,7 @@ export async function GET(request: NextRequest) {
 
     const profile = await db.profile.findUnique({
       where: { userId: user.id },
-      include: { prompts: true },
+      include: { prompts: true, photos: true },
     });
 
     return NextResponse.json({
@@ -237,6 +216,11 @@ export async function GET(request: NextRequest) {
             prompts: profile.prompts.map((p) => ({
               promptType: p.promptType,
               answer: p.answer,
+            })),
+            photos: profile.photos.map((ph) => ({
+              id: ph.id,
+              url: ph.url,
+              position: ph.position,
             })),
           }
         : null,

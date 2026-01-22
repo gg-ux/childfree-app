@@ -16,7 +16,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label className="block text-sm font-medium text-foreground mb-2">
             {label}
-            {hint && <span className="text-muted font-normal"> ({hint})</span>}
+            {hint && <span className="text-muted font-medium"> ({hint})</span>}
           </label>
         )}
         <input

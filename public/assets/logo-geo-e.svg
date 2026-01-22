@@ -1,0 +1,8 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Leaf spray / branch -->
+  <rect x="18" y="8" width="4" height="28" fill="#2F7255"/>
+  <ellipse cx="10" cy="14" rx="8" ry="5" fill="#2F7255" transform="rotate(-45 10 14)"/>
+  <ellipse cx="30" cy="14" rx="8" ry="5" fill="#2F7255" transform="rotate(45 30 14)"/>
+  <ellipse cx="8" cy="24" rx="7" ry="4" fill="#2F7255" transform="rotate(-45 8 24)"/>
+  <ellipse cx="32" cy="24" rx="7" ry="4" fill="#2F7255" transform="rotate(45 32 24)"/>
+</svg>

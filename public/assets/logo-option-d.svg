@@ -1,0 +1,8 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Option D: Geometric heart-leaf (like reference 1) -->
+  <!-- Two curved strokes forming heart/leaf outline -->
+  <path d="M24 42 Q6 26 14 12 Q18 6 24 10" stroke="#2F7255" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M24 42 Q42 26 34 12 Q30 6 24 10" stroke="#D4654A" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <!-- Center stem line -->
+  <path d="M24 10 L24 26" stroke="#D9A441" stroke-width="5" stroke-linecap="round"/>
+</svg>
