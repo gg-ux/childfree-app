@@ -67,10 +67,10 @@ const Logo = React.forwardRef<SVGSVGElement, LogoProps>(
           fontFamily="Satoshi, -apple-system, sans-serif"
           fontSize="28"
           fontWeight="600"
-          letterSpacing="-0.02em"
+          letterSpacing="-0.01em"
           fill={textColor}
         >
-          flourish
+          chosn
         </text>
       </svg>
     );

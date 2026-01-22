@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Flourish | Find Your People. Thrive Together.",
+  title: "Chosn | Find Your People. Choose Your Life.",
   description:
     "The modern platform for childfree adults seeking meaningful connections—dating, friendship, and chosen family.",
   keywords: [
@@ -13,9 +13,9 @@ export const metadata: Metadata = {
     "childfree community",
     "childfree friends",
   ],
-  authors: [{ name: "Flourish" }],
+  authors: [{ name: "Chosn" }],
   openGraph: {
-    title: "Flourish | Find Your People. Thrive Together.",
+    title: "Chosn | Find Your People. Choose Your Life.",
     description:
       "The modern platform for childfree adults seeking meaningful connections.",
     type: "website",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Flourish | Find Your People. Thrive Together.",
+    title: "Chosn | Find Your People. Choose Your Life.",
     description:
       "The modern platform for childfree adults seeking meaningful connections.",
   },

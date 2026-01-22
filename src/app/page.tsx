@@ -322,7 +322,7 @@ export default function Home() {
         <div className="container-main">
           <div className="max-w-xl mx-auto text-center">
             <h2 className="font-display text-fluid-h2 text-foreground mb-6 leading-[0.9] tracking-tight">
-              Ready to flourish?
+              Ready to connect?
             </h2>
             <p className="theme-body text-muted text-lg mb-10">
               Join our waitlist and be the first to know when we launch in your
@@ -357,7 +357,7 @@ export default function Home() {
           </div>
           <div className="mt-8 pt-8 border-t border-[rgba(0,0,0,0.06)] text-center">
             <p className="theme-caption text-muted">
-              &copy; {new Date().getFullYear()} Flourish. All rights reserved.
+              &copy; {new Date().getFullYear()} Chosn. All rights reserved.
             </p>
           </div>
         </div>
