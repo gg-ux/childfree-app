@@ -92,7 +92,7 @@ export default function DesignSystemPage() {
               <h3 className="theme-caption mb-4">Primary</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <ColorSwatch name="Forest" value="#2F7255" className="bg-forest" />
-                <ColorSwatch name="Forest Light" value="#4A8B6A" className="bg-forest-light" />
+                <ColorSwatch name="Forest Light" value="#419161" className="bg-forest-light" />
               </div>
             </div>
 
@@ -100,8 +100,8 @@ export default function DesignSystemPage() {
             <div>
               <h3 className="theme-caption mb-4">Secondary</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <ColorSwatch name="Coral" value="#E07850" className="bg-coral" />
-                <ColorSwatch name="Marigold" value="#E9A035" className="bg-marigold" />
+                <ColorSwatch name="Coral" value="#E06E3D" className="bg-coral" />
+                <ColorSwatch name="Marigold" value="#F5AA3D" className="bg-marigold" />
                 <ColorSwatch name="Cream" value="#F5F0E8" className="bg-cream" textDark />
                 <ColorSwatch name="Navy" value="#19131D" className="bg-navy" />
               </div>
