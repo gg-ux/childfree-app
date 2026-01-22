@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
             We're working hard to launch in mid 2026. You'll be among the first to know when we're ready.
           </p>
           <p style="color: #3d3d3d; font-size: 16px; line-height: 1.6; margin-top: 32px;">
-            In the meantime, feel free to reply to this email with any thoughts or ideas. We'd love to hear from you.
+            In the meantime, feel free to check out our <a href="https://chosn.co/blog" style="color: #2F7255; text-decoration: underline;">Blog</a>.
           </p>
           <p style="color: #6b6b6b; font-size: 14px; margin-top: 40px;">
             — The Chosn Team
