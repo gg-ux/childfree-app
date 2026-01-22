@@ -26,7 +26,7 @@ export default function Home() {
           <div className="flex items-center gap-6">
             <Link
               href="/blog"
-              className="text-base font-medium text-muted hover:text-foreground transition-colors"
+              className="text-lg font-semibold text-foreground hover:text-forest transition-colors"
             >
               Blog
             </Link>
