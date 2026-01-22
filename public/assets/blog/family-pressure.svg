@@ -2,8 +2,8 @@
   <!-- "Dealing with Family Pressure" - Resilience/boundaries theme -->
   <!-- Layout: L-shaped arrangement -->
 
-  <!-- Main left - coral with plant pushing through weight -->
-  <rect x="0" y="0" width="700" height="600" fill="#D4654A"/>
+  <!-- Main left - green with plant pushing through weight -->
+  <rect x="0" y="0" width="700" height="600" fill="#2F7255"/>
   <g transform="translate(350, 300)">
     <!-- Heavy blocks pressing down -->
     <rect x="-120" y="-160" width="240" height="50" rx="6" fill="#19131D"/>

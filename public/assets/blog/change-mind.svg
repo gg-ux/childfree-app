@@ -1,11 +1,11 @@
 <svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- "But What If You Change Your Mind?" - Head with brain and cycling arrows -->
 
-  <!-- Left - coral with see-saw (weighing options, back and forth) -->
-  <rect x="0" y="0" width="750" height="600" fill="#D4654A"/>
+  <!-- Left - green with see-saw (weighing options, back and forth) -->
+  <rect x="0" y="0" width="750" height="600" fill="#2F7255"/>
   <g transform="translate(375, 300)">
     <!-- Fulcrum/pivot (triangle) - connected to plank -->
-    <polygon points="0,50 -45,120 45,120" fill="#2F7255"/>
+    <polygon points="0,50 -45,120 45,120" fill="#19131D"/>
 
     <!-- See-saw plank (animated rocking) -->
     <g>
@@ -22,7 +22,7 @@
       <!-- Left ball (on top of plank) -->
       <circle cx="-140" cy="-52" r="40" fill="#D9A441"/>
       <!-- Right ball (on top of plank) -->
-      <circle cx="140" cy="-52" r="40" fill="#2F7255"/>
+      <circle cx="140" cy="-52" r="40" fill="#D4654A"/>
     </g>
   </g>
 
