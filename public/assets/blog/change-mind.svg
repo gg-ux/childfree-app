@@ -51,8 +51,8 @@
     <circle cx="0" cy="0" r="8" fill="#2F7255"/>
   </g>
 
-  <!-- Bottom right - green with half circles -->
-  <rect x="750" y="300" width="450" height="300" fill="#2F7255"/>
+  <!-- Bottom right - navy with half circles -->
+  <rect x="750" y="300" width="450" height="300" fill="#1A2E35"/>
   <g transform="translate(975, 450)">
     <path d="M-80 50 A80 80 0 0 1 80 50" fill="#D9A441"/>
     <path d="M-55 50 A55 55 0 0 1 55 50" fill="#D4654A"/>

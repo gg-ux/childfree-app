@@ -71,8 +71,8 @@
     <path d="M1080 240 h12 v-12 h10 v12 h12 v10 h-12 v12 h-10 v-12 h-12 z"/>
   </g>
 
-  <!-- Bottom right - green with stroller + slash (childfree symbol) -->
-  <rect x="750" y="300" width="450" height="300" fill="#2F7255"/>
+  <!-- Bottom right - navy with stroller + slash (childfree symbol) -->
+  <rect x="750" y="300" width="450" height="300" fill="#1A2E35"/>
   <g transform="translate(975, 450)">
     <!-- Classic pram silhouette -->
     <!-- Carriage body (flat bottom, angled sides) -->
@@ -85,8 +85,8 @@
     <!-- Wheels -->
     <circle cx="-35" cy="50" r="15" fill="#F5F0E8"/>
     <circle cx="35" cy="50" r="15" fill="#F5F0E8"/>
-    <circle cx="-35" cy="50" r="6" fill="#2F7255"/>
-    <circle cx="35" cy="50" r="6" fill="#2F7255"/>
+    <circle cx="-35" cy="50" r="6" fill="#1A2E35"/>
+    <circle cx="35" cy="50" r="6" fill="#1A2E35"/>
     <!-- Handle (extends up from right side) -->
     <path d="M45 -15 Q60 -20 65 -55" stroke="#F5F0E8" stroke-width="7" fill="none" stroke-linecap="round"/>
     <!-- Diagonal slash -->

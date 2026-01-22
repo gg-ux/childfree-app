@@ -17,8 +17,8 @@
     <ellipse cx="380" cy="320" rx="24" ry="12" fill="#F5F0E8" transform="rotate(-25 380 320)" opacity="0.35"/>
   </g>
 
-  <!-- Right tall panel - green with two flowers, one fading -->
-  <rect x="550" y="0" width="650" height="400" fill="#2F7255"/>
+  <!-- Right tall panel - navy with two flowers, one fading -->
+  <rect x="550" y="0" width="650" height="400" fill="#1A2E35"/>
   <g transform="translate(875, 200)">
     <!-- Your flower - vibrant -->
     <g transform="translate(-100, 0)">
