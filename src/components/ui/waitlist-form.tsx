@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Confetti } from "@phosphor-icons/react";
 
 interface WaitlistFormProps {
   source?: string;
@@ -45,8 +46,11 @@ export function WaitlistForm({ source = "website", className }: WaitlistFormProp
 
   if (status === "success") {
     return (
-      <div className={`text-center ${className}`}>
-        <p className="text-forest font-medium">{message}</p>
+      <div className={`w-full max-w-md ${className}`}>
+        <div className="flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-forest/10 border border-forest/20">
+          <Confetti size={20} weight="fill" className="text-forest" />
+          <p className="text-forest font-medium">{message}</p>
+        </div>
       </div>
     );
   }
