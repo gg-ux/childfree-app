@@ -1,16 +1,17 @@
 @import "tailwindcss";
 
-/* Grace Guo Design System for Flourish */
+/* Grace Guo Design System for Chosn */
 
 :root {
   /* Primary - Forest */
   --forest: #2F7255;
   --forest-light: #4A8B6A;
 
-  /* Secondary Palette (cheerful accents) */
+  /* Secondary Palette (bold accents) */
   --coral: #E07850;
   --marigold: #E9A035;
-  --blush: #F2C4B3;
+  --cream: #F5F0E8;
+  --navy: #1A2E35;
 
   /* Backgrounds - clean neutrals */
   --background: #FFFFFF;
@@ -43,10 +44,11 @@
   --color-forest: var(--forest);
   --color-forest-light: var(--forest-light);
 
-  /* Secondary (cheerful accents) */
+  /* Secondary (bold accents) */
   --color-coral: var(--coral);
   --color-marigold: var(--marigold);
-  --color-blush: var(--blush);
+  --color-cream: var(--cream);
+  --color-navy: var(--navy);
 
   /* Borders */
   --color-border: var(--border);

@@ -84,7 +84,7 @@ export default function DesignSystemPage() {
         <main className="flex-1 min-w-0 space-y-24">
         {/* Colors Section */}
         <section id="colors">
-          <SectionHeader title="Colors" description="The color palette for Flourish" />
+          <SectionHeader title="Colors" description="The color palette for Chosn" />
 
           <div className="space-y-8">
             {/* Primary */}
@@ -102,7 +102,8 @@ export default function DesignSystemPage() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <ColorSwatch name="Coral" value="#E07850" className="bg-coral" />
                 <ColorSwatch name="Marigold" value="#E9A035" className="bg-marigold" />
-                <ColorSwatch name="Blush" value="#F2C4B3" className="bg-blush" textDark />
+                <ColorSwatch name="Cream" value="#F5F0E8" className="bg-cream" textDark />
+                <ColorSwatch name="Navy" value="#1A2E35" className="bg-navy" />
               </div>
             </div>
 
@@ -521,7 +522,7 @@ export default function DesignSystemPage() {
       {/* Footer */}
       <footer className="border-t border-border py-8">
         <div className="container-main text-center text-sm font-[450] text-muted">
-          Flourish Design System
+          Chosn Design System
         </div>
       </footer>
     </div>

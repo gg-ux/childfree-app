@@ -187,7 +187,7 @@ export default function Home() {
                   <p className="theme-caption">Photo 3</p>
                 </div>
               </div>
-              <div className="absolute bottom-24 left-0 w-32 h-32 rounded-xl bg-gradient-to-br from-blush/30 to-blush/10 border border-border -rotate-3 overflow-hidden">
+              <div className="absolute bottom-24 left-0 w-32 h-32 rounded-xl bg-gradient-to-br from-cream/30 to-cream/10 border border-border -rotate-3 overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center text-muted">
                   <p className="text-xs">Photo 4</p>
                 </div>
@@ -267,7 +267,7 @@ export default function Home() {
                 description:
                   "Every profile is human-reviewed. Real people, real connections.",
                 iconColor: "text-[#8a6055]",
-                bg: "bg-blush/30",
+                bg: "bg-cream/30",
               },
             ].map((feature) => (
               <FrostedCard key={feature.title} className="p-6">
