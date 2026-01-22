@@ -58,7 +58,7 @@ const Logo = React.forwardRef<SVGSVGElement, LogoProps>(
         {...props}
       >
         {/* Sparkle icon - scaled to fit */}
-        <SparkleIcon scale={0.35} x={3} y={3} />
+        <SparkleIcon scale={0.30} x={5} y={5} />
 
         {/* Wordmark */}
         <text
