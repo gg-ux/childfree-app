@@ -28,20 +28,20 @@
     </g>
   </g>
 
-  <!-- Top right - coral with peaceful person -->
+  <!-- Top right - coral with peaceful person - adult proportions -->
   <rect x="600" y="0" width="600" height="450" fill="#D4654A"/>
   <g transform="translate(900, 225)">
     <!-- Person standing confident -->
-    <circle cx="0" cy="-70" r="40" fill="#F5F0E8"/>
-    <ellipse cx="0" cy="15" rx="45" ry="60" fill="#F5F0E8"/>
+    <circle cx="0" cy="-95" r="28" fill="#F5F0E8"/>
+    <ellipse cx="0" cy="-5" rx="32" ry="60" fill="#F5F0E8"/>
     <!-- Arms at sides, relaxed confident pose -->
-    <path d="M -40 -20 Q -55 0 -55 30 Q -55 55 -48 70" stroke="#F5F0E8" stroke-width="16" stroke-linecap="round" fill="none"/>
-    <path d="M 40 -20 Q 55 0 55 30 Q 55 55 48 70" stroke="#F5F0E8" stroke-width="16" stroke-linecap="round" fill="none"/>
+    <path d="M -28 -45 Q -42 -25 -44 10 Q -45 40 -40 65" stroke="#F5F0E8" stroke-width="14" stroke-linecap="round" fill="none"/>
+    <path d="M 28 -45 Q 42 -25 44 10 Q 45 40 40 65" stroke="#F5F0E8" stroke-width="14" stroke-linecap="round" fill="none"/>
     <!-- Legs -->
-    <rect x="-28" y="70" width="20" height="65" rx="9" fill="#F5F0E8"/>
-    <rect x="8" y="70" width="20" height="65" rx="9" fill="#F5F0E8"/>
+    <rect x="-20" y="50" width="16" height="85" rx="7" fill="#F5F0E8"/>
+    <rect x="4" y="50" width="16" height="85" rx="7" fill="#F5F0E8"/>
     <!-- Heart on chest (at peace with decision) -->
-    <path d="M 0 0 C -5 -8, -18 -8, -18 5 C -18 16, 0 28, 0 28 C 0 28, 18 16, 18 5 C 18 -8, 5 -8, 0 0" fill="#D9A441"/>
+    <path d="M 0 -15 C -4 -22, -14 -22, -14 -8 C -14 4, 0 14, 0 14 C 0 14, 14 4, 14 -8 C 14 -22, 4 -22, 0 -15" fill="#D9A441"/>
   </g>
 
   <!-- Bottom right - gold with butterfly (transformation/freedom) -->

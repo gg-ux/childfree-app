@@ -45,12 +45,12 @@ export async function POST(request: NextRequest) {
     for (const entry of entries) {
       try {
         await resend.emails.send({
-          from: "Flourish <onboarding@resend.dev>",
+          from: "Chosn <onboarding@resend.dev>",
           to: entry.email,
-          subject: "You're on the Flourish waitlist!",
+          subject: "You're on the Chosn waitlist!",
           html: `
             <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
-              <h1 style="color: #2F7255; font-size: 28px; margin-bottom: 24px;">Welcome to Flourish!</h1>
+              <h1 style="color: #2F7255; font-size: 28px; margin-bottom: 24px;">Welcome to Chosn!</h1>
               <p style="color: #3d3d3d; font-size: 16px; line-height: 1.6;">
                 Thanks for joining our waitlist. You're now part of a growing community of childfree adults looking for meaningful connections.
               </p>
@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
                 In the meantime, feel free to reply to this email with any thoughts or ideas. We'd love to hear from you.
               </p>
               <p style="color: #6b6b6b; font-size: 14px; margin-top: 40px;">
-                — The Flourish Team
+                — The Chosn Team
               </p>
             </div>
           `,

@@ -51,11 +51,14 @@
     <circle cx="0" cy="0" r="8" fill="#2F7255"/>
   </g>
 
-  <!-- Bottom right - navy with half circles -->
+  <!-- Bottom right - navy with question mark crossed out -->
   <rect x="750" y="400" width="450" height="400" fill="#19131D"/>
-  <g transform="translate(975, 600)">
-    <path d="M-80 50 A80 80 0 0 1 80 50" fill="#D9A441"/>
-    <path d="M-55 50 A55 55 0 0 1 55 50" fill="#D4654A"/>
-    <path d="M-30 50 A30 30 0 0 1 30 50" fill="#F5F0E8"/>
+  <g transform="translate(975, 620)">
+    <!-- Question mark -->
+    <path d="M -25 -80 Q -25 -110 0 -110 Q 35 -110 35 -75 Q 35 -50 0 -40 L 0 -15" stroke="#F5F0E8" stroke-width="18" stroke-linecap="round" fill="none"/>
+    <!-- Dot -->
+    <circle cx="0" cy="25" r="14" fill="#F5F0E8"/>
+    <!-- X slash through it (30 degrees, shifted up) -->
+    <line x1="-60" y1="25" x2="60" y2="-45" stroke="#D4654A" stroke-width="14" stroke-linecap="round"/>
   </g>
 </svg>

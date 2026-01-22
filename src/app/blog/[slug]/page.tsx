@@ -143,7 +143,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           </p>
           <Button asChild variant="accent" size="lg">
             <Link href="/sign-up" className="gap-2">
-              Join the waitlist
+              Join waitlist
             </Link>
           </Button>
         </div>

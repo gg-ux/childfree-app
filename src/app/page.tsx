@@ -95,7 +95,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button asChild size="lg" variant="accent">
                   <Link href="/sign-up">
-                    Join the waitlist
+                    Join waitlist
                     <ArrowRight size={13} weight="bold" className="ml-1" />
                   </Link>
                 </Button>
@@ -137,12 +137,12 @@ export default function Home() {
         <div className="container-main">
           <div className="grid grid-cols-3 gap-8 md:gap-12">
             {[
-              { value: "60M+", label: "Childfree adults in the US" },
-              { value: "1 in 5", label: "US adults are childfree by choice" },
+              { value: "50-60M", label: "Childfree adults in the US" },
+              { value: "1 in 5", label: "U.S. adults childfree by choice" },
               { value: "14% → 29%", label: "Childfree adults since 2002" },
             ].map((stat, index) => (
               <div key={stat.label}>
-                <div className="font-display text-3xl md:text-4xl text-foreground mb-2 tracking-tight">
+                <div className="theme-stat text-3xl md:text-4xl text-foreground mb-2">
                   <TextDecode
                     text={stat.value}
                     speed={25}
@@ -200,8 +200,8 @@ export default function Home() {
                 title: "Verified",
                 description:
                   "Every profile is human-reviewed. Real people, real connections.",
-                iconColor: "text-[#8a6055]",
-                bg: "bg-cream/30",
+                iconColor: "text-[#2d2438]",
+                bg: "bg-[#19131D]/10",
               },
             ].map((feature) => (
               <FrostedCard key={feature.title} className="p-6">
@@ -229,7 +229,7 @@ export default function Home() {
       {/* Chosen Family Section - merged emotional section */}
       <section className="py-20 md:py-28">
         <div className="container-main">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid md:grid-cols-2 lg:grid-cols-[45%_1fr] gap-8 lg:gap-10 items-center">
             {/* Group image */}
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
               <img
@@ -241,7 +241,7 @@ export default function Home() {
             {/* Text content */}
             <div>
               <h2 className="font-display text-fluid-h2 text-foreground mb-6 leading-[0.9] tracking-tight">
-                A family you choose.
+                Your chosen <span className="whitespace-nowrap">family awaits.</span>
               </h2>
               <p className="theme-body text-muted">
                 You made the bold choice to follow your own path and live differently. You&apos;re not alone. Connect with people who get it from day one. Whether you&apos;re looking for your person, people, or place—you&apos;ll find a community that celebrates the life you&apos;re building. Not all family is related by blood.

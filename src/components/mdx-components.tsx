@@ -1,5 +1,8 @@
 import Link from "next/link";
 import type { MDXComponents } from "mdx/types";
+import { LineChart } from "@/components/ui/line-chart";
+import { StatCards } from "@/components/ui/stat-cards";
+import { BarChart, ComparisonBar } from "@/components/ui/bar-chart";
 
 export const mdxComponents: MDXComponents = {
   h1: ({ children }) => (
@@ -70,4 +73,8 @@ export const mdxComponents: MDXComponents = {
       className="rounded-xl my-8 w-full"
     />
   ),
+  LineChart,
+  StatCards,
+  BarChart,
+  ComparisonBar,
 };

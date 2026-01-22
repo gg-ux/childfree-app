@@ -69,7 +69,7 @@ export function WaitlistForm({ source = "website", className }: WaitlistFormProp
           className="w-full sm:w-auto shrink-0"
           disabled={status === "loading"}
         >
-          {status === "loading" ? "Joining..." : "Join the waitlist"}
+          {status === "loading" ? "Joining..." : "Join waitlist"}
         </Button>
       </form>
       {status === "error" && (

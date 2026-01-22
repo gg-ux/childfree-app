@@ -1,8 +1,8 @@
-# Flourish: Complete Product Documentation
+# Chosn: Complete Product Documentation
 ## A Modern Platform for the Childfree Community
 
-**Working Name:** Flourish
-**Domain:** flourish.app (to be registered)
+**Working Name:** Chosn
+**Domain:** chosn.app (to be registered)
 **Tagline:** *"Thrive together."*
 
 ---
@@ -193,7 +193,7 @@ This is an underserved angle that no competitor adequately addresses:
 
 ### User Types (Revised Based on Research)
 
-#### 1. **Flourish Solo**
+#### 1. **Chosn Solo**
 - Thriving single, not actively seeking romance
 - Wants community, friendships, chosen family
 - May attend events, join interest groups
@@ -897,7 +897,7 @@ def passes_basic_filters(user_a, user_b):
 
 ### Positioning Statement
 
-**For** childfree adults **who** want meaningful connections without the pressure of traditional family expectations, **Flourish** is a **community-first platform** that **connects you with partners, friends, and chosen family who share your lifestyle**. **Unlike** mainstream dating apps where childfree is an afterthought or niche sites with outdated UX, **we** provide a modern, verified, and inclusive space designed around your identity.
+**For** childfree adults **who** want meaningful connections without the pressure of traditional family expectations, **Chosn** is a **community-first platform** that **connects you with partners, friends, and chosen family who share your lifestyle**. **Unlike** mainstream dating apps where childfree is an afterthought or niche sites with outdated UX, **we** provide a modern, verified, and inclusive space designed around your identity.
 
 ### Target Audience Segments
 
@@ -1011,12 +1011,12 @@ def passes_basic_filters(user_a, user_b):
 
 ## Brand & Naming
 
-### Selected Name: **Flourish**
+### Selected Name: **Chosn**
 
-**Domain:** flourish.app (to be registered)
+**Domain:** chosn.app (to be registered)
 **Tagline:** *"Thrive together."*
 
-**Why Flourish:**
+**Why Chosn:**
 - Positive framing—emphasizes thriving, not "anti" anything
 - Works for dating AND community AND friendship
 - Evokes growth, blooming, living your best life
@@ -1282,4 +1282,4 @@ Break-even likely at ~50,000 paying users ($900K ARR) if keeping team lean. With
 ---
 
 *Document created: January 2026*
-*Version: 1.1 — Updated with "Flourish" as working name*
+*Version: 1.1 — Updated with "Chosn" as working name*

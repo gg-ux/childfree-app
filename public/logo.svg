@@ -12,5 +12,5 @@
     <g transform="rotate(315 0 0)"><line x1="0" y1="-5" x2="0" y2="-13" stroke="#2F7255" stroke-width="1.8" stroke-linecap="round"/><circle cx="0" cy="-16" r="4" fill="#2F7255"/></g>
   </g>
   <!-- Wordmark -->
-  <text x="44" y="26" font-family="Satoshi, -apple-system, sans-serif" font-size="20" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">flourish</text>
+  <text x="44" y="26" font-family="Satoshi, -apple-system, sans-serif" font-size="20" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">chosn</text>
 </svg>

@@ -153,7 +153,7 @@
     <rect x="-5" y="-10" width="10" height="50" fill="url(#fg)"/>
     <path d="M-5 -25 L-5 5 A30 30 0 0 1 -35 -25 Z" fill="url(#fg)"/>
     <path d="M5 -25 L5 5 A30 30 0 0 0 35 -25 Z" fill="url(#fg)"/>
-    <text x="70" y="10" font-family="Satoshi, -apple-system, sans-serif" font-size="28" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">flourish</text>
+    <text x="70" y="10" font-family="Satoshi, -apple-system, sans-serif" font-size="28" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">chosn</text>
   </g>
 
   <g transform="translate(450, 450)">
@@ -162,7 +162,7 @@
     <path d="M4 -35 L4 -5 A30 30 0 0 0 34 -35 Z" fill="url(#fg)"/>
     <path d="M-4 0 L-4 20 A20 20 0 0 1 -24 0 Z" fill="url(#fg)"/>
     <path d="M4 0 L4 20 A20 20 0 0 0 24 0 Z" fill="url(#fg)"/>
-    <text x="60" y="10" font-family="Satoshi, -apple-system, sans-serif" font-size="28" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">flourish</text>
+    <text x="60" y="10" font-family="Satoshi, -apple-system, sans-serif" font-size="28" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">chosn</text>
   </g>
 
 </svg>

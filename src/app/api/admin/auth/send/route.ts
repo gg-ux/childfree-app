@@ -44,14 +44,14 @@ export async function POST(request: NextRequest) {
 
     // Send email
     await resend.emails.send({
-      from: "Flourish <onboarding@resend.dev>",
+      from: "Chosn <onboarding@resend.dev>",
       to: email,
-      subject: "Your Flourish Admin Login Link",
+      subject: "Your Chosn Admin Login Link",
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
           <h1 style="color: #2F7255; font-size: 24px; margin-bottom: 24px;">Admin Login</h1>
           <p style="color: #3d3d3d; font-size: 16px; line-height: 1.6;">
-            Click the button below to log in to your Flourish admin dashboard.
+            Click the button below to log in to your Chosn admin dashboard.
           </p>
           <a href="${loginUrl}" style="display: inline-block; background: #2F7255; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; margin: 24px 0; font-weight: 500;">
             Log in to Admin

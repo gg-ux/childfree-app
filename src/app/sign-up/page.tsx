@@ -27,10 +27,10 @@ export default function SignUpPage() {
 
           {/* Heading */}
           <h1 className="font-display text-3xl md:text-4xl text-foreground mb-4 tracking-tight">
-            Join the waitlist
+            Join waitlist
           </h1>
           <p className="theme-body text-muted text-lg mb-8">
-            Be the first to know when Flourish launches in your city.
+            Be the first to know when Chosn launches in your city.
           </p>
 
           {/* Form */}

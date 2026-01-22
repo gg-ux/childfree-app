@@ -4,30 +4,30 @@
   <!-- Top left - coral with two silhouettes, one fading -->
   <rect x="0" y="0" width="550" height="450" fill="#D4654A"/>
   <g transform="translate(275, 200)">
-    <!-- Two simple person silhouettes -->
+    <!-- Two simple person silhouettes - adult proportions -->
     <!-- You - solid -->
     <g transform="translate(-70, 0)">
-      <circle cx="0" cy="-50" r="32" fill="#F5F0E8"/>
-      <ellipse cx="0" cy="20" rx="35" ry="45" fill="#F5F0E8"/>
+      <circle cx="0" cy="-65" r="24" fill="#F5F0E8"/>
+      <ellipse cx="0" cy="5" rx="28" ry="50" fill="#F5F0E8"/>
       <!-- Arms flowing from shoulders -->
-      <path d="M -30 -5 Q -42 5 -45 25 Q -47 40 -42 50" stroke="#F5F0E8" stroke-width="14" stroke-linecap="round" fill="none"/>
-      <path d="M 30 -5 Q 42 5 45 25 Q 47 40 42 50" stroke="#F5F0E8" stroke-width="14" stroke-linecap="round" fill="none"/>
+      <path d="M -24 -30 Q -36 -15 -38 10 Q -40 30 -35 50" stroke="#F5F0E8" stroke-width="12" stroke-linecap="round" fill="none"/>
+      <path d="M 24 -30 Q 36 -15 38 10 Q 40 30 35 50" stroke="#F5F0E8" stroke-width="12" stroke-linecap="round" fill="none"/>
       <!-- Legs -->
-      <rect x="-22" y="60" width="16" height="55" rx="7" fill="#F5F0E8"/>
-      <rect x="6" y="60" width="16" height="55" rx="7" fill="#F5F0E8"/>
+      <rect x="-18" y="50" width="14" height="70" rx="6" fill="#F5F0E8"/>
+      <rect x="4" y="50" width="14" height="70" rx="6" fill="#F5F0E8"/>
     </g>
     <!-- Friend - fading away with animation -->
     <g transform="translate(70, 0)">
       <g>
         <animate attributeName="opacity" values="0.6;0.2;0.6" dur="4s" repeatCount="indefinite"/>
-        <circle cx="0" cy="-50" r="32" fill="#F5F0E8"/>
-        <ellipse cx="0" cy="20" rx="35" ry="45" fill="#F5F0E8"/>
+        <circle cx="0" cy="-65" r="24" fill="#F5F0E8"/>
+        <ellipse cx="0" cy="5" rx="28" ry="50" fill="#F5F0E8"/>
         <!-- Arms flowing from shoulders -->
-        <path d="M -30 -5 Q -42 5 -45 25 Q -47 40 -42 50" stroke="#F5F0E8" stroke-width="14" stroke-linecap="round" fill="none"/>
-        <path d="M 30 -5 Q 42 5 45 25 Q 47 40 42 50" stroke="#F5F0E8" stroke-width="14" stroke-linecap="round" fill="none"/>
+        <path d="M -24 -30 Q -36 -15 -38 10 Q -40 30 -35 50" stroke="#F5F0E8" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <path d="M 24 -30 Q 36 -15 38 10 Q 40 30 35 50" stroke="#F5F0E8" stroke-width="12" stroke-linecap="round" fill="none"/>
         <!-- Legs -->
-        <rect x="-22" y="60" width="16" height="55" rx="7" fill="#F5F0E8"/>
-        <rect x="6" y="60" width="16" height="55" rx="7" fill="#F5F0E8"/>
+        <rect x="-18" y="50" width="14" height="70" rx="6" fill="#F5F0E8"/>
+        <rect x="4" y="50" width="14" height="70" rx="6" fill="#F5F0E8"/>
       </g>
       <animateTransform attributeName="transform" type="translate" values="70,0; 95,0; 70,0" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
     </g>
@@ -38,7 +38,7 @@
   <g transform="translate(875, 225)">
     <!-- Phone -->
     <rect x="-70" y="-120" width="140" height="240" rx="16" fill="#F5F0E8"/>
-    <rect x="-58" y="-100" width="116" height="200" rx="4" fill="#19131D"/>
+    <rect x="-58" y="-100" width="116" height="200" rx="4" fill="#D9A441"/>
 
     <!-- Message bubbles -->
     <!-- Your message (right aligned) -->
@@ -48,9 +48,9 @@
     <!-- Typing indicator that fades (they started typing but stopped) -->
     <g opacity="0.4">
       <animate attributeName="opacity" values="0.5;0.15;0.5" dur="3s" repeatCount="indefinite"/>
-      <circle cx="-35" cy="50" r="5" fill="#F5F0E8"/>
-      <circle cx="-20" cy="50" r="5" fill="#F5F0E8"/>
-      <circle cx="-5" cy="50" r="5" fill="#F5F0E8"/>
+      <circle cx="-35" cy="50" r="5" fill="#19131D"/>
+      <circle cx="-20" cy="50" r="5" fill="#19131D"/>
+      <circle cx="-5" cy="50" r="5" fill="#19131D"/>
     </g>
   </g>
 
@@ -64,28 +64,28 @@
     <rect x="-100" y="16" width="12" height="40" fill="#2F7255"/>
     <rect x="88" y="16" width="12" height="40" fill="#2F7255"/>
 
-    <!-- One person sitting (you) -->
-    <g transform="translate(-50, -45)">
-      <circle cx="0" cy="-25" r="20" fill="#F5F0E8"/>
-      <ellipse cx="0" cy="8" rx="22" ry="28" fill="#F5F0E8"/>
+    <!-- One person sitting (you) - adult proportions -->
+    <g transform="translate(-50, -50)">
+      <circle cx="0" cy="-35" r="16" fill="#F5F0E8"/>
+      <ellipse cx="0" cy="5" rx="18" ry="35" fill="#F5F0E8"/>
       <!-- Arms flowing from shoulders -->
-      <path d="M -19 -8 Q -28 0 -30 15 Q -31 28 -28 38" stroke="#F5F0E8" stroke-width="10" stroke-linecap="round" fill="none"/>
-      <path d="M 19 -8 Q 28 0 30 15 Q 31 28 28 38" stroke="#F5F0E8" stroke-width="10" stroke-linecap="round" fill="none"/>
+      <path d="M -16 -15 Q -24 -5 -26 12 Q -27 26 -24 38" stroke="#F5F0E8" stroke-width="9" stroke-linecap="round" fill="none"/>
+      <path d="M 16 -15 Q 24 -5 26 12 Q 27 26 24 38" stroke="#F5F0E8" stroke-width="9" stroke-linecap="round" fill="none"/>
       <!-- Legs sitting -->
-      <rect x="-18" y="32" width="12" height="35" rx="5" fill="#F5F0E8" transform="rotate(-10 -12 32)"/>
-      <rect x="6" y="32" width="12" height="35" rx="5" fill="#F5F0E8" transform="rotate(10 12 32)"/>
+      <rect x="-15" y="36" width="11" height="40" rx="5" fill="#F5F0E8" transform="rotate(-10 -10 36)"/>
+      <rect x="4" y="36" width="11" height="40" rx="5" fill="#F5F0E8" transform="rotate(10 10 36)"/>
     </g>
 
-    <!-- Empty spot with faint outline (where friend used to sit) -->
-    <g transform="translate(50, -45)" opacity="0.25">
-      <circle cx="0" cy="-25" r="20" stroke="#F5F0E8" stroke-width="2" stroke-dasharray="6 4" fill="none"/>
-      <ellipse cx="0" cy="8" rx="22" ry="28" stroke="#F5F0E8" stroke-width="2" stroke-dasharray="6 4" fill="none"/>
+    <!-- Empty spot with faint outline (where friend used to sit) - adult proportions -->
+    <g transform="translate(50, -50)" opacity="0.25">
+      <circle cx="0" cy="-35" r="16" stroke="#F5F0E8" stroke-width="2" stroke-dasharray="6 4" fill="none"/>
+      <ellipse cx="0" cy="5" rx="18" ry="35" stroke="#F5F0E8" stroke-width="2" stroke-dasharray="6 4" fill="none"/>
       <!-- Arms outline -->
-      <path d="M -19 -8 Q -28 0 -30 15 Q -31 28 -28 38" stroke="#F5F0E8" stroke-width="2" stroke-dasharray="6 4" stroke-linecap="round" fill="none"/>
-      <path d="M 19 -8 Q 28 0 30 15 Q 31 28 28 38" stroke="#F5F0E8" stroke-width="2" stroke-dasharray="6 4" stroke-linecap="round" fill="none"/>
+      <path d="M -16 -15 Q -24 -5 -26 12 Q -27 26 -24 38" stroke="#F5F0E8" stroke-width="2" stroke-dasharray="6 4" stroke-linecap="round" fill="none"/>
+      <path d="M 16 -15 Q 24 -5 26 12 Q 27 26 24 38" stroke="#F5F0E8" stroke-width="2" stroke-dasharray="6 4" stroke-linecap="round" fill="none"/>
       <!-- Legs outline -->
-      <rect x="-18" y="32" width="12" height="35" rx="5" stroke="#F5F0E8" stroke-width="2" stroke-dasharray="6 4" fill="none" transform="rotate(-10 -12 32)"/>
-      <rect x="6" y="32" width="12" height="35" rx="5" stroke="#F5F0E8" stroke-width="2" stroke-dasharray="6 4" fill="none" transform="rotate(10 12 32)"/>
+      <rect x="-15" y="36" width="11" height="40" rx="5" stroke="#F5F0E8" stroke-width="2" stroke-dasharray="6 4" fill="none" transform="rotate(-10 -10 36)"/>
+      <rect x="4" y="36" width="11" height="40" rx="5" stroke="#F5F0E8" stroke-width="2" stroke-dasharray="6 4" fill="none" transform="rotate(10 10 36)"/>
     </g>
   </g>
 

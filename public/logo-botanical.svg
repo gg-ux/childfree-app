@@ -144,7 +144,7 @@
       <ellipse cx="-15" cy="-5" rx="10" ry="14" transform="rotate(-15 -15 -5)" fill="url(#bGrad)"/>
       <ellipse cx="15" cy="-5" rx="10" ry="14" transform="rotate(15 15 -5)" fill="url(#bGrad)"/>
     </g>
-    <text x="35" y="2" font-family="Satoshi, -apple-system, sans-serif" font-size="26" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">flourish</text>
+    <text x="35" y="2" font-family="Satoshi, -apple-system, sans-serif" font-size="26" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">chosn</text>
   </g>
 
   <g transform="translate(480, 380)">
@@ -155,7 +155,7 @@
       <ellipse cx="-16" cy="2" rx="10" ry="16" transform="rotate(-15 -16 2)" fill="url(#bGrad)"/>
       <ellipse cx="16" cy="22" rx="9" ry="14" transform="rotate(15 16 22)" fill="url(#bGrad)"/>
     </g>
-    <text x="35" y="2" font-family="Satoshi, -apple-system, sans-serif" font-size="26" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">flourish</text>
+    <text x="35" y="2" font-family="Satoshi, -apple-system, sans-serif" font-size="26" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">chosn</text>
   </g>
 
 </svg>

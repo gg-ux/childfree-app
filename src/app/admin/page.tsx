@@ -179,7 +179,7 @@ export default function AdminPage() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `flourish-waitlist-${new Date().toISOString().split("T")[0]}.csv`;
+    a.download = `chosn-waitlist-${new Date().toISOString().split("T")[0]}.csv`;
     a.click();
   };
 

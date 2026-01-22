@@ -102,7 +102,7 @@ export default function SignupPage() {
           ) : (
             <>
               <h1 className="font-display text-3xl text-foreground mb-2">
-                Join Flourish
+                Join Chosn
               </h1>
               <p className="theme-body text-muted mb-8">
                 Connect with childfree adults who get it.

@@ -2,72 +2,49 @@
   <!-- "Dealing with Family Pressure" - Nesting dolls / breaking the cycle -->
 
   <!-- Main left - forest with nesting dolls in a row -->
-  <rect x="0" y="0" width="750" height="650" fill="#2F7255"/>
+  <rect x="0" y="0" width="750" height="520" fill="#2F7255"/>
 
   <!-- Bottom strip with X pattern (breaking the cycle) -->
-  <rect x="0" y="650" width="750" height="150" fill="#D4654A"/>
+  <rect x="0" y="520" width="750" height="280" fill="#D4654A"/>
   <g fill="#F5F0E8">
     <!-- Row 1 -->
-    <g transform="translate(75, 695) rotate(45)">
+    <g transform="translate(150, 590) rotate(45)">
       <rect x="-14" y="-5" width="28" height="10"/>
       <rect x="-5" y="-14" width="10" height="28"/>
     </g>
-    <g transform="translate(175, 695) rotate(45)">
+    <g transform="translate(375, 590) rotate(45)">
       <rect x="-14" y="-5" width="28" height="10"/>
       <rect x="-5" y="-14" width="10" height="28"/>
     </g>
-    <g transform="translate(275, 695) rotate(45)">
+    <g transform="translate(600, 590) rotate(45)">
       <rect x="-14" y="-5" width="28" height="10"/>
       <rect x="-5" y="-14" width="10" height="28"/>
     </g>
-    <g transform="translate(375, 695) rotate(45)">
+    <!-- Row 2 (staggered) -->
+    <g transform="translate(262, 660) rotate(45)">
       <rect x="-14" y="-5" width="28" height="10"/>
       <rect x="-5" y="-14" width="10" height="28"/>
     </g>
-    <g transform="translate(475, 695) rotate(45)">
+    <g transform="translate(487, 660) rotate(45)">
       <rect x="-14" y="-5" width="28" height="10"/>
       <rect x="-5" y="-14" width="10" height="28"/>
     </g>
-    <g transform="translate(575, 695) rotate(45)">
+    <!-- Row 3 -->
+    <g transform="translate(150, 730) rotate(45)">
       <rect x="-14" y="-5" width="28" height="10"/>
       <rect x="-5" y="-14" width="10" height="28"/>
     </g>
-    <g transform="translate(675, 695) rotate(45)">
+    <g transform="translate(375, 730) rotate(45)">
       <rect x="-14" y="-5" width="28" height="10"/>
       <rect x="-5" y="-14" width="10" height="28"/>
     </g>
-    <!-- Row 2 -->
-    <g transform="translate(125, 755) rotate(45)">
-      <rect x="-14" y="-5" width="28" height="10"/>
-      <rect x="-5" y="-14" width="10" height="28"/>
-    </g>
-    <g transform="translate(225, 755) rotate(45)">
-      <rect x="-14" y="-5" width="28" height="10"/>
-      <rect x="-5" y="-14" width="10" height="28"/>
-    </g>
-    <g transform="translate(325, 755) rotate(45)">
-      <rect x="-14" y="-5" width="28" height="10"/>
-      <rect x="-5" y="-14" width="10" height="28"/>
-    </g>
-    <g transform="translate(425, 755) rotate(45)">
-      <rect x="-14" y="-5" width="28" height="10"/>
-      <rect x="-5" y="-14" width="10" height="28"/>
-    </g>
-    <g transform="translate(525, 755) rotate(45)">
-      <rect x="-14" y="-5" width="28" height="10"/>
-      <rect x="-5" y="-14" width="10" height="28"/>
-    </g>
-    <g transform="translate(625, 755) rotate(45)">
-      <rect x="-14" y="-5" width="28" height="10"/>
-      <rect x="-5" y="-14" width="10" height="28"/>
-    </g>
-    <g transform="translate(725, 755) rotate(45)">
+    <g transform="translate(600, 730) rotate(45)">
       <rect x="-14" y="-5" width="28" height="10"/>
       <rect x="-5" y="-14" width="10" height="28"/>
     </g>
   </g>
 
-  <g transform="translate(375, 420)">
+  <g transform="translate(375, 300)">
     <!-- Large doll (great-grandma) - far left -->
     <g transform="translate(-250, 0)">
       <!-- Body -->

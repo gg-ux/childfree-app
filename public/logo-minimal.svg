@@ -110,7 +110,7 @@
       <path d="M-4 -35 L-4 5 A40 40 0 0 1 -44 -35 Z" fill="url(#gf)"/>
       <path d="M4 -35 L4 5 A40 40 0 0 0 44 -35 Z" fill="url(#gf)"/>
     </g>
-    <text x="45" y="8" font-family="Satoshi, -apple-system, sans-serif" font-size="26" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">flourish</text>
+    <text x="45" y="8" font-family="Satoshi, -apple-system, sans-serif" font-size="26" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">chosn</text>
   </g>
 
   <g transform="translate(380, 370)">
@@ -120,7 +120,7 @@
       <circle cx="-22" cy="0" r="18" fill="url(#gf)"/>
       <circle cx="22" cy="0" r="18" fill="url(#gf)"/>
     </g>
-    <text x="40" y="8" font-family="Satoshi, -apple-system, sans-serif" font-size="26" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">flourish</text>
+    <text x="40" y="8" font-family="Satoshi, -apple-system, sans-serif" font-size="26" font-weight="500" letter-spacing="-0.02em" fill="#1A1A1A">chosn</text>
   </g>
 
 </svg>

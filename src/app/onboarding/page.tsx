@@ -490,7 +490,7 @@ export default function OnboardingPage() {
                   You&apos;re all set, {displayName}!
                 </h1>
                 <p className="theme-body text-muted max-w-sm mx-auto">
-                  Welcome to Flourish — your profile is ready, let&apos;s find your
+                  Welcome to Chosn — your profile is ready, let&apos;s find your
                   people
                 </p>
               </div>

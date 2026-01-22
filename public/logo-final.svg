@@ -97,7 +97,7 @@
       <ellipse cx="-18" cy="-10" rx="16" ry="28" transform="rotate(-25 -18 -10)" fill="#2F7255"/>
       <ellipse cx="18" cy="-10" rx="16" ry="28" transform="rotate(25 18 -10)" fill="#2F7255"/>
     </g>
-    <text x="30" y="5" font-family="Satoshi, -apple-system, sans-serif" font-size="28" font-weight="500" letter-spacing="-0.02em" fill="#2D2D2A">flourish</text>
+    <text x="30" y="5" font-family="Satoshi, -apple-system, sans-serif" font-size="28" font-weight="500" letter-spacing="-0.02em" fill="#2D2D2A">chosn</text>
   </g>
 
   <g transform="translate(480, 290)">
@@ -108,7 +108,7 @@
       <ellipse cx="-22" cy="5" rx="18" ry="10" transform="rotate(-35 -22 5)" fill="#2F7255"/>
       <ellipse cx="22" cy="25" rx="16" ry="9" transform="rotate(35 22 25)" fill="#2F7255"/>
     </g>
-    <text x="28" y="5" font-family="Satoshi, -apple-system, sans-serif" font-size="28" font-weight="500" letter-spacing="-0.02em" fill="#2D2D2A">flourish</text>
+    <text x="28" y="5" font-family="Satoshi, -apple-system, sans-serif" font-size="28" font-weight="500" letter-spacing="-0.02em" fill="#2D2D2A">chosn</text>
   </g>
 
 </svg>

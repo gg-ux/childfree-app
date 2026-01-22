@@ -51,12 +51,12 @@
   <!-- Bottom left - dark green with large phone + X (taller) -->
   <rect x="0" y="280" width="700" height="520" fill="#2F7255"/>
   <g transform="translate(350, 540)">
-    <!-- Larger simplified phone shape -->
-    <rect x="-90" y="-125" width="180" height="250" rx="20" fill="#F5F0E8"/>
+    <!-- Modern phone shape (no home button, edge-to-edge screen) -->
+    <rect x="-70" y="-120" width="140" height="240" rx="16" fill="#F5F0E8"/>
     <!-- Screen -->
-    <rect x="-72" y="-100" width="144" height="170" fill="#D9A441"/>
+    <rect x="-58" y="-100" width="116" height="200" rx="4" fill="#D9A441"/>
     <!-- X on screen (animated pulse) -->
-    <g stroke="#D4654A" stroke-width="18" stroke-linecap="round">
+    <g stroke="#D4654A" stroke-width="16" stroke-linecap="round">
       <animate
         attributeName="opacity"
         values="1;0.5;1"
@@ -65,11 +65,9 @@
         calcMode="spline"
         keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"
       />
-      <line x1="-40" y1="-60" x2="40" y2="30"/>
-      <line x1="40" y1="-60" x2="-40" y2="30"/>
+      <line x1="-35" y1="-50" x2="35" y2="40"/>
+      <line x1="35" y1="-50" x2="-35" y2="40"/>
     </g>
-    <!-- Home button -->
-    <circle cx="0" cy="100" r="18" fill="#D9A441"/>
   </g>
 
   <!-- Bottom right - light green with broken circle (animated slow spin) -->

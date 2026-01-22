@@ -1,21 +1,28 @@
 ---
-title: "Childfree by the Numbers: What the Data Really Says"
+title: "How Many Americans Are Actually Childfree?"
 description: "A deep dive into the research behind the growing childfree movement. From Michigan State University studies to Pew Research data, here's what we know about childfree adults in America."
 date: "2026-01-21"
-author: "Flourish Team"
+author: "Chosn Team"
 tags: ["Research", "Data"]
 image: "/assets/blog/childfree-data.svg"
 ---
 
 The childfree community is growing—and the data proves it. If you've ever felt like you're part of a small minority for choosing not to have children, the research might surprise you.
 
-## The Numbers Don't Lie
+## Childfree By Choice: A Growing Demographic
 
-According to a landmark study from Michigan State University analyzing over 20 years of data from the National Survey of Family Growth, **the percentage of non-parents who are childfree by choice has more than doubled**—rising from 14% in 2002 to 29% in 2023.
+A landmark Michigan State University study tracked over 20 years of data from the National Survey of Family Growth—and the shift is striking.
 
-That's not a small shift. It represents a fundamental change in how Americans think about family, fulfillment, and life choices.
+<LineChart title="% of non-parents who are childfree by choice" data={[{ year: 2002, value: 14 }, { year: 2008, value: 16 }, { year: 2015, value: 20 }, { year: 2019, value: 24 }, { year: 2023, value: 29 }]} color="forest" />
+
+The number has more than doubled from 14% to 29% in just two decades, representing a fundamental shift in how Americans think about family, fulfillment, and lifestyle choices.
 
 ## How Many Childfree Adults Are There?
+
+<StatCards
+  proportion={{ value: 1, total: 5, label: "U.S. adults are childfree by choice" }}
+  bigNumber={{ value: "50-60M", label: "Childfree adults in America" }}
+/>
 
 Based on current research, approximately **1 in 5 adults** (21.6%) identify as childfree by choice. Applied to the U.S. adult population of roughly 260 million, that translates to somewhere between **50 and 60 million childfree adults** in America alone.
 
@@ -23,11 +30,23 @@ To put that in perspective: there are more childfree adults in the U.S. than the
 
 ## The Pew Research Findings
 
-A 2024 Pew Research Center survey added even more context to these numbers:
+A 2024 Pew Research Center survey added even more context to these numbers. **47% of adults under 50** without children say they're unlikely to ever have kids—up 10 percentage points from 2018.
 
-- **47% of adults under 50** without children say they're unlikely to ever have kids—up 10 percentage points from 2018
-- Among those who say they're unlikely to have children, **57% simply don't want to**
-- **64% of young women** cite "just don't want to" as their primary reason, compared to 50% of men
+<ComparisonBar
+  title="Adults under 50 unlikely to ever have kids"
+  before={{ label: "2018", value: 37 }}
+  after={{ label: "2024", value: 47 }}
+/>
+
+Among those who say they're unlikely to have children, **57% simply don't want to**. And **64% of young women** cite "just don't want to" as their primary reason, compared to 50% of men.
+
+<BarChart
+  title={`"Just don't want to" have children`}
+  data={[
+    { label: "Young women", value: 64, color: "forest" },
+    { label: "Young men", value: 50, color: "muted" }
+  ]}
+/>
 
 ## Why the Shift?
 
@@ -43,6 +62,6 @@ The research points to several factors driving this change:
 
 If you're childfree, you're not an outlier. You're part of a significant and growing demographic that's reshaping what "family" means in America.
 
-Yet despite these numbers, there's still no dedicated space for childfree adults to connect—whether for dating, friendship, or community. That's exactly why we're building Flourish.
+Yet despite these numbers, there's still no dedicated space for childfree adults to connect—whether for dating, friendship, or community. That's exactly why we're building Chosn.
 
 *Sources: [Michigan State University Study](https://msutoday.msu.edu/news/2025/04/msu-study-finds-number-of-us-nonparents-who-never-want-children-is-growing) (2023), [Pew Research Center](https://www.pewresearch.org/social-trends/2024/07/25/the-experiences-of-u-s-adults-who-dont-have-children/) (2024), National Survey of Family Growth (2002-2023)*
