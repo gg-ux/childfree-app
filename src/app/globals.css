@@ -15,15 +15,15 @@
 
   /* Backgrounds - clean neutrals */
   --background: #FFFFFF;
-  --foreground: #1A1A1A;
+  --foreground: #111111;
 
   /* Borders */
   --border: rgba(0, 0, 0, 0.08);
   --border-strong: rgba(0, 0, 0, 0.12);
 
   /* Muted */
-  --muted: #6B6B6B;
-  --muted-light: #9A9A9A;
+  --muted: #555555;
+  --muted-light: #888888;
 }
 
 .dark {
@@ -89,15 +89,15 @@ body {
 
 /* Fluid typography */
 .text-fluid-display {
-  font-size: clamp(3rem, 8vw, 5rem);
+  font-size: clamp(3.25rem, 8vw, 5.5rem);
 }
 
 .text-fluid-h1 {
-  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  font-size: clamp(2.75rem, 7vw, 5rem);
 }
 
 .text-fluid-h2 {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
 }
 
 .font-mono {
@@ -107,20 +107,20 @@ body {
 
 .theme-heading {
   font-family: 'Satoshi', sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.01em;
 }
 
 .theme-body {
   font-family: 'Satoshi', sans-serif;
-  font-weight: 450;
+  font-weight: 500;
   line-height: 1.6;
 }
 
 .theme-caption {
   font-family: 'Satoshi', sans-serif;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -133,7 +133,7 @@ body {
 .theme-secondary {
   font-family: 'Satoshi', sans-serif;
   font-size: 14px;
-  font-weight: 450;
+  font-weight: 500;
   line-height: 1.5;
   color: var(--muted);
 }

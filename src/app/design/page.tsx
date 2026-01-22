@@ -111,9 +111,9 @@ export default function DesignSystemPage() {
             <div>
               <h3 className="theme-caption mb-4">Neutral</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <ColorSwatch name="Foreground" value="#1A1A1A" className="bg-foreground" />
-                <ColorSwatch name="Muted" value="#6B6B6B" className="bg-muted" />
-                <ColorSwatch name="Muted Light" value="#9A9A9A" className="bg-muted-light" />
+                <ColorSwatch name="Foreground" value="#111111" className="bg-foreground" />
+                <ColorSwatch name="Muted" value="#555555" className="bg-muted" />
+                <ColorSwatch name="Muted Light" value="#888888" className="bg-muted-light" />
                 <ColorSwatch name="Background" value="#FFFFFF" className="bg-background border border-border" textDark />
               </div>
             </div>
