@@ -63,7 +63,7 @@ const Logo = React.forwardRef<SVGSVGElement, LogoProps>(
         {/* Wordmark */}
         <text
           x="44"
-          y="26"
+          y="23"
           dominantBaseline="middle"
           fontFamily="Satoshi, -apple-system, sans-serif"
           fontSize="28"
