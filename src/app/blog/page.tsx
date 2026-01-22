@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
+import { BlogImage } from "@/components/ui/blog-image";
 import { getAllPosts } from "@/lib/blog";
 
 export const metadata = {
-  title: "Blog | Flourish",
+  title: "Blog | Chosn",
   description: "Insights, stories, and resources for the childfree community.",
 };
 
@@ -34,16 +35,16 @@ export default async function BlogPage({ searchParams }: PageProps) {
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-[rgba(0,0,0,0.06)]">
         <div className="container-main h-16 flex items-center justify-between">
           <Link href="/">
-            <Logo variant="full" size="sm" />
+            <Logo variant="full" size="md" />
           </Link>
           <div className="flex items-center gap-6">
             <Link
               href="/blog"
-              className="theme-body text-sm text-foreground"
+              className="theme-nav text-foreground hover:text-muted"
             >
               Blog
             </Link>
-            <Button asChild size="sm" variant="accent">
+            <Button asChild variant="accent" size="md">
               <Link href="/sign-up">Join waitlist</Link>
             </Button>
           </div>
@@ -57,11 +58,11 @@ export default async function BlogPage({ searchParams }: PageProps) {
             Blog
           </h1>
           {/* Tag filter */}
-          <div className="flex items-center gap-x-3 theme-body text-base md:text-lg overflow-x-auto scrollbar-hide pb-2 -mb-2">
+          <div className="flex items-center gap-x-3 theme-body-sm overflow-x-auto scrollbar-hide pb-2 -mb-2">
             <Link
               href="/blog"
               className={`whitespace-nowrap transition-colors ${
-                !activeTag ? "text-forest font-semibold" : "text-muted hover:text-forest"
+                !activeTag ? "theme-active" : "text-muted hover:text-foreground"
               }`}
             >
               All
@@ -72,7 +73,7 @@ export default async function BlogPage({ searchParams }: PageProps) {
                 <Link
                   href={`/blog?tag=${encodeURIComponent(tag)}`}
                   className={`whitespace-nowrap transition-colors ${
-                    activeTag === tag ? "text-forest font-semibold" : "text-muted hover:text-forest"
+                    activeTag === tag ? "theme-active" : "text-muted hover:text-foreground"
                   }`}
                 >
                   {tag}
@@ -96,12 +97,12 @@ export default async function BlogPage({ searchParams }: PageProps) {
               {featuredPost && (
                 <Link href={`/blog/${featuredPost.slug}`} className="group block mb-12">
                   <article className="grid md:grid-cols-2 gap-6 md:gap-10">
-                    <div className="aspect-[16/10] rounded-2xl overflow-hidden bg-foreground/5">
+                    <div className="aspect-[3/2] rounded-2xl overflow-hidden bg-foreground/5 group-hover:scale-[1.02] transition-transform duration-500">
                       {featuredPost.image ? (
-                        <img
+                        <BlogImage
                           src={featuredPost.image}
                           alt={featuredPost.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          className="w-full h-full object-cover"
                         />
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-forest/20 to-forest/5" />
@@ -120,7 +121,7 @@ export default async function BlogPage({ searchParams }: PageProps) {
                           ))}
                         </div>
                       )}
-                      <h2 className="font-display text-2xl md:text-3xl lg:text-4xl text-foreground mb-4 group-hover:text-forest transition-colors leading-tight tracking-tight">
+                      <h2 className="font-display text-fluid-h3 text-foreground mb-4 group-hover:text-muted transition-colors leading-tight tracking-tight">
                         {featuredPost.title}
                       </h2>
                       <p className="theme-body text-muted mb-4 line-clamp-2">
@@ -148,12 +149,12 @@ export default async function BlogPage({ searchParams }: PageProps) {
                       className="group block"
                     >
                       <article>
-                        <div className="aspect-[16/10] rounded-xl overflow-hidden bg-foreground/5 mb-4">
+                        <div className="aspect-[3/2] rounded-xl overflow-hidden bg-foreground/5 mb-4 group-hover:scale-[1.02] transition-transform duration-500">
                           {post.image ? (
-                            <img
+                            <BlogImage
                               src={post.image}
                               alt={post.title}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                              className="w-full h-full object-cover"
                             />
                           ) : (
                             <div className="w-full h-full bg-gradient-to-br from-forest/20 to-forest/5" />
@@ -171,7 +172,7 @@ export default async function BlogPage({ searchParams }: PageProps) {
                             ))}
                           </div>
                         )}
-                        <h3 className="font-display text-lg md:text-xl text-foreground mb-2 group-hover:text-forest transition-colors leading-snug tracking-tight">
+                        <h3 className="font-display text-fluid-h4 text-foreground mb-2 group-hover:text-muted transition-colors leading-snug tracking-tight">
                           {post.title}
                         </h3>
                         <time className="theme-secondary">
@@ -195,7 +196,7 @@ export default async function BlogPage({ searchParams }: PageProps) {
       <footer className="py-12 border-t border-[rgba(0,0,0,0.06)]">
         <div className="container-main">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <Logo variant="full" size="sm" />
+            <Logo variant="full" size="md" />
             <div className="flex gap-8">
               {["About", "Blog", "Privacy", "Terms", "Contact"].map((item) => (
                 <Link
@@ -210,7 +211,7 @@ export default async function BlogPage({ searchParams }: PageProps) {
           </div>
           <div className="mt-8 pt-8 border-t border-[rgba(0,0,0,0.06)] text-center">
             <p className="theme-caption text-muted">
-              &copy; {new Date().getFullYear()} Flourish. All rights reserved.
+              &copy; {new Date().getFullYear()} Chosn. All rights reserved.
             </p>
           </div>
         </div>

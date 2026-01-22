@@ -11,7 +11,7 @@
   --coral: #E06E3D;
   --marigold: #F5AA3D;
   --cream: #F5F0E8;
-  --navy: #19131D;
+  --charcoal: #19131D;
 
   /* Backgrounds - clean neutrals */
   --background: #FFFFFF;
@@ -48,7 +48,7 @@
   --color-coral: var(--coral);
   --color-marigold: var(--marigold);
   --color-cream: var(--cream);
-  --color-navy: var(--navy);
+  --color-charcoal: var(--charcoal);
 
   /* Borders */
   --color-border: var(--border);
@@ -100,9 +100,17 @@ body {
   font-size: clamp(2.25rem, 5vw, 3.25rem);
 }
 
-.font-mono {
+.text-fluid-h3 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.text-fluid-h4 {
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+}
+
+.font-button {
   font-family: 'Satoshi', sans-serif;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .theme-heading {
@@ -113,8 +121,16 @@ body {
 
 .theme-body {
   font-family: 'Satoshi', sans-serif;
+  font-size: 18px;
   font-weight: 500;
   line-height: 1.6;
+}
+
+.theme-body-sm {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
 }
 
 .theme-caption {
@@ -136,6 +152,20 @@ body {
   font-weight: 500;
   line-height: 1.5;
   color: var(--muted);
+}
+
+/* Active state modifier for filter links */
+.theme-active {
+  font-weight: 600;
+  color: var(--forest);
+}
+
+/* Nav link style */
+.theme-nav {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  transition: color 0.2s;
 }
 
 /* Organic easing */

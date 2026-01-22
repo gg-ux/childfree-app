@@ -1,47 +1,47 @@
-<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- "Building Your Chosen Family" - Connection theme -->
 
   <!-- Top left - green with connected branch pattern -->
-  <rect x="0" y="0" width="600" height="350" fill="#2F7255"/>
-  <!-- Branch network showing connection -->
+  <rect x="0" y="0" width="600" height="450" fill="#2F7255"/>
+  <!-- Branch network showing connection - centered at (300, 225) -->
   <g stroke="#F5F0E8" stroke-width="6" fill="none">
-    <line x1="300" y1="175" x2="150" y2="80"/>
-    <line x1="300" y1="175" x2="450" y2="80"/>
-    <line x1="300" y1="175" x2="150" y2="270"/>
-    <line x1="300" y1="175" x2="450" y2="270"/>
-    <line x1="300" y1="175" x2="300" y2="50"/>
+    <line x1="300" y1="225" x2="150" y2="130"/>
+    <line x1="300" y1="225" x2="450" y2="130"/>
+    <line x1="300" y1="225" x2="150" y2="320"/>
+    <line x1="300" y1="225" x2="450" y2="320"/>
+    <line x1="300" y1="225" x2="300" y2="100"/>
   </g>
   <!-- Flowers at branch ends (staggered pulse animation) -->
   <g fill="#D4654A">
-    <circle cx="150" cy="80" r="28">
+    <circle cx="150" cy="130" r="28">
       <animate attributeName="r" values="28;40;28" dur="1.5s" begin="0s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
     </circle>
-    <circle cx="450" cy="80" r="28">
+    <circle cx="450" cy="130" r="28">
       <animate attributeName="r" values="28;40;28" dur="1.5s" begin="0.3s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
     </circle>
-    <circle cx="150" cy="270" r="28">
+    <circle cx="150" cy="320" r="28">
       <animate attributeName="r" values="28;40;28" dur="1.5s" begin="0.6s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
     </circle>
-    <circle cx="450" cy="270" r="28">
+    <circle cx="450" cy="320" r="28">
       <animate attributeName="r" values="28;40;28" dur="1.5s" begin="0.9s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
     </circle>
-    <circle cx="300" cy="50" r="28">
+    <circle cx="300" cy="100" r="28">
       <animate attributeName="r" values="28;40;28" dur="1.5s" begin="1.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
     </circle>
   </g>
   <g fill="#D9A441">
-    <circle cx="150" cy="80" r="12"/>
-    <circle cx="450" cy="80" r="12"/>
-    <circle cx="150" cy="270" r="12"/>
-    <circle cx="450" cy="270" r="12"/>
-    <circle cx="300" cy="50" r="12"/>
+    <circle cx="150" cy="130" r="12"/>
+    <circle cx="450" cy="130" r="12"/>
+    <circle cx="150" cy="320" r="12"/>
+    <circle cx="450" cy="320" r="12"/>
+    <circle cx="300" cy="100" r="12"/>
   </g>
   <!-- Center large flower -->
-  <circle cx="300" cy="175" r="40" fill="#D9A441"/>
-  <circle cx="300" cy="175" r="22" fill="#2F7255"/>
+  <circle cx="300" cy="225" r="40" fill="#D9A441"/>
+  <circle cx="300" cy="225" r="22" fill="#2F7255"/>
 
   <!-- Top right - coral with tulips -->
-  <rect x="600" y="0" width="600" height="350" fill="#D4654A"/>
+  <rect x="600" y="0" width="600" height="450" fill="#D4654A"/>
   <!-- Tulip row -->
   <g transform="translate(750, 200)">
     <rect x="-4" y="0" width="8" height="100" fill="#2F7255"/>
@@ -63,8 +63,8 @@
   </g>
 
   <!-- Bottom left - gold with 8-pointed star -->
-  <rect x="0" y="350" width="350" height="250" fill="#D9A441"/>
-  <g transform="translate(175, 475)">
+  <rect x="0" y="450" width="350" height="350" fill="#D9A441"/>
+  <g transform="translate(175, 625)">
     <!-- 8-pointed star -->
     <polygon points="0,-60 15,-15 60,0 15,15 0,60 -15,15 -60,0 -15,-15" fill="#D4654A"/>
     <polygon points="0,-40 42,-42 40,0 42,42 0,40 -42,42 -40,0 -42,-42" fill="#D4654A"/>
@@ -72,29 +72,29 @@
   </g>
 
   <!-- Bottom center - light green with dot pattern -->
-  <rect x="350" y="350" width="400" height="250" fill="#19131D"/>
-  <!-- Dot grid -->
+  <rect x="350" y="450" width="400" height="350" fill="#19131D"/>
+  <!-- Dot grid - centered at (550, 625) -->
   <g fill="#F5F0E8">
-    <circle cx="420" cy="420" r="10"/>
-    <circle cx="480" cy="420" r="10"/>
-    <circle cx="540" cy="420" r="10"/>
-    <circle cx="600" cy="420" r="10"/>
-    <circle cx="660" cy="420" r="10"/>
-    <circle cx="420" cy="480" r="10"/>
-    <circle cx="480" cy="480" r="10"/>
-    <circle cx="540" cy="480" r="10"/>
-    <circle cx="600" cy="480" r="10"/>
-    <circle cx="660" cy="480" r="10"/>
-    <circle cx="420" cy="540" r="10"/>
-    <circle cx="480" cy="540" r="10"/>
-    <circle cx="540" cy="540" r="10"/>
-    <circle cx="600" cy="540" r="10"/>
-    <circle cx="660" cy="540" r="10"/>
+    <circle cx="430" cy="565" r="10"/>
+    <circle cx="490" cy="565" r="10"/>
+    <circle cx="550" cy="565" r="10"/>
+    <circle cx="610" cy="565" r="10"/>
+    <circle cx="670" cy="565" r="10"/>
+    <circle cx="430" cy="625" r="10"/>
+    <circle cx="490" cy="625" r="10"/>
+    <circle cx="550" cy="625" r="10"/>
+    <circle cx="610" cy="625" r="10"/>
+    <circle cx="670" cy="625" r="10"/>
+    <circle cx="430" cy="685" r="10"/>
+    <circle cx="490" cy="685" r="10"/>
+    <circle cx="550" cy="685" r="10"/>
+    <circle cx="610" cy="685" r="10"/>
+    <circle cx="670" cy="685" r="10"/>
   </g>
 
   <!-- Bottom right - dark green with scalloped flower (animated slow spin) -->
-  <rect x="750" y="350" width="450" height="250" fill="#2F7255"/>
-  <g transform="translate(975, 475)">
+  <rect x="750" y="450" width="450" height="350" fill="#2F7255"/>
+  <g transform="translate(975, 625)">
     <!-- Scalloped/rounded flower -->
     <g>
       <animateTransform

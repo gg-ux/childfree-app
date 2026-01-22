@@ -65,7 +65,8 @@ export function WaitlistForm({ source = "website", className }: WaitlistFormProp
         <Button
           type="submit"
           variant="accent"
-          className="w-full sm:w-auto h-14 shrink-0"
+          size="lg"
+          className="w-full sm:w-auto shrink-0"
           disabled={status === "loading"}
         >
           {status === "loading" ? "Joining..." : "Join the waitlist"}

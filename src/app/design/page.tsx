@@ -55,7 +55,7 @@ export default function DesignSystemPage() {
             </a>
             <h1 className="text-xl font-semibold">Design System</h1>
           </div>
-          <a href="/" className="text-sm font-[450] text-muted hover:text-forest transition-colors">
+          <a href="/" className="text-sm font-[450] text-muted hover:text-foreground transition-colors">
             Back to Home
           </a>
         </div>
@@ -70,7 +70,7 @@ export default function DesignSystemPage() {
                 <li key={item.id}>
                   <a
                     href={`#${item.id}`}
-                    className="block text-sm font-[450] text-muted hover:text-forest transition-colors py-1"
+                    className="block text-sm font-[450] text-muted hover:text-foreground transition-colors py-1"
                   >
                     {item.label}
                   </a>

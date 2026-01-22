@@ -1,32 +1,32 @@
-<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- "Childfree by the Numbers" - Growth/Data theme -->
   <!-- Unique layout: Large left panel, stacked right panels -->
 
   <!-- Left - coral with flower growth stages (dominant) -->
-  <rect x="0" y="0" width="750" height="600" fill="#D4654A"/>
+  <rect x="0" y="0" width="750" height="800" fill="#D4654A"/>
   <!-- Ground -->
-  <rect x="60" y="480" width="630" height="10" fill="#2F7255"/>
+  <rect x="60" y="620" width="630" height="10" fill="#2F7255"/>
 
   <!-- Stage 1: Small sprout -->
-  <g transform="translate(150, 480)">
-    <rect x="-4" y="-60" width="8" height="60" fill="#2F7255"/>
-    <ellipse cx="-20" cy="-50" rx="16" ry="9" fill="#2F7255" transform="rotate(-30 -20 -50)"/>
-    <ellipse cx="20" cy="-50" rx="16" ry="9" fill="#2F7255" transform="rotate(30 20 -50)"/>
+  <g transform="translate(150, 620)">
+    <rect x="-4" y="-80" width="8" height="80" fill="#2F7255"/>
+    <ellipse cx="-22" cy="-65" rx="18" ry="10" fill="#2F7255" transform="rotate(-30 -22 -65)"/>
+    <ellipse cx="22" cy="-65" rx="18" ry="10" fill="#2F7255" transform="rotate(30 22 -65)"/>
   </g>
 
   <!-- Stage 2: Growing with leaves -->
-  <g transform="translate(370, 480)">
-    <rect x="-5" y="-140" width="10" height="140" fill="#2F7255"/>
-    <ellipse cx="-28" cy="-60" rx="22" ry="12" fill="#2F7255" transform="rotate(-25 -28 -60)"/>
-    <ellipse cx="28" cy="-60" rx="22" ry="12" fill="#2F7255" transform="rotate(25 28 -60)"/>
-    <ellipse cx="-24" cy="-110" rx="18" ry="10" fill="#2F7255" transform="rotate(-25 -24 -110)"/>
-    <ellipse cx="24" cy="-110" rx="18" ry="10" fill="#2F7255" transform="rotate(25 24 -110)"/>
+  <g transform="translate(370, 620)">
+    <rect x="-5" y="-180" width="10" height="180" fill="#2F7255"/>
+    <ellipse cx="-30" cy="-80" rx="24" ry="13" fill="#2F7255" transform="rotate(-25 -30 -80)"/>
+    <ellipse cx="30" cy="-80" rx="24" ry="13" fill="#2F7255" transform="rotate(25 30 -80)"/>
+    <ellipse cx="-26" cy="-140" rx="20" ry="11" fill="#2F7255" transform="rotate(-25 -26 -140)"/>
+    <ellipse cx="26" cy="-140" rx="20" ry="11" fill="#2F7255" transform="rotate(25 26 -140)"/>
     <!-- Bud -->
-    <circle cx="0" cy="-155" r="18" fill="#D9A441"/>
+    <circle cx="0" cy="-200" r="22" fill="#D9A441"/>
   </g>
 
   <!-- Stage 3: Full bloom (animated gentle sway) -->
-  <g transform="translate(590, 480)">
+  <g transform="translate(590, 620)">
     <g>
       <animateTransform
         attributeName="transform"
@@ -37,59 +37,51 @@
         calcMode="spline"
         keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"
       />
-      <rect x="-6" y="-200" width="12" height="200" fill="#2F7255"/>
-      <ellipse cx="-32" cy="-80" rx="26" ry="14" fill="#2F7255" transform="rotate(-25 -32 -80)"/>
-      <ellipse cx="32" cy="-80" rx="26" ry="14" fill="#2F7255" transform="rotate(25 32 -80)"/>
-      <ellipse cx="-28" cy="-150" rx="20" ry="11" fill="#2F7255" transform="rotate(-25 -28 -150)"/>
-      <ellipse cx="28" cy="-150" rx="20" ry="11" fill="#2F7255" transform="rotate(25 28 -150)"/>
+      <rect x="-6" y="-260" width="12" height="260" fill="#2F7255"/>
+      <ellipse cx="-35" cy="-100" rx="28" ry="15" fill="#2F7255" transform="rotate(-25 -35 -100)"/>
+      <ellipse cx="35" cy="-100" rx="28" ry="15" fill="#2F7255" transform="rotate(25 35 -100)"/>
+      <ellipse cx="-30" cy="-190" rx="22" ry="12" fill="#2F7255" transform="rotate(-25 -30 -190)"/>
+      <ellipse cx="30" cy="-190" rx="22" ry="12" fill="#2F7255" transform="rotate(25 30 -190)"/>
       <!-- Full flower -->
-      <g transform="translate(0, -235)">
-        <circle cx="0" cy="-28" r="26" fill="#F5F0E8"/>
-        <circle cx="27" cy="-9" r="26" fill="#F5F0E8"/>
-        <circle cx="17" cy="23" r="26" fill="#F5F0E8"/>
-        <circle cx="-17" cy="23" r="26" fill="#F5F0E8"/>
-        <circle cx="-27" cy="-9" r="26" fill="#F5F0E8"/>
-        <circle cx="0" cy="0" r="17" fill="#D9A441"/>
+      <g transform="translate(0, -300)">
+        <circle cx="0" cy="-30" r="30" fill="#F5F0E8"/>
+        <circle cx="30" cy="-10" r="30" fill="#F5F0E8"/>
+        <circle cx="19" cy="26" r="30" fill="#F5F0E8"/>
+        <circle cx="-19" cy="26" r="30" fill="#F5F0E8"/>
+        <circle cx="-30" cy="-10" r="30" fill="#F5F0E8"/>
+        <circle cx="0" cy="0" r="20" fill="#D9A441"/>
       </g>
     </g>
   </g>
 
   <!-- Top right - gold with plus grid -->
-  <rect x="750" y="0" width="450" height="300" fill="#D9A441"/>
+  <rect x="750" y="0" width="450" height="400" fill="#D9A441"/>
   <g fill="#F5F0E8">
-    <path d="M840 80 h12 v-12 h10 v12 h12 v10 h-12 v12 h-10 v-12 h-12 z"/>
-    <path d="M920 80 h12 v-12 h10 v12 h12 v10 h-12 v12 h-10 v-12 h-12 z"/>
-    <path d="M1000 80 h12 v-12 h10 v12 h12 v10 h-12 v12 h-10 v-12 h-12 z"/>
-    <path d="M1080 80 h12 v-12 h10 v12 h12 v10 h-12 v12 h-10 v-12 h-12 z"/>
-    <path d="M840 160 h12 v-12 h10 v12 h12 v10 h-12 v12 h-10 v-12 h-12 z"/>
-    <path d="M920 160 h12 v-12 h10 v12 h12 v10 h-12 v12 h-10 v-12 h-12 z"/>
-    <path d="M1000 160 h12 v-12 h10 v12 h12 v10 h-12 v12 h-10 v-12 h-12 z"/>
-    <path d="M1080 160 h12 v-12 h10 v12 h12 v10 h-12 v12 h-10 v-12 h-12 z"/>
-    <path d="M840 240 h12 v-12 h10 v12 h12 v10 h-12 v12 h-10 v-12 h-12 z"/>
-    <path d="M920 240 h12 v-12 h10 v12 h12 v10 h-12 v12 h-10 v-12 h-12 z"/>
-    <path d="M1000 240 h12 v-12 h10 v12 h12 v10 h-12 v12 h-10 v-12 h-12 z"/>
-    <path d="M1080 240 h12 v-12 h10 v12 h12 v10 h-12 v12 h-10 v-12 h-12 z"/>
+    <path d="M840 100 h14 v-14 h12 v14 h14 v12 h-14 v14 h-12 v-14 h-14 z"/>
+    <path d="M940 100 h14 v-14 h12 v14 h14 v12 h-14 v14 h-12 v-14 h-14 z"/>
+    <path d="M1040 100 h14 v-14 h12 v14 h14 v12 h-14 v14 h-12 v-14 h-14 z"/>
+    <path d="M840 200 h14 v-14 h12 v14 h14 v12 h-14 v14 h-12 v-14 h-14 z"/>
+    <path d="M940 200 h14 v-14 h12 v14 h14 v12 h-14 v14 h-12 v-14 h-14 z"/>
+    <path d="M1040 200 h14 v-14 h12 v14 h14 v12 h-14 v14 h-12 v-14 h-14 z"/>
+    <path d="M840 300 h14 v-14 h12 v14 h14 v12 h-14 v14 h-12 v-14 h-14 z"/>
+    <path d="M940 300 h14 v-14 h12 v14 h14 v12 h-14 v14 h-12 v-14 h-14 z"/>
+    <path d="M1040 300 h14 v-14 h12 v14 h14 v12 h-14 v14 h-12 v-14 h-14 z"/>
   </g>
 
   <!-- Bottom right - navy with stroller + slash (childfree symbol) -->
-  <rect x="750" y="300" width="450" height="300" fill="#19131D"/>
-  <g transform="translate(975, 450)">
+  <rect x="750" y="400" width="450" height="400" fill="#19131D"/>
+  <g transform="translate(975, 600)">
     <!-- Classic pram silhouette -->
-    <!-- Carriage body (flat bottom, angled sides) -->
-    <path d="M-45 10 L-55 -15 L55 -15 L45 10 Z" fill="#F5F0E8"/>
-    <!-- Hood/canopy (half dome on left side) -->
-    <path d="M-55 -15 Q-55 -65 -10 -65 L-10 -15 Z" fill="#F5F0E8"/>
-    <!-- Chassis/frame -->
-    <line x1="-40" y1="10" x2="-35" y2="35" stroke="#F5F0E8" stroke-width="6" stroke-linecap="round"/>
-    <line x1="40" y1="10" x2="35" y2="35" stroke="#F5F0E8" stroke-width="6" stroke-linecap="round"/>
-    <!-- Wheels -->
-    <circle cx="-35" cy="50" r="15" fill="#F5F0E8"/>
-    <circle cx="35" cy="50" r="15" fill="#F5F0E8"/>
-    <circle cx="-35" cy="50" r="6" fill="#19131D"/>
-    <circle cx="35" cy="50" r="6" fill="#19131D"/>
-    <!-- Handle (extends up from right side) -->
-    <path d="M45 -15 Q60 -20 65 -55" stroke="#F5F0E8" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <path d="M-55 12 L-65 -18 L65 -18 L55 12 Z" fill="#F5F0E8"/>
+    <path d="M-65 -18 Q-65 -80 -12 -80 L-12 -18 Z" fill="#F5F0E8"/>
+    <line x1="-48" y1="12" x2="-42" y2="42" stroke="#F5F0E8" stroke-width="7" stroke-linecap="round"/>
+    <line x1="48" y1="12" x2="42" y2="42" stroke="#F5F0E8" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="-42" cy="60" r="18" fill="#F5F0E8"/>
+    <circle cx="42" cy="60" r="18" fill="#F5F0E8"/>
+    <circle cx="-42" cy="60" r="7" fill="#19131D"/>
+    <circle cx="42" cy="60" r="7" fill="#19131D"/>
+    <path d="M55 -18 Q72 -24 78 -68" stroke="#F5F0E8" stroke-width="8" fill="none" stroke-linecap="round"/>
     <!-- Diagonal slash -->
-    <line x1="-65" y1="65" x2="65" y2="-65" stroke="#D4654A" stroke-width="14" stroke-linecap="round"/>
+    <line x1="-78" y1="78" x2="78" y2="-78" stroke="#D4654A" stroke-width="16" stroke-linecap="round"/>
   </g>
 </svg>

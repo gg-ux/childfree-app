@@ -1,9 +1,9 @@
-<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- "But What If You Change Your Mind?" - Head with brain and cycling arrows -->
 
   <!-- Left - green with see-saw (weighing options, back and forth) -->
-  <rect x="0" y="0" width="750" height="600" fill="#2F7255"/>
-  <g transform="translate(375, 300)">
+  <rect x="0" y="0" width="750" height="800" fill="#2F7255"/>
+  <g transform="translate(375, 400)">
     <!-- Fulcrum/pivot (triangle) - connected to plank -->
     <polygon points="0,50 -45,120 45,120" fill="#19131D"/>
 
@@ -27,8 +27,8 @@
   </g>
 
   <!-- Top right - gold with compass -->
-  <rect x="750" y="0" width="450" height="300" fill="#D9A441"/>
-  <g transform="translate(975, 150)">
+  <rect x="750" y="0" width="450" height="400" fill="#D9A441"/>
+  <g transform="translate(975, 200)">
     <!-- Smaller compass -->
     <circle cx="0" cy="0" r="90" fill="#F5F0E8"/>
     <circle cx="0" cy="0" r="75" fill="#D9A441"/>
@@ -52,8 +52,8 @@
   </g>
 
   <!-- Bottom right - navy with half circles -->
-  <rect x="750" y="300" width="450" height="300" fill="#19131D"/>
-  <g transform="translate(975, 450)">
+  <rect x="750" y="400" width="450" height="400" fill="#19131D"/>
+  <g transform="translate(975, 600)">
     <path d="M-80 50 A80 80 0 0 1 80 50" fill="#D9A441"/>
     <path d="M-55 50 A55 55 0 0 1 55 50" fill="#D4654A"/>
     <path d="M-30 50 A30 30 0 0 1 30 50" fill="#F5F0E8"/>

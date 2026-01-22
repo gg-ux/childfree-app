@@ -1,8 +1,8 @@
-<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- "Why Childfree Dating Apps Keep Failing" - Disconnection theme -->
 
   <!-- Top left - coral with scattered/falling leaves (shorter) -->
-  <rect x="0" y="0" width="700" height="220" fill="#D4654A"/>
+  <rect x="0" y="0" width="700" height="280" fill="#D4654A"/>
   <!-- Scattered leaves at different angles -->
   <ellipse cx="100" cy="60" rx="32" ry="16" fill="#2F7255" transform="rotate(-45 100 60)"/>
   <ellipse cx="250" cy="110" rx="28" ry="14" fill="#2F7255" transform="rotate(30 250 110)"/>
@@ -14,44 +14,49 @@
   <ellipse cx="500" cy="180" rx="30" ry="15" fill="#2F7255" transform="rotate(45 500 180)"/>
   <ellipse cx="620" cy="80" rx="26" ry="13" fill="#2F7255" transform="rotate(10 620 80)"/>
 
-  <!-- Top right - gold with wilted flower (petals fall off) -->
-  <rect x="700" y="0" width="500" height="350" fill="#D9A441"/>
-  <!-- Wilted flower -->
-  <g transform="translate(950, 175)">
+  <!-- Top right - gold with wilted flower (petals fall off one by one, then loop) -->
+  <rect x="700" y="0" width="500" height="450" fill="#D9A441"/>
+  <!-- Wilted flower - centered at (950, 225) -->
+  <g transform="translate(950, 225)">
     <rect x="-6" y="0" width="12" height="130" fill="#2F7255"/>
-    <!-- Drooping petals - fall off one by one -->
+    <!-- Petals fall off one by one: 8s total cycle, position resets while invisible -->
+    <!-- Petal 1 (left) - falls at 0.5s -->
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0;0,0;0,150" dur="6s" begin="0s" repeatCount="indefinite" keyTimes="0;0.2;0.5"/>
-      <animate attributeName="opacity" values="1;1;0" dur="6s" begin="0s" repeatCount="indefinite" keyTimes="0;0.2;0.5"/>
+      <animateTransform attributeName="transform" type="translate" values="0,0;0,0;0,120;0,120;0,0;0,0" dur="8s" begin="0s" repeatCount="indefinite" keyTimes="0;0.06;0.18;0.85;0.86;1"/>
+      <animate attributeName="opacity" values="1;1;0;0;1" dur="8s" begin="0s" repeatCount="indefinite" keyTimes="0;0.06;0.18;0.94;1"/>
       <ellipse cx="-45" cy="5" rx="20" ry="36" fill="#D4654A" transform="rotate(-55 -45 5)"/>
     </g>
+    <!-- Petal 2 (right) - falls at 1.5s -->
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0;0,0;0,150" dur="6s" begin="0.7s" repeatCount="indefinite" keyTimes="0;0.2;0.5"/>
-      <animate attributeName="opacity" values="1;1;0" dur="6s" begin="0.7s" repeatCount="indefinite" keyTimes="0;0.2;0.5"/>
+      <animateTransform attributeName="transform" type="translate" values="0,0;0,0;0,120;0,120;0,0;0,0" dur="8s" begin="0s" repeatCount="indefinite" keyTimes="0;0.19;0.31;0.85;0.86;1"/>
+      <animate attributeName="opacity" values="1;1;0;0;1" dur="8s" begin="0s" repeatCount="indefinite" keyTimes="0;0.19;0.31;0.94;1"/>
       <ellipse cx="45" cy="5" rx="20" ry="36" fill="#D4654A" transform="rotate(55 45 5)"/>
     </g>
+    <!-- Petal 3 (top left) - falls at 2.5s -->
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0;0,0;0,150" dur="6s" begin="1.4s" repeatCount="indefinite" keyTimes="0;0.2;0.5"/>
-      <animate attributeName="opacity" values="1;1;0" dur="6s" begin="1.4s" repeatCount="indefinite" keyTimes="0;0.2;0.5"/>
+      <animateTransform attributeName="transform" type="translate" values="0,0;0,0;0,120;0,120;0,0;0,0" dur="8s" begin="0s" repeatCount="indefinite" keyTimes="0;0.31;0.43;0.85;0.86;1"/>
+      <animate attributeName="opacity" values="1;1;0;0;1" dur="8s" begin="0s" repeatCount="indefinite" keyTimes="0;0.31;0.43;0.94;1"/>
       <ellipse cx="-28" cy="-35" rx="18" ry="32" fill="#D4654A" transform="rotate(-25 -28 -35)"/>
     </g>
+    <!-- Petal 4 (top right) - falls at 3.5s -->
     <g>
-      <animateTransform attributeName="transform" type="translate" values="0,0;0,0;0,150" dur="6s" begin="2.1s" repeatCount="indefinite" keyTimes="0;0.2;0.5"/>
-      <animate attributeName="opacity" values="1;1;0" dur="6s" begin="2.1s" repeatCount="indefinite" keyTimes="0;0.2;0.5"/>
+      <animateTransform attributeName="transform" type="translate" values="0,0;0,0;0,120;0,120;0,0;0,0" dur="8s" begin="0s" repeatCount="indefinite" keyTimes="0;0.43;0.55;0.85;0.86;1"/>
+      <animate attributeName="opacity" values="1;1;0;0;1" dur="8s" begin="0s" repeatCount="indefinite" keyTimes="0;0.43;0.55;0.94;1"/>
       <ellipse cx="28" cy="-35" rx="18" ry="32" fill="#D4654A" transform="rotate(25 28 -35)"/>
     </g>
+    <!-- Center stays -->
     <circle cx="0" cy="-18" r="22" fill="#2F7255"/>
   </g>
 
   <!-- Bottom left - dark green with large phone + X (taller) -->
-  <rect x="0" y="220" width="700" height="380" fill="#2F7255"/>
-  <g transform="translate(350, 420)">
+  <rect x="0" y="280" width="700" height="520" fill="#2F7255"/>
+  <g transform="translate(350, 540)">
     <!-- Larger simplified phone shape -->
-    <rect x="-70" y="-95" width="140" height="190" rx="16" fill="#F5F0E8"/>
+    <rect x="-90" y="-125" width="180" height="250" rx="20" fill="#F5F0E8"/>
     <!-- Screen -->
-    <rect x="-56" y="-75" width="112" height="130" fill="#D9A441"/>
+    <rect x="-72" y="-100" width="144" height="170" fill="#D9A441"/>
     <!-- X on screen (animated pulse) -->
-    <g stroke="#D4654A" stroke-width="14" stroke-linecap="round">
+    <g stroke="#D4654A" stroke-width="18" stroke-linecap="round">
       <animate
         attributeName="opacity"
         values="1;0.5;1"
@@ -60,17 +65,17 @@
         calcMode="spline"
         keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"
       />
-      <line x1="-30" y1="-45" x2="30" y2="25"/>
-      <line x1="30" y1="-45" x2="-30" y2="25"/>
+      <line x1="-40" y1="-60" x2="40" y2="30"/>
+      <line x1="40" y1="-60" x2="-40" y2="30"/>
     </g>
     <!-- Home button -->
-    <circle cx="0" cy="75" r="14" fill="#D9A441"/>
+    <circle cx="0" cy="100" r="18" fill="#D9A441"/>
   </g>
 
   <!-- Bottom right - light green with broken circle (animated slow spin) -->
-  <rect x="700" y="350" width="500" height="250" fill="#19131D"/>
+  <rect x="700" y="450" width="500" height="350" fill="#19131D"/>
   <!-- Broken circle -->
-  <g transform="translate(950, 475)">
+  <g transform="translate(950, 625)">
     <g>
       <animateTransform
         attributeName="transform"

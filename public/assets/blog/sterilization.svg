@@ -1,88 +1,78 @@
-<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- "Childfree Sterilization: What the Research Says About Regret" -->
-  <!-- Theme: Research/knowledge, clean cut leading to flourishing -->
+  <!-- Theme: Research shows positive outcomes, confidence, peace -->
 
-  <!-- Left - navy with open book and magnifying glass -->
-  <rect x="0" y="0" width="650" height="600" fill="#19131D"/>
-  <g transform="translate(325, 320)">
-    <!-- Clean geometric open book -->
-    <rect x="-140" y="-20" width="130" height="160" rx="4" fill="#F5F0E8" transform="rotate(-10)"/>
-    <rect x="10" y="-20" width="130" height="160" rx="4" fill="#F5F0E8" transform="rotate(10)"/>
-    <!-- Book spine -->
-    <rect x="-10" y="-30" width="20" height="175" fill="#D9A441"/>
+  <!-- Left - navy with clipboard and checkmark (research validated) -->
+  <rect x="0" y="0" width="600" height="800" fill="#19131D"/>
+  <g transform="translate(300, 400) scale(1.2)">
+    <!-- Clipboard -->
+    <rect x="-80" y="-100" width="160" height="200" rx="8" fill="#F5F0E8"/>
+    <!-- Clip at top -->
+    <rect x="-30" y="-115" width="60" height="25" rx="6" fill="#D9A441"/>
+    <rect x="-20" y="-120" width="40" height="15" rx="4" fill="#D9A441"/>
 
-    <!-- Page lines on left page -->
-    <g transform="rotate(-10)">
-      <rect x="-125" y="10" width="90" height="5" fill="#2F7255" opacity="0.15"/>
-      <rect x="-125" y="30" width="90" height="5" fill="#2F7255" opacity="0.15"/>
-      <rect x="-125" y="50" width="90" height="5" fill="#2F7255" opacity="0.15"/>
-      <rect x="-125" y="70" width="70" height="5" fill="#2F7255" opacity="0.15"/>
-      <rect x="-125" y="90" width="80" height="5" fill="#2F7255" opacity="0.15"/>
-      <rect x="-125" y="110" width="60" height="5" fill="#2F7255" opacity="0.15"/>
-    </g>
+    <!-- Chart bars (showing low regret = small bar, high satisfaction = tall bar) -->
+    <rect x="-55" y="30" width="30" height="45" rx="4" fill="#D4654A" opacity="0.4"/>
+    <rect x="-15" y="-20" width="30" height="95" rx="4" fill="#2F7255"/>
+    <rect x="25" y="-40" width="30" height="115" rx="4" fill="#2F7255"/>
 
-    <!-- Page lines on right page -->
-    <g transform="rotate(10)">
-      <rect x="25" y="10" width="90" height="5" fill="#2F7255" opacity="0.15"/>
-      <rect x="25" y="30" width="90" height="5" fill="#2F7255" opacity="0.15"/>
-      <rect x="25" y="50" width="90" height="5" fill="#2F7255" opacity="0.15"/>
-      <rect x="25" y="70" width="70" height="5" fill="#2F7255" opacity="0.15"/>
-      <rect x="25" y="90" width="80" height="5" fill="#2F7255" opacity="0.15"/>
-      <rect x="25" y="110" width="60" height="5" fill="#2F7255" opacity="0.15"/>
-    </g>
+    <!-- Labels suggestion lines -->
+    <rect x="-55" y="85" width="30" height="4" rx="2" fill="#19131D" opacity="0.15"/>
+    <rect x="-15" y="85" width="30" height="4" rx="2" fill="#19131D" opacity="0.15"/>
+    <rect x="25" y="85" width="30" height="4" rx="2" fill="#19131D" opacity="0.15"/>
 
-    <!-- Magnifying glass -->
-    <g transform="translate(40, -80)">
-      <!-- Glass circle -->
-      <circle cx="0" cy="0" r="70" stroke="#F5F0E8" stroke-width="14" fill="none"/>
-      <circle cx="0" cy="0" r="50" fill="#D4654A" opacity="0.3"/>
-      <!-- Handle -->
-      <rect x="45" y="45" width="70" height="18" rx="9" fill="#F5F0E8" transform="rotate(45 45 45)"/>
+    <!-- Big checkmark overlay -->
+    <g transform="translate(50, -60)">
+      <circle cx="0" cy="0" r="45" fill="#2F7255"/>
+      <path d="M -20 0 L -5 15 L 22 -15" stroke="#F5F0E8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
     </g>
   </g>
 
-  <!-- Top right - coral with scissors cutting stem -->
-  <rect x="650" y="0" width="550" height="350" fill="#D4654A"/>
-  <g transform="translate(925, 175)">
-    <!-- Stem being cut -->
-    <rect x="-6" y="-80" width="12" height="100" fill="#F5F0E8"/>
-    <rect x="-6" y="30" width="12" height="80" fill="#F5F0E8" opacity="0.4"/>
-
-    <!-- Cut marks / gap -->
-    <rect x="-30" y="18" width="60" height="14" fill="#D4654A"/>
-
-    <!-- Abstract scissors -->
-    <!-- Left blade -->
-    <ellipse cx="-50" cy="25" rx="45" ry="12" fill="#2F7255" transform="rotate(-20 -50 25)"/>
-    <!-- Right blade -->
-    <ellipse cx="50" cy="25" rx="45" ry="12" fill="#2F7255" transform="rotate(20 50 25)"/>
-    <!-- Scissors pivot/center -->
-    <circle cx="0" cy="25" r="14" fill="#D9A441"/>
-
-    <!-- Small bloom at top of cut stem -->
-    <circle cx="0" cy="-100" r="28" fill="#F5F0E8"/>
-    <circle cx="0" cy="-100" r="14" fill="#D9A441"/>
-
-    <!-- New growth beside the cut - small sprout -->
-    <g transform="translate(80, 60)">
-      <rect x="-3" y="-35" width="6" height="40" fill="#F5F0E8"/>
-      <ellipse cx="-12" cy="-32" rx="10" ry="6" fill="#F5F0E8" transform="rotate(-30 -12 -32)"/>
-      <ellipse cx="12" cy="-32" rx="10" ry="6" fill="#F5F0E8" transform="rotate(30 12 -32)"/>
-    </g>
+  <!-- Top right - coral with peaceful person -->
+  <rect x="600" y="0" width="600" height="450" fill="#D4654A"/>
+  <g transform="translate(900, 225)">
+    <!-- Person standing confident -->
+    <circle cx="0" cy="-70" r="40" fill="#F5F0E8"/>
+    <ellipse cx="0" cy="15" rx="45" ry="60" fill="#F5F0E8"/>
+    <!-- Arms at sides, relaxed confident pose -->
+    <path d="M -40 -20 Q -55 0 -55 30 Q -55 55 -48 70" stroke="#F5F0E8" stroke-width="16" stroke-linecap="round" fill="none"/>
+    <path d="M 40 -20 Q 55 0 55 30 Q 55 55 48 70" stroke="#F5F0E8" stroke-width="16" stroke-linecap="round" fill="none"/>
+    <!-- Legs -->
+    <rect x="-28" y="70" width="20" height="65" rx="9" fill="#F5F0E8"/>
+    <rect x="8" y="70" width="20" height="65" rx="9" fill="#F5F0E8"/>
+    <!-- Heart on chest (at peace with decision) -->
+    <path d="M 0 0 C -5 -8, -18 -8, -18 5 C -18 16, 0 28, 0 28 C 0 28, 18 16, 18 5 C 18 -8, 5 -8, 0 0" fill="#D9A441"/>
   </g>
 
-  <!-- Bottom right - gold with peaceful settled elements -->
-  <rect x="650" y="350" width="550" height="250" fill="#D9A441"/>
-  <g transform="translate(925, 475)">
-    <!-- Calm horizontal lines suggesting settled/peaceful -->
-    <rect x="-150" y="-20" width="300" height="6" rx="3" fill="#2F7255"/>
-    <rect x="-120" y="0" width="240" height="6" rx="3" fill="#2F7255"/>
-    <rect x="-90" y="20" width="180" height="6" rx="3" fill="#2F7255"/>
+  <!-- Bottom right - gold with butterfly (transformation/freedom) -->
+  <rect x="600" y="450" width="600" height="350" fill="#D9A441"/>
+  <g transform="translate(900, 625)">
+    <!-- Butterfly wings - elegant curved shapes -->
+    <!-- Left upper wing -->
+    <path d="M -8 -15 C -20 -80, -90 -90, -95 -40 C -100 5, -50 10, -8 5" fill="#F5F0E8"/>
+    <path d="M -12 -12 C -22 -60, -75 -70, -78 -35 C -82 -5, -45 5, -12 2" fill="#D4654A"/>
 
-    <!-- Small confident sprout in center -->
-    <rect x="-4" y="-70" width="8" height="45" fill="#2F7255"/>
-    <ellipse cx="-18" cy="-62" rx="14" ry="8" fill="#2F7255" transform="rotate(-30 -18 -62)"/>
-    <ellipse cx="18" cy="-62" rx="14" ry="8" fill="#2F7255" transform="rotate(30 18 -62)"/>
-    <circle cx="0" cy="-85" r="20" fill="#D4654A"/>
+    <!-- Left lower wing -->
+    <path d="M -8 10 C -25 15, -70 25, -75 55 C -78 80, -40 85, -8 45" fill="#F5F0E8"/>
+    <path d="M -10 15 C -22 20, -55 28, -58 50 C -60 68, -35 70, -10 40" fill="#D4654A"/>
+
+    <!-- Right upper wing -->
+    <path d="M 8 -15 C 20 -80, 90 -90, 95 -40 C 100 5, 50 10, 8 5" fill="#F5F0E8"/>
+    <path d="M 12 -12 C 22 -60, 75 -70, 78 -35 C 82 -5, 45 5, 12 2" fill="#D4654A"/>
+
+    <!-- Right lower wing -->
+    <path d="M 8 10 C 25 15, 70 25, 75 55 C 78 80, 40 85, 8 45" fill="#F5F0E8"/>
+    <path d="M 10 15 C 22 20, 55 28, 58 50 C 60 68, 35 70, 10 40" fill="#D4654A"/>
+
+    <!-- Body -->
+    <ellipse cx="0" cy="15" rx="8" ry="45" fill="#19131D"/>
+    <!-- Head -->
+    <circle cx="0" cy="-35" r="10" fill="#19131D"/>
+
+    <!-- Antennae -->
+    <path d="M -4 -44 Q -18 -65 -25 -75" stroke="#19131D" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M 4 -44 Q 18 -65 25 -75" stroke="#19131D" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <circle cx="-25" cy="-75" r="4" fill="#D4654A"/>
+    <circle cx="25" cy="-75" r="4" fill="#D4654A"/>
   </g>
 </svg>

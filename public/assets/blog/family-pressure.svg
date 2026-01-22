@@ -1,63 +1,226 @@
-<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- "Dealing with Family Pressure" - Resilience/boundaries theme -->
-  <!-- Layout: L-shaped arrangement -->
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- "Dealing with Family Pressure" - Nesting dolls / breaking the cycle -->
 
-  <!-- Main left - green with plant pushing through weight -->
-  <rect x="0" y="0" width="700" height="600" fill="#2F7255"/>
-  <g transform="translate(350, 300)">
-    <!-- Heavy blocks pressing down -->
-    <rect x="-120" y="-160" width="240" height="50" rx="6" fill="#19131D"/>
-    <rect x="-100" y="-100" width="200" height="40" rx="6" fill="#19131D"/>
+  <!-- Main left - forest with nesting dolls in a row -->
+  <rect x="0" y="0" width="750" height="650" fill="#2F7255"/>
 
-    <!-- Strong plant pushing through -->
-    <rect x="-8" y="-50" width="16" height="200" fill="#F5F0E8"/>
-    <!-- Leaves showing strength -->
-    <ellipse cx="-45" cy="20" rx="35" ry="16" fill="#F5F0E8" transform="rotate(-25 -45 20)"/>
-    <ellipse cx="45" cy="60" rx="35" ry="16" fill="#F5F0E8" transform="rotate(25 45 60)"/>
-    <ellipse cx="-40" cy="100" rx="30" ry="14" fill="#F5F0E8" transform="rotate(-20 -40 100)"/>
-
-    <!-- Flower blooming above the weight -->
-    <g transform="translate(0, -200)">
-      <circle cx="0" cy="-25" r="28" fill="#D9A441"/>
-      <circle cx="27" cy="-8" r="28" fill="#D9A441"/>
-      <circle cx="17" cy="22" r="28" fill="#D9A441"/>
-      <circle cx="-17" cy="22" r="28" fill="#D9A441"/>
-      <circle cx="-27" cy="-8" r="28" fill="#D9A441"/>
-      <circle cx="0" cy="0" r="18" fill="#F5F0E8"/>
+  <!-- Bottom strip with X pattern (breaking the cycle) -->
+  <rect x="0" y="650" width="750" height="150" fill="#D4654A"/>
+  <g fill="#F5F0E8">
+    <!-- Row 1 -->
+    <g transform="translate(75, 695) rotate(45)">
+      <rect x="-14" y="-5" width="28" height="10"/>
+      <rect x="-5" y="-14" width="10" height="28"/>
+    </g>
+    <g transform="translate(175, 695) rotate(45)">
+      <rect x="-14" y="-5" width="28" height="10"/>
+      <rect x="-5" y="-14" width="10" height="28"/>
+    </g>
+    <g transform="translate(275, 695) rotate(45)">
+      <rect x="-14" y="-5" width="28" height="10"/>
+      <rect x="-5" y="-14" width="10" height="28"/>
+    </g>
+    <g transform="translate(375, 695) rotate(45)">
+      <rect x="-14" y="-5" width="28" height="10"/>
+      <rect x="-5" y="-14" width="10" height="28"/>
+    </g>
+    <g transform="translate(475, 695) rotate(45)">
+      <rect x="-14" y="-5" width="28" height="10"/>
+      <rect x="-5" y="-14" width="10" height="28"/>
+    </g>
+    <g transform="translate(575, 695) rotate(45)">
+      <rect x="-14" y="-5" width="28" height="10"/>
+      <rect x="-5" y="-14" width="10" height="28"/>
+    </g>
+    <g transform="translate(675, 695) rotate(45)">
+      <rect x="-14" y="-5" width="28" height="10"/>
+      <rect x="-5" y="-14" width="10" height="28"/>
+    </g>
+    <!-- Row 2 -->
+    <g transform="translate(125, 755) rotate(45)">
+      <rect x="-14" y="-5" width="28" height="10"/>
+      <rect x="-5" y="-14" width="10" height="28"/>
+    </g>
+    <g transform="translate(225, 755) rotate(45)">
+      <rect x="-14" y="-5" width="28" height="10"/>
+      <rect x="-5" y="-14" width="10" height="28"/>
+    </g>
+    <g transform="translate(325, 755) rotate(45)">
+      <rect x="-14" y="-5" width="28" height="10"/>
+      <rect x="-5" y="-14" width="10" height="28"/>
+    </g>
+    <g transform="translate(425, 755) rotate(45)">
+      <rect x="-14" y="-5" width="28" height="10"/>
+      <rect x="-5" y="-14" width="10" height="28"/>
+    </g>
+    <g transform="translate(525, 755) rotate(45)">
+      <rect x="-14" y="-5" width="28" height="10"/>
+      <rect x="-5" y="-14" width="10" height="28"/>
+    </g>
+    <g transform="translate(625, 755) rotate(45)">
+      <rect x="-14" y="-5" width="28" height="10"/>
+      <rect x="-5" y="-14" width="10" height="28"/>
+    </g>
+    <g transform="translate(725, 755) rotate(45)">
+      <rect x="-14" y="-5" width="28" height="10"/>
+      <rect x="-5" y="-14" width="10" height="28"/>
     </g>
   </g>
 
-  <!-- Top right - gold with shield pattern -->
-  <rect x="700" y="0" width="500" height="300" fill="#D9A441"/>
-  <g transform="translate(950, 150)">
-    <!-- Decorative shield (protection) -->
-    <path d="M0 -90 L75 -65 L75 30 Q75 90 0 110 Q-75 90 -75 30 L-75 -65 Z" fill="#F5F0E8"/>
-    <path d="M0 -60 L50 -42 L50 20 Q50 60 0 75 Q-50 60 -50 20 L-50 -42 Z" fill="#2F7255"/>
-    <!-- Inner flower on shield -->
-    <circle cx="0" cy="0" r="20" fill="#D4654A"/>
-    <circle cx="0" cy="0" r="10" fill="#F5F0E8"/>
+  <g transform="translate(375, 420)">
+    <!-- Large doll (great-grandma) - far left -->
+    <g transform="translate(-250, 0)">
+      <!-- Body -->
+      <ellipse cx="0" cy="35" rx="52" ry="65" fill="#F5F0E8"/>
+      <!-- Head -->
+      <circle cx="0" cy="-45" r="40" fill="#F5F0E8"/>
+      <!-- Face circle (headscarf look) -->
+      <circle cx="0" cy="-45" r="30" fill="#D9A441"/>
+      <!-- Simple face -->
+      <circle cx="-8" cy="-50" r="4" fill="#19131D"/>
+      <circle cx="8" cy="-50" r="4" fill="#19131D"/>
+      <ellipse cx="0" cy="-38" rx="6" ry="3" fill="#D4654A"/>
+      <!-- Apron/decoration -->
+      <ellipse cx="0" cy="45" rx="30" ry="40" fill="#D9A441"/>
+      <circle cx="0" cy="35" r="12" fill="#D4654A"/>
+    </g>
+
+    <!-- Medium-large doll (grandma) -->
+    <g transform="translate(-100, 25)">
+      <!-- Body -->
+      <ellipse cx="0" cy="30" rx="42" ry="55" fill="#F5F0E8"/>
+      <!-- Head -->
+      <circle cx="0" cy="-38" r="33" fill="#F5F0E8"/>
+      <!-- Face circle -->
+      <circle cx="0" cy="-38" r="24" fill="#D9A441"/>
+      <!-- Simple face -->
+      <circle cx="-6" cy="-42" r="3" fill="#19131D"/>
+      <circle cx="6" cy="-42" r="3" fill="#19131D"/>
+      <ellipse cx="0" cy="-32" rx="5" ry="2.5" fill="#D4654A"/>
+      <!-- Apron -->
+      <ellipse cx="0" cy="38" rx="24" ry="32" fill="#D9A441"/>
+      <circle cx="0" cy="30" r="10" fill="#D4654A"/>
+    </g>
+
+    <!-- Medium doll (mom) -->
+    <g transform="translate(35, 50)">
+      <!-- Body -->
+      <ellipse cx="0" cy="25" rx="34" ry="45" fill="#F5F0E8"/>
+      <!-- Head -->
+      <circle cx="0" cy="-30" r="27" fill="#F5F0E8"/>
+      <!-- Face circle -->
+      <circle cx="0" cy="-30" r="19" fill="#D9A441"/>
+      <!-- Simple face -->
+      <circle cx="-5" cy="-33" r="2.5" fill="#19131D"/>
+      <circle cx="5" cy="-33" r="2.5" fill="#19131D"/>
+      <ellipse cx="0" cy="-25" rx="4" ry="2" fill="#D4654A"/>
+      <!-- Apron -->
+      <ellipse cx="0" cy="30" rx="19" ry="26" fill="#D9A441"/>
+      <circle cx="0" cy="24" r="8" fill="#D4654A"/>
+    </g>
+
+    <!-- Small doll (you) - DIFFERENT - coral colored, facing away/different direction -->
+    <g transform="translate(150, 75)">
+      <!-- Body - different color -->
+      <ellipse cx="0" cy="20" rx="26" ry="35" fill="#D4654A"/>
+      <!-- Head -->
+      <circle cx="0" cy="-22" r="21" fill="#D4654A"/>
+      <!-- Face circle - lighter, facing slightly away -->
+      <circle cx="2" cy="-22" r="14" fill="#F5F0E8"/>
+      <!-- Simple face - content, peaceful -->
+      <circle cx="-1" cy="-25" r="2" fill="#19131D"/>
+      <circle cx="7" cy="-25" r="2" fill="#19131D"/>
+      <!-- Gentle smile -->
+      <path d="M 0 -18 Q 4 -14 8 -18" stroke="#19131D" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- Different decoration - heart instead of traditional pattern -->
+      <path d="M 0 15 C -3 10, -10 10, -12 18 C -14 28, -5 35, 0 42 C 5 35, 14 28, 12 18 C 10 10, 3 10, 0 15" fill="#F5F0E8"/>
+    </g>
+
+    <!-- Dotted line showing the "expected" path with empty outline where next doll "should" be -->
+    <g transform="translate(245, 95)" opacity="0.4">
+      <ellipse cx="0" cy="15" rx="18" ry="25" stroke="#F5F0E8" stroke-width="3" stroke-dasharray="6 4" fill="none"/>
+      <circle cx="0" cy="-12" r="14" stroke="#F5F0E8" stroke-width="3" stroke-dasharray="6 4" fill="none"/>
+    </g>
   </g>
 
-  <!-- Bottom right - navy with dot pattern (community support) -->
-  <rect x="700" y="300" width="500" height="300" fill="#19131D"/>
-  <g fill="#F5F0E8">
-    <!-- Scattered supportive dots -->
-    <circle cx="780" cy="380" r="12"/>
-    <circle cx="850" cy="400" r="10"/>
-    <circle cx="920" cy="370" r="14"/>
-    <circle cx="990" cy="390" r="11"/>
-    <circle cx="1060" cy="360" r="13"/>
-    <circle cx="1120" cy="385" r="10"/>
-    <circle cx="810" cy="460" r="11"/>
-    <circle cx="880" cy="480" r="13"/>
-    <circle cx="950" cy="450" r="12"/>
-    <circle cx="1020" cy="470" r="10"/>
-    <circle cx="1090" cy="445" r="14"/>
-    <circle cx="770" cy="540" r="13"/>
-    <circle cx="840" cy="520" r="10"/>
-    <circle cx="910" cy="550" r="12"/>
-    <circle cx="980" cy="530" r="11"/>
-    <circle cx="1050" cy="555" r="10"/>
-    <circle cx="1120" cy="525" r="12"/>
+  <!-- Top right - marigold with hourglass (biological clock pressure) -->
+  <rect x="750" y="0" width="450" height="420" fill="#D9A441"/>
+  <defs>
+    <!-- Clip path for top sand -->
+    <clipPath id="topBulb">
+      <path d="M 930 125 L 930 185 Q 930 210 975 210 Q 1020 210 1020 185 L 1020 125 Z"/>
+    </clipPath>
+    <!-- Clip path for bottom sand -->
+    <clipPath id="bottomBulb">
+      <path d="M 930 295 L 930 235 Q 930 210 975 210 Q 1020 210 1020 235 L 1020 295 Z"/>
+    </clipPath>
+  </defs>
+  <g transform="translate(975, 210)">
+    <!-- Hourglass glass shape (static, curved) -->
+    <!-- Top bulb -->
+    <path d="M -45 -85 L -45 -25 Q -45 0 0 0 Q 45 0 45 -25 L 45 -85 Z" fill="#F5F0E8"/>
+    <!-- Bottom bulb -->
+    <path d="M -45 85 L -45 25 Q -45 0 0 0 Q 45 0 45 25 L 45 85 Z" fill="#F5F0E8"/>
+
+    <!-- Top cap -->
+    <rect x="-55" y="-95" width="110" height="14" rx="4" fill="#F5F0E8"/>
+    <!-- Bottom cap -->
+    <rect x="-55" y="81" width="110" height="14" rx="4" fill="#F5F0E8"/>
+  </g>
+
+  <!-- Sand in top bulb (drains down) -->
+  <rect x="937" y="128" width="76" height="80" fill="#D4654A" clip-path="url(#topBulb)">
+    <animate attributeName="height" values="80;5;80" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0.3 0 0.7 1; 0.3 0 0.7 1"/>
+  </rect>
+
+  <!-- Sand in bottom bulb (fills up) -->
+  <g clip-path="url(#bottomBulb)">
+    <rect x="937" width="76" height="80" fill="#D4654A">
+      <animate attributeName="y" values="290;215;290" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0.3 0 0.7 1; 0.3 0 0.7 1"/>
+    </rect>
+  </g>
+
+  <!-- Falling sand stream -->
+  <rect x="972" y="202" width="6" height="16" rx="3" fill="#D4654A">
+    <animate attributeName="opacity" values="1;1;0;1" dur="6s" repeatCount="indefinite" keyTimes="0;0.7;0.85;1"/>
+  </rect>
+
+  <!-- Bottom right - navy with open birdcage and bird flying free -->
+  <rect x="750" y="420" width="450" height="380" fill="#19131D"/>
+  <g transform="translate(975, 610)">
+    <!-- Birdcage -->
+    <g transform="translate(20, 20)">
+      <!-- Cage dome top -->
+      <path d="M -50 -20 Q -50 -80 0 -80 Q 50 -80 50 -20" stroke="#F5F0E8" stroke-width="4" fill="none"/>
+      <!-- Cage bars -->
+      <line x1="-40" y1="-65" x2="-40" y2="60" stroke="#F5F0E8" stroke-width="3"/>
+      <line x1="-20" y1="-75" x2="-20" y2="60" stroke="#F5F0E8" stroke-width="3"/>
+      <line x1="0" y1="-80" x2="0" y2="60" stroke="#F5F0E8" stroke-width="3"/>
+      <line x1="20" y1="-75" x2="20" y2="60" stroke="#F5F0E8" stroke-width="3"/>
+      <line x1="40" y1="-65" x2="40" y2="60" stroke="#F5F0E8" stroke-width="3"/>
+      <!-- Cage bottom -->
+      <ellipse cx="0" cy="60" rx="50" ry="12" fill="none" stroke="#F5F0E8" stroke-width="4"/>
+      <!-- Cage ring at top -->
+      <circle cx="0" cy="-80" r="8" stroke="#F5F0E8" stroke-width="3" fill="none"/>
+      <!-- Open door -->
+      <path d="M 50 -20 Q 75 -20 80 -50" stroke="#F5F0E8" stroke-width="4" fill="none"/>
+      <line x1="50" y1="-20" x2="50" y2="30" stroke="#F5F0E8" stroke-width="3" stroke-dasharray="8 4" opacity="0.4"/>
+    </g>
+
+    <!-- Bird flying free (facing left, away from cage) -->
+    <g transform="translate(-70, -60)">
+      <!-- Bird body -->
+      <ellipse cx="0" cy="0" rx="18" ry="12" fill="#D4654A"/>
+      <!-- Bird head -->
+      <circle cx="-18" cy="-5" r="10" fill="#D4654A"/>
+      <!-- Beak -->
+      <path d="M -28 -5 L -38 -3 L -28 -1" fill="#D9A441"/>
+      <!-- Eye -->
+      <circle cx="-22" cy="-7" r="2" fill="#19131D"/>
+      <!-- Wing up -->
+      <path d="M 5 -5 Q 15 -35 -5 -40 Q -15 -35 -10 -5" fill="#F5F0E8"/>
+      <!-- Tail -->
+      <path d="M 18 0 L 35 -8 L 35 8 Z" fill="#D4654A"/>
+    </g>
   </g>
 </svg>

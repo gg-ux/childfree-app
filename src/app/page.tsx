@@ -7,12 +7,15 @@ import {
   ArrowRight,
   MagnifyingGlass,
   ShootingStar,
+  Dog,
+  AirplaneTilt,
 } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/components/ui/button";
 import { FrostedCard } from "@/components/ui/frosted-card";
 import { Logo } from "@/components/ui/logo";
 import { TextDecode } from "@/components/ui/text-decode";
 import { WaitlistForm } from "@/components/ui/waitlist-form";
+import { ProfileCards } from "@/components/ui/profile-cards";
 
 export default function Home() {
   return (
@@ -21,16 +24,16 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-[rgba(0,0,0,0.06)]">
         <div className="container-main h-16 flex items-center justify-between">
           <Link href="/">
-            <Logo variant="full" size="sm" />
+            <Logo variant="full" size="md" />
           </Link>
           <div className="flex items-center gap-6">
             <Link
               href="/blog"
-              className="text-lg font-semibold text-foreground hover:text-forest transition-colors"
+              className="theme-nav text-foreground hover:text-muted"
             >
               Blog
             </Link>
-            <Button asChild variant="accent">
+            <Button asChild variant="accent" size="md">
               <Link href="/sign-up">Join waitlist</Link>
             </Button>
           </div>
@@ -41,19 +44,19 @@ export default function Home() {
       <section className="pt-20 pb-16 md:pt-28 md:pb-24 overflow-hidden">
         <div className="container-main">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <div className="order-2 lg:order-1">
+            <div className="order-2 lg:order-1 relative z-30">
               <p className="theme-caption text-foreground mb-6 inline-flex items-center gap-2">
                 <ShootingStar size={16} weight="fill" className="text-marigold" />
                 Launching mid 2026
               </p>
 
               <h1 className="font-display text-fluid-h1 text-foreground mb-6 leading-[0.9] tracking-tight">
-                Find your people.
+                <span className="whitespace-nowrap">Find your people.</span>
                 <br />
-                Thrive childfree.
+                <span className="whitespace-nowrap">Thrive childfree.</span>
               </h1>
 
-              <p className="theme-body text-muted text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
+              <p className="theme-body text-muted max-w-2xl mb-10">
                 Connect with childfree adults who share your values. Make friends, find love, and build community all in one place.
               </p>
 
@@ -61,76 +64,7 @@ export default function Home() {
             </div>
 
             {/* Floating Profile Cards */}
-            <div className="relative h-[280px] md:h-[400px] lg:h-[500px] order-1 lg:order-2 mb-8 md:mb-12 lg:mb-0">
-              {/* Card 2 - Left (behind) - Alex */}
-              <div className="absolute top-16 md:top-24 left-0 md:left-[15%] lg:left-4 w-32 md:w-48 bg-white rounded-2xl shadow-lg border border-border overflow-hidden -rotate-6 hover:rotate-0 transition-transform duration-500 z-10">
-                <div className="aspect-[3/4] bg-gradient-to-br from-coral/20 to-coral/5 overflow-hidden">
-                  <img
-                    src="/assets/home/girl02.webp"
-                    alt="Profile"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-2 md:p-3">
-                  <p className="font-medium text-foreground text-xs md:text-sm">Alex, 24</p>
-                  <p className="text-[10px] md:text-xs text-muted mb-1 md:mb-2">3 miles away</p>
-                  <div className="flex flex-wrap gap-1">
-                    <span className="text-[11px] px-2 py-0.5 rounded-full bg-foreground/8 text-foreground/70 font-semibold inline-flex items-center gap-1">
-                      <MagnifyingGlass size={10} weight="bold" />
-                      Chosen family
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 3 - Right (behind) - Jordan */}
-              <div className="absolute top-16 md:top-24 right-0 md:right-[15%] lg:right-4 w-32 md:w-48 bg-white rounded-2xl shadow-lg border border-border overflow-hidden rotate-6 hover:rotate-0 transition-transform duration-500 z-10">
-                <div className="aspect-[3/4] bg-gradient-to-br from-marigold/20 to-marigold/5 overflow-hidden">
-                  <img
-                    src="/assets/home/guy-dog.webp"
-                    alt="Profile"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-2 md:p-3">
-                  <p className="font-medium text-foreground text-xs md:text-sm">Jordan, 48</p>
-                  <p className="text-[10px] md:text-xs text-muted mb-1 md:mb-2">8 miles away</p>
-                  <div className="flex flex-wrap gap-1">
-                    <span className="text-[11px] px-2 py-0.5 rounded-full bg-foreground/8 text-foreground/70 font-semibold inline-flex items-center gap-1">
-                      <MagnifyingGlass size={10} weight="bold" />
-                      Travel partner
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 1 - Main (front) */}
-              <div className="absolute top-4 md:top-12 left-1/2 -translate-x-1/2 w-40 md:w-56 bg-white rounded-2xl shadow-xl border border-border overflow-hidden hover:scale-[1.02] transition-transform duration-500 z-20">
-                <div className="aspect-[3/4] bg-gradient-to-br from-forest/20 to-forest/5 overflow-hidden">
-                  <img
-                    src="/assets/home/girl01.webp"
-                    alt="Profile"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-3 md:p-4">
-                  <p className="font-medium text-foreground text-sm md:text-base">Sarah, 32</p>
-                  <p className="text-xs md:text-sm text-muted mb-1 md:mb-2">5 miles away</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    <span className="text-[11px] px-2 py-0.5 rounded-full bg-foreground/8 text-foreground/70 font-semibold inline-flex items-center gap-1">
-                      <MagnifyingGlass size={10} weight="bold" />
-                      DINK partner
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Connection lines - subtle */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20 hidden md:block" viewBox="0 0 400 500">
-                <path d="M200 100 Q 100 200 80 280" stroke="#2F7255" strokeWidth="2" fill="none" strokeDasharray="4 4" />
-                <path d="M200 100 Q 300 200 320 280" stroke="#2F7255" strokeWidth="2" fill="none" strokeDasharray="4 4" />
-              </svg>
-            </div>
+            <ProfileCards />
           </div>
         </div>
       </section>
@@ -230,7 +164,7 @@ export default function Home() {
             <h2 className="font-display text-fluid-h2 text-foreground mb-6 leading-[0.9] tracking-tight">
               More than a dating app.
             </h2>
-            <p className="theme-body text-muted text-lg md:text-xl leading-relaxed">
+            <p className="theme-body text-muted">
               Match with locals or connect online—whether you&apos;re looking for love, a travel partner, a best man, or soul&nbsp;sisters.
             </p>
           </div>
@@ -283,7 +217,7 @@ export default function Home() {
                 <h3 className="theme-heading text-xl text-foreground mb-2">
                   {feature.title}
                 </h3>
-                <p className="theme-body text-base text-muted leading-snug">
+                <p className="theme-body-sm text-muted">
                   {feature.description}
                 </p>
               </FrostedCard>
@@ -309,8 +243,8 @@ export default function Home() {
               <h2 className="font-display text-fluid-h2 text-foreground mb-6 leading-[0.9] tracking-tight">
                 A family you choose.
               </h2>
-              <p className="theme-body text-muted text-lg md:text-xl leading-relaxed">
-                Skip the explanations. Connect with people who get it from day one. Whether you&apos;re looking for your person, your people, or your place—you&apos;ll find a community that celebrates the life you&apos;re building. Family isn&apos;t just those related by blood—it&apos;s those who choose to show&nbsp;up.
+              <p className="theme-body text-muted">
+                You made the bold choice to follow your own path and live differently. You&apos;re not alone. Connect with people who get it from day one. Whether you&apos;re looking for your person, people, or place—you&apos;ll find a community that celebrates the life you&apos;re building. Not all family is related by blood.
               </p>
             </div>
           </div>
@@ -324,7 +258,7 @@ export default function Home() {
             <h2 className="font-display text-fluid-h2 text-foreground mb-6 leading-[0.9] tracking-tight">
               Ready to connect?
             </h2>
-            <p className="theme-body text-muted text-lg mb-10">
+            <p className="theme-body text-muted mb-10">
               Join our waitlist and be the first to know when we launch in your
               city.
             </p>
@@ -342,7 +276,7 @@ export default function Home() {
       <footer className="py-12 border-t border-[rgba(0,0,0,0.06)]">
         <div className="container-main">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <Logo variant="full" size="sm" />
+            <Logo variant="full" size="md" />
             <div className="flex gap-8">
               {["About", "Privacy", "Terms", "Contact"].map((item) => (
                 <Link

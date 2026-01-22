@@ -6,8 +6,8 @@ import { cn } from "@/lib/utils/cn";
 const buttonVariants = cva(
   [
     "inline-flex items-center justify-center gap-2",
-    "font-mono text-[12px] font-semibold uppercase tracking-wide",
-    "rounded-md transition-all duration-300",
+    "font-button text-[16px] tracking-normal",
+    "rounded-xl transition-all duration-300",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
     "disabled:pointer-events-none disabled:opacity-50",
     "active:scale-[0.95]",
@@ -28,19 +28,20 @@ const buttonVariants = cva(
         ].join(" "),
         ghost: [
           "text-foreground",
-          "hover:text-forest",
-          "focus-visible:ring-forest",
+          "hover:text-muted",
+          "focus-visible:ring-foreground",
         ].join(" "),
         accent: [
-          "bg-forest text-white",
-          "hover:bg-forest-light hover:scale-[1.03]",
-          "focus-visible:ring-forest",
+          "bg-[#19131D] text-white",
+          "hover:bg-[#19131D]/90 hover:scale-[1.03]",
+          "focus-visible:ring-[#19131D]",
         ].join(" "),
       },
       size: {
         default: "h-10 px-5 py-2",
         sm: "h-8 px-4 py-1.5",
-        lg: "h-11 px-6 py-2.5",
+        md: "h-11 px-5 py-2",
+        lg: "h-14 px-6 py-2.5",
         icon: "h-10 w-10 p-0",
       },
     },
