@@ -103,7 +103,7 @@ export default function DesignSystemPage() {
                 <ColorSwatch name="Coral" value="#E07850" className="bg-coral" />
                 <ColorSwatch name="Marigold" value="#E9A035" className="bg-marigold" />
                 <ColorSwatch name="Cream" value="#F5F0E8" className="bg-cream" textDark />
-                <ColorSwatch name="Navy" value="#1A2E35" className="bg-navy" />
+                <ColorSwatch name="Navy" value="#19131D" className="bg-navy" />
               </div>
             </div>
 

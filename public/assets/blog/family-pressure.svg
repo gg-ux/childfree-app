@@ -6,8 +6,8 @@
   <rect x="0" y="0" width="700" height="600" fill="#D4654A"/>
   <g transform="translate(350, 300)">
     <!-- Heavy blocks pressing down -->
-    <rect x="-120" y="-160" width="240" height="50" rx="6" fill="#1A2E35"/>
-    <rect x="-100" y="-100" width="200" height="40" rx="6" fill="#1A2E35"/>
+    <rect x="-120" y="-160" width="240" height="50" rx="6" fill="#19131D"/>
+    <rect x="-100" y="-100" width="200" height="40" rx="6" fill="#19131D"/>
 
     <!-- Strong plant pushing through -->
     <rect x="-8" y="-50" width="16" height="200" fill="#F5F0E8"/>
@@ -39,7 +39,7 @@
   </g>
 
   <!-- Bottom right - navy with dot pattern (community support) -->
-  <rect x="700" y="300" width="500" height="300" fill="#1A2E35"/>
+  <rect x="700" y="300" width="500" height="300" fill="#19131D"/>
   <g fill="#F5F0E8">
     <!-- Scattered supportive dots -->
     <circle cx="780" cy="380" r="12"/>

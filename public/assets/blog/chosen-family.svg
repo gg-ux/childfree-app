@@ -72,7 +72,7 @@
   </g>
 
   <!-- Bottom center - light green with dot pattern -->
-  <rect x="350" y="350" width="400" height="250" fill="#1A2E35"/>
+  <rect x="350" y="350" width="400" height="250" fill="#19131D"/>
   <!-- Dot grid -->
   <g fill="#F5F0E8">
     <circle cx="420" cy="420" r="10"/>
@@ -111,7 +111,7 @@
       <circle cx="-21" cy="29" r="28" fill="#D4654A"/>
       <circle cx="-34" cy="-11" r="28" fill="#D4654A"/>
     </g>
-    <circle cx="0" cy="0" r="24" fill="#1A2E35"/>
+    <circle cx="0" cy="0" r="24" fill="#19131D"/>
     <circle cx="0" cy="0" r="14" fill="#D9A441"/>
   </g>
 </svg>

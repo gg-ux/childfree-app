@@ -18,7 +18,7 @@
   </g>
 
   <!-- Right tall panel - navy with two flowers, one fading -->
-  <rect x="550" y="0" width="650" height="400" fill="#1A2E35"/>
+  <rect x="550" y="0" width="650" height="400" fill="#19131D"/>
   <g transform="translate(875, 200)">
     <!-- Your flower - vibrant -->
     <g transform="translate(-100, 0)">

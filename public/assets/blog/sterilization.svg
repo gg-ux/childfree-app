@@ -3,7 +3,7 @@
   <!-- Theme: Research/knowledge, clean cut leading to flourishing -->
 
   <!-- Left - navy with open book and magnifying glass -->
-  <rect x="0" y="0" width="650" height="600" fill="#1A2E35"/>
+  <rect x="0" y="0" width="650" height="600" fill="#19131D"/>
   <g transform="translate(325, 320)">
     <!-- Clean geometric open book -->
     <rect x="-140" y="-20" width="130" height="160" rx="4" fill="#F5F0E8" transform="rotate(-10)"/>

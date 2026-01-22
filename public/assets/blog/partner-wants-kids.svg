@@ -32,7 +32,7 @@
   </g>
 
   <!-- Bottom left - navy with interlinked circles breaking apart -->
-  <rect x="0" y="380" width="550" height="220" fill="#1A2E35"/>
+  <rect x="0" y="380" width="550" height="220" fill="#19131D"/>
   <g transform="translate(275, 490)">
     <!-- Two circles that were linked -->
     <circle cx="-45" cy="0" r="50" stroke="#F5F0E8" stroke-width="10" fill="none"/>

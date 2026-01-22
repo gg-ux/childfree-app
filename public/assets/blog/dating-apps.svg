@@ -68,7 +68,7 @@
   </g>
 
   <!-- Bottom right - light green with broken circle (animated slow spin) -->
-  <rect x="700" y="350" width="500" height="250" fill="#1A2E35"/>
+  <rect x="700" y="350" width="500" height="250" fill="#19131D"/>
   <!-- Broken circle -->
   <g transform="translate(950, 475)">
     <g>

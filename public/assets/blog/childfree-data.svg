@@ -72,7 +72,7 @@
   </g>
 
   <!-- Bottom right - navy with stroller + slash (childfree symbol) -->
-  <rect x="750" y="300" width="450" height="300" fill="#1A2E35"/>
+  <rect x="750" y="300" width="450" height="300" fill="#19131D"/>
   <g transform="translate(975, 450)">
     <!-- Classic pram silhouette -->
     <!-- Carriage body (flat bottom, angled sides) -->
@@ -85,8 +85,8 @@
     <!-- Wheels -->
     <circle cx="-35" cy="50" r="15" fill="#F5F0E8"/>
     <circle cx="35" cy="50" r="15" fill="#F5F0E8"/>
-    <circle cx="-35" cy="50" r="6" fill="#1A2E35"/>
-    <circle cx="35" cy="50" r="6" fill="#1A2E35"/>
+    <circle cx="-35" cy="50" r="6" fill="#19131D"/>
+    <circle cx="35" cy="50" r="6" fill="#19131D"/>
     <!-- Handle (extends up from right side) -->
     <path d="M45 -15 Q60 -20 65 -55" stroke="#F5F0E8" stroke-width="7" fill="none" stroke-linecap="round"/>
     <!-- Diagonal slash -->
