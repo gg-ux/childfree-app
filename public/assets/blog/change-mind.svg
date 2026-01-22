@@ -18,7 +18,7 @@
         calcMode="spline"
         keySplines="0.45 0.05 0.55 0.95; 0.45 0.05 0.55 0.95"
       />
-      <rect x="-170" y="-12" width="340" height="24" rx="4" fill="#F8F7F4"/>
+      <rect x="-170" y="-12" width="340" height="24" rx="4" fill="#F5F0E8"/>
       <!-- Left ball (on top of plank) -->
       <circle cx="-140" cy="-52" r="40" fill="#D9A441"/>
       <!-- Right ball (on top of plank) -->
@@ -30,9 +30,9 @@
   <rect x="750" y="0" width="450" height="300" fill="#D9A441"/>
   <g transform="translate(975, 150)">
     <!-- Smaller compass -->
-    <circle cx="0" cy="0" r="90" fill="#F8F7F4"/>
+    <circle cx="0" cy="0" r="90" fill="#F5F0E8"/>
     <circle cx="0" cy="0" r="75" fill="#D9A441"/>
-    <circle cx="0" cy="0" r="60" fill="#F8F7F4"/>
+    <circle cx="0" cy="0" r="60" fill="#F5F0E8"/>
     <!-- Compass needle (animated wobble) -->
     <g>
       <animateTransform
@@ -56,6 +56,6 @@
   <g transform="translate(975, 450)">
     <path d="M-80 50 A80 80 0 0 1 80 50" fill="#D9A441"/>
     <path d="M-55 50 A55 55 0 0 1 55 50" fill="#D4654A"/>
-    <path d="M-30 50 A30 30 0 0 1 30 50" fill="#F8F7F4"/>
+    <path d="M-30 50 A30 30 0 0 1 30 50" fill="#F5F0E8"/>
   </g>
 </svg>

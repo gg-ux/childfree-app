@@ -47,7 +47,7 @@
   <rect x="0" y="220" width="700" height="380" fill="#2F7255"/>
   <g transform="translate(350, 420)">
     <!-- Larger simplified phone shape -->
-    <rect x="-70" y="-95" width="140" height="190" rx="16" fill="#F8F7F4"/>
+    <rect x="-70" y="-95" width="140" height="190" rx="16" fill="#F5F0E8"/>
     <!-- Screen -->
     <rect x="-56" y="-75" width="112" height="130" fill="#D9A441"/>
     <!-- X on screen (animated pulse) -->
@@ -68,7 +68,7 @@
   </g>
 
   <!-- Bottom right - light green with broken circle (animated slow spin) -->
-  <rect x="700" y="350" width="500" height="250" fill="#3D8B6A"/>
+  <rect x="700" y="350" width="500" height="250" fill="#1A2E35"/>
   <!-- Broken circle -->
   <g transform="translate(950, 475)">
     <g>
@@ -80,7 +80,7 @@
         dur="8s"
         repeatCount="indefinite"
       />
-      <path d="M55 0 A55 55 0 1 1 39 -39" stroke="#F8F7F4" stroke-width="12" fill="none" stroke-linecap="round"/>
+      <path d="M55 0 A55 55 0 1 1 39 -39" stroke="#F5F0E8" stroke-width="12" fill="none" stroke-linecap="round"/>
     </g>
     <circle cx="0" cy="0" r="22" fill="#D9A441"/>
   </g>

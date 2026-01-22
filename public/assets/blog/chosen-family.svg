@@ -4,7 +4,7 @@
   <!-- Top left - green with connected branch pattern -->
   <rect x="0" y="0" width="600" height="350" fill="#2F7255"/>
   <!-- Branch network showing connection -->
-  <g stroke="#F8F7F4" stroke-width="6" fill="none">
+  <g stroke="#F5F0E8" stroke-width="6" fill="none">
     <line x1="300" y1="175" x2="150" y2="80"/>
     <line x1="300" y1="175" x2="450" y2="80"/>
     <line x1="300" y1="175" x2="150" y2="270"/>
@@ -45,9 +45,9 @@
   <!-- Tulip row -->
   <g transform="translate(750, 200)">
     <rect x="-4" y="0" width="8" height="100" fill="#2F7255"/>
-    <ellipse cx="-18" cy="-15" rx="18" ry="28" fill="#F8F7F4"/>
-    <ellipse cx="0" cy="-25" rx="18" ry="28" fill="#F8F7F4"/>
-    <ellipse cx="18" cy="-15" rx="18" ry="28" fill="#F8F7F4"/>
+    <ellipse cx="-18" cy="-15" rx="18" ry="28" fill="#F5F0E8"/>
+    <ellipse cx="0" cy="-25" rx="18" ry="28" fill="#F5F0E8"/>
+    <ellipse cx="18" cy="-15" rx="18" ry="28" fill="#F5F0E8"/>
   </g>
   <g transform="translate(900, 180)">
     <rect x="-4" y="0" width="8" height="120" fill="#2F7255"/>
@@ -57,9 +57,9 @@
   </g>
   <g transform="translate(1050, 210)">
     <rect x="-4" y="0" width="8" height="90" fill="#2F7255"/>
-    <ellipse cx="-16" cy="-14" rx="16" ry="26" fill="#F8F7F4"/>
-    <ellipse cx="0" cy="-22" rx="16" ry="26" fill="#F8F7F4"/>
-    <ellipse cx="16" cy="-14" rx="16" ry="26" fill="#F8F7F4"/>
+    <ellipse cx="-16" cy="-14" rx="16" ry="26" fill="#F5F0E8"/>
+    <ellipse cx="0" cy="-22" rx="16" ry="26" fill="#F5F0E8"/>
+    <ellipse cx="16" cy="-14" rx="16" ry="26" fill="#F5F0E8"/>
   </g>
 
   <!-- Bottom left - gold with 8-pointed star -->
@@ -68,13 +68,13 @@
     <!-- 8-pointed star -->
     <polygon points="0,-60 15,-15 60,0 15,15 0,60 -15,15 -60,0 -15,-15" fill="#D4654A"/>
     <polygon points="0,-40 42,-42 40,0 42,42 0,40 -42,42 -40,0 -42,-42" fill="#D4654A"/>
-    <circle cx="0" cy="0" r="20" fill="#F8F7F4"/>
+    <circle cx="0" cy="0" r="20" fill="#F5F0E8"/>
   </g>
 
   <!-- Bottom center - light green with dot pattern -->
-  <rect x="350" y="350" width="400" height="250" fill="#3D8B6A"/>
+  <rect x="350" y="350" width="400" height="250" fill="#1A2E35"/>
   <!-- Dot grid -->
-  <g fill="#F8F7F4">
+  <g fill="#F5F0E8">
     <circle cx="420" cy="420" r="10"/>
     <circle cx="480" cy="420" r="10"/>
     <circle cx="540" cy="420" r="10"/>
@@ -111,7 +111,7 @@
       <circle cx="-21" cy="29" r="28" fill="#D4654A"/>
       <circle cx="-34" cy="-11" r="28" fill="#D4654A"/>
     </g>
-    <circle cx="0" cy="0" r="24" fill="#3D8B6A"/>
+    <circle cx="0" cy="0" r="24" fill="#1A2E35"/>
     <circle cx="0" cy="0" r="14" fill="#D9A441"/>
   </g>
 </svg>
