@@ -13,6 +13,7 @@ import {
   Envelope,
   Trash,
 } from "@phosphor-icons/react";
+import { Loader } from "@/components/ui/loader";
 
 interface WaitlistEntry {
   id: string;
@@ -222,7 +223,7 @@ export default function AdminPage() {
   if (authChecking) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-forest border-t-transparent rounded-full animate-spin" />
+        <Loader size="md" />
       </div>
     );
   }

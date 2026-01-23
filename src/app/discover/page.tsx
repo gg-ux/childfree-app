@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
 import { SignOut, User, Heart, Users, Calendar } from "@phosphor-icons/react";
+import { Loader } from "@/components/ui/loader";
 
 interface UserData {
   id: string;
@@ -59,7 +60,7 @@ export default function DiscoverPage() {
   if (loading || !user) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="w-10 h-10 border-2 border-forest border-t-transparent rounded-full animate-spin" />
+        <Loader size="lg" />
       </div>
     );
   }

@@ -18,6 +18,7 @@ import {
   Backpack,
   GlobeHemisphereWest,
 } from "@phosphor-icons/react";
+import { Loader } from "@/components/ui/loader";
 
 const TOTAL_STEPS = 5;
 
@@ -291,7 +292,7 @@ export default function OnboardingPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="w-10 h-10 border-2 border-forest border-t-transparent rounded-full animate-spin" />
+        <Loader size="lg" />
       </div>
     );
   }

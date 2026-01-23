@@ -4,6 +4,7 @@ import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Logo } from "@/components/ui/logo";
+import { Loader } from "@/components/ui/loader";
 
 function VerifyContent() {
   const router = useRouter();
@@ -58,7 +59,7 @@ function VerifyContent() {
     <>
       {status === "verifying" && (
         <div>
-          <div className="w-10 h-10 border-2 border-forest border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <Loader size="lg" className="mx-auto mb-4" />
           <p className="text-muted">Signing you in...</p>
         </div>
       )}
@@ -119,7 +120,7 @@ function VerifyContent() {
 function LoadingState() {
   return (
     <div>
-      <div className="w-10 h-10 border-2 border-forest border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+      <Loader size="lg" className="mx-auto mb-4" />
       <p className="text-muted">Loading...</p>
     </div>
   );
