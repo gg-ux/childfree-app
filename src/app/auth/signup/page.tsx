@@ -222,7 +222,7 @@ function SignupContent() {
                 </Button>
 
                 {error && (
-                  <p className="text-red-500 text-sm text-center">{error}</p>
+                  <p className="text-coral text-xs font-[450] text-center">{error}</p>
                 )}
               </form>
 
