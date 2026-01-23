@@ -6,7 +6,7 @@ interface SourcesProps {
 
 export function Sources({ children }: SourcesProps) {
   return (
-    <div className="mt-12 pt-8 border-t border-border">
+    <div className="mt-12">
       <h2 className="text-xs font-semibold text-muted/70 uppercase tracking-wider mb-4">
         Sources
       </h2>

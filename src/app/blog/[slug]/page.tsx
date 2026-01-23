@@ -133,7 +133,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       </article>
 
       {/* CTA */}
-      <section className="py-16 border-t border-[rgba(0,0,0,0.06)]">
+      <section className="py-16 bg-foreground/[0.02]">
         <div className="container-main text-center">
           <h2 className="font-display text-fluid-h3 text-foreground mb-4 tracking-tight">
             Ready to find your people?
