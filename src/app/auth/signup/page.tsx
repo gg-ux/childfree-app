@@ -3,6 +3,7 @@
 import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
 import { Loader } from "@/components/ui/loader";
@@ -118,8 +119,21 @@ function SignupContent() {
         </div>
       </nav>
 
-      <div className="flex-1 flex items-center justify-center px-6 pt-24 pb-12">
-        <div className="w-full max-w-sm">
+      <div className="flex-1 flex pt-16">
+        {/* Left side - Image (hidden on mobile) */}
+        <div className="hidden lg:block lg:w-1/2 relative">
+          <Image
+            src="/assets/onboarding/date.png"
+            alt="Couple on a date"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+
+        {/* Right side - Form */}
+        <div className="w-full lg:w-1/2 flex items-center justify-center px-6 py-12">
+          <div className="w-full max-w-sm">
           {status === "sent" ? (
             <div className="text-center">
               <div className="w-20 h-20 bg-forest/10 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -238,6 +252,7 @@ function SignupContent() {
               </p>
             </>
           )}
+        </div>
         </div>
       </div>
     </div>
