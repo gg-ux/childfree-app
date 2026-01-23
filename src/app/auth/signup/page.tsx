@@ -207,7 +207,8 @@ function SignupContent() {
                 <Button
                   type="submit"
                   variant="accent"
-                  className="w-full h-14 text-base gap-2"
+                  size="lg"
+                  className="w-full"
                   disabled={status === "sending" || !email}
                 >
                   {status === "sending" ? (
