@@ -3,6 +3,7 @@ import type { MDXComponents } from "mdx/types";
 import { LineChart } from "@/components/ui/line-chart";
 import { StatCards } from "@/components/ui/stat-cards";
 import { BarChart, ComparisonBar } from "@/components/ui/bar-chart";
+import { Sources } from "@/components/ui/sources";
 
 export const mdxComponents: MDXComponents = {
   h1: ({ children }) => (
@@ -77,4 +78,5 @@ export const mdxComponents: MDXComponents = {
   StatCards,
   BarChart,
   ComparisonBar,
+  Sources,
 };
