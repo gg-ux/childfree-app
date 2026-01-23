@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Send confirmation email
+    // Send confirmation email (welcome email, separate from invitation)
     await resend.emails.send({
       from: "Chosn <hello@chosn.co>",
       to: email,
@@ -64,11 +64,7 @@ export async function POST(request: NextRequest) {
       `,
     });
 
-    // Mark email as sent
-    await db.waitlistEntry.update({
-      where: { id: entry.id },
-      data: { emailSent: true, emailSentAt: new Date() },
-    });
+    // Note: emailSent tracks invitation emails (sent manually from admin), not this confirmation email
 
     return NextResponse.json(
       { message: "You're on the list! Check your email for confirmation." },

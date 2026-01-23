@@ -4,9 +4,9 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
 import { BlogImage } from "@/components/ui/blog-image";
-import { getPostBySlug, getAllSlugs } from "@/lib/blog";
+import { getPostBySlug, getAllSlugs, getOtherPosts } from "@/lib/blog";
 import { mdxComponents } from "@/components/mdx-components";
-import { ArrowLeft, CalendarBlank, Clock } from "@phosphor-icons/react/dist/ssr";
+import { ArrowLeft, ArrowRight, CalendarBlank, Clock } from "@phosphor-icons/react/dist/ssr";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -26,21 +26,65 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   return {
-    title: `${post.title} | Chosn Blog`,
+    title: post.title,
     description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: "article",
+      publishedTime: post.date,
+      authors: [post.author],
+      images: post.image ? [{ url: post.image }] : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: post.image ? [post.image] : [],
+    },
   };
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
+  const otherPosts = getOtherPosts(slug, 5);
 
   if (!post) {
     notFound();
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.description,
+    image: post.image ? `https://chosn.co${post.image}` : undefined,
+    datePublished: post.date,
+    author: {
+      "@type": "Person",
+      name: post.author,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Chosn",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://chosn.co/logo.svg",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://chosn.co/blog/${slug}`,
+    },
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-[rgba(0,0,0,0.06)]">
         <div className="container-main h-16 flex items-center justify-between">
@@ -148,6 +192,65 @@ export default async function BlogPostPage({ params }: PageProps) {
           </Button>
         </div>
       </section>
+
+      {/* More from the blog */}
+      {otherPosts.length > 0 && (
+        <section className="py-16 border-t border-[rgba(0,0,0,0.06)]">
+          <div className="container-main flex items-center justify-between mb-8">
+            <h2 className="font-display text-fluid-h4 text-foreground tracking-tight">
+              More from the blog
+            </h2>
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-1 theme-body-sm text-muted hover:text-foreground transition-colors"
+            >
+              See all
+              <ArrowRight size={14} weight="bold" />
+            </Link>
+          </div>
+          <div className="overflow-x-auto scrollbar-hide">
+            <div className="flex gap-6 pl-6 md:pl-12 lg:pl-20">
+              {otherPosts.map((otherPost) => (
+                <Link
+                  key={otherPost.slug}
+                  href={`/blog/${otherPost.slug}`}
+                  className="group flex-shrink-0 w-[280px] md:w-[320px]"
+                >
+                  <div className="aspect-[3/2] rounded-xl overflow-hidden bg-foreground/5 mb-4">
+                    {otherPost.image && (
+                      <BlogImage
+                        src={otherPost.image}
+                        alt={otherPost.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    )}
+                  </div>
+                  {otherPost.tags && otherPost.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-2">
+                      {otherPost.tags.slice(0, 2).map((tag) => (
+                        <span
+                          key={tag}
+                          className="theme-caption text-forest px-2 py-0.5 rounded-full border border-forest/20 bg-forest/5"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  <h3 className="font-display text-lg text-foreground group-hover:text-muted transition-colors line-clamp-2">
+                    {otherPost.title}
+                  </h3>
+                  <p className="theme-body-sm text-muted mt-1">
+                    {otherPost.readingTime}
+                  </p>
+                </Link>
+              ))}
+              {/* Spacer to allow last card to scroll to align with container edge */}
+              <div className="flex-shrink-0 w-6 md:w-12 lg:w-20" aria-hidden="true" />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Footer */}
       <footer className="py-12 border-t border-[rgba(0,0,0,0.06)]">

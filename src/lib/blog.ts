@@ -91,3 +91,8 @@ export function getAllSlugs(): string[] {
     .filter((file) => file.endsWith(".mdx"))
     .map((file) => file.replace(".mdx", ""));
 }
+
+export function getOtherPosts(currentSlug: string, limit: number = 6): BlogPostMeta[] {
+  const allPosts = getAllPosts();
+  return allPosts.filter((post) => post.slug !== currentSlug).slice(0, limit);
+}
