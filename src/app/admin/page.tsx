@@ -236,7 +236,7 @@ export default function AdminPage() {
         <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-[rgba(0,0,0,0.06)]">
           <div className="container-main h-16 flex items-center justify-between">
             <Link href="/">
-              <Logo variant="full" size="sm" />
+              <Logo variant="full" size="md" />
             </Link>
           </div>
         </nav>
@@ -298,7 +298,7 @@ export default function AdminPage() {
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-[rgba(0,0,0,0.06)]">
         <div className="container-main h-16 flex items-center justify-between">
           <Link href="/">
-            <Logo variant="full" size="sm" />
+            <Logo variant="full" size="md" />
           </Link>
           <div className="flex items-center gap-4">
             <span className="text-sm text-muted hidden sm:block">{email}</span>
