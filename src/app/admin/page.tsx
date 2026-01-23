@@ -11,6 +11,7 @@ import {
   Check,
   SignOut,
   Envelope,
+  Trash,
 } from "@phosphor-icons/react";
 
 interface WaitlistEntry {
@@ -36,6 +37,7 @@ export default function AdminPage() {
   const [filter, setFilter] = useState<FilterType>("all");
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [sending, setSending] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   const [message, setMessage] = useState("");
 
   // Check if already authenticated
@@ -161,6 +163,39 @@ export default function AdminPage() {
       setMessage("Failed to send emails");
     } finally {
       setSending(false);
+    }
+  };
+
+  const deleteEntries = async () => {
+    if (selected.size === 0) return;
+
+    if (!confirm(`Delete ${selected.size} entry${selected.size !== 1 ? "ies" : ""}? This cannot be undone.`)) {
+      return;
+    }
+
+    setDeleting(true);
+    setMessage("");
+
+    try {
+      const res = await fetch("/api/admin/waitlist", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ids: Array.from(selected) }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setMessage(data.message);
+        setSelected(new Set());
+        fetchEntries();
+      } else {
+        setMessage(data.error || "Failed to delete");
+      }
+    } catch {
+      setMessage("Failed to delete entries");
+    } finally {
+      setDeleting(false);
     }
   };
 
@@ -339,11 +374,21 @@ export default function AdminPage() {
                 variant="accent"
                 size="sm"
                 onClick={sendEmails}
-                disabled={sending}
+                disabled={sending || deleting}
                 className="gap-2"
               >
                 <PaperPlaneTilt size={16} weight="bold" />
-                {sending ? "Sending..." : "Send Email"}
+                {sending ? "Sending..." : "Send Invite"}
+              </Button>
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={deleteEntries}
+                disabled={sending || deleting}
+                className="gap-2 text-red-600 hover:text-red-700 hover:bg-red-50"
+              >
+                <Trash size={16} weight="bold" />
+                {deleting ? "Deleting..." : "Delete"}
               </Button>
               <button
                 onClick={() => setSelected(new Set())}

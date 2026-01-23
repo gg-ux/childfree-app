@@ -48,7 +48,7 @@ export function WaitlistForm({ source = "website", className }: WaitlistFormProp
     return (
       <div className={`w-full max-w-md ${className}`}>
         <div className="flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-forest/10 border border-forest/20">
-          <Confetti size={20} weight="fill" className="text-forest" />
+          <Confetti size={28} weight="duotone" className="text-forest" />
           <p className="text-forest font-medium">{message}</p>
         </div>
       </div>

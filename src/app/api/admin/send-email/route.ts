@@ -47,18 +47,23 @@ export async function POST(request: NextRequest) {
         await resend.emails.send({
           from: "Chosn <hello@chosn.co>",
           to: entry.email,
-          subject: "You're on the Chosn waitlist!",
+          subject: "Chosn is ready for you!",
           html: `
             <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
-              <h1 style="color: #2F7255; font-size: 28px; margin-bottom: 24px;">Welcome to Chosn!</h1>
+              <h1 style="color: #2F7255; font-size: 28px; margin-bottom: 24px;">You're invited to Chosn!</h1>
               <p style="color: #3d3d3d; font-size: 16px; line-height: 1.6;">
-                Thanks for joining our waitlist. You're now part of a growing community of childfree adults looking for meaningful connections.
+                Thanks for your patience! Chosn is now ready, and as a waitlist member, you're among the first to join.
               </p>
               <p style="color: #3d3d3d; font-size: 16px; line-height: 1.6;">
-                We're working hard to launch in mid 2026. You'll be among the first to know when we're ready.
+                Chosn is the community for childfree adults looking for meaningful connections — whether that's friendships, dating, or simply finding others who get it.
               </p>
-              <p style="color: #3d3d3d; font-size: 16px; line-height: 1.6; margin-top: 32px;">
-                In the meantime, feel free to reply to this email with any thoughts or ideas. We'd love to hear from you.
+              <div style="margin: 32px 0;">
+                <a href="https://chosn.co" style="display: inline-block; background-color: #2F7255; color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 500;">
+                  Join Chosn
+                </a>
+              </div>
+              <p style="color: #3d3d3d; font-size: 16px; line-height: 1.6;">
+                We can't wait to see you there!
               </p>
               <p style="color: #6b6b6b; font-size: 14px; margin-top: 40px;">
                 — The Chosn Team

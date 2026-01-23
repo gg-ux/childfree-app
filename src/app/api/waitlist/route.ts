@@ -47,7 +47,6 @@ export async function POST(request: NextRequest) {
       subject: "You're on the Chosn waitlist!",
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
-          <img src="https://chosn.co/assets/sparkle-leaves-logo.svg" alt="Chosn" width="48" height="48" style="margin-bottom: 24px;" />
           <h1 style="color: #2F7255; font-size: 28px; margin-bottom: 24px;">Welcome to Chosn!</h1>
           <p style="color: #3d3d3d; font-size: 16px; line-height: 1.6;">
             Thanks for joining our waitlist. You're now part of a growing community of childfree adults looking for meaningful connections.

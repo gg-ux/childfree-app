@@ -39,3 +39,32 @@ export async function GET(request: NextRequest) {
     );
   }
 }
+
+export async function DELETE(request: NextRequest) {
+  try {
+    const { db } = await import("@/lib/db");
+
+    const adminEmail = await checkAdminAuth(request);
+    if (!adminEmail) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const { ids } = await request.json();
+
+    if (!ids || !Array.isArray(ids) || ids.length === 0) {
+      return NextResponse.json({ error: "No entries selected" }, { status: 400 });
+    }
+
+    await db.waitlistEntry.deleteMany({
+      where: { id: { in: ids } },
+    });
+
+    return NextResponse.json({ message: `Deleted ${ids.length} entry${ids.length !== 1 ? "ies" : ""}` });
+  } catch (error) {
+    console.error("Admin waitlist delete error:", error);
+    return NextResponse.json(
+      { error: "Failed to delete entries" },
+      { status: 500 }
+    );
+  }
+}
