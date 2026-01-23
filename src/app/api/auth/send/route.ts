@@ -34,23 +34,27 @@ export async function POST(request: NextRequest) {
     await resend.emails.send({
       from: "Chosn <hello@chosn.co>",
       to: email,
-      subject: "Sign in to Chosn",
+      subject: "Your magic link to Chosn",
       html: `
-        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
-          <h1 style="color: #2F7255; font-size: 28px; margin-bottom: 24px;">Welcome to Chosn!</h1>
-          <p style="color: #3d3d3d; font-size: 16px; line-height: 1.6;">
-            Click the button below to sign in and join the childfree community.
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px; background-color: #ffffff;">
+          <h1 style="color: #2F7255; font-size: 28px; margin-bottom: 8px; font-weight: 600;">Sign in to Chosn</h1>
+          <p style="color: #6b6b6b; font-size: 16px; line-height: 1.6; margin-bottom: 32px;">
+            Click the button below to securely sign in. No password needed.
           </p>
           <div style="margin: 32px 0;">
-            <a href="${verifyUrl}" style="display: inline-block; background-color: #2F7255; color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 500;">
-              Sign in to Chosn
+            <a href="${verifyUrl}" style="display: inline-block; background-color: #2F7255; color: white; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 16px;">
+              Sign in to Chosn →
             </a>
           </div>
-          <p style="color: #6b6b6b; font-size: 14px;">
-            This link expires in 15 minutes. If you didn't request this, you can safely ignore this email.
+          <p style="color: #9a9a9a; font-size: 14px; line-height: 1.6; margin-top: 32px;">
+            This link expires in 15 minutes and can only be used once.
           </p>
-          <p style="color: #6b6b6b; font-size: 14px; margin-top: 40px;">
-            — The Chosn Team
+          <p style="color: #9a9a9a; font-size: 14px; line-height: 1.6;">
+            If you didn't request this email, you can safely ignore it.
+          </p>
+          <hr style="border: none; border-top: 1px solid #e5e5e5; margin: 40px 0 24px;" />
+          <p style="color: #9a9a9a; font-size: 13px;">
+            Chosn — The community for childfree adults
           </p>
         </div>
       `,
