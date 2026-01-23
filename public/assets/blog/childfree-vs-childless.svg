@@ -1,0 +1,55 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- "Childfree vs Childless" - Duality/Contrast theme -->
+  <!-- Two contrasting sides representing choice vs circumstance -->
+
+  <!-- Left side - Childfree (complete, whole, chosen) -->
+  <rect x="0" y="0" width="600" height="800" fill="#2F7255"/>
+
+  <!-- Full circle representing completeness/wholeness -->
+  <circle cx="300" cy="350" r="180" fill="#F5F0E8"/>
+  <circle cx="300" cy="350" r="120" fill="#2F7255"/>
+  <circle cx="300" cy="350" r="70" fill="#D9A441">
+    <animate attributeName="r" values="70;82;70" dur="3s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Radiating lines suggesting freedom/choice -->
+  <g stroke="#F5F0E8" stroke-width="6" stroke-linecap="round">
+    <line x1="300" y1="100" x2="300" y2="140"/>
+    <line x1="300" y1="560" x2="300" y2="600"/>
+    <line x1="50" y1="350" x2="90" y2="350"/>
+    <line x1="510" y1="350" x2="550" y2="350"/>
+    <line x1="130" y1="180" x2="158" y2="208"/>
+    <line x1="442" y1="492" x2="470" y2="520"/>
+    <line x1="130" y1="520" x2="158" y2="492"/>
+    <line x1="442" y1="208" x2="470" y2="180"/>
+  </g>
+
+  <!-- Small decorative elements -->
+  <circle cx="100" cy="700" r="40" fill="#D9A441"/>
+  <circle cx="500" cy="680" r="25" fill="#D4654A"/>
+
+  <!-- Right side - Childless (absence, longing) -->
+  <rect x="600" y="0" width="600" height="800" fill="#D4654A"/>
+
+  <!-- Circle with piece missing - representing absence -->
+  <g transform="translate(900, 350)">
+    <circle cx="0" cy="0" r="180" fill="#F5F0E8"/>
+    <circle cx="0" cy="0" r="120" fill="#D4654A"/>
+    <!-- Missing piece / gap -->
+    <path d="M0 0 L180 0 A180 180 0 0 0 127 -127 Z" fill="#D4654A"/>
+    <circle cx="0" cy="0" r="70" fill="#19131D"/>
+    <!-- Dashed inner circle suggesting incompleteness - slow rotation -->
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#F5F0E8" stroke-width="4" stroke-dasharray="12 8">
+      <animateTransform attributeName="transform" type="rotate" values="0 0 0; 360 0 0" dur="12s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Scattered elements suggesting searching/waiting -->
+  <circle cx="680" cy="150" r="20" fill="#F5F0E8" opacity="0.5"/>
+  <circle cx="750" cy="680" r="35" fill="#F5F0E8" opacity="0.5"/>
+  <circle cx="1100" cy="200" r="28" fill="#F5F0E8" opacity="0.5"/>
+  <circle cx="1050" cy="620" r="22" fill="#F5F0E8" opacity="0.5"/>
+
+  <!-- Center dividing line -->
+  <rect x="595" y="0" width="10" height="800" fill="#19131D"/>
+</svg>

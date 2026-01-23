@@ -1,0 +1,90 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- "How to Meet Other Childfree People" - Connection/Community theme -->
+  <!-- Grid layout matching other blog images -->
+
+  <!-- Left panel - gold with abstract figures connecting -->
+  <rect x="0" y="0" width="600" height="800" fill="#D9A441"/>
+
+  <!-- Two figures reaching toward each other -->
+  <g transform="translate(150, 340)">
+    <!-- Figure 1 - adult proportions -->
+    <circle cx="0" cy="-40" r="32" fill="#19131D"/>
+    <rect x="-26" y="-5" width="52" height="110" rx="26" fill="#19131D"/>
+    <!-- Reaching arm -->
+    <rect x="26" y="25" width="95" height="18" rx="9" fill="#19131D"/>
+    <!-- Legs -->
+    <rect x="-24" y="100" width="20" height="120" rx="10" fill="#19131D"/>
+    <rect x="4" y="100" width="20" height="120" rx="10" fill="#19131D"/>
+  </g>
+
+  <g transform="translate(450, 340)">
+    <!-- Figure 2 - adult proportions -->
+    <circle cx="0" cy="-40" r="32" fill="#19131D"/>
+    <rect x="-26" y="-5" width="52" height="110" rx="26" fill="#19131D"/>
+    <!-- Reaching arm -->
+    <rect x="-121" y="25" width="95" height="18" rx="9" fill="#19131D"/>
+    <!-- Legs -->
+    <rect x="-24" y="100" width="20" height="120" rx="10" fill="#19131D"/>
+    <rect x="4" y="100" width="20" height="120" rx="10" fill="#19131D"/>
+  </g>
+
+  <!-- Connection point between hands - gentle pulse -->
+  <circle cx="300" cy="374" r="24" fill="#F5F0E8">
+    <animate attributeName="r" values="24;32;24" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;0.7;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Small decorative circles -->
+  <circle cx="100" cy="150" r="40" fill="#D4654A"/>
+  <circle cx="500" cy="120" r="25" fill="#2F7255"/>
+  <circle cx="80" cy="680" r="35" fill="#F5F0E8"/>
+  <circle cx="520" cy="700" r="28" fill="#D4654A"/>
+
+  <!-- Top right panel - forest with overlapping community circles -->
+  <rect x="600" y="0" width="600" height="400" fill="#2F7255"/>
+
+  <!-- Overlapping circles representing community -->
+  <circle cx="820" cy="200" r="100" fill="#F5F0E8"/>
+  <circle cx="920" cy="200" r="100" fill="#D9A441"/>
+  <circle cx="870" cy="280" r="100" fill="#D4654A"/>
+  <!-- Center intersection - gentle pulse -->
+  <circle cx="870" cy="220" r="35" fill="#19131D">
+    <animate attributeName="r" values="35;42;35" dur="3s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Small accent dots -->
+  <circle cx="680" cy="80" r="18" fill="#F5F0E8" opacity="0.6"/>
+  <circle cx="1100" cy="320" r="22" fill="#F5F0E8" opacity="0.6"/>
+
+  <!-- Bottom right panel - coral with network/connection lines -->
+  <rect x="600" y="400" width="600" height="400" fill="#D4654A"/>
+
+  <!-- Network nodes and connections -->
+  <g stroke="#F5F0E8" stroke-width="6">
+    <line x1="720" y1="500" x2="900" y2="520"/>
+    <line x1="900" y1="520" x2="1050" y2="480"/>
+    <line x1="900" y1="520" x2="850" y2="680"/>
+    <line x1="720" y1="500" x2="750" y2="650"/>
+    <line x1="750" y1="650" x2="850" y2="680"/>
+    <line x1="1050" y1="480" x2="1080" y2="620"/>
+    <line x1="850" y1="680" x2="1080" y2="620"/>
+  </g>
+
+  <!-- Network nodes -->
+  <circle cx="720" cy="500" r="28" fill="#F5F0E8"/>
+  <circle cx="900" cy="520" r="35" fill="#F5F0E8">
+    <animate attributeName="r" values="35;42;35" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="1050" cy="480" r="28" fill="#F5F0E8"/>
+  <circle cx="750" cy="650" r="24" fill="#F5F0E8"/>
+  <circle cx="850" cy="680" r="28" fill="#F5F0E8"/>
+  <circle cx="1080" cy="620" r="24" fill="#F5F0E8"/>
+
+  <!-- Node centers -->
+  <circle cx="720" cy="500" r="12" fill="#19131D"/>
+  <circle cx="900" cy="520" r="15" fill="#2F7255"/>
+  <circle cx="1050" cy="480" r="12" fill="#19131D"/>
+  <circle cx="750" cy="650" r="10" fill="#D9A441"/>
+  <circle cx="850" cy="680" r="12" fill="#19131D"/>
+  <circle cx="1080" cy="620" r="10" fill="#D9A441"/>
+</svg>

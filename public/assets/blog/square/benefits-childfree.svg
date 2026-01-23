@@ -1,12 +1,11 @@
-<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- "Benefits of a Childfree Life" - Freedom/Flourishing theme -->
-  <!-- Layout: Narrower left panel, larger right panels -->
+<svg viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%" preserveAspectRatio="xMidYMid meet">
+  <!-- Square version: Benefits of a Childfree Life -->
 
-  <!-- Left - forest green with airplane (freedom/travel) -->
-  <rect x="0" y="0" width="550" height="800" fill="#2F7255"/>
+  <!-- Left - forest green with airplane -->
+  <rect x="0" y="0" width="400" height="800" fill="#2F7255"/>
 
-  <!-- Top-down airplane silhouette -->
-  <g transform="translate(275, 400) rotate(-45)">
+  <!-- Airplane - centered at (200, 400), scaled 0.7 -->
+  <g transform="translate(200, 400) rotate(-45) scale(0.75)">
     <g>
       <animateTransform
         attributeName="transform"
@@ -17,75 +16,57 @@
         calcMode="spline"
         keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"
       />
-      <!-- Fuselage -->
       <ellipse cx="0" cy="0" rx="18" ry="90" fill="#F5F0E8"/>
-      <!-- Nose cone -->
       <ellipse cx="0" cy="-85" rx="12" ry="20" fill="#F5F0E8"/>
-      <!-- Main wings (swept back) -->
       <path d="M-14,-10 L-95,35 L-95,50 L-14,15 Z" fill="#F5F0E8"/>
       <path d="M14,-10 L95,35 L95,50 L14,15 Z" fill="#F5F0E8"/>
-      <!-- Tail wings -->
       <path d="M-12,65 L-45,90 L-45,100 L-12,80 Z" fill="#D4654A"/>
       <path d="M12,65 L45,90 L45,100 L12,80 Z" fill="#D4654A"/>
-      <!-- Engines under wings -->
       <ellipse cx="-50" cy="25" rx="8" ry="18" fill="#F5F0E8"/>
       <ellipse cx="50" cy="25" rx="8" ry="18" fill="#F5F0E8"/>
     </g>
   </g>
 
-  <!-- Whimsical puffy clouds - balanced diagonal arrangement with slow drift -->
+  <!-- Clouds - repositioned for narrower panel -->
   <g fill="#F5F0E8" opacity="0.35">
-    <!-- Upper left cloud -->
     <g>
       <animateTransform attributeName="transform" type="translate" values="0,0;8,0;0,0" dur="12s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
-      <circle cx="80" cy="140" r="28"/>
-      <circle cx="115" cy="130" r="35"/>
-      <circle cx="155" cy="138" r="28"/>
+      <circle cx="60" cy="120" r="22"/>
+      <circle cx="90" cy="110" r="28"/>
+      <circle cx="125" cy="118" r="22"/>
     </g>
-
-    <!-- Lower right cloud -->
     <g>
       <animateTransform attributeName="transform" type="translate" values="0,0;-10,0;0,0" dur="15s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
-      <circle cx="380" cy="650" r="32"/>
-      <circle cx="420" cy="640" r="40"/>
-      <circle cx="465" cy="648" r="30"/>
+      <circle cx="280" cy="680" r="25"/>
+      <circle cx="315" cy="670" r="32"/>
+      <circle cx="355" cy="678" r="24"/>
     </g>
   </g>
 
-  <!-- Subtle gold stars - organic placement with twinkle -->
+  <!-- Stars - repositioned -->
   <g fill="#D9A441">
-    <!-- Larger star upper right -->
-    <polygon points="490,120 494,132 506,132 496,140 500,152 490,144 480,152 484,140 474,132 486,132">
+    <polygon points="350,100 354,112 366,112 356,120 360,132 350,124 340,132 344,120 334,112 346,112">
       <animate attributeName="opacity" values="0.55;0.9;0.55" dur="3s" repeatCount="indefinite"/>
     </polygon>
-    <!-- Medium star mid-left -->
-    <polygon points="70,380 73,388 81,388 75,393 77,401 70,396 63,401 65,393 59,388 67,388">
+    <polygon points="50,350 53,358 61,358 55,363 57,371 50,366 43,371 45,363 39,358 47,358">
       <animate attributeName="opacity" values="0.55;0.85;0.55" dur="4s" begin="1s" repeatCount="indefinite"/>
     </polygon>
-    <!-- Small star lower middle -->
-    <polygon points="320,720 322,726 328,726 324,730 325,736 320,732 315,736 316,730 312,726 318,726">
+    <polygon points="200,750 202,756 208,756 204,760 205,766 200,762 195,766 196,760 192,756 198,756">
       <animate attributeName="opacity" values="0.55;0.8;0.55" dur="2.5s" begin="0.5s" repeatCount="indefinite"/>
-    </polygon>
-    <!-- Tiny star upper area -->
-    <polygon points="230,200 232,205 237,205 233,208 234,213 230,210 226,213 227,208 223,205 228,205">
-      <animate attributeName="opacity" values="0.55;0.95;0.55" dur="3.5s" begin="2s" repeatCount="indefinite"/>
     </polygon>
   </g>
 
-  <!-- Top right - coral with clock (time freedom) -->
-  <rect x="550" y="0" width="650" height="400" fill="#D4654A"/>
-  <g transform="translate(875, 200)">
-    <!-- Clock face -->
+  <!-- Top right - coral with clock -->
+  <rect x="400" y="0" width="400" height="400" fill="#D4654A"/>
+  <g transform="translate(600, 200) scale(0.7)">
     <circle cx="0" cy="0" r="90" fill="#F5F0E8"/>
     <circle cx="0" cy="0" r="76" fill="#2F7255"/>
-    <!-- Hour markers -->
     <g fill="#F5F0E8">
       <circle cx="0" cy="-58" r="7"/>
       <circle cx="58" cy="0" r="7"/>
       <circle cx="0" cy="58" r="7"/>
       <circle cx="-58" cy="0" r="7"/>
     </g>
-    <!-- Clock hands -->
     <line x1="0" y1="0" x2="0" y2="-42" stroke="#D9A441" stroke-width="7" stroke-linecap="round"/>
     <!-- Minute hand with slow rotation -->
     <g>
@@ -95,41 +76,27 @@
     <circle cx="0" cy="0" r="10" fill="#F5F0E8"/>
   </g>
 
-  <!-- Bottom right - navy with two wine glasses -->
-  <rect x="550" y="400" width="650" height="400" fill="#19131D"/>
-  <g transform="translate(875, 630)">
-    <!-- Heart between glasses (smaller, higher) with gentle pulse -->
+  <!-- Bottom right - navy with wine glasses -->
+  <rect x="400" y="400" width="400" height="400" fill="#19131D"/>
+  <g transform="translate(600, 620) scale(0.7)">
+    <!-- Heart -->
     <path d="M0,-115 C-6,-122 -15,-122 -18,-115 C-22,-108 -18,-100 0,-85 C18,-100 22,-108 18,-115 C15,-122 6,-122 0,-115 Z" fill="#D9A441">
       <animateTransform attributeName="transform" type="scale" values="1;1.08;1" dur="2s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
     </path>
     <!-- Left wine glass -->
     <g transform="translate(-65, 0)">
-      <!-- Glass bowl outline -->
-      <path d="M-32,-70 C-35,-30 -30,5 0,15 C30,5 35,-30 32,-70"
-            fill="none" stroke="#F5F0E8" stroke-width="4"/>
-      <!-- Wine fill -->
-      <path d="M-28,-40 C-30,-15 -25,5 0,12 C25,5 30,-15 28,-40 Z"
-            fill="#D4654A"/>
-      <!-- Glass rim -->
+      <path d="M-32,-70 C-35,-30 -30,5 0,15 C30,5 35,-30 32,-70" fill="none" stroke="#F5F0E8" stroke-width="4"/>
+      <path d="M-28,-40 C-30,-15 -25,5 0,12 C25,5 30,-15 28,-40 Z" fill="#D4654A"/>
       <ellipse cx="0" cy="-70" rx="32" ry="10" fill="none" stroke="#F5F0E8" stroke-width="4"/>
-      <!-- Stem -->
       <line x1="0" y1="15" x2="0" y2="55" stroke="#F5F0E8" stroke-width="4"/>
-      <!-- Base -->
       <ellipse cx="0" cy="58" rx="25" ry="6" fill="#F5F0E8"/>
     </g>
     <!-- Right wine glass -->
     <g transform="translate(65, 0)">
-      <!-- Glass bowl outline -->
-      <path d="M-32,-70 C-35,-30 -30,5 0,15 C30,5 35,-30 32,-70"
-            fill="none" stroke="#F5F0E8" stroke-width="4"/>
-      <!-- Wine fill -->
-      <path d="M-28,-40 C-30,-15 -25,5 0,12 C25,5 30,-15 28,-40 Z"
-            fill="#D4654A"/>
-      <!-- Glass rim -->
+      <path d="M-32,-70 C-35,-30 -30,5 0,15 C30,5 35,-30 32,-70" fill="none" stroke="#F5F0E8" stroke-width="4"/>
+      <path d="M-28,-40 C-30,-15 -25,5 0,12 C25,5 30,-15 28,-40 Z" fill="#D4654A"/>
       <ellipse cx="0" cy="-70" rx="32" ry="10" fill="none" stroke="#F5F0E8" stroke-width="4"/>
-      <!-- Stem -->
       <line x1="0" y1="15" x2="0" y2="55" stroke="#F5F0E8" stroke-width="4"/>
-      <!-- Base -->
       <ellipse cx="0" cy="58" rx="25" ry="6" fill="#F5F0E8"/>
     </g>
   </g>

@@ -1,0 +1,54 @@
+<svg viewBox="0 0 800 800" style="width:100%;height:100%" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Square version: Childfree vs Childless - Duality theme -->
+
+  <!-- Left side - Childfree (complete, whole) -->
+  <rect x="0" y="0" width="400" height="800" fill="#2F7255"/>
+
+  <!-- Full circle representing completeness -->
+  <circle cx="200" cy="400" r="140" fill="#F5F0E8"/>
+  <circle cx="200" cy="400" r="95" fill="#2F7255"/>
+  <circle cx="200" cy="400" r="55" fill="#D9A441">
+    <animate attributeName="r" values="55;65;55" dur="3s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Radiating lines -->
+  <g stroke="#F5F0E8" stroke-width="5" stroke-linecap="round">
+    <line x1="200" y1="200" x2="200" y2="235"/>
+    <line x1="200" y1="565" x2="200" y2="600"/>
+    <line x1="40" y1="400" x2="75" y2="400"/>
+    <line x1="325" y1="400" x2="360" y2="400"/>
+    <line x1="80" y1="260" x2="105" y2="285"/>
+    <line x1="295" y1="515" x2="320" y2="540"/>
+    <line x1="80" y1="540" x2="105" y2="515"/>
+    <line x1="295" y1="285" x2="320" y2="260"/>
+  </g>
+
+  <!-- Small decorative elements -->
+  <circle cx="80" cy="700" r="32" fill="#D9A441"/>
+  <circle cx="320" cy="720" r="20" fill="#D4654A"/>
+
+  <!-- Right side - Childless (absence) -->
+  <rect x="400" y="0" width="400" height="800" fill="#D4654A"/>
+
+  <!-- Circle with piece missing -->
+  <g transform="translate(600, 400)">
+    <circle cx="0" cy="0" r="140" fill="#F5F0E8"/>
+    <circle cx="0" cy="0" r="95" fill="#D4654A"/>
+    <!-- Missing piece -->
+    <path d="M0 0 L140 0 A140 140 0 0 0 99 -99 Z" fill="#D4654A"/>
+    <circle cx="0" cy="0" r="55" fill="#19131D"/>
+    <!-- Dashed circle -->
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#F5F0E8" stroke-width="3" stroke-dasharray="10 6">
+      <animateTransform attributeName="transform" type="rotate" values="0 0 0; 360 0 0" dur="12s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Scattered elements -->
+  <circle cx="480" cy="140" r="16" fill="#F5F0E8" opacity="0.5"/>
+  <circle cx="540" cy="700" r="28" fill="#F5F0E8" opacity="0.5"/>
+  <circle cx="720" cy="180" r="22" fill="#F5F0E8" opacity="0.5"/>
+  <circle cx="700" cy="650" r="18" fill="#F5F0E8" opacity="0.5"/>
+
+  <!-- Center dividing line -->
+  <rect x="396" y="0" width="8" height="800" fill="#19131D"/>
+</svg>

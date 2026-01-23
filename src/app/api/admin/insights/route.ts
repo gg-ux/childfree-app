@@ -42,7 +42,7 @@ Traffic Sources: ${analytics.trafficSources?.map((s: { source: string; percentag
 Provide a brief insight. Don't repeat the numbers - interpret them. If there's no data yet, acknowledge that and encourage patience.`;
 
     const message = await anthropic.messages.create({
-      model: "claude-3-5-haiku-20241022",
+      model: "claude-3-haiku-20240307",
       max_tokens: 200,
       messages: [
         {

@@ -1,0 +1,84 @@
+<svg viewBox="0 0 800 800" style="width:100%;height:100%" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Square version: How to Meet Other Childfree People -->
+
+  <!-- Left panel - gold with figures -->
+  <rect x="0" y="0" width="400" height="800" fill="#D9A441"/>
+
+  <!-- Two figures - scaled and repositioned -->
+  <g transform="translate(80, 380) scale(0.85)">
+    <circle cx="0" cy="-40" r="32" fill="#19131D"/>
+    <rect x="-26" y="-5" width="52" height="110" rx="26" fill="#19131D"/>
+    <rect x="26" y="25" width="95" height="18" rx="9" fill="#19131D"/>
+    <rect x="-24" y="100" width="20" height="120" rx="10" fill="#19131D"/>
+    <rect x="4" y="100" width="20" height="120" rx="10" fill="#19131D"/>
+  </g>
+
+  <g transform="translate(320, 380) scale(0.85)">
+    <circle cx="0" cy="-40" r="32" fill="#19131D"/>
+    <rect x="-26" y="-5" width="52" height="110" rx="26" fill="#19131D"/>
+    <rect x="-121" y="25" width="95" height="18" rx="9" fill="#19131D"/>
+    <rect x="-24" y="100" width="20" height="120" rx="10" fill="#19131D"/>
+    <rect x="4" y="100" width="20" height="120" rx="10" fill="#19131D"/>
+  </g>
+
+  <!-- Connection point -->
+  <circle cx="200" cy="410" r="20" fill="#F5F0E8">
+    <animate attributeName="r" values="20;28;20" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;0.7;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Decorative circles -->
+  <circle cx="70" cy="140" r="32" fill="#D4654A"/>
+  <circle cx="330" cy="110" r="20" fill="#2F7255"/>
+  <circle cx="55" cy="700" r="28" fill="#F5F0E8"/>
+  <circle cx="350" cy="720" r="22" fill="#D4654A"/>
+
+  <!-- Top right panel - forest with overlapping circles -->
+  <rect x="400" y="0" width="400" height="400" fill="#2F7255"/>
+
+  <!-- Overlapping circles - centered and scaled -->
+  <g transform="translate(600, 200) scale(0.7)">
+    <circle cx="-50" cy="0" r="100" fill="#F5F0E8"/>
+    <circle cx="50" cy="0" r="100" fill="#D9A441"/>
+    <circle cx="0" cy="80" r="100" fill="#D4654A"/>
+    <circle cx="0" cy="20" r="35" fill="#19131D">
+      <animate attributeName="r" values="35;42;35" dur="3s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Accent dots -->
+  <circle cx="460" cy="70" r="14" fill="#F5F0E8" opacity="0.6"/>
+  <circle cx="750" cy="340" r="16" fill="#F5F0E8" opacity="0.6"/>
+
+  <!-- Bottom right panel - coral with network -->
+  <rect x="400" y="400" width="400" height="400" fill="#D4654A"/>
+
+  <!-- Network - repositioned -->
+  <g stroke="#F5F0E8" stroke-width="5">
+    <line x1="480" y1="500" x2="620" y2="520"/>
+    <line x1="620" y1="520" x2="730" y2="480"/>
+    <line x1="620" y1="520" x2="580" y2="660"/>
+    <line x1="480" y1="500" x2="510" y2="640"/>
+    <line x1="510" y1="640" x2="580" y2="660"/>
+    <line x1="730" y1="480" x2="750" y2="600"/>
+    <line x1="580" y1="660" x2="750" y2="600"/>
+  </g>
+
+  <!-- Nodes -->
+  <circle cx="480" cy="500" r="22" fill="#F5F0E8"/>
+  <circle cx="620" cy="520" r="28" fill="#F5F0E8">
+    <animate attributeName="r" values="28;35;28" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="730" cy="480" r="22" fill="#F5F0E8"/>
+  <circle cx="510" cy="640" r="18" fill="#F5F0E8"/>
+  <circle cx="580" cy="660" r="22" fill="#F5F0E8"/>
+  <circle cx="750" cy="600" r="18" fill="#F5F0E8"/>
+
+  <!-- Node centers -->
+  <circle cx="480" cy="500" r="10" fill="#19131D"/>
+  <circle cx="620" cy="520" r="12" fill="#2F7255"/>
+  <circle cx="730" cy="480" r="10" fill="#19131D"/>
+  <circle cx="510" cy="640" r="8" fill="#D9A441"/>
+  <circle cx="580" cy="660" r="10" fill="#19131D"/>
+  <circle cx="750" cy="600" r="8" fill="#D9A441"/>
+</svg>

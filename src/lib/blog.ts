@@ -12,6 +12,7 @@ export interface BlogPost {
   date: string;
   author: string;
   image?: string;
+  imageAlt?: string;
   tags?: string[];
   readingTime: string;
   content: string;
@@ -24,6 +25,7 @@ export interface BlogPostMeta {
   date: string;
   author: string;
   image?: string;
+  imageAlt?: string;
   tags?: string[];
   readingTime: string;
 }
@@ -49,6 +51,7 @@ export function getAllPosts(): BlogPostMeta[] {
         date: data.date || new Date().toISOString(),
         author: data.author || "Chosn Team",
         image: data.image,
+        imageAlt: data.imageAlt,
         tags: data.tags || [],
         readingTime: readingTime(content).text,
       };
@@ -75,6 +78,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
     date: data.date || new Date().toISOString(),
     author: data.author || "Chosn Team",
     image: data.image,
+    imageAlt: data.imageAlt,
     tags: data.tags || [],
     readingTime: readingTime(content).text,
     content,

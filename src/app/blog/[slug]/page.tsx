@@ -7,6 +7,7 @@ import { BlogImage } from "@/components/ui/blog-image";
 import { getPostBySlug, getAllSlugs, getOtherPosts } from "@/lib/blog";
 import { mdxComponents } from "@/components/mdx-components";
 import { ArrowLeft, ArrowRight, CalendarBlank, Clock } from "@phosphor-icons/react/dist/ssr";
+import { ShareButton } from "@/components/ui/share-button";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -139,21 +140,24 @@ export default async function BlogPostPage({ params }: PageProps) {
           </h1>
 
           {/* Meta */}
-          <div className="flex flex-wrap items-center gap-4 theme-secondary">
-            <span className="font-semibold text-foreground">{post.author}</span>
-            <span className="text-border">|</span>
-            <span className="flex items-center gap-1.5">
-              <CalendarBlank size={14} />
-              {new Date(post.date).toLocaleDateString("en-US", {
-                month: "long",
-                day: "numeric",
-                year: "numeric",
-              })}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Clock size={14} />
-              {post.readingTime}
-            </span>
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center gap-4 theme-secondary">
+              <span className="font-semibold text-foreground">{post.author}</span>
+              <span className="text-border">|</span>
+              <span className="flex items-center gap-1.5">
+                <CalendarBlank size={14} />
+                {new Date(post.date).toLocaleDateString("en-US", {
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric",
+                })}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Clock size={14} />
+                {post.readingTime}
+              </span>
+            </div>
+            <ShareButton title={post.title} />
           </div>
         </header>
 
@@ -163,7 +167,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             <div className="aspect-[3/2] rounded-2xl overflow-hidden bg-foreground/5">
               <BlogImage
                 src={post.image}
-                alt={post.title}
+                alt={post.imageAlt || post.title}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -220,7 +224,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     {otherPost.image && (
                       <BlogImage
                         src={otherPost.image}
-                        alt={otherPost.title}
+                        alt={otherPost.imageAlt || otherPost.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     )}

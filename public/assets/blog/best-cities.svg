@@ -1,0 +1,149 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- "Best Cities for Childfree Adults" - Urban/Cities theme -->
+  <!-- Bauhaus-style geometric cityscape -->
+
+  <!-- Left panel - forest green with abstract city skyline -->
+  <rect x="0" y="0" width="600" height="800" fill="#2F7255"/>
+
+  <!-- City skyline silhouettes -->
+  <g fill="#19131D">
+    <!-- Building 1 - tall narrow -->
+    <rect x="60" y="320" width="70" height="480"/>
+    <rect x="75" y="350" width="12" height="20" fill="#D9A441"/>
+    <rect x="100" y="350" width="12" height="20" fill="#D9A441"/>
+    <rect x="75" y="400" width="12" height="20" fill="#D9A441"/>
+    <rect x="100" y="400" width="12" height="20" fill="#D9A441"/>
+    <rect x="75" y="450" width="12" height="20" fill="#D9A441"/>
+    <rect x="100" y="450" width="12" height="20" fill="#D9A441"/>
+    <rect x="75" y="500" width="12" height="20" fill="#D9A441"/>
+    <rect x="100" y="500" width="12" height="20" fill="#D9A441"/>
+
+    <!-- Building 2 - medium with antenna -->
+    <rect x="150" y="420" width="90" height="380"/>
+    <rect x="190" y="360" width="10" height="60"/>
+    <rect x="165" y="450" width="15" height="25" fill="#F5F0E8"/>
+    <rect x="190" y="450" width="15" height="25" fill="#F5F0E8"/>
+    <rect x="215" y="450" width="15" height="25" fill="#F5F0E8"/>
+    <rect x="165" y="500" width="15" height="25" fill="#F5F0E8"/>
+    <rect x="190" y="500" width="15" height="25" fill="#F5F0E8"/>
+    <rect x="215" y="500" width="15" height="25" fill="#F5F0E8"/>
+
+    <!-- Building 3 - shorter wide -->
+    <rect x="260" y="520" width="120" height="280"/>
+    <rect x="275" y="550" width="20" height="30" fill="#D4654A"/>
+    <rect x="310" y="550" width="20" height="30" fill="#D4654A"/>
+    <rect x="345" y="550" width="20" height="30" fill="#D4654A"/>
+    <rect x="275" y="600" width="20" height="30" fill="#D4654A"/>
+    <rect x="310" y="600" width="20" height="30" fill="#D4654A"/>
+    <rect x="345" y="600" width="20" height="30" fill="#D4654A"/>
+
+    <!-- Building 4 - tallest landmark style -->
+    <rect x="400" y="220" width="80" height="580"/>
+    <polygon points="440,220 400,280 480,280" fill="#19131D"/>
+    <rect x="415" y="290" width="14" height="22" fill="#D9A441"/>
+    <rect x="435" y="290" width="14" height="22" fill="#D9A441"/>
+    <rect x="455" y="290" width="14" height="22" fill="#D9A441"/>
+    <rect x="415" y="340" width="14" height="22" fill="#D9A441"/>
+    <rect x="435" y="340" width="14" height="22" fill="#D9A441"/>
+    <rect x="455" y="340" width="14" height="22" fill="#D9A441"/>
+    <rect x="415" y="390" width="14" height="22" fill="#D9A441"/>
+    <rect x="435" y="390" width="14" height="22" fill="#D9A441"/>
+    <rect x="455" y="390" width="14" height="22" fill="#D9A441"/>
+
+    <!-- Building 5 - small -->
+    <rect x="500" y="580" width="80" height="220"/>
+    <rect x="515" y="610" width="18" height="28" fill="#F5F0E8"/>
+    <rect x="545" y="610" width="18" height="28" fill="#F5F0E8"/>
+    <rect x="515" y="660" width="18" height="28" fill="#F5F0E8"/>
+    <rect x="545" y="660" width="18" height="28" fill="#F5F0E8"/>
+  </g>
+
+  <!-- Sun/moon circle with gentle pulse -->
+  <circle cx="120" cy="120" r="60" fill="#D9A441">
+    <animate attributeName="r" values="60;70;60" dur="4s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Top right panel - coral with location pin -->
+  <rect x="600" y="0" width="600" height="400" fill="#D4654A"/>
+
+  <!-- Large geometric location pin with gentle bounce -->
+  <g transform="translate(900, 200) scale(0.85)">
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0,0; 0,-15; 0,0" dur="2.5s" repeatCount="indefinite"/>
+      <path d="M0 -130 C-55 -130 -95 -90 -95 -35 C-95 10 -60 60 0 140 C60 60 95 10 95 -35 C95 -90 55 -130 0 -130 Z" fill="#F5F0E8"/>
+      <circle cx="0" cy="-35" r="42" fill="#19131D"/>
+      <circle cx="0" cy="-35" r="22" fill="#F5F0E8"/>
+    </g>
+  </g>
+
+
+  <!-- Bottom right panel - gold with abstract map grid -->
+  <rect x="600" y="400" width="600" height="400" fill="#D9A441"/>
+
+  <!-- Road/map grid pattern -->
+  <g stroke="#F5F0E8" stroke-width="8" fill="none">
+    <line x1="650" y1="450" x2="650" y2="750"/>
+    <line x1="750" y1="420" x2="750" y2="780"/>
+    <line x1="900" y1="450" x2="900" y2="750"/>
+    <line x1="1050" y1="420" x2="1050" y2="780"/>
+    <line x1="620" y1="500" x2="1180" y2="500"/>
+    <line x1="620" y1="620" x2="1180" y2="620"/>
+    <line x1="620" y1="720" x2="1180" y2="720"/>
+  </g>
+
+  <!-- Location markers on map -->
+  <circle cx="750" cy="500" r="18" fill="#D4654A"/>
+  <circle cx="750" cy="500" r="8" fill="#F5F0E8"/>
+
+  <circle cx="900" cy="620" r="18" fill="#2F7255"/>
+  <circle cx="900" cy="620" r="8" fill="#F5F0E8"/>
+
+  <circle cx="1050" cy="500" r="18" fill="#19131D"/>
+  <circle cx="1050" cy="500" r="8" fill="#F5F0E8"/>
+
+  <circle cx="650" cy="720" r="18" fill="#D4654A"/>
+  <circle cx="650" cy="720" r="8" fill="#F5F0E8"/>
+
+  <!-- Small building icons in map grid -->
+  <rect x="800" y="550" width="30" height="40" fill="#19131D"/>
+  <rect x="810" y="560" width="10" height="15" fill="#F5F0E8"/>
+
+  <rect x="950" y="450" width="40" height="30" fill="#19131D"/>
+  <rect x="960" y="458" width="8" height="12" fill="#F5F0E8"/>
+  <rect x="972" y="458" width="8" height="12" fill="#F5F0E8"/>
+
+  <rect x="700" y="650" width="25" height="50" fill="#19131D"/>
+  <rect x="707" y="660" width="10" height="15" fill="#F5F0E8"/>
+  <rect x="707" y="680" width="10" height="15" fill="#F5F0E8"/>
+
+  <!-- Animated cars on roads -->
+  <!-- Car moving right on top horizontal road -->
+  <rect width="20" height="10" rx="3" fill="#19131D">
+    <animate attributeName="x" values="620;1160;620" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="y" values="495;495;495" dur="8s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Car moving left on middle horizontal road -->
+  <rect width="20" height="10" rx="3" fill="#2F7255">
+    <animate attributeName="x" values="1160;620;1160" dur="10s" repeatCount="indefinite"/>
+    <animate attributeName="y" values="615;615;615" dur="10s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Car moving right on bottom horizontal road -->
+  <rect width="18" height="9" rx="3" fill="#D4654A">
+    <animate attributeName="x" values="620;1160;620" dur="12s" repeatCount="indefinite"/>
+    <animate attributeName="y" values="716;716;716" dur="12s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Car moving down on vertical road -->
+  <rect width="10" height="18" rx="3" fill="#19131D">
+    <animate attributeName="x" values="745;745;745" dur="7s" repeatCount="indefinite"/>
+    <animate attributeName="y" values="420;760;420" dur="7s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Car moving up on another vertical road -->
+  <rect width="10" height="18" rx="3" fill="#2F7255">
+    <animate attributeName="x" values="895;895;895" dur="9s" repeatCount="indefinite"/>
+    <animate attributeName="y" values="750;450;750" dur="9s" repeatCount="indefinite"/>
+  </rect>
+</svg>

@@ -22,6 +22,8 @@ import {
   Sparkle,
 } from "@phosphor-icons/react";
 import { Loader } from "@/components/ui/loader";
+import { SocialExport } from "@/components/ui/social-export";
+import { QuoteGenerator } from "@/components/ui/quote-generator";
 
 interface WaitlistEntry {
   id: string;
@@ -62,6 +64,8 @@ export default function AdminPage() {
     topPages: { page: string; views: number }[];
     trafficSources: { source: string; sessions: number; percentage: number }[];
   } | null>(null);
+  const [blogPosts, setBlogPosts] = useState<{ slug: string; title: string; image?: string }[]>([]);
+  const [activeTab, setActiveTab] = useState<"dashboard" | "social">("dashboard");
 
   // Check if already authenticated
   useEffect(() => {
@@ -75,6 +79,7 @@ export default function AdminPage() {
           setEmail(data.email);
           fetchEntries();
           fetchAnalytics();
+          fetchBlogPosts();
         }
       } catch {
         // Not authenticated
@@ -125,6 +130,18 @@ export default function AdminPage() {
     }
   };
 
+  const fetchBlogPosts = async () => {
+    try {
+      const res = await fetch("/api/admin/posts");
+      const data = await res.json();
+      if (res.ok) {
+        setBlogPosts(data.posts);
+      }
+    } catch {
+      console.error("Failed to fetch blog posts");
+    }
+  };
+
   const fetchInsights = async () => {
     if (!analytics) return;
 
@@ -143,9 +160,12 @@ export default function AdminPage() {
 
       if (res.ok) {
         setInsight(data.insight);
+      } else {
+        setInsight(`Error: ${data.error || "Failed to generate insight"}`);
       }
-    } catch {
-      console.error("Failed to fetch insights");
+    } catch (err) {
+      console.error("Failed to fetch insights:", err);
+      setInsight("Error: Failed to connect to insights API");
     } finally {
       setInsightLoading(false);
     }
@@ -364,14 +384,36 @@ export default function AdminPage() {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-[rgba(0,0,0,0.06)]">
         <div className="container-main h-16 flex items-center justify-between">
-          <Link href="/">
-            <Logo variant="full" size="md" />
-          </Link>
+          <div className="flex items-center gap-6">
+            <Link href="/">
+              <Logo variant="full" size="md" />
+            </Link>
+            <button
+              onClick={() => setActiveTab("dashboard")}
+              className={`theme-nav ${
+                activeTab === "dashboard"
+                  ? "text-foreground"
+                  : "text-muted hover:text-foreground"
+              }`}
+            >
+              Dashboard
+            </button>
+            <button
+              onClick={() => setActiveTab("social")}
+              className={`theme-nav ${
+                activeTab === "social"
+                  ? "text-foreground"
+                  : "text-muted hover:text-foreground"
+              }`}
+            >
+              Social
+            </button>
+          </div>
           <div className="flex items-center gap-4">
             <span className="theme-body-sm text-muted hidden sm:block">{email}</span>
-            <Button variant="secondary" size="sm" onClick={handleLogout} className="gap-2">
+            <Button variant="secondary" size="md" onClick={handleLogout} className="gap-2">
               <SignOut size={16} weight="bold" />
-              <span className="hidden sm:inline">Logout</span>
+              Logout
             </Button>
           </div>
         </div>
@@ -379,11 +421,8 @@ export default function AdminPage() {
 
       <div className="pt-24 pb-12">
         <div className="container-main">
-          {/* Page Header */}
-          <h1 className="font-display text-2xl md:text-3xl text-foreground mb-4">
-            Admin Dashboard
-          </h1>
-
+          {activeTab === "dashboard" && (
+          <>
           {/* AI Insight */}
           <div className="mb-8 p-4 rounded-xl bg-gradient-to-r from-forest/5 to-forest/10 border border-forest/20">
             <div className="flex items-start gap-3">
@@ -400,7 +439,7 @@ export default function AdminPage() {
                   <p className="theme-body-sm text-muted">Get an AI-powered summary of your analytics.</p>
                 )}
               </div>
-              {!insight && !insightLoading && (
+              {!insightLoading && (
                 <Button
                   variant="secondary"
                   size="sm"
@@ -408,7 +447,7 @@ export default function AdminPage() {
                   disabled={!analytics}
                   className="flex-shrink-0"
                 >
-                  Get Insights
+                  {insight ? "Refresh" : "Get Insights"}
                 </Button>
               )}
             </div>
@@ -774,6 +813,16 @@ export default function AdminPage() {
             </div>
           )}
           </div>
+          </>
+          )}
+
+          {/* Social Media Tools */}
+          {activeTab === "social" && (
+            <>
+              <SocialExport posts={blogPosts} />
+              <QuoteGenerator />
+            </>
+          )}
 
         </div>
       </div>

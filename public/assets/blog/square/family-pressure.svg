@@ -1,0 +1,133 @@
+<svg viewBox="0 0 800 800" style="width:100%;height:100%" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Square version: Dealing with Family Pressure -->
+
+  <!-- Main top - forest with nesting dolls -->
+  <rect x="0" y="0" width="500" height="500" fill="#2F7255"/>
+
+  <!-- Nesting dolls - scaled and repositioned -->
+  <g transform="translate(250, 280) scale(0.7)">
+    <!-- Large doll -->
+    <g transform="translate(-200, 0)">
+      <ellipse cx="0" cy="35" rx="52" ry="65" fill="#F5F0E8"/>
+      <circle cx="0" cy="-45" r="40" fill="#F5F0E8"/>
+      <circle cx="0" cy="-45" r="30" fill="#D9A441"/>
+      <circle cx="-8" cy="-50" r="4" fill="#19131D"/>
+      <circle cx="8" cy="-50" r="4" fill="#19131D"/>
+      <ellipse cx="0" cy="-38" rx="6" ry="3" fill="#D4654A"/>
+      <ellipse cx="0" cy="45" rx="30" ry="40" fill="#D9A441"/>
+      <circle cx="0" cy="35" r="12" fill="#D4654A"/>
+    </g>
+    <!-- Medium-large doll -->
+    <g transform="translate(-60, 25)">
+      <ellipse cx="0" cy="30" rx="42" ry="55" fill="#F5F0E8"/>
+      <circle cx="0" cy="-38" r="33" fill="#F5F0E8"/>
+      <circle cx="0" cy="-38" r="24" fill="#D9A441"/>
+      <circle cx="-6" cy="-42" r="3" fill="#19131D"/>
+      <circle cx="6" cy="-42" r="3" fill="#19131D"/>
+      <ellipse cx="0" cy="-32" rx="5" ry="2.5" fill="#D4654A"/>
+      <ellipse cx="0" cy="38" rx="24" ry="32" fill="#D9A441"/>
+      <circle cx="0" cy="30" r="10" fill="#D4654A"/>
+    </g>
+    <!-- Medium doll -->
+    <g transform="translate(65, 50)">
+      <ellipse cx="0" cy="25" rx="34" ry="45" fill="#F5F0E8"/>
+      <circle cx="0" cy="-30" r="27" fill="#F5F0E8"/>
+      <circle cx="0" cy="-30" r="19" fill="#D9A441"/>
+      <circle cx="-5" cy="-33" r="2.5" fill="#19131D"/>
+      <circle cx="5" cy="-33" r="2.5" fill="#19131D"/>
+      <ellipse cx="0" cy="-25" rx="4" ry="2" fill="#D4654A"/>
+      <ellipse cx="0" cy="30" rx="19" ry="26" fill="#D9A441"/>
+      <circle cx="0" cy="24" r="8" fill="#D4654A"/>
+    </g>
+    <!-- Small doll - different -->
+    <g transform="translate(170, 75)">
+      <ellipse cx="0" cy="20" rx="26" ry="35" fill="#D4654A"/>
+      <circle cx="0" cy="-22" r="21" fill="#D4654A"/>
+      <circle cx="2" cy="-22" r="14" fill="#F5F0E8"/>
+      <circle cx="-1" cy="-25" r="2" fill="#19131D"/>
+      <circle cx="7" cy="-25" r="2" fill="#19131D"/>
+      <path d="M 0 -18 Q 4 -14 8 -18" stroke="#19131D" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M 0 15 C -3 10, -10 10, -12 18 C -14 28, -5 35, 0 42 C 5 35, 14 28, 12 18 C 10 10, 3 10, 0 15" fill="#F5F0E8"/>
+    </g>
+  </g>
+
+  <!-- Bottom left - coral with X pattern -->
+  <rect x="0" y="500" width="500" height="300" fill="#D4654A"/>
+  <g fill="#F5F0E8">
+    <g transform="translate(100, 580) rotate(45)">
+      <rect x="-12" y="-4" width="24" height="8"/>
+      <rect x="-4" y="-12" width="8" height="24"/>
+    </g>
+    <g transform="translate(250, 580) rotate(45)">
+      <rect x="-12" y="-4" width="24" height="8"/>
+      <rect x="-4" y="-12" width="8" height="24"/>
+    </g>
+    <g transform="translate(400, 580) rotate(45)">
+      <rect x="-12" y="-4" width="24" height="8"/>
+      <rect x="-4" y="-12" width="8" height="24"/>
+    </g>
+    <g transform="translate(175, 660) rotate(45)">
+      <rect x="-12" y="-4" width="24" height="8"/>
+      <rect x="-4" y="-12" width="8" height="24"/>
+    </g>
+    <g transform="translate(325, 660) rotate(45)">
+      <rect x="-12" y="-4" width="24" height="8"/>
+      <rect x="-4" y="-12" width="8" height="24"/>
+    </g>
+    <g transform="translate(100, 740) rotate(45)">
+      <rect x="-12" y="-4" width="24" height="8"/>
+      <rect x="-4" y="-12" width="8" height="24"/>
+    </g>
+    <g transform="translate(250, 740) rotate(45)">
+      <rect x="-12" y="-4" width="24" height="8"/>
+      <rect x="-4" y="-12" width="8" height="24"/>
+    </g>
+    <g transform="translate(400, 740) rotate(45)">
+      <rect x="-12" y="-4" width="24" height="8"/>
+      <rect x="-4" y="-12" width="8" height="24"/>
+    </g>
+  </g>
+
+  <!-- Top right - gold with hourglass -->
+  <rect x="500" y="0" width="300" height="400" fill="#D9A441"/>
+  <g transform="translate(650, 200) scale(0.65)">
+    <path d="M -45 -85 L -45 -25 Q -45 0 0 0 Q 45 0 45 -25 L 45 -85 Z" fill="#F5F0E8"/>
+    <path d="M -45 85 L -45 25 Q -45 0 0 0 Q 45 0 45 25 L 45 85 Z" fill="#F5F0E8"/>
+    <rect x="-55" y="-95" width="110" height="14" rx="4" fill="#F5F0E8"/>
+    <rect x="-55" y="81" width="110" height="14" rx="4" fill="#F5F0E8"/>
+    <!-- Sand animation simplified -->
+    <rect x="-35" y="-80" width="70" height="50" fill="#D4654A">
+      <animate attributeName="height" values="50;5;50" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="-35" y="30" width="70" height="50" fill="#D4654A">
+      <animate attributeName="y" values="30;75;30" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="height" values="50;5;50" dur="6s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Bottom right - navy with birdcage -->
+  <rect x="500" y="400" width="300" height="400" fill="#19131D"/>
+  <g transform="translate(650, 620) scale(0.65)">
+    <!-- Cage -->
+    <g transform="translate(20, 20)">
+      <path d="M -50 -20 Q -50 -80 0 -80 Q 50 -80 50 -20" stroke="#F5F0E8" stroke-width="4" fill="none"/>
+      <line x1="-40" y1="-65" x2="-40" y2="60" stroke="#F5F0E8" stroke-width="3"/>
+      <line x1="-20" y1="-75" x2="-20" y2="60" stroke="#F5F0E8" stroke-width="3"/>
+      <line x1="0" y1="-80" x2="0" y2="60" stroke="#F5F0E8" stroke-width="3"/>
+      <line x1="20" y1="-75" x2="20" y2="60" stroke="#F5F0E8" stroke-width="3"/>
+      <line x1="40" y1="-65" x2="40" y2="60" stroke="#F5F0E8" stroke-width="3"/>
+      <ellipse cx="0" cy="60" rx="50" ry="12" fill="none" stroke="#F5F0E8" stroke-width="4"/>
+      <circle cx="0" cy="-80" r="8" stroke="#F5F0E8" stroke-width="3" fill="none"/>
+      <path d="M 50 -20 Q 75 -20 80 -50" stroke="#F5F0E8" stroke-width="4" fill="none"/>
+    </g>
+    <!-- Bird -->
+    <g transform="translate(-70, -60)">
+      <ellipse cx="0" cy="0" rx="18" ry="12" fill="#D4654A"/>
+      <circle cx="-18" cy="-5" r="10" fill="#D4654A"/>
+      <path d="M -28 -5 L -38 -3 L -28 -1" fill="#D9A441"/>
+      <circle cx="-22" cy="-7" r="2" fill="#19131D"/>
+      <path d="M 5 -5 Q 15 -35 -5 -40 Q -15 -35 -10 -5" fill="#F5F0E8"/>
+      <path d="M 18 0 L 35 -8 L 35 8 Z" fill="#D4654A"/>
+    </g>
+  </g>
+</svg>
