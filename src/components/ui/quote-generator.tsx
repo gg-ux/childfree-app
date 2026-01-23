@@ -16,6 +16,9 @@ import {
   Copy,
   Check,
   ChartBar,
+  ArrowCounterClockwise,
+  TextAlignLeft,
+  TextAlignCenter,
 } from "@phosphor-icons/react";
 
 // Color palette
@@ -267,7 +270,17 @@ const BASE_TEMPLATES: Template[] = [
 
 export function QuoteGenerator() {
   const [quote, setQuote] = useState("Design your life. Then live it fully.");
+  const [source, setSource] = useState<string | null>(null);
+  const [textAlign, setTextAlign] = useState<"left" | "center">("left");
+  const [textSize, setTextSize] = useState<"sm" | "md" | "lg">("md");
   const [selectedTemplate, setSelectedTemplate] = useState(0);
+
+  // Text size configurations
+  const textSizeConfig = {
+    sm: { fontSize: 52, lineHeight: 68, offset: 34, sourceOffset: 48 },
+    md: { fontSize: 64, lineHeight: 80, offset: 40, sourceOffset: 56 },
+    lg: { fontSize: 76, lineHeight: 92, offset: 46, sourceOffset: 64 },
+  };
   const [customTemplate, setCustomTemplate] = useState<Template | null>(null);
   const [savedTemplates, setSavedTemplates] = useState<Template[]>([]);
   const [generating, setGenerating] = useState(false);
@@ -393,6 +406,8 @@ export function QuoteGenerator() {
 
       if (res.ok) {
         setQuote(data.quote);
+        // Set source for data type, clear for manifestation
+        setSource(type === "data" ? data.source || null : null);
       } else {
         setError(data.error || "Failed to generate quote");
       }
@@ -511,6 +526,7 @@ export function QuoteGenerator() {
       if (res.ok) {
         setPinterestData((prev) => ({
           ...prev,
+          title: data.title || prev.title,
           description: data.description || prev.description,
           tags: data.tags || [],
         }));
@@ -624,24 +640,24 @@ export function QuoteGenerator() {
       return manualLines.map(line => line.trim()).filter(line => line.length > 0);
     }
 
-    // Otherwise, auto-wrap
+    // Otherwise, auto-wrap (max ~22 chars per line to fit canvas)
     const words = text.split(" ");
     const lines: string[] = [];
     let currentLine = "";
 
     // Words that make good line break points (break BEFORE these)
-    const breakWords = ["with", "and", "to", "for", "in", "of", "that", "who", "where", "when"];
+    const breakWords = ["with", "and", "to", "for", "in", "of", "that", "who", "where", "when", "has", "have"];
 
     words.forEach((word, index) => {
       const testLine = currentLine ? `${currentLine} ${word}` : word;
       const isBreakWord = breakWords.includes(word.toLowerCase());
-      const lineGettingLong = currentLine.length >= 15;
+      const lineGettingLong = currentLine.length >= 14;
 
       // Break before connecting words if line is getting long
       if (isBreakWord && lineGettingLong && currentLine) {
         lines.push(currentLine);
         currentLine = word;
-      } else if (testLine.length <= 24) {
+      } else if (testLine.length <= 22) {
         currentLine = testLine;
       } else {
         if (currentLine) lines.push(currentLine);
@@ -678,6 +694,18 @@ export function QuoteGenerator() {
               rows={3}
               className="w-full px-4 py-3 rounded-lg border border-border bg-background theme-body-sm text-foreground focus:outline-none focus:border-forest resize-none"
               placeholder="Enter your quote..."
+            />
+          </div>
+
+          {/* Source input */}
+          <div>
+            <label className="block theme-caption text-muted mb-2">Source (optional)</label>
+            <input
+              type="text"
+              value={source || ""}
+              onChange={(e) => setSource(e.target.value || null)}
+              className="w-full px-4 py-2 rounded-lg border border-border bg-background theme-body-sm text-foreground focus:outline-none focus:border-forest"
+              placeholder="e.g. Pew Research 2021"
             />
           </div>
 
@@ -721,6 +749,16 @@ export function QuoteGenerator() {
                 </>
               )}
             </Button>
+            <button
+              onClick={() => {
+                setQuote("");
+                setSource(null);
+              }}
+              className="p-2 rounded-lg border border-border hover:bg-foreground/5 transition-colors"
+              title="Clear all"
+            >
+              <ArrowCounterClockwise size={16} className="text-muted" />
+            </button>
           </div>
 
           {/* Template selector */}
@@ -829,32 +867,100 @@ export function QuoteGenerator() {
         <div>
           <div className="flex items-center justify-between mb-3">
             <p className="theme-caption text-muted">Preview</p>
-            <div className="flex gap-1 p-1 bg-foreground/5 rounded-lg">
-              <button
-                onClick={() => setAspectRatio("1:1")}
-                className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${
-                  aspectRatio === "1:1"
-                    ? "bg-forest text-white"
-                    : "text-muted hover:text-foreground"
-                }`}
-              >
-                1:1
-              </button>
-              <button
-                onClick={() => setAspectRatio("2:3")}
-                className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${
-                  aspectRatio === "2:3"
-                    ? "bg-forest text-white"
-                    : "text-muted hover:text-foreground"
-                }`}
-              >
-                2:3
-              </button>
+            <div className="flex gap-2">
+              {/* Text size toggle */}
+              <div className="flex gap-1 p-1 bg-foreground/5 rounded-lg">
+                <button
+                  onClick={() => setTextSize("sm")}
+                  className={`px-2 py-1 text-xs font-medium rounded-md transition-colors ${
+                    textSize === "sm"
+                      ? "bg-forest text-white"
+                      : "text-muted hover:text-foreground"
+                  }`}
+                  title="Small text"
+                >
+                  S
+                </button>
+                <button
+                  onClick={() => setTextSize("md")}
+                  className={`px-2 py-1 text-xs font-medium rounded-md transition-colors ${
+                    textSize === "md"
+                      ? "bg-forest text-white"
+                      : "text-muted hover:text-foreground"
+                  }`}
+                  title="Medium text"
+                >
+                  M
+                </button>
+                <button
+                  onClick={() => setTextSize("lg")}
+                  className={`px-2 py-1 text-xs font-medium rounded-md transition-colors ${
+                    textSize === "lg"
+                      ? "bg-forest text-white"
+                      : "text-muted hover:text-foreground"
+                  }`}
+                  title="Large text"
+                >
+                  L
+                </button>
+              </div>
+              {/* Text alignment toggle */}
+              <div className="flex gap-1 p-1 bg-foreground/5 rounded-lg">
+                <button
+                  onClick={() => setTextAlign("left")}
+                  className={`p-1.5 rounded-md transition-colors ${
+                    textAlign === "left"
+                      ? "bg-forest text-white"
+                      : "text-muted hover:text-foreground"
+                  }`}
+                  title="Left align"
+                >
+                  <TextAlignLeft size={14} weight="bold" />
+                </button>
+                <button
+                  onClick={() => setTextAlign("center")}
+                  className={`p-1.5 rounded-md transition-colors ${
+                    textAlign === "center"
+                      ? "bg-forest text-white"
+                      : "text-muted hover:text-foreground"
+                  }`}
+                  title="Center align"
+                >
+                  <TextAlignCenter size={14} weight="bold" />
+                </button>
+              </div>
+              {/* Aspect ratio toggle */}
+              <div className="flex gap-1 p-1 bg-foreground/5 rounded-lg">
+                <button
+                  onClick={() => setAspectRatio("1:1")}
+                  className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${
+                    aspectRatio === "1:1"
+                      ? "bg-forest text-white"
+                      : "text-muted hover:text-foreground"
+                  }`}
+                >
+                  1:1
+                </button>
+                <button
+                  onClick={() => setAspectRatio("2:3")}
+                  className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${
+                    aspectRatio === "2:3"
+                      ? "bg-forest text-white"
+                      : "text-muted hover:text-foreground"
+                  }`}
+                >
+                  2:3
+                </button>
+              </div>
             </div>
           </div>
           <div
             className="rounded-xl overflow-hidden border border-border"
-            style={{ aspectRatio: aspectRatio === "1:1" ? "1/1" : "2/3" }}
+            style={{
+              aspectRatio: aspectRatio === "1:1" ? "1/1" : "2/3",
+              maxHeight: aspectRatio === "2:3" ? "480px" : undefined,
+              width: aspectRatio === "2:3" ? "320px" : undefined,
+            }}
           >
             <svg
               ref={svgRef}
@@ -1169,29 +1275,47 @@ export function QuoteGenerator() {
                 {quoteLines.map((line, i) => (
                   <text
                     key={i}
-                    x="80"
-                    y={(dimensions.height / 2) - (quoteLines.length * 40) + i * 80}
+                    x={textAlign === "center" ? dimensions.width / 2 : 80}
+                    y={(dimensions.height / 2) - (quoteLines.length * textSizeConfig[textSize].offset) + i * textSizeConfig[textSize].lineHeight + 30}
                     fill={template.text}
                     fontFamily="Satoshi, system-ui, -apple-system, sans-serif"
-                    fontSize="58"
+                    fontSize={textSizeConfig[textSize].fontSize}
                     fontWeight="700"
                     letterSpacing="-0.02em"
+                    textAnchor={textAlign === "center" ? "middle" : "start"}
                   >
                     {line}
                   </text>
                 ))}
+                {/* Source attribution for data quotes */}
+                {source && (
+                  <text
+                    x={textAlign === "center" ? dimensions.width / 2 : 80}
+                    y={(dimensions.height / 2) - (quoteLines.length * textSizeConfig[textSize].offset) + (quoteLines.length - 1) * textSizeConfig[textSize].lineHeight + 30 + textSizeConfig[textSize].sourceOffset}
+                    fill={template.text}
+                    fontFamily="Satoshi, system-ui, -apple-system, sans-serif"
+                    fontSize="20"
+                    fontWeight="500"
+                    letterSpacing="0.12em"
+                    opacity="0.7"
+                    textAnchor={textAlign === "center" ? "middle" : "start"}
+                  >
+                    {source.toUpperCase()}
+                  </text>
+                )}
               </g>
 
               {/* Branding - subtle bottom placement */}
-              <g opacity="0.5">
+              <g opacity="0.7">
                 <text
-                  x="80"
+                  x={textAlign === "center" ? dimensions.width / 2 : 80}
                   y={dimensions.height - 40}
                   fill={template.text}
                   fontFamily="Satoshi, system-ui, -apple-system, sans-serif"
-                  fontSize="16"
+                  fontSize="18"
                   fontWeight="500"
                   letterSpacing="0.1em"
+                  textAnchor={textAlign === "center" ? "middle" : "start"}
                 >
                   chosn.co
                 </text>
@@ -1248,6 +1372,27 @@ export function QuoteGenerator() {
                   {/* Pinterest Connection Status */}
                   {pinterestConnected ? (
                     <>
+                      {/* AI Optimization Button */}
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        onClick={handleGenerateTags}
+                        disabled={generatingTags}
+                        className="w-full gap-2 border-forest text-forest hover:bg-forest/10"
+                      >
+                        {generatingTags ? (
+                          <>
+                            <Loader size="sm" />
+                            Optimizing...
+                          </>
+                        ) : (
+                          <>
+                            <Sparkle size={14} weight="bold" />
+                            Optimize for SEO with AI
+                          </>
+                        )}
+                      </Button>
+
                       {/* Board Selection */}
                       <div>
                         <label className="block theme-caption text-muted mb-2">Board</label>
@@ -1311,30 +1456,9 @@ export function QuoteGenerator() {
                       </div>
 
                       {/* Tags */}
-                      <div>
-                        <div className="flex items-center justify-between mb-2">
-                          <label className="block theme-caption text-muted">SEO Tags</label>
-                          <Button
-                            variant="secondary"
-                            size="sm"
-                            onClick={handleGenerateTags}
-                            disabled={generatingTags}
-                            className="gap-2"
-                          >
-                            {generatingTags ? (
-                              <>
-                                <Loader size="sm" />
-                                Generating...
-                              </>
-                            ) : (
-                              <>
-                                <Sparkle size={14} weight="bold" />
-                                Generate with AI
-                              </>
-                            )}
-                          </Button>
-                        </div>
-                        {pinterestData.tags.length > 0 && (
+                      {pinterestData.tags.length > 0 && (
+                        <div>
+                          <label className="block theme-caption text-muted mb-2">SEO Tags</label>
                           <div className="p-3 bg-foreground/5 rounded-lg">
                             <div className="flex flex-wrap gap-2 mb-3">
                               {pinterestData.tags.map((tag, i) => (
@@ -1363,8 +1487,8 @@ export function QuoteGenerator() {
                               )}
                             </button>
                           </div>
-                        )}
-                      </div>
+                        </div>
+                      )}
 
                       {/* Success message */}
                       {pinSuccess && (
@@ -1407,42 +1531,123 @@ export function QuoteGenerator() {
                       </div>
                     </>
                   ) : (
-                    /* Not connected - show connect button */
-                    <div className="text-center py-6">
-                      <PinterestLogo size={48} weight="fill" className="text-[#E60023] mx-auto mb-4" />
-                      <p className="theme-body-sm text-muted mb-4">
-                        Connect your Pinterest account to post directly from here.
-                      </p>
+                    /* Not connected - show manual share with SEO optimization */
+                    <div className="space-y-4">
+                      {/* AI Optimization Button */}
                       <Button
-                        variant="accent"
+                        variant="secondary"
                         size="sm"
-                        onClick={handleConnectPinterest}
-                        className="gap-2"
+                        onClick={handleGenerateTags}
+                        disabled={generatingTags}
+                        className="w-full gap-2 border-forest text-forest hover:bg-forest/10"
                       >
-                        <PinterestLogo size={14} weight="bold" />
-                        Connect Pinterest
+                        {generatingTags ? (
+                          <>
+                            <Loader size="sm" />
+                            Optimizing...
+                          </>
+                        ) : (
+                          <>
+                            <Sparkle size={14} weight="bold" />
+                            Optimize for SEO with AI
+                          </>
+                        )}
                       </Button>
-                      <div className="mt-6 pt-6 border-t border-border">
-                        <p className="theme-caption text-muted mb-3">Or share manually:</p>
-                        <div className="flex gap-3 justify-center">
-                          <Button
-                            variant="secondary"
-                            size="sm"
-                            onClick={handleDownloadForShare}
-                            className="gap-2"
-                          >
-                            <DownloadSimple size={14} weight="bold" />
-                            Download
-                          </Button>
-                          <Button
-                            variant="secondary"
-                            size="sm"
-                            onClick={handleOpenPinterest}
-                            className="gap-2"
-                          >
-                            Open Pinterest
-                          </Button>
+
+                      {/* Title */}
+                      <div>
+                        <label className="block theme-caption text-muted mb-2">Title</label>
+                        <input
+                          type="text"
+                          value={pinterestData.title}
+                          onChange={(e) => setPinterestData((prev) => ({ ...prev, title: e.target.value }))}
+                          className="w-full px-4 py-3 rounded-lg border border-border bg-background theme-body-sm text-foreground focus:outline-none focus:border-forest"
+                          placeholder="Pin title..."
+                          maxLength={100}
+                        />
+                      </div>
+
+                      {/* Description */}
+                      <div>
+                        <label className="block theme-caption text-muted mb-2">Description</label>
+                        <textarea
+                          value={pinterestData.description}
+                          onChange={(e) => setPinterestData((prev) => ({ ...prev, description: e.target.value }))}
+                          rows={3}
+                          className="w-full px-4 py-3 rounded-lg border border-border bg-background theme-body-sm text-foreground focus:outline-none focus:border-forest resize-none"
+                          placeholder="Pin description..."
+                          maxLength={500}
+                        />
+                      </div>
+
+                      {/* Tags */}
+                      {pinterestData.tags.length > 0 && (
+                        <div>
+                          <label className="block theme-caption text-muted mb-2">SEO Tags</label>
+                          <div className="p-3 bg-foreground/5 rounded-lg">
+                            <div className="flex flex-wrap gap-2 mb-3">
+                              {pinterestData.tags.map((tag, i) => (
+                                <span
+                                  key={i}
+                                  className="px-2 py-1 bg-forest/10 text-forest rounded-md text-sm"
+                                >
+                                  #{tag}
+                                </span>
+                              ))}
+                            </div>
+                            <button
+                              onClick={handleCopyTags}
+                              className="flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors"
+                            >
+                              {copied ? (
+                                <>
+                                  <Check size={14} />
+                                  Copied!
+                                </>
+                              ) : (
+                                <>
+                                  <Copy size={14} />
+                                  Copy all tags
+                                </>
+                              )}
+                            </button>
+                          </div>
                         </div>
+                      )}
+
+                      {/* Actions */}
+                      <div className="flex gap-3 pt-4 border-t border-border">
+                        <Button
+                          variant="accent"
+                          size="sm"
+                          onClick={handleDownloadForShare}
+                          className="gap-2"
+                        >
+                          <DownloadSimple size={14} weight="bold" />
+                          Download
+                        </Button>
+                        <Button
+                          variant="secondary"
+                          size="sm"
+                          onClick={handleOpenPinterest}
+                          className="gap-2"
+                        >
+                          Open Pinterest
+                        </Button>
+                      </div>
+
+                      {/* Connect option */}
+                      <div className="pt-4 border-t border-border text-center">
+                        <p className="theme-caption text-muted mb-2">Want to post directly?</p>
+                        <Button
+                          variant="secondary"
+                          size="sm"
+                          onClick={handleConnectPinterest}
+                          className="gap-2"
+                        >
+                          <PinterestLogo size={14} weight="bold" />
+                          Connect Pinterest
+                        </Button>
                       </div>
                     </div>
                   )}
@@ -1452,6 +1657,27 @@ export function QuoteGenerator() {
               {/* Instagram Form */}
               {shareTarget === "instagram" && (
                 <div className="space-y-4">
+                  {/* AI Optimization Button */}
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    onClick={handleGenerateTags}
+                    disabled={generatingTags}
+                    className="w-full gap-2 border-forest text-forest hover:bg-forest/10"
+                  >
+                    {generatingTags ? (
+                      <>
+                        <Loader size="sm" />
+                        Optimizing...
+                      </>
+                    ) : (
+                      <>
+                        <Sparkle size={14} weight="bold" />
+                        Optimize for SEO with AI
+                      </>
+                    )}
+                  </Button>
+
                   {/* Caption */}
                   <div>
                     <label className="block theme-caption text-muted mb-2">Caption</label>
@@ -1465,30 +1691,9 @@ export function QuoteGenerator() {
                   </div>
 
                   {/* Tags */}
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <label className="block theme-caption text-muted">Hashtags</label>
-                      <Button
-                        variant="secondary"
-                        size="sm"
-                        onClick={handleGenerateTags}
-                        disabled={generatingTags}
-                        className="gap-2"
-                      >
-                        {generatingTags ? (
-                          <>
-                            <Loader size="sm" />
-                            Generating...
-                          </>
-                        ) : (
-                          <>
-                            <Sparkle size={14} weight="bold" />
-                            Generate with AI
-                          </>
-                        )}
-                      </Button>
-                    </div>
-                    {pinterestData.tags.length > 0 && (
+                  {pinterestData.tags.length > 0 && (
+                    <div>
+                      <label className="block theme-caption text-muted mb-2">Hashtags</label>
                       <div className="p-3 bg-foreground/5 rounded-lg">
                         <div className="flex flex-wrap gap-2 mb-3">
                           {pinterestData.tags.map((tag, i) => (
@@ -1517,8 +1722,8 @@ export function QuoteGenerator() {
                           )}
                         </button>
                       </div>
-                    )}
-                  </div>
+                    </div>
+                  )}
 
                   {/* Actions */}
                   <div className="flex gap-3 pt-4 border-t border-border">

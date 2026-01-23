@@ -21,42 +21,50 @@ export async function POST(request: Request) {
     const prompt = platform === "pinterest"
       ? `Generate SEO-optimized content for a Pinterest pin featuring this quote: "${quote}"
 
-The pin is for a community of adults who have intentionally chosen a childfree lifestyle and value self-determination, freedom, and intentional living.
+The pin is for Chosn (chosn.co), a community for adults who value self-determination, freedom, and intentional living.
 
 Return a JSON object with:
-1. "description": A compelling 2-3 sentence description for the pin (include the quote naturally)
-2. "tags": An array of 8-12 relevant hashtags/keywords (without the # symbol) that will help this pin get discovered. Focus on:
-   - Manifestation and affirmation related tags
-   - Self-care and wellness tags
-   - Lifestyle and intentional living tags
-   - Aesthetic/visual tags that match Pinterest trends
-   - Avoid anything directly about children/parenting
+1. "title": Use the quote itself as the title, cleaned up if needed (max 100 chars). Keep it simple and direct.
+2. "description": A 2-3 sentence description that:
+   - Provides context about the message/theme
+   - Feels warm and inviting, not salesy
+   - Naturally includes SEO keywords like: affirmation, intentional living, self-trust, personal growth, living life on your terms
+   - Ends with a soft call-to-action like "Find more at chosn.co" or "More inspiration at chosn.co"
+3. "tags": An array of 8-10 Pinterest topic suggestions (these are typed into Pinterest's topic picker, so use common phrases that likely exist):
+   - Use broad, established Pinterest categories like: "quotes", "inspirational quotes", "daily affirmations", "self care", "personal development", "mindfulness", "motivation", "positive quotes", "life quotes", "self love", "wellness", "mental health", "self improvement", "morning routine", "journaling"
+   - Avoid overly specific or niche terms that may not exist as Pinterest topics
 
 Example format:
 {
-  "description": "...",
+  "title": "I trust my path completely",
+  "description": "A reminder to trust the journey you're on. When we stop second-guessing ourselves, we make room for growth and peace. More inspiration at chosn.co",
   "tags": ["manifestation", "affirmations", "selfcare", ...]
 }
 
 Return ONLY the JSON object, no other text.`
       : `Generate SEO-optimized content for an Instagram post featuring this quote: "${quote}"
 
-The post is for a community of adults who have intentionally chosen a childfree lifestyle and value self-determination, freedom, and intentional living.
+The post is for Chosn (chosn.co), a community for adults who value self-determination, freedom, and intentional living.
 
 Return a JSON object with:
-1. "description": A short, engaging caption (1-2 sentences) that complements the quote
-2. "tags": An array of 15-20 relevant hashtags (without the # symbol) for maximum reach. Include a mix of:
+1. "title": Use the quote itself (for alt text/accessibility)
+2. "description": A short, engaging caption (1-2 sentences) that:
+   - Complements the quote with context or reflection
+   - Feels authentic and conversational
+   - Optionally ends with "Link in bio" or similar CTA
+3. "tags": An array of 15-20 relevant hashtags (without the # symbol) for maximum reach:
+   - ALWAYS include 2-3 childfree tags: childfree, childfreebychoice, childfreelifestyle, childfreeliving, childfreeandthriving, dinklife
    - High-volume hashtags (100k+ posts)
    - Medium-volume niche hashtags
    - Manifestation and affirmation tags
    - Self-care and wellness tags
    - Lifestyle and intentional living tags
    - Aesthetic/visual tags
-   - Avoid anything directly about children/parenting
 
 Example format:
 {
-  "description": "...",
+  "title": "I trust my path completely",
+  "description": "A daily reminder that you're exactly where you need to be. Trust the process.",
   "tags": ["manifestation", "dailyaffirmations", "selfcare", ...]
 }
 
@@ -77,10 +85,19 @@ Return ONLY the JSON object, no other text.`;
       ? message.content[0].text.trim()
       : "{}";
 
-    // Parse the JSON response
-    const data = JSON.parse(responseText);
+    // Extract JSON from response (handle cases where AI adds extra text)
+    let data = { title: "", description: "", tags: [] };
+    try {
+      const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+      if (jsonMatch) {
+        data = JSON.parse(jsonMatch[0]);
+      }
+    } catch {
+      console.error("Failed to parse tags JSON:", responseText);
+    }
 
     return NextResponse.json({
+      title: data.title || "",
       description: data.description || "",
       tags: data.tags || [],
     });
