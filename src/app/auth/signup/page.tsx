@@ -160,20 +160,24 @@ function SignupContent() {
 
               {/* Social sign in buttons */}
               <div className="space-y-3 mb-6">
-                <button
+                <Button
+                  variant="secondary"
+                  size="lg"
                   onClick={handleGoogleSignIn}
-                  className="w-full h-14 rounded-xl border border-border bg-background hover:bg-foreground/[0.02] transition-colors flex items-center justify-center gap-3 text-foreground font-medium"
+                  className="w-full"
                 >
                   <GoogleLogo size={22} weight="bold" />
                   Continue with Google
-                </button>
-                <button
+                </Button>
+                <Button
+                  variant="secondary"
+                  size="lg"
                   onClick={handleAppleSignIn}
-                  className="w-full h-14 rounded-xl border border-border bg-background hover:bg-foreground/[0.02] transition-colors flex items-center justify-center gap-3 text-foreground font-medium"
+                  className="w-full"
                 >
                   <AppleLogo size={22} weight="fill" />
                   Continue with Apple
-                </button>
+                </Button>
               </div>
 
               {/* Divider */}
