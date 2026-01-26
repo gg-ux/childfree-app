@@ -1,0 +1,46 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- "Fear of Childbirth? You're Not Alone" - Body autonomy / protective boundary -->
+
+  <!-- Background - calming navy -->
+  <rect width="1200" height="800" fill="#19131D"/>
+
+  <!-- Stars scattered -->
+  <g fill="#F5F0E8" opacity="0.3">
+    <path transform="translate(150, 150) scale(0.4)" d="M 0 -20 L 5 -5 L 20 0 L 5 5 L 0 20 L -5 5 L -20 0 L -5 -5 Z"/>
+    <path transform="translate(1050, 200) scale(0.3)" d="M 0 -20 L 5 -5 L 20 0 L 5 5 L 0 20 L -5 5 L -20 0 L -5 -5 Z"/>
+    <path transform="translate(200, 600) scale(0.35)" d="M 0 -20 L 5 -5 L 20 0 L 5 5 L 0 20 L -5 5 L -20 0 L -5 -5 Z"/>
+    <path transform="translate(1000, 650) scale(0.4)" d="M 0 -20 L 5 -5 L 20 0 L 5 5 L 0 20 L -5 5 L -20 0 L -5 -5 Z"/>
+    <path transform="translate(300, 300) scale(0.25)" d="M 0 -20 L 5 -5 L 20 0 L 5 5 L 0 20 L -5 5 L -20 0 L -5 -5 Z"/>
+    <path transform="translate(900, 500) scale(0.3)" d="M 0 -20 L 5 -5 L 20 0 L 5 5 L 0 20 L -5 5 L -20 0 L -5 -5 Z"/>
+  </g>
+
+  <!-- Protective glow rings around figure -->
+  <g transform="translate(600, 400)">
+    <!-- Outer protective rings -->
+    <circle cx="0" cy="0" r="220" fill="none" stroke="#D9A441" stroke-width="3" opacity="0.2"/>
+    <circle cx="0" cy="0" r="190" fill="none" stroke="#D9A441" stroke-width="4" opacity="0.3"/>
+    <circle cx="0" cy="0" r="160" fill="none" stroke="#D9A441" stroke-width="5" opacity="0.4"/>
+
+    <!-- Warm glow -->
+    <circle cx="0" cy="20" r="130" fill="#D9A441" opacity="0.1"/>
+
+    <!-- Figure - standing confidently -->
+    <ellipse cx="0" cy="60" rx="45" ry="75" fill="#F5F0E8"/>
+    <circle cx="0" cy="-35" r="38" fill="#F5F0E8"/>
+
+    <!-- Arms crossed confidently / self-hug -->
+    <path d="M -50 30 Q -30 50 0 40 Q 30 50 50 30" stroke="#D9A441" stroke-width="14" fill="none" stroke-linecap="round"/>
+
+    <!-- Confident, peaceful face -->
+    <circle cx="-10" cy="-40" r="5" fill="#19131D"/>
+    <circle cx="10" cy="-40" r="5" fill="#19131D"/>
+    <path d="M -12 -22 Q 0 -14 12 -22" stroke="#19131D" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+    <!-- Small heart on chest (self-love) -->
+    <path transform="translate(0, 50)" d="M 0 -2 C -2 -6, -10 -6, -12 2 C -14 12, -4 18, 0 24 C 4 18, 14 12, 12 2 C 10 -6, 2 -6, 0 -2" fill="#D4654A" opacity="0.8"/>
+  </g>
+
+  <!-- Decorative half circles at edges -->
+  <path d="M 0 400 A 60 60 0 0 1 0 280" fill="#2F7255" opacity="0.4"/>
+  <path d="M 1200 400 A 60 60 0 0 0 1200 520" fill="#D4654A" opacity="0.4"/>
+</svg>

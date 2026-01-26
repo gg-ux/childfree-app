@@ -21,24 +21,23 @@ export async function POST(request: Request) {
     const prompt = platform === "pinterest"
       ? `Generate SEO-optimized content for a Pinterest pin featuring this quote: "${quote}"
 
-The pin is for Chosn (chosn.co), a community for adults who value self-determination, freedom, and intentional living.
+The pin is for Chosn (chosn.co), a community for childfree adults who value self-determination, freedom, and intentional living.
 
 Return a JSON object with:
 1. "title": Use the quote itself as the title, cleaned up if needed (max 100 chars). Keep it simple and direct.
-2. "description": A 2-3 sentence description that:
-   - Provides context about the message/theme
-   - Feels warm and inviting, not salesy
-   - Naturally includes SEO keywords like: affirmation, intentional living, self-trust, personal growth, living life on your terms
-   - Ends with a soft call-to-action like "Find more at chosn.co" or "More inspiration at chosn.co"
+2. "description": A 1-2 sentence description that:
+   - Provides brief context or extends the quote's message
+   - Feels warm and authentic, not salesy
+   - MUST end with exactly: "Discover our childfree community at chosn.co"
 3. "tags": An array of 8-10 Pinterest topic suggestions (these are typed into Pinterest's topic picker, so use common phrases that likely exist):
-   - Use broad, established Pinterest categories like: "quotes", "inspirational quotes", "daily affirmations", "self care", "personal development", "mindfulness", "motivation", "positive quotes", "life quotes", "self love", "wellness", "mental health", "self improvement", "morning routine", "journaling"
+   - Use broad, established Pinterest categories like: "quotes", "inspirational quotes", "daily affirmations", "self care", "personal development", "mindfulness", "motivation", "positive quotes", "life quotes", "self love", "wellness", "mental health", "self improvement"
    - Avoid overly specific or niche terms that may not exist as Pinterest topics
 
 Example format:
 {
-  "title": "I trust my path completely",
-  "description": "A reminder to trust the journey you're on. When we stop second-guessing ourselves, we make room for growth and peace. More inspiration at chosn.co",
-  "tags": ["manifestation", "affirmations", "selfcare", ...]
+  "title": "Legacy isn't bloodline. It's impact.",
+  "description": "Your choices matter more than you know. Discover our childfree community at chosn.co",
+  "tags": ["quotes", "inspirational quotes", "self care", ...]
 }
 
 Return ONLY the JSON object, no other text.`

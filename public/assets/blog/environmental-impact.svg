@@ -1,0 +1,64 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- "The Environmental Impact of Being Childfree" -->
+  <!-- Theme: Earth, sustainability, lightness -->
+
+  <!-- Left panel - forest green with geometric botanical -->
+  <rect x="0" y="0" width="600" height="800" fill="#2F7255"/>
+
+  <g transform="translate(300, 400)">
+    <!-- Central stem -->
+    <rect x="-6" y="-180" width="12" height="360" fill="#F5F0E8"/>
+
+    <!-- Geometric leaves - alternating sides -->
+    <!-- Top leaf pair -->
+    <ellipse cx="-70" cy="-120" rx="60" ry="30" fill="#D9A441"/>
+    <ellipse cx="70" cy="-120" rx="60" ry="30" fill="#D9A441"/>
+
+    <!-- Middle leaf pair -->
+    <ellipse cx="-80" cy="-20" rx="70" ry="35" fill="#F5F0E8"/>
+    <ellipse cx="80" cy="-20" rx="70" ry="35" fill="#F5F0E8"/>
+
+    <!-- Lower leaf pair -->
+    <ellipse cx="-70" cy="80" rx="60" ry="30" fill="#D4654A"/>
+    <ellipse cx="70" cy="80" rx="60" ry="30" fill="#D4654A"/>
+
+    <!-- Top circle accent -->
+    <circle cx="0" cy="-200" r="30" fill="#D9A441"/>
+  </g>
+
+  <!-- Top right - gold with leaf -->
+  <rect x="600" y="0" width="600" height="400" fill="#D9A441"/>
+
+  <g transform="translate(900, 200)">
+    <!-- Large leaf shape -->
+    <path d="M 0 -120 Q 100 -60 100 40 Q 100 120 0 140 Q -100 120 -100 40 Q -100 -60 0 -120" fill="#2F7255"/>
+    <!-- Leaf vein -->
+    <line x1="0" y1="-100" x2="0" y2="120" stroke="#F5F0E8" stroke-width="6"/>
+    <line x1="0" y1="-40" x2="-50" y2="-70" stroke="#F5F0E8" stroke-width="4"/>
+    <line x1="0" y1="-40" x2="50" y2="-70" stroke="#F5F0E8" stroke-width="4"/>
+    <line x1="0" y1="20" x2="-60" y2="-10" stroke="#F5F0E8" stroke-width="4"/>
+    <line x1="0" y1="20" x2="60" y2="-10" stroke="#F5F0E8" stroke-width="4"/>
+    <line x1="0" y1="70" x2="-50" y2="45" stroke="#F5F0E8" stroke-width="4"/>
+    <line x1="0" y1="70" x2="50" y2="45" stroke="#F5F0E8" stroke-width="4"/>
+  </g>
+
+  <!-- Bottom right - navy with minimal sun -->
+  <rect x="600" y="400" width="600" height="400" fill="#19131D"/>
+
+  <g transform="translate(900, 600)">
+    <!-- Simple sun - solid circle -->
+    <circle cx="0" cy="0" r="70" fill="#D9A441"/>
+
+    <!-- Clean rays - just 8 simple lines -->
+    <g stroke="#F5F0E8" stroke-width="8" stroke-linecap="round">
+      <line x1="0" y1="-95" x2="0" y2="-120"/>
+      <line x1="0" y1="95" x2="0" y2="120"/>
+      <line x1="-95" y1="0" x2="-120" y2="0"/>
+      <line x1="95" y1="0" x2="120" y2="0"/>
+      <line x1="-67" y1="-67" x2="-85" y2="-85"/>
+      <line x1="67" y1="-67" x2="85" y2="-85"/>
+      <line x1="-67" y1="67" x2="-85" y2="85"/>
+      <line x1="67" y1="67" x2="85" y2="85"/>
+    </g>
+  </g>
+</svg>

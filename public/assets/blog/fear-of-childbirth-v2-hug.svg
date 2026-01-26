@@ -1,0 +1,56 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- "Fear of Childbirth? You're Not Alone" - Two figures embracing -->
+
+  <!-- Background - warm, comforting -->
+  <rect width="1200" height="800" fill="#2F7255"/>
+
+  <!-- Subtle decorative elements -->
+  <circle cx="150" cy="150" r="80" fill="#4A9171" opacity="0.3"/>
+  <circle cx="1050" cy="650" r="100" fill="#4A9171" opacity="0.3"/>
+
+  <!-- Small hearts scattered -->
+  <g fill="#D9A441" opacity="0.4">
+    <path transform="translate(100, 600)" d="M 0 4 C -2 1, -6 1, -8 5 C -10 10, -3 15, 0 20 C 3 15, 10 10, 8 5 C 6 1, 2 1, 0 4"/>
+    <path transform="translate(1100, 200)" d="M 0 4 C -2 1, -6 1, -8 5 C -10 10, -3 15, 0 20 C 3 15, 10 10, 8 5 C 6 1, 2 1, 0 4"/>
+    <path transform="translate(200, 100)" d="M 0 3 C -1.5 0.75, -4.5 0.75, -6 3.75 C -7.5 7.5, -2.25 11.25, 0 15 C 2.25 11.25, 7.5 7.5, 6 3.75 C 4.5 0.75, 1.5 0.75, 0 3"/>
+  </g>
+
+  <!-- Two figures embracing - centered -->
+  <g transform="translate(600, 400)">
+    <!-- Figure 1 (left) - body -->
+    <ellipse cx="-45" cy="50" rx="50" ry="80" fill="#F5F0E8"/>
+    <!-- Figure 1 - head -->
+    <circle cx="-55" cy="-50" r="40" fill="#F5F0E8"/>
+
+    <!-- Figure 2 (right) - body -->
+    <ellipse cx="45" cy="50" rx="50" ry="80" fill="#D9A441"/>
+    <!-- Figure 2 - head -->
+    <circle cx="55" cy="-50" r="40" fill="#D9A441"/>
+
+    <!-- Embracing arms - Figure 1's arm around Figure 2 -->
+    <path d="M -20 20 Q 30 -10 80 30" stroke="#F5F0E8" stroke-width="20" fill="none" stroke-linecap="round"/>
+
+    <!-- Embracing arms - Figure 2's arm around Figure 1 -->
+    <path d="M 20 20 Q -30 -10 -80 30" stroke="#D9A441" stroke-width="20" fill="none" stroke-linecap="round"/>
+
+    <!-- Peaceful faces -->
+    <!-- Figure 1 face -->
+    <circle cx="-65" cy="-55" r="4" fill="#2F7255"/>
+    <circle cx="-45" cy="-55" r="4" fill="#2F7255"/>
+    <path d="M -62 -40 Q -55 -34 -48 -40" stroke="#2F7255" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+    <!-- Figure 2 face -->
+    <circle cx="45" cy="-55" r="4" fill="#2F7255"/>
+    <circle cx="65" cy="-55" r="4" fill="#2F7255"/>
+    <path d="M 48 -40 Q 55 -34 62 -40" stroke="#2F7255" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Warm glow behind figures -->
+  <circle cx="600" cy="400" r="200" fill="#D9A441" opacity="0.15"/>
+
+  <!-- Decorative arches at bottom -->
+  <g transform="translate(0, 800)">
+    <path d="M 0 0 Q 150 -80 300 0" stroke="#F5F0E8" stroke-width="4" fill="none" opacity="0.2"/>
+    <path d="M 900 0 Q 1050 -80 1200 0" stroke="#F5F0E8" stroke-width="4" fill="none" opacity="0.2"/>
+  </g>
+</svg>

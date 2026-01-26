@@ -20,6 +20,7 @@ import {
   Eye,
   Timer,
   Sparkle,
+  ClipboardText,
 } from "@phosphor-icons/react";
 import { Loader } from "@/components/ui/loader";
 import { SocialExport } from "@/components/ui/social-export";
@@ -35,6 +36,28 @@ interface WaitlistEntry {
 }
 
 type FilterType = "all" | "sent" | "not_sent";
+
+interface SurveyData {
+  totalResponses: number;
+  featurePriorities: { key: string; label: string; score: number; percentage: number }[];
+  connectionTypes: { key: string; label: string; count: number; percentage: number }[];
+  activities: { key: string; label: string; count: number; percentage: number }[];
+  contributionTypes: { key: string; label: string; count: number; percentage: number }[];
+  ageRanges: { range: string; count: number; percentage: number }[];
+  countries: { country: string; count: number; percentage: number }[];
+  communityVibeAvg: number | null;
+  recentResponses: {
+    id: string;
+    createdAt: string;
+    hardestPart: string | null;
+    painPoints: string | null;
+    idealFirstMonth: string | null;
+    ageRange: string | null;
+    country: string | null;
+    region: string | null;
+    email: string | null;
+  }[];
+}
 
 export default function AdminPage() {
   const [entries, setEntries] = useState<WaitlistEntry[]>([]);
@@ -65,7 +88,9 @@ export default function AdminPage() {
     trafficSources: { source: string; sessions: number; percentage: number }[];
   } | null>(null);
   const [blogPosts, setBlogPosts] = useState<{ slug: string; title: string; image?: string }[]>([]);
-  const [activeTab, setActiveTab] = useState<"dashboard" | "social">("dashboard");
+  const [activeTab, setActiveTab] = useState<"dashboard" | "social" | "survey">("dashboard");
+  const [surveyData, setSurveyData] = useState<SurveyData | null>(null);
+  const [surveyLoading, setSurveyLoading] = useState(false);
 
   // Check if already authenticated
   useEffect(() => {
@@ -80,6 +105,7 @@ export default function AdminPage() {
           fetchEntries();
           fetchAnalytics();
           fetchBlogPosts();
+          fetchSurveyData();
         }
       } catch {
         // Not authenticated
@@ -139,6 +165,21 @@ export default function AdminPage() {
       }
     } catch {
       console.error("Failed to fetch blog posts");
+    }
+  };
+
+  const fetchSurveyData = async () => {
+    setSurveyLoading(true);
+    try {
+      const res = await fetch("/api/admin/survey");
+      const data = await res.json();
+      if (res.ok) {
+        setSurveyData(data);
+      }
+    } catch {
+      console.error("Failed to fetch survey data");
+    } finally {
+      setSurveyLoading(false);
     }
   };
 
@@ -407,6 +448,16 @@ export default function AdminPage() {
               }`}
             >
               Social
+            </button>
+            <button
+              onClick={() => setActiveTab("survey")}
+              className={`theme-nav ${
+                activeTab === "survey"
+                  ? "text-foreground"
+                  : "text-muted hover:text-foreground"
+              }`}
+            >
+              Survey
             </button>
           </div>
           <div className="flex items-center gap-4">
@@ -821,6 +872,269 @@ export default function AdminPage() {
             <>
               <SocialExport posts={blogPosts} />
               <QuoteGenerator />
+            </>
+          )}
+
+          {/* Survey Results */}
+          {activeTab === "survey" && (
+            <>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                <div>
+                  <h2 className="font-display text-xl md:text-2xl text-foreground">
+                    Survey Results
+                  </h2>
+                  <p className="theme-body-sm text-muted mt-1">
+                    {surveyData?.totalResponses || 0} total responses
+                  </p>
+                </div>
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  onClick={fetchSurveyData}
+                  disabled={surveyLoading}
+                  className="gap-2"
+                >
+                  <ArrowClockwise size={14} weight="bold" className={surveyLoading ? "animate-spin" : ""} />
+                  Refresh
+                </Button>
+              </div>
+
+              {surveyLoading ? (
+                <div className="flex items-center justify-center py-12">
+                  <Loader size="md" />
+                </div>
+              ) : !surveyData || surveyData.totalResponses === 0 ? (
+                <div className="text-center py-16 border border-border rounded-lg">
+                  <ClipboardText size={48} className="text-muted mx-auto mb-4" />
+                  <p className="theme-body text-foreground mb-2">No survey responses yet</p>
+                  <p className="theme-body-sm text-muted">
+                    Share the survey at <span className="font-medium">/survey</span> to start collecting feedback
+                  </p>
+                </div>
+              ) : (
+                <>
+                  {/* Key Metrics Row */}
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <div className="p-4 border border-border rounded-lg">
+                      <p className="theme-caption text-muted mb-2">Total Responses</p>
+                      <p className="text-2xl font-display text-foreground">
+                        {surveyData.totalResponses}
+                      </p>
+                    </div>
+                    <div className="p-4 border border-border rounded-lg">
+                      <p className="theme-caption text-muted mb-2">Top Feature Request</p>
+                      <p className="text-lg font-display text-foreground">
+                        {surveyData.featurePriorities[0]?.label || "-"}
+                      </p>
+                    </div>
+                    <div className="p-4 border border-border rounded-lg">
+                      <p className="theme-caption text-muted mb-2">Top Connection Type</p>
+                      <p className="text-lg font-display text-foreground">
+                        {surveyData.connectionTypes[0]?.label || "-"}
+                      </p>
+                    </div>
+                    <div className="p-4 border border-border rounded-lg">
+                      <p className="theme-caption text-muted mb-2">Community Vibe</p>
+                      <p className="text-lg font-display text-foreground">
+                        {surveyData.communityVibeAvg
+                          ? `${surveyData.communityVibeAvg}/5`
+                          : "-"}
+                      </p>
+                      <p className="theme-secondary text-muted">
+                        {surveyData.communityVibeAvg && surveyData.communityVibeAvg <= 2
+                          ? "Venting focus"
+                          : surveyData.communityVibeAvg && surveyData.communityVibeAvg >= 4
+                          ? "Celebration focus"
+                          : surveyData.communityVibeAvg
+                          ? "Balanced"
+                          : ""}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Charts Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    {/* Feature Priorities */}
+                    <div className="p-4 border border-border rounded-lg">
+                      <p className="theme-caption text-muted mb-4">Feature Priorities (Ranked)</p>
+                      <div className="space-y-3">
+                        {surveyData.featurePriorities.map((feature, i) => (
+                          <div key={feature.key}>
+                            <div className="flex items-center justify-between mb-1">
+                              <span className="theme-body-sm text-foreground flex items-center gap-2">
+                                <span className="text-muted">#{i + 1}</span>
+                                {feature.label}
+                              </span>
+                              <span className="theme-body-sm text-muted">{feature.percentage}%</span>
+                            </div>
+                            <div className="h-2 bg-foreground/10 rounded-full overflow-hidden">
+                              <div
+                                className="h-full bg-forest rounded-full transition-all"
+                                style={{ width: `${feature.percentage}%` }}
+                              />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Connection Types */}
+                    <div className="p-4 border border-border rounded-lg">
+                      <p className="theme-caption text-muted mb-4">Connection Types Sought</p>
+                      <div className="space-y-3">
+                        {surveyData.connectionTypes.map((type) => (
+                          <div key={type.key}>
+                            <div className="flex items-center justify-between mb-1">
+                              <span className="theme-body-sm text-foreground">{type.label}</span>
+                              <span className="theme-body-sm text-muted">{type.percentage}%</span>
+                            </div>
+                            <div className="h-2 bg-foreground/10 rounded-full overflow-hidden">
+                              <div
+                                className="h-full bg-sage rounded-full transition-all"
+                                style={{ width: `${type.percentage}%` }}
+                              />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Activities */}
+                    <div className="p-4 border border-border rounded-lg">
+                      <p className="theme-caption text-muted mb-4">Interested Activities</p>
+                      <div className="space-y-3">
+                        {surveyData.activities.slice(0, 6).map((activity) => (
+                          <div key={activity.key}>
+                            <div className="flex items-center justify-between mb-1">
+                              <span className="theme-body-sm text-foreground">{activity.label}</span>
+                              <span className="theme-body-sm text-muted">{activity.percentage}%</span>
+                            </div>
+                            <div className="h-2 bg-foreground/10 rounded-full overflow-hidden">
+                              <div
+                                className="h-full bg-gold rounded-full transition-all"
+                                style={{ width: `${activity.percentage}%` }}
+                              />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Contribution Types */}
+                    <div className="p-4 border border-border rounded-lg">
+                      <p className="theme-caption text-muted mb-4">How They Want to Contribute</p>
+                      <div className="space-y-3">
+                        {surveyData.contributionTypes.map((type) => (
+                          <div key={type.key}>
+                            <div className="flex items-center justify-between mb-1">
+                              <span className="theme-body-sm text-foreground">{type.label}</span>
+                              <span className="theme-body-sm text-muted">{type.percentage}%</span>
+                            </div>
+                            <div className="h-2 bg-foreground/10 rounded-full overflow-hidden">
+                              <div
+                                className="h-full bg-coral rounded-full transition-all"
+                                style={{ width: `${type.percentage}%` }}
+                              />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Demographics Row */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    {/* Age Ranges */}
+                    <div className="p-4 border border-border rounded-lg">
+                      <p className="theme-caption text-muted mb-4">Age Distribution</p>
+                      <div className="flex items-end gap-2 h-32">
+                        {surveyData.ageRanges.map((age) => (
+                          <div key={age.range} className="flex-1 flex flex-col items-center">
+                            <div
+                              className="w-full bg-forest/80 rounded-t transition-all"
+                              style={{ height: `${Math.max(age.percentage, 5)}%` }}
+                            />
+                            <p className="theme-secondary text-muted mt-2">{age.range}</p>
+                            <p className="theme-secondary text-foreground">{age.percentage}%</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Top Countries */}
+                    <div className="p-4 border border-border rounded-lg">
+                      <p className="theme-caption text-muted mb-4">Top Locations</p>
+                      <div className="space-y-2">
+                        {surveyData.countries.slice(0, 5).map((loc) => (
+                          <div key={loc.country} className="flex items-center justify-between">
+                            <span className="theme-body-sm text-foreground">{loc.country}</span>
+                            <span className="theme-body-sm text-muted">
+                              {loc.count} ({loc.percentage}%)
+                            </span>
+                          </div>
+                        ))}
+                        {surveyData.countries.length === 0 && (
+                          <p className="theme-body-sm text-muted">No location data yet</p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Recent Open-Ended Responses */}
+                  <div className="border-t border-border pt-8">
+                    <h3 className="font-display text-lg text-foreground mb-4">Recent Responses</h3>
+                    <div className="space-y-4">
+                      {surveyData.recentResponses.filter(r => r.painPoints || r.idealFirstMonth || r.hardestPart).slice(0, 10).map((response) => (
+                        <div key={response.id} className="p-4 border border-border rounded-lg">
+                          <div className="flex items-center gap-3 mb-3">
+                            <span className="theme-secondary text-muted">
+                              {new Date(response.createdAt).toLocaleDateString()}
+                            </span>
+                            {response.ageRange && (
+                              <span className="px-2 py-0.5 bg-foreground/5 rounded text-xs text-muted">
+                                {response.ageRange}
+                              </span>
+                            )}
+                            {response.country && (
+                              <span className="px-2 py-0.5 bg-foreground/5 rounded text-xs text-muted">
+                                {response.country}
+                              </span>
+                            )}
+                            {response.email && (
+                              <span className="px-2 py-0.5 bg-forest/10 rounded text-xs text-forest">
+                                Left email
+                              </span>
+                            )}
+                          </div>
+                          {response.hardestPart && (
+                            <div className="mb-2">
+                              <p className="theme-caption text-muted">Hardest Part</p>
+                              <p className="theme-body-sm text-foreground">{response.hardestPart}</p>
+                            </div>
+                          )}
+                          {response.painPoints && (
+                            <div className="mb-2">
+                              <p className="theme-caption text-muted">Pain Points</p>
+                              <p className="theme-body-sm text-foreground">{response.painPoints}</p>
+                            </div>
+                          )}
+                          {response.idealFirstMonth && (
+                            <div>
+                              <p className="theme-caption text-muted">Ideal First Month</p>
+                              <p className="theme-body-sm text-foreground">{response.idealFirstMonth}</p>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                      {surveyData.recentResponses.filter(r => r.painPoints || r.idealFirstMonth || r.hardestPart).length === 0 && (
+                        <p className="theme-body-sm text-muted text-center py-8">
+                          No open-ended responses yet
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </>
+              )}
             </>
           )}
 

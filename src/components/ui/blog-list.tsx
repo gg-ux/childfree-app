@@ -1,9 +1,5 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
 import { BlogImage } from "@/components/ui/blog-image";
-import { BlogSearch } from "@/components/ui/blog-search";
 
 interface BlogPost {
   slug: string;
@@ -24,19 +20,7 @@ interface BlogListProps {
 }
 
 export function BlogList({ posts, activeTag, allTags }: BlogListProps) {
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const filteredPosts = posts.filter((post) => {
-    if (!searchQuery) return true;
-    const query = searchQuery.toLowerCase();
-    return (
-      post.title.toLowerCase().includes(query) ||
-      post.description.toLowerCase().includes(query) ||
-      post.tags?.some((tag) => tag.toLowerCase().includes(query))
-    );
-  });
-
-  const [featuredPost, ...otherPosts] = filteredPosts;
+  const [featuredPost, ...otherPosts] = posts;
 
   return (
     <>
@@ -47,16 +31,12 @@ export function BlogList({ posts, activeTag, allTags }: BlogListProps) {
             Blog
           </h1>
 
-          <div className="w-full sm:w-72 mb-6">
-            <BlogSearch onSearch={setSearchQuery} />
-          </div>
-
           {/* Tag filter */}
-          <div className="flex items-center gap-x-3 theme-body-sm overflow-x-auto scrollbar-hide pb-2 -mb-2">
+          <div className="flex items-center gap-x-3 theme-body overflow-x-auto scrollbar-hide pb-2 -mb-2">
             <Link
               href="/blog"
               className={`whitespace-nowrap transition-colors ${
-                !activeTag ? "theme-active" : "text-muted hover:text-foreground"
+                !activeTag ? "font-semibold text-foreground" : "text-muted hover:text-foreground"
               }`}
             >
               All
@@ -67,7 +47,7 @@ export function BlogList({ posts, activeTag, allTags }: BlogListProps) {
                 <Link
                   href={`/blog?tag=${encodeURIComponent(tag)}`}
                   className={`whitespace-nowrap transition-colors ${
-                    activeTag === tag ? "theme-active" : "text-muted hover:text-foreground"
+                    activeTag === tag ? "font-semibold text-foreground" : "text-muted hover:text-foreground"
                   }`}
                 >
                   {tag}
@@ -81,10 +61,10 @@ export function BlogList({ posts, activeTag, allTags }: BlogListProps) {
       {/* Posts */}
       <section className="pb-20">
         <div className="container-main">
-          {filteredPosts.length === 0 ? (
+          {posts.length === 0 ? (
             <div className="text-center py-16">
               <p className="theme-body text-muted">
-                {searchQuery ? "No posts match your search." : "No posts yet. Check back soon!"}
+                No posts yet. Check back soon!
               </p>
             </div>
           ) : (

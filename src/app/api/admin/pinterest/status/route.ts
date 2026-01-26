@@ -47,14 +47,16 @@ export async function GET() {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  let accessToken = cookieStore.get("pinterest_access_token")?.value;
+  // Check for direct access token from env (preferred) or cookie
+  const envAccessToken = process.env.PINTEREST_ACCESS_TOKEN;
+  let accessToken = envAccessToken || cookieStore.get("pinterest_access_token")?.value;
   const refreshToken = cookieStore.get("pinterest_refresh_token")?.value;
 
   // Not connected
   if (!accessToken && !refreshToken) {
     return NextResponse.json({
       connected: false,
-      configured: !!process.env.PINTEREST_CLIENT_ID,
+      configured: !!process.env.PINTEREST_ACCESS_TOKEN || !!process.env.PINTEREST_CLIENT_ID,
     });
   }
 

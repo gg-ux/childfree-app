@@ -9,27 +9,46 @@ const anthropic = new Anthropic({
 const MANIFESTATION_PROMPT = `Generate a single powerful manifestation affirmation for a social media graphic. The audience is adults who have intentionally chosen a childfree lifestyle and value self-determination.
 
 REQUIREMENTS:
-- Written in first person ("I am", "I choose", "I trust", "My life is")
+- Written in first person ("I am", "I choose", "I trust", "My life is") OR as a powerful statement
 - Present tense, as if it's already true
-- 5-15 words maximum
+- 4-12 words maximum
 - Feels like a personal mantra you'd repeat to yourself
-- Themes: freedom, self-trust, intentional living, abundance, peace, wholeness, choosing yourself, honoring your path, designing your life
+- Themes: freedom, self-trust, intentional living, abundance, peace, wholeness, choosing yourself, honoring your path, designing your life, chosen family, legacy through impact, community
 
 STYLE EXAMPLES (don't copy, match the energy):
+
+Warm/Inspirational (most common):
 - "My success is inevitable"
 - "Everything I want wants me more"
-- "I choose myself / I honor my truth / I honor my worth"
+- "I choose myself"
+- "I honor my truth"
 - "I am always in the right place at the right time"
 - "I am moving into new levels of abundance"
 - "It is safe to receive everything I desire"
 - "I trust my path completely"
 - "My life unfolds exactly as it should"
+- "I am surrounded by my chosen family"
+- "I am taken care of by my chosen family"
+- "Legacy isn't bloodline. It's impact."
+- "Family isn't blood. It's who shows up."
+- "My people chose me back"
+- "I am whole exactly as I am"
+- "My life is full and complete"
+
+Edgy/Assertive (occasionally):
+- "I do not owe anyone children."
+- "Society's expectations are not my obligations."
+- "I owe no one an explanation."
+- "My life is not up for debate."
+- "My body, my choice. Always."
+
+Generate warm/inspirational 80% of the time, edgy/assertive 20%.
 
 AVOID:
 - Generic or overused phrases
-- Anything defensive or bitter
-- Direct mentions of children or parenting
+- Bitter or angry tone (edgy is confident, not resentful)
 - Questions or conditional statements
+- Being too wordy
 
 Return ONLY the affirmation text. No quotation marks or explanation.`;
 

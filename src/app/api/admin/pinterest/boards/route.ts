@@ -28,7 +28,8 @@ export async function GET() {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const accessToken = cookieStore.get("pinterest_access_token")?.value;
+  // Check for direct access token from env (preferred) or cookie
+  const accessToken = process.env.PINTEREST_ACCESS_TOKEN || cookieStore.get("pinterest_access_token")?.value;
 
   if (!accessToken) {
     return NextResponse.json(

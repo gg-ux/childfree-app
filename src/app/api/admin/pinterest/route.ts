@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
 export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
 // GET: Initiate Pinterest OAuth flow
 export async function GET() {
@@ -14,10 +15,22 @@ export async function GET() {
   }
 
   const clientId = process.env.PINTEREST_CLIENT_ID;
+  const clientSecret = process.env.PINTEREST_CLIENT_SECRET;
+
+  console.log("Pinterest OAuth - clientId exists:", !!clientId);
+  console.log("Pinterest OAuth - clientSecret exists:", !!clientSecret);
+  console.log("Pinterest OAuth - all env keys:", Object.keys(process.env).filter(k => k.includes('PINTEREST')));
 
   if (!clientId) {
     return NextResponse.json(
-      { error: "Pinterest API not configured" },
+      {
+        error: "Pinterest API not configured",
+        debug: {
+          hasClientId: !!clientId,
+          hasClientSecret: !!clientSecret,
+          envKeys: Object.keys(process.env).filter(k => k.includes('PINTEREST'))
+        }
+      },
       { status: 500 }
     );
   }

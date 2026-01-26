@@ -50,6 +50,7 @@ type GeneratedElement =
   | { type: "crosshatch"; x: number; y: number; size: number; opacity: number };
 
 interface Template {
+  id?: string; // Database ID (for saved templates)
   name: string;
   bg: string;
   text: string;
@@ -314,12 +315,20 @@ export function QuoteGenerator() {
   const [postingPin, setPostingPin] = useState(false);
   const [pinSuccess, setPinSuccess] = useState<string | null>(null);
 
-  // Load saved templates from localStorage
+  // Load saved templates from database
   useEffect(() => {
-    const saved = localStorage.getItem("savedQuoteTemplates");
-    if (saved) {
-      setSavedTemplates(JSON.parse(saved));
-    }
+    const loadTemplates = async () => {
+      try {
+        const res = await fetch("/api/admin/quote-templates");
+        if (res.ok) {
+          const data = await res.json();
+          setSavedTemplates(data.templates || []);
+        }
+      } catch (error) {
+        console.error("Failed to load saved templates:", error);
+      }
+    };
+    loadTemplates();
   }, []);
 
   // Check Pinterest connection status
@@ -366,17 +375,40 @@ export function QuoteGenerator() {
     setCustomTemplate(newStyle);
   };
 
-  const handleSaveStyle = () => {
+  const handleSaveStyle = async () => {
     if (!customTemplate) return;
-    const newSaved = [...savedTemplates, { ...customTemplate, name: `Saved ${savedTemplates.length + 1}` }];
-    setSavedTemplates(newSaved);
-    localStorage.setItem("savedQuoteTemplates", JSON.stringify(newSaved));
+    try {
+      const res = await fetch("/api/admin/quote-templates", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...customTemplate,
+          name: `Saved ${savedTemplates.length + 1}`,
+        }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setSavedTemplates([...savedTemplates, data.template]);
+      }
+    } catch (error) {
+      console.error("Failed to save template:", error);
+    }
   };
 
-  const handleDeleteSaved = (index: number) => {
-    const newSaved = savedTemplates.filter((_, i) => i !== index);
-    setSavedTemplates(newSaved);
-    localStorage.setItem("savedQuoteTemplates", JSON.stringify(newSaved));
+  const handleDeleteSaved = async (index: number) => {
+    const template = savedTemplates[index];
+    if (!template.id) return;
+
+    try {
+      const res = await fetch(`/api/admin/quote-templates?id=${template.id}`, {
+        method: "DELETE",
+      });
+      if (res.ok) {
+        setSavedTemplates(savedTemplates.filter((_, i) => i !== index));
+      }
+    } catch (error) {
+      console.error("Failed to delete template:", error);
+    }
   };
 
   const handleSelectBaseTemplate = (index: number) => {
@@ -1098,14 +1130,6 @@ export function QuoteGenerator() {
                     <circle cx="0" cy="0" r="40" fill="none" stroke={template.accent} strokeWidth="3" opacity="0.5" />
                     <circle cx="0" cy="0" r="20" fill={template.accent} opacity="0.4" />
                   </g>
-                  {/* Flowing arc across middle-right */}
-                  <path
-                    d={`M850 ${dimensions.height * 0.375} Q650 ${dimensions.height * 0.5} 750 ${dimensions.height * 0.6875} Q850 ${dimensions.height * 0.875} 700 ${dimensions.height}`}
-                    fill="none"
-                    stroke={template.accent}
-                    strokeWidth="3"
-                    opacity="0.2"
-                  />
                   {/* Half circle - top left corner */}
                   <path
                     d="M0 50 A70 70 0 0 1 70 120 L0 120 Z"

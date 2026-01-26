@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chosn Launch Strategy</title>
+  <style>
+    :root {
+      --forest: #2F7255;
+      --sage: #87A878;
+      --gold: #D9A441;
+      --coral: #D4654A;
+      --navy: #19131D;
+      --cream: #F5F0E8;
+      --text: #1a1a1a;
+      --muted: #666;
+      --border: #e5e5e5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--cream);
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+
+    header {
+      background: var(--forest);
+      color: white;
+      padding: 3rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      opacity: 0.9;
+      font-size: 1.1rem;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    main {
+      padding: 3rem;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      color: var(--forest);
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--sage);
+    }
+
+    h2:first-child {
+      margin-top: 0;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      color: var(--navy);
+      margin: 1.5rem 0 0.75rem;
+    }
+
+    h4 {
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 600;
+      margin: 1rem 0 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, var(--forest) 0%, #3d8b6a 100%);
+      color: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 1.5rem 0;
+    }
+
+    .highlight-box h3 {
+      color: white;
+      margin-top: 0;
+    }
+
+    .highlight-box p {
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 0.5rem;
+    }
+
+    .highlight-box ul {
+      color: rgba(255,255,255,0.9);
+    }
+
+    .warning-box {
+      background: #fff8f0;
+      border-left: 4px solid var(--gold);
+      padding: 1rem 1.5rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1.5rem 0;
+    }
+
+    .warning-box p {
+      margin: 0;
+      color: #8b6914;
+    }
+
+    .phase {
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 1.5rem 0;
+      border: 1px solid var(--border);
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .phase-number {
+      width: 48px;
+      height: 48px;
+      background: var(--forest);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .phase-title {
+      font-size: 1.5rem;
+      color: var(--navy);
+    }
+
+    .phase-timeline {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+    }
+
+    th {
+      background: var(--forest);
+      color: white;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 500;
+    }
+
+    th:first-child {
+      border-radius: 8px 0 0 0;
+    }
+
+    th:last-child {
+      border-radius: 0 8px 0 0;
+    }
+
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tr:hover td {
+      background: #f5f5f5;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    .checklist {
+      list-style: none;
+      margin-left: 0;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+    }
+
+    .checklist li::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .milestone-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .milestone {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .milestone-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--forest);
+    }
+
+    .milestone-label {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stat-card {
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 1.25rem;
+    }
+
+    .stat-card h4 {
+      margin-top: 0;
+      color: var(--forest);
+    }
+
+    code {
+      background: #f0f0f0;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    .rule-box {
+      background: var(--navy);
+      color: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 1.5rem 0;
+    }
+
+    .rule-box h4 {
+      color: var(--gold);
+      margin-top: 0;
+    }
+
+    .rule-box ul {
+      margin-bottom: 0;
+    }
+
+    .rule-box li {
+      color: rgba(255,255,255,0.9);
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background: var(--border);
+      margin: 2rem 0;
+    }
+
+    .toc {
+      background: #f9f9f9;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .toc h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+
+    .toc ul {
+      list-style: none;
+      margin: 0;
+    }
+
+    .toc li {
+      margin-bottom: 0.5rem;
+    }
+
+    .toc a {
+      color: var(--forest);
+      text-decoration: none;
+    }
+
+    .toc a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background: #f5f5f5;
+      padding: 2rem 3rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Chosn Launch Strategy</h1>
+      <p>Product Requirements Document + Marketing Plan</p>
+      <div class="meta">
+        <span>Last Updated: January 2026</span>
+        <span>Status: Pre-Launch</span>
+        <span>Timeline: 4-6 months</span>
+      </div>
+    </header>
+
+    <main>
+      <div class="toc">
+        <h3>Contents</h3>
+        <ul>
+          <li><a href="#summary">Executive Summary</a></li>
+          <li><a href="#current">Current State</a></li>
+          <li><a href="#problem">The Cold Start Problem</a></li>
+          <li><a href="#phase0">Phase 0: Foundation (Now - Week 4)</a></li>
+          <li><a href="#phase1">Phase 1: Community MVP (Weeks 5-12)</a></li>
+          <li><a href="#phase2">Phase 2: Dating MVP (Weeks 13-20)</a></li>
+          <li><a href="#phase3">Phase 3: Growth & Expansion (Weeks 21-26)</a></li>
+          <li><a href="#marketing">Marketing Plan Summary</a></li>
+          <li><a href="#metrics">Key Metrics</a></li>
+          <li><a href="#next">Immediate Next Steps</a></li>
+        </ul>
+      </div>
+
+      <h2 id="summary">Executive Summary</h2>
+
+      <p>Chosn is a dating and community platform exclusively for childfree adults. This document outlines a phased approach to launch that solves the critical "chicken and egg" problem facing all dating apps: you need users to attract users.</p>
+
+      <div class="highlight-box">
+        <h3>The Strategy</h3>
+        <p>Launch community features globally first (no geographic density required), then layer dating features city-by-city once you have a critical mass of engaged users.</p>
+      </div>
+
+      <h4>Why This Works</h4>
+      <ul>
+        <li>Community features (forums, discussions) work with distributed users</li>
+        <li>Dating features require geographic density (150+ users per city)</li>
+        <li>Community users become your dating user base</li>
+        <li>You build trust and brand before asking people to date through you</li>
+      </ul>
+
+      <h2 id="current">Current State</h2>
+
+      <div class="two-column">
+        <div class="stat-card">
+          <h4>What You Have</h4>
+          <ul class="checklist" style="margin-left: 0;">
+            <li>Landing page with waitlist</li>
+            <li>Blog with 16 articles (SEO foundation)</li>
+            <li>Pinterest presence</li>
+            <li>Survey (rough draft)</li>
+            <li>Database schema designed</li>
+            <li>Brand identity established</li>
+          </ul>
+        </div>
+        <div class="stat-card">
+          <h4>What You Need to Build</h4>
+          <ul>
+            <li>User authentication system</li>
+            <li>User profiles</li>
+            <li>Matching/discovery system</li>
+            <li>Messaging system</li>
+            <li>Community/forum features</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 id="problem">The Cold Start Problem</h2>
+
+      <div class="warning-box">
+        <p><strong>The Core Challenge:</strong> A single user on a dating app gets zero value. Even 100 users spread across the US provides zero value. You need <em>density</em>.</p>
+      </div>
+
+      <h4>Research Findings</h4>
+      <ul>
+        <li>Timeleft (dating app) only launched in cities with 151+ signups</li>
+        <li>Tinder acquired 15,000 users on college campuses before broader launch</li>
+        <li>5,000 users distributed across the US = likely zero dates</li>
+        <li>Cost per install via ads: $4-8 for niche demographics (unsustainable without funding)</li>
+      </ul>
+
+      <h4>Our Solution</h4>
+      <ol>
+        <li>Build community features that work globally (no density required)</li>
+        <li>Use community to build waitlist density in specific cities</li>
+        <li>Launch dating features only in cities with 150+ waitlist signups</li>
+        <li>Expand city-by-city as each reaches critical mass</li>
+      </ol>
+
+      <h2 id="phase0">Phase 0: Foundation</h2>
+
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-number">0</div>
+          <div>
+            <div class="phase-title">Foundation</div>
+            <div class="phase-timeline">NOW - Week 4</div>
+          </div>
+        </div>
+
+        <h4>Goals</h4>
+        <ul>
+          <li>Finalize and distribute survey</li>
+          <li>Begin building trust in childfree communities</li>
+          <li>Establish founder presence</li>
+        </ul>
+
+        <h4>Product Work</h4>
+        <table>
+          <tr>
+            <th>Task</th>
+            <th>Priority</th>
+            <th>Est. Time</th>
+          </tr>
+          <tr>
+            <td>Finalize survey questions</td>
+            <td>High</td>
+            <td>2-3 days</td>
+          </tr>
+          <tr>
+            <td>Add survey link to navigation</td>
+            <td>High</td>
+            <td>1 day</td>
+          </tr>
+          <tr>
+            <td>Implement referral waitlist system</td>
+            <td>High</td>
+            <td>1 week</td>
+          </tr>
+          <tr>
+            <td>Set up email sequences for waitlist</td>
+            <td>Medium</td>
+            <td>3-4 days</td>
+          </tr>
+        </table>
+
+        <div class="rule-box">
+          <h4>Reddit Strategy (Start Immediately)</h4>
+          <ul>
+            <li>Create personal Reddit account (not branded)</li>
+            <li>Join r/truechildfree (30K members, positive tone)</li>
+            <li>Spend 4-6 weeks genuinely participating before ANY mention of Chosn</li>
+            <li>Share your own childfree experiences authentically</li>
+            <li>DO NOT post in r/childfree (1.6M members but hostile to promotion)</li>
+          </ul>
+        </div>
+
+        <h4>Content Cadence</h4>
+        <ul>
+          <li><strong>Reddit:</strong> Comment 3-5x per week in r/truechildfree</li>
+          <li><strong>Pinterest:</strong> Continue current cadence</li>
+          <li><strong>LinkedIn:</strong> 1-2 posts per week (founder journey)</li>
+          <li><strong>Blog:</strong> 1 post every 2 weeks</li>
+        </ul>
+
+        <h4>Phase 0 Milestones</h4>
+        <div class="milestone-grid">
+          <div class="milestone">
+            <div class="milestone-value">500</div>
+            <div class="milestone-label">Waitlist signups</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-value">100</div>
+            <div class="milestone-label">Survey responses</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-value">50</div>
+            <div class="milestone-label">Reddit karma</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-value">500</div>
+            <div class="milestone-label">LinkedIn followers</div>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="phase1">Phase 1: Community MVP</h2>
+
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-number">1</div>
+          <div>
+            <div class="phase-title">Community MVP</div>
+            <div class="phase-timeline">Weeks 5-12</div>
+          </div>
+        </div>
+
+        <h4>Goals</h4>
+        <ul>
+          <li>Launch global community features</li>
+          <li>Build engaged user base before dating features</li>
+          <li>Create content moat through user-generated discussions</li>
+        </ul>
+
+        <h4>Must-Have Features</h4>
+        <table>
+          <tr>
+            <th>Feature</th>
+            <th>Description</th>
+            <th>Est. Time</th>
+          </tr>
+          <tr>
+            <td>User authentication</td>
+            <td>Email magic link + Google/Apple OAuth</td>
+            <td>1 week</td>
+          </tr>
+          <tr>
+            <td>Basic profiles</td>
+            <td>Name, photo, location, bio, childfree status</td>
+            <td>1 week</td>
+          </tr>
+          <tr>
+            <td>Discussion forums</td>
+            <td>Topic-based threads (like Reddit)</td>
+            <td>2-3 weeks</td>
+          </tr>
+          <tr>
+            <td>Post/comment system</td>
+            <td>Create posts, reply, upvote</td>
+            <td>1 week</td>
+          </tr>
+          <tr>
+            <td>Basic moderation</td>
+            <td>Report system, admin tools</td>
+            <td>1 week</td>
+          </tr>
+          <tr>
+            <td>Notifications</td>
+            <td>Email digests for activity</td>
+            <td>3-4 days</td>
+          </tr>
+        </table>
+
+        <h4>Forum Categories (Suggested)</h4>
+        <div class="two-column">
+          <ul>
+            <li>Introductions</li>
+            <li>Lifestyle & Freedom</li>
+            <li>Relationships & Dating</li>
+            <li>Dealing with Family/Society</li>
+            <li>Travel & Adventures</li>
+          </ul>
+          <ul>
+            <li>Pets & Plant Parenting</li>
+            <li>Career & Finances</li>
+            <li>Sterilization & Medical</li>
+            <li>Venting (contained space)</li>
+            <li>Local Meetups (by city)</li>
+          </ul>
+        </div>
+
+        <h4>Phase 1 Milestones</h4>
+        <div class="milestone-grid">
+          <div class="milestone">
+            <div class="milestone-value">1,000</div>
+            <div class="milestone-label">Waitlist signups</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-value">500</div>
+            <div class="milestone-label">Community members</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-value">100</div>
+            <div class="milestone-label">Weekly active users</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-value">50</div>
+            <div class="milestone-label">User-generated posts</div>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="phase2">Phase 2: Dating MVP</h2>
+
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-number">2</div>
+          <div>
+            <div class="phase-title">Dating MVP</div>
+            <div class="phase-timeline">Weeks 13-20</div>
+          </div>
+        </div>
+
+        <h4>Goals</h4>
+        <ul>
+          <li>Launch dating features in Los Angeles first</li>
+          <li>Prove the matching concept works</li>
+          <li>Gather dating-specific feedback</li>
+        </ul>
+
+        <div class="highlight-box">
+          <h3>First City: Los Angeles</h3>
+          <p>LA is your first launch city because:</p>
+          <ul>
+            <li>You're there (can host events, build community in person)</li>
+            <li>Massive population (13M metro) = large childfree population</li>
+            <li>Entertainment/creative industry = high DINK concentration</li>
+            <li>Progressive culture supportive of childfree lifestyle</li>
+            <li>Strong brunch/social scene for IRL events</li>
+          </ul>
+        </div>
+
+        <h4>LA-Specific Opportunities</h4>
+        <ul>
+          <li>Childfree Meetup groups in LA area</li>
+          <li>WeHo/Silver Lake/Echo Park = high concentration of childfree millennials</li>
+          <li>Partner with dog-friendly venues (childfree people love pets)</li>
+          <li>Beach/hiking meetups align with LA lifestyle</li>
+        </ul>
+
+        <h4>Expansion Order (After LA)</h4>
+        <ol>
+          <li>San Diego (nearby, similar demo)</li>
+          <li>SF Bay Area (high childfree rates)</li>
+          <li>Portland/Seattle (progressive corridor)</li>
+          <li>Austin/Denver (next tier)</li>
+        </ol>
+
+        <div class="warning-box">
+          <p><strong>Launch Threshold:</strong> Do not launch dating in a city until you have 150+ waitlist signups from that metro area.</p>
+        </div>
+
+        <h4>Must-Have Dating Features</h4>
+        <table>
+          <tr>
+            <th>Feature</th>
+            <th>Description</th>
+            <th>Est. Time</th>
+          </tr>
+          <tr>
+            <td>Extended profiles</td>
+            <td>Photos, prompts, preferences, seeking type</td>
+            <td>1 week</td>
+          </tr>
+          <tr>
+            <td>Discovery/browse</td>
+            <td>Filter by location, age, seeking type</td>
+            <td>1-2 weeks</td>
+          </tr>
+          <tr>
+            <td>Like/pass system</td>
+            <td>Express interest</td>
+            <td>1 week</td>
+          </tr>
+          <tr>
+            <td>Matching</td>
+            <td>Mutual interest = match</td>
+            <td>3-4 days</td>
+          </tr>
+          <tr>
+            <td>1:1 messaging</td>
+            <td>Chat between matched users</td>
+            <td>1-2 weeks</td>
+          </tr>
+          <tr>
+            <td>Basic safety</td>
+            <td>Photo guidelines, report/block</td>
+            <td>1 week</td>
+          </tr>
+        </table>
+
+        <h4>Phase 2 Milestones</h4>
+        <div class="milestone-grid">
+          <div class="milestone">
+            <div class="milestone-value">2,000</div>
+            <div class="milestone-label">Total waitlist</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-value">150+</div>
+            <div class="milestone-label">LA signups</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-value">100</div>
+            <div class="milestone-label">Matches made</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-value">10</div>
+            <div class="milestone-label">Testimonials</div>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="phase3">Phase 3: Growth & Expansion</h2>
+
+      <div class="phase">
+        <div class="phase-header">
+          <div class="phase-number">3</div>
+          <div>
+            <div class="phase-title">Growth & Expansion</div>
+            <div class="phase-timeline">Weeks 21-26</div>
+          </div>
+        </div>
+
+        <h4>Goals</h4>
+        <ul>
+          <li>Expand to additional cities</li>
+          <li>Refine based on user feedback</li>
+          <li>Build sustainable growth loops</li>
+        </ul>
+
+        <h4>Product Improvements</h4>
+        <ul>
+          <li>Mobile apps (React Native or PWA)</li>
+          <li>Advanced matching algorithm</li>
+          <li>Premium features (if monetizing)</li>
+          <li>Event creation/RSVP system</li>
+          <li>Verification badges</li>
+        </ul>
+
+        <h4>Phase 3 Milestones</h4>
+        <div class="milestone-grid">
+          <div class="milestone">
+            <div class="milestone-value">5,000</div>
+            <div class="milestone-label">Total users</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-value">3</div>
+            <div class="milestone-label">Cities live</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-value">1,000</div>
+            <div class="milestone-label">Monthly active users</div>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="marketing">Marketing Plan Summary</h2>
+
+      <h4>Budget: $0-500 (Bootstrap Phase)</h4>
+
+      <table>
+        <tr>
+          <th>Channel</th>
+          <th>Investment</th>
+          <th>Expected Return</th>
+          <th>Timeline</th>
+        </tr>
+        <tr>
+          <td>Reddit (organic)</td>
+          <td>Time only</td>
+          <td>100-500 users</td>
+          <td>3-6 months</td>
+        </tr>
+        <tr>
+          <td>LinkedIn (founder brand)</td>
+          <td>Time only</td>
+          <td>50-200 signups</td>
+          <td>Ongoing</td>
+        </tr>
+        <tr>
+          <td>Pinterest</td>
+          <td>Time only</td>
+          <td>SEO + awareness</td>
+          <td>Ongoing</td>
+        </tr>
+        <tr>
+          <td>Blog/SEO</td>
+          <td>Time only</td>
+          <td>Long-tail traffic</td>
+          <td>6-12 months</td>
+        </tr>
+        <tr>
+          <td>Podcast outreach</td>
+          <td>Time only</td>
+          <td>50-200 per appearance</td>
+          <td>As booked</td>
+        </tr>
+        <tr>
+          <td>Launch event</td>
+          <td>$200-500</td>
+          <td>50-100 users</td>
+          <td>At city launch</td>
+        </tr>
+        <tr>
+          <td>Product Hunt</td>
+          <td>Time only</td>
+          <td>200-1000 users</td>
+          <td>Once ready</td>
+        </tr>
+      </table>
+
+      <div class="rule-box">
+        <h4>The 90-9-1 Rule</h4>
+        <ul>
+          <li><strong>90%</strong> of content = pure value (insights, answering questions, sharing experiences)</li>
+          <li><strong>9%</strong> = soft mentions of what you're building</li>
+          <li><strong>1%</strong> = direct promotion</li>
+        </ul>
+      </div>
+
+      <h4>Weekly Content Cadence</h4>
+      <ul>
+        <li><strong>Monday:</strong> Reddit engagement (3-5 comments in r/truechildfree)</li>
+        <li><strong>Tuesday:</strong> LinkedIn post (founder journey)</li>
+        <li><strong>Wednesday:</strong> Reddit engagement</li>
+        <li><strong>Thursday:</strong> Pinterest pins (2-3)</li>
+        <li><strong>Friday:</strong> Reddit engagement</li>
+        <li><strong>Weekend:</strong> Blog post (bi-weekly)</li>
+      </ul>
+
+      <h2 id="metrics">Key Metrics to Track</h2>
+
+      <div class="two-column">
+        <div class="stat-card">
+          <h4>Pre-Launch</h4>
+          <ul>
+            <li>Waitlist signups (total + by city)</li>
+            <li>Waitlist conversion rate</li>
+            <li>Survey responses</li>
+            <li>Email open rates</li>
+            <li>Reddit karma/engagement</li>
+          </ul>
+        </div>
+        <div class="stat-card">
+          <h4>Post-Launch</h4>
+          <ul>
+            <li>Registered users</li>
+            <li>Weekly active users (WAU)</li>
+            <li>Posts per week</li>
+            <li>Matches per user</li>
+            <li>Match-to-conversation rate</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <h3>North Star Metric</h3>
+        <p><strong>Meaningful connections made</strong> (matches that lead to messages, friendships formed, dates scheduled)</p>
+      </div>
+
+      <h2 id="next">Immediate Next Steps</h2>
+
+      <div class="phase">
+        <h4>This Week</h4>
+        <ul class="checklist">
+          <li>Finalize survey questions and test the flow</li>
+          <li>Add referral mechanics to waitlist (queue position advancement)</li>
+          <li>Create personal Reddit account and start lurking in r/truechildfree</li>
+          <li>Draft first LinkedIn post about your founder journey</li>
+          <li>Add "city" field to waitlist signup to track LA signups specifically</li>
+          <li>Research LA childfree Meetup groups for potential partnerships</li>
+          <li>Identify 2-3 LA venues for potential launch event</li>
+        </ul>
+      </div>
+
+      <hr>
+
+      <h2>Competitive Landscape</h2>
+
+      <h4>Direct Competitors</h4>
+      <table>
+        <tr>
+          <th>App</th>
+          <th>Status</th>
+          <th>Weakness</th>
+        </tr>
+        <tr>
+          <td>Childfree Connection</td>
+          <td>Active</td>
+          <td>Limited features, small user base</td>
+        </tr>
+        <tr>
+          <td>CFdating.com</td>
+          <td>Active</td>
+          <td>Dated UX, web-only</td>
+        </tr>
+        <tr>
+          <td>Kindred</td>
+          <td>Shut down</td>
+          <td>Couldn't achieve viability</td>
+        </tr>
+      </table>
+
+      <h4>Your Differentiation</h4>
+      <ol>
+        <li><strong>Childfree-first, not an afterthought</strong> - Built for this community, not a filter added later</li>
+        <li><strong>Community + Dating</strong> - Not just matching, but belonging</li>
+        <li><strong>Verification</strong> - Actually childfree, not "open to kids someday"</li>
+        <li><strong>Modern UX</strong> - Clean, thoughtful design</li>
+      </ol>
+
+    </main>
+
+    <footer>
+      <p>This document should be updated as you progress through phases and learn from user feedback.</p>
+      <p style="margin-top: 0.5rem; opacity: 0.7;">Chosn Launch Strategy - January 2026</p>
+    </footer>
+  </div>
+</body>
+</html>

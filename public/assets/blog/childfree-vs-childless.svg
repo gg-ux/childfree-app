@@ -36,7 +36,7 @@
     <circle cx="0" cy="0" r="180" fill="#F5F0E8"/>
     <circle cx="0" cy="0" r="120" fill="#D4654A"/>
     <!-- Missing piece / gap -->
-    <path d="M0 0 L180 0 A180 180 0 0 0 127 -127 Z" fill="#D4654A"/>
+    <path d="M0 0 L182 0 A182 182 0 0 0 129 -129 Z" fill="#D4654A" stroke="none"/>
     <circle cx="0" cy="0" r="70" fill="#19131D"/>
     <!-- Dashed inner circle suggesting incompleteness - slow rotation -->
     <circle cx="0" cy="0" r="70" fill="none" stroke="#F5F0E8" stroke-width="4" stroke-dasharray="12 8">

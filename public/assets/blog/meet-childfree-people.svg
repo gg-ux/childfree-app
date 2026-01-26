@@ -40,21 +40,13 @@
   <circle cx="80" cy="680" r="35" fill="#F5F0E8"/>
   <circle cx="520" cy="700" r="28" fill="#D4654A"/>
 
-  <!-- Top right panel - forest with overlapping community circles -->
+  <!-- Top right panel - forest with overlapping venn diagram circles -->
   <rect x="600" y="0" width="600" height="400" fill="#2F7255"/>
 
-  <!-- Overlapping circles representing community -->
-  <circle cx="820" cy="200" r="100" fill="#F5F0E8"/>
-  <circle cx="920" cy="200" r="100" fill="#D9A441"/>
-  <circle cx="870" cy="280" r="100" fill="#D4654A"/>
-  <!-- Center intersection - gentle pulse -->
-  <circle cx="870" cy="220" r="35" fill="#19131D">
-    <animate attributeName="r" values="35;42;35" dur="3s" repeatCount="indefinite"/>
-  </circle>
-
-  <!-- Small accent dots -->
-  <circle cx="680" cy="80" r="18" fill="#F5F0E8" opacity="0.6"/>
-  <circle cx="1100" cy="320" r="22" fill="#F5F0E8" opacity="0.6"/>
+  <!-- Overlapping circles representing community - venn diagram style -->
+  <circle cx="850" cy="160" r="100" fill="none" stroke="#F5F0E8" stroke-width="8"/>
+  <circle cx="950" cy="160" r="100" fill="none" stroke="#D9A441" stroke-width="8"/>
+  <circle cx="900" cy="250" r="100" fill="none" stroke="#D4654A" stroke-width="8"/>
 
   <!-- Bottom right panel - coral with network/connection lines -->
   <rect x="600" y="400" width="600" height="400" fill="#D4654A"/>

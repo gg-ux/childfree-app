@@ -58,7 +58,5 @@
     <path d="M -25 -80 Q -25 -110 0 -110 Q 35 -110 35 -75 Q 35 -50 0 -40 L 0 -15" stroke="#F5F0E8" stroke-width="18" stroke-linecap="round" fill="none"/>
     <!-- Dot -->
     <circle cx="0" cy="25" r="14" fill="#F5F0E8"/>
-    <!-- X slash through it (30 degrees, shifted up) -->
-    <line x1="-60" y1="25" x2="60" y2="-45" stroke="#D4654A" stroke-width="14" stroke-linecap="round"/>
   </g>
 </svg>
