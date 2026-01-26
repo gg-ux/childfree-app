@@ -249,8 +249,8 @@ export default async function BlogPostPage({ params }: PageProps) {
                   </p>
                 </Link>
               ))}
-              {/* Spacer to allow last card to scroll to align with container edge */}
-              <div className="flex-shrink-0 w-6 md:w-12 lg:w-20" aria-hidden="true" />
+              {/* Spacer: container padding minus gap (gap is already added before this) */}
+              <div className="flex-shrink-0 w-0 md:w-6 lg:w-14" aria-hidden="true" />
             </div>
           </div>
         </section>
