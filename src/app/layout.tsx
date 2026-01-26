@@ -73,6 +73,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="p:domain_verify" content="1c5a987f8bed277922afef1c8f4b6f2b"/>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           strategy="afterInteractive"
