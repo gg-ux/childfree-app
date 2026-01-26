@@ -444,3 +444,75 @@ model UserSession {
   @@index([token])
   @@index([userId])
 }
+
+// ============================================
+// ADMIN SAVED QUOTE TEMPLATES
+// ============================================
+
+model SavedQuoteTemplate {
+  id        String   @id @default(cuid())
+  name      String
+  bg        String   // Background color
+  text      String   // Text color
+  accent    String   // Accent color
+  accent2   String   // Secondary accent color
+  layout    String   // Layout type: botanical, geometric, arches, circles, waves, generated
+  elements  Json?    // Generated elements (for "generated" layout)
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+// ============================================
+// COMMUNITY SURVEY
+// ============================================
+
+model SurveyResponse {
+  id                  String   @id @default(cuid())
+
+  // Q1: Hardest part of being childfree
+  hardestPart         String?
+
+  // Q1: Connection types ranking (ordered by preference)
+  connectionTypes     String[] // dating, friendships, community - ordered by preference
+
+  // Q2: Likert scores (1-5) for feature interest
+  likertLocalDating       Int? // How likely to use app for local childfree dating
+  likertLocalFriendships  Int? // How likely to use app for local childfree friendships
+  likertGlobalCommunity   Int? // How interested in global childfree community
+
+  // Legacy: Feature priorities (ranked list) - kept for old responses
+  featurePriorities   String[] // Ordered array of feature keys
+
+  // Q4: What's broken about existing communities
+  painPoints          String?  @db.Text
+
+  // Q5: Activities interested in (multi-select)
+  activities          String[] // brunches, hikes, game_nights, travel, book_clubs, happy_hours, pet_meetups, fitness
+
+  // Q6: Community vibe (1-5 scale: 1=venting, 5=celebration)
+  communityVibe       Int?
+
+  // Q7: Ideal first month vision
+  idealFirstMonth     String?  @db.Text
+
+  // Q8: How they want to contribute (multi-select)
+  contributionTypes   String[] // beta_tester, event_organizer, content_creator, moderator, just_member
+
+  // Demographics
+  ageRange            String?  // 18-29, 30-39, 40-49, 50+
+  country             String?
+  region              String?  // Optional city/state
+
+  // Optional email for early access
+  email               String?
+
+  // Metadata
+  createdAt           DateTime @default(now())
+  referralSource      String?  // How they found the survey
+  completionTime      Int?     // Seconds to complete
+
+  @@index([createdAt])
+  @@index([ageRange])
+  @@index([country])
+}
