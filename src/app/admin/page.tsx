@@ -1089,13 +1089,15 @@ export default function AdminPage() {
                     <div className="p-4 border border-border rounded-lg">
                       <p className="theme-caption text-muted mb-4">Age Distribution</p>
                       {surveyData.ageRanges.length > 0 ? (
-                        <div className="flex items-end gap-2 h-32">
+                        <div className="flex items-end gap-3">
                           {surveyData.ageRanges.map((age) => (
                             <div key={age.range} className="flex-1 flex flex-col items-center">
-                              <div
-                                className="w-full bg-forest/80 rounded-t transition-all"
-                                style={{ height: `${Math.max(age.percentage, 5)}%` }}
-                              />
+                              <div className="w-full flex items-end" style={{ height: 80 }}>
+                                <div
+                                  className="w-full bg-forest rounded-t transition-all"
+                                  style={{ height: Math.max(age.percentage * 0.8, 4) }}
+                                />
+                              </div>
                               <p className="theme-secondary text-muted mt-2">{age.range}</p>
                               <p className="theme-secondary text-foreground">{age.percentage}%</p>
                             </div>
