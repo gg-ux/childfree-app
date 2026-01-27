@@ -187,7 +187,7 @@ export async function GET() {
       country: r.country,
       region: r.region,
       contributionTypes: r.contributionTypes,
-      hasEmail: !!r.email,
+      email: r.email,
     }));
 
     return NextResponse.json({

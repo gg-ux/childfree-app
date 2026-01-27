@@ -65,7 +65,7 @@ interface SurveyData {
     country: string | null;
     region: string | null;
     contributionTypes: string[];
-    hasEmail: boolean;
+    email: string | null;
   }[];
 }
 
@@ -1145,9 +1145,9 @@ export default function AdminPage() {
                                 {response.region ? `${response.region}, ` : ""}{response.country}
                               </span>
                             )}
-                            {response.hasEmail && (
+                            {response.email && (
                               <span className="px-2 py-0.5 bg-forest/10 rounded text-xs text-forest">
-                                Left email
+                                {response.email}
                               </span>
                             )}
                           </div>
