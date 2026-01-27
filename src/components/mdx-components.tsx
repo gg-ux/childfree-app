@@ -5,6 +5,7 @@ import { StatCards } from "@/components/ui/stat-cards";
 import { BarChart, ComparisonBar } from "@/components/ui/bar-chart";
 import { Sources } from "@/components/ui/sources";
 import { ScoreGrid } from "@/components/ui/score-grid";
+import { MethodologyGrid } from "@/components/ui/methodology-grid";
 
 export const mdxComponents: MDXComponents = {
   h1: ({ children }) => (
@@ -80,5 +81,6 @@ export const mdxComponents: MDXComponents = {
   BarChart,
   ComparisonBar,
   ScoreGrid,
+  MethodologyGrid,
   Sources,
 };
