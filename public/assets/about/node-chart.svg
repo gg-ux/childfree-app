@@ -1,0 +1,114 @@
+<svg width="600" height="600" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Bauhaus node chart: Chosn logo center, 5 feature nodes radiating out -->
+
+  <!-- Connection lines from center to each node -->
+  <g stroke="#19131D" stroke-width="2.5" opacity="0.12">
+    <line x1="300" y1="300" x2="300" y2="80"/>
+    <line x1="300" y1="300" x2="510" y2="165"/>
+    <line x1="300" y1="300" x2="510" y2="435"/>
+    <line x1="300" y1="300" x2="90" y2="435"/>
+    <line x1="300" y1="300" x2="90" y2="165"/>
+    <!-- Outer ring connections -->
+    <line x1="300" y1="80" x2="510" y2="165"/>
+    <line x1="510" y1="165" x2="510" y2="435"/>
+    <line x1="510" y1="435" x2="300" y2="545"/>
+    <line x1="300" y1="545" x2="90" y2="435"/>
+    <line x1="90" y1="435" x2="90" y2="165"/>
+    <line x1="90" y1="165" x2="300" y2="80"/>
+    <line x1="300" y1="300" x2="300" y2="545"/>
+  </g>
+
+  <!-- Central node: forest green with Chosn sparkle logo -->
+  <circle cx="300" cy="300" r="62" fill="#2F7255">
+    <animate attributeName="r" values="62;66;62" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
+  </circle>
+  <!-- Pulse ring on center -->
+  <circle cx="300" cy="300" r="62" fill="none" stroke="#2F7255" stroke-width="1.5" opacity="0">
+    <animate attributeName="r" values="62;90;62" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0;0.3" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <!-- Sparkle logo scaled down and centered -->
+  <g transform="translate(275, 275) scale(0.5)">
+    <path d="M48.9854 0C48.9854 0 49.4863 15.5 49.4858 21C47.9858 29 40.7474 37.498 40.7474 37.498C40.7474 37.498 39.7474 36.998 35.9089 29.5C30.7851 19.4912 48.9854 0 48.9854 0Z" fill="rgba(255,255,255,0.95)"/>
+    <path d="M48.9854 0C48.9854 0 49.0127 15.5 49.0132 21C50.5132 29 57.7516 37.498 57.7516 37.498C57.7516 37.498 58.7516 36.998 62.5901 29.5C67.7139 19.4912 48.9854 0 48.9854 0Z" fill="rgba(255,255,255,0.6)"/>
+    <path d="M0 48.4922C0 48.4922 15.5 47.9912 21 47.9917C29 49.4917 37.498 56.7301 37.498 56.7301C37.498 56.7301 36.998 57.7301 29.5 61.5686C19.4912 66.6924 0 48.4922 0 48.4922Z" fill="rgba(255,255,255,0.95)"/>
+    <path d="M0 48.4922C0 48.4922 15.5 48.4648 21 48.4643C29 46.9643 37.498 39.7259 37.498 39.7259C37.498 39.7259 36.998 38.7259 29.5 34.8874C19.4912 29.7636 0 48.4922 0 48.4922Z" fill="rgba(255,255,255,0.6)"/>
+    <path d="M49.4922 97.498C49.4922 97.498 48.9912 81.998 48.9917 76.498C50.4917 68.498 57.7301 60 57.7301 60C57.7301 60 58.7301 60.5 62.5686 67.998C67.6924 78.0069 49.4922 97.498 49.4922 97.498Z" fill="rgba(255,255,255,0.95)"/>
+    <path d="M49.4922 97.498C49.4922 97.498 49.4648 81.998 49.4643 76.498C47.9643 68.498 40.7259 60 40.7259 60C40.7259 60 39.7259 60.5 35.8874 67.998C30.7636 78.0069 49.4922 97.498 49.4922 97.498Z" fill="rgba(255,255,255,0.6)"/>
+    <path d="M97.498 48.9854C97.498 48.9854 81.998 49.4863 76.498 49.4858C68.498 47.9858 60 40.7474 60 40.7474C60 40.7474 60.5 39.7474 67.998 35.9089C78.0069 30.7851 97.498 48.9854 97.498 48.9854Z" fill="rgba(255,255,255,0.95)"/>
+    <path d="M97.498 48.9854C97.498 48.9854 81.998 49.0127 76.498 49.0132C68.498 50.5132 60 57.7516 60 57.7516C60 57.7516 60.5 58.7516 67.998 62.5901C78.0069 67.7139 97.498 48.9854 97.498 48.9854Z" fill="rgba(255,255,255,0.6)"/>
+  </g>
+
+  <!-- Node 1: Dating (top) — coral -->
+  <circle cx="300" cy="80" r="36" fill="#D4654A">
+    <animate attributeName="r" values="36;39;36" dur="4.5s" begin="0.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
+  </circle>
+  <!-- Heart icon -->
+  <g transform="translate(300, 80)" fill="#F5F0E8">
+    <path transform="translate(-12, -12) scale(1)" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+  </g>
+
+  <!-- Node 2: Friendship (top-right) — marigold -->
+  <circle cx="510" cy="165" r="32" fill="#D9A441">
+    <animate attributeName="r" values="32;35;32" dur="5s" begin="1s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
+  </circle>
+  <!-- People icon -->
+  <g transform="translate(510, 165)" fill="#F5F0E8">
+    <circle cx="-7" cy="-8" r="5"/>
+    <circle cx="7" cy="-8" r="5"/>
+    <ellipse cx="-7" cy="6" rx="7" ry="5"/>
+    <ellipse cx="7" cy="6" rx="7" ry="5"/>
+  </g>
+
+  <!-- Node 3: Events (bottom-right) — charcoal -->
+  <circle cx="510" cy="435" r="30" fill="#19131D">
+    <animate attributeName="r" values="30;33;30" dur="4s" begin="1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
+  </circle>
+  <!-- Calendar icon -->
+  <g transform="translate(510, 435)" fill="none" stroke="#F5F0E8" stroke-width="2">
+    <rect x="-10" y="-9" width="20" height="18" rx="2"/>
+    <line x1="-10" y1="-3" x2="10" y2="-3"/>
+    <line x1="-5" y1="-13" x2="-5" y2="-6"/>
+    <line x1="5" y1="-13" x2="5" y2="-6"/>
+    <circle cx="-3" cy="4" r="1.5" fill="#F5F0E8" stroke="none"/>
+    <circle cx="4" cy="4" r="1.5" fill="#F5F0E8" stroke="none"/>
+  </g>
+
+  <!-- Node 4: Interest Groups (bottom-left) — coral -->
+  <circle cx="90" cy="435" r="34" fill="#D4654A">
+    <animate attributeName="r" values="34;37;34" dur="4.5s" begin="2s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
+  </circle>
+  <!-- Airplane icon (based on Phosphor AirplaneTilt) -->
+  <g transform="translate(77, 422) scale(0.1)" fill="#F5F0E8">
+    <path d="M245.09,57.57a52.14,52.14,0,0,0-73.56,0L132.37,96.73,74.27,76.8a8,8,0,0,0-8.39,1.72l-24,24a8,8,0,0,0,1.27,12.4l57.63,38.43-22.82,22.82L46.51,163.12a8,8,0,0,0-7.39,2.17l-16,16a8,8,0,0,0,1.07,12.15l38.15,25.43,25.43,38.15a8,8,0,0,0,12.15,1.07l16-16a8,8,0,0,0,2.17-7.39L105,203.23l22.82-22.82,38.43,57.63a8,8,0,0,0,12.4,1.27l24-24a8,8,0,0,0,1.72-8.39l-19.93-58.1,39.16-39.16A52.14,52.14,0,0,0,245.09,57.57Z"/>
+  </g>
+
+  <!-- Node 5: Resources (top-left) — marigold -->
+  <circle cx="90" cy="165" r="28" fill="#D9A441">
+    <animate attributeName="r" values="28;31;28" dur="5s" begin="0.8s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
+  </circle>
+  <!-- Book icon (based on Phosphor BookOpen) -->
+  <g transform="translate(77, 152) scale(0.1)" fill="#F5F0E8">
+    <path d="M232,48H160a40,40,0,0,0-32,16A40,40,0,0,0,96,48H24A16,16,0,0,0,8,64V192a16,16,0,0,0,16,16H96a24,24,0,0,1,24,24,8,8,0,0,0,16,0,24,24,0,0,1,24-24h72a16,16,0,0,0,16-16V64A16,16,0,0,0,232,48ZM96,192H24V64H96a24,24,0,0,1,24,24V200A39.81,39.81,0,0,0,96,192Zm136,0H160a39.81,39.81,0,0,0-24,8V88a24,24,0,0,1,24-24h72Z"/>
+  </g>
+
+  <!-- Node 6: Community (bottom) — forest green -->
+  <circle cx="300" cy="545" r="32" fill="#2F7255">
+    <animate attributeName="r" values="32;35;32" dur="4.5s" begin="2.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
+  </circle>
+  <!-- People group icon -->
+  <g transform="translate(300, 545)" fill="#F5F0E8">
+    <circle cx="-10" cy="-6" r="4"/>
+    <circle cx="0" cy="-8" r="5"/>
+    <circle cx="10" cy="-6" r="4"/>
+    <ellipse cx="0" cy="6" rx="14" ry="6"/>
+  </g>
+
+  <!-- Labels -->
+  <text x="300" y="138" text-anchor="middle" fill="#19131D" font-family="'Satoshi', system-ui, sans-serif" font-size="13" font-weight="600" opacity="0.7">Dating</text>
+  <text x="510" y="216" text-anchor="middle" fill="#19131D" font-family="'Satoshi', system-ui, sans-serif" font-size="13" font-weight="600" opacity="0.7">Friendship</text>
+  <text x="510" y="486" text-anchor="middle" fill="#19131D" font-family="'Satoshi', system-ui, sans-serif" font-size="13" font-weight="600" opacity="0.7">Events</text>
+  <text x="90" y="486" text-anchor="middle" fill="#19131D" font-family="'Satoshi', system-ui, sans-serif" font-size="13" font-weight="600" opacity="0.7">Interest groups</text>
+  <text x="90" y="216" text-anchor="middle" fill="#19131D" font-family="'Satoshi', system-ui, sans-serif" font-size="13" font-weight="600" opacity="0.7">Resources</text>
+  <text x="300" y="596" text-anchor="middle" fill="#19131D" font-family="'Satoshi', system-ui, sans-serif" font-size="13" font-weight="600" opacity="0.7">Community</text>
+</svg>

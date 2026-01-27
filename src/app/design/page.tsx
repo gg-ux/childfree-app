@@ -115,6 +115,7 @@ export default function DesignSystemPage() {
                 <ColorSwatch name="Muted" value="#555555" className="bg-muted" />
                 <ColorSwatch name="Muted Light" value="#888888" className="bg-muted-light" />
                 <ColorSwatch name="Background" value="#FFFFFF" className="bg-background border border-border" textDark />
+                <ColorSwatch name="Off-white" value="foreground/2%" className="bg-foreground/[0.02] border border-border" textDark />
               </div>
             </div>
           </div>

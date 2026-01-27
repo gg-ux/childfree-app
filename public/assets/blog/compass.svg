@@ -1,0 +1,23 @@
+<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Compass panel from about hero - Bauhaus style -->
+
+  <rect x="0" y="0" width="500" height="500" fill="#D4654A"/>
+
+  <!-- Compass -->
+  <g transform="translate(250, 250)">
+    <circle cx="0" cy="0" r="120" stroke="#F5F0E8" stroke-width="4" fill="none">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="40s" repeatCount="indefinite"/>
+    </circle>
+    <g stroke="#F5F0E8" stroke-width="2">
+      <line x1="0" y1="-140" x2="0" y2="140"/>
+      <line x1="-140" y1="0" x2="140" y2="0"/>
+    </g>
+    <polygon points="0,-70 50,0 0,70 -50,0" fill="#D9A441"/>
+    <circle cx="0" cy="0" r="18" fill="#19131D"/>
+    <circle cx="0" cy="0" r="8" fill="#F5F0E8"/>
+    <polygon points="0,-95 -10,-78 10,-78" fill="#F5F0E8"/>
+    <polygon points="0,95 -10,78 10,78" fill="#F5F0E8"/>
+    <polygon points="-95,0 -78,-10 -78,10" fill="#F5F0E8"/>
+    <polygon points="95,0 78,-10 78,10" fill="#F5F0E8"/>
+  </g>
+</svg>

@@ -1,11 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { randomBytes } from "crypto";
+import { rateLimit, getClientIp } from "@/lib/rate-limit";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
   try {
+    const ip = getClientIp(request);
+    const { allowed } = rateLimit(`auth-send:${ip}`, { limit: 3, windowSeconds: 60 });
+    if (!allowed) {
+      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+    }
+
     const { db } = await import("@/lib/db");
     const resend = new Resend(process.env.RESEND_API_KEY);
 

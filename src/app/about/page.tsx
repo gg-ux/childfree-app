@@ -2,6 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
+import { ProtectedImage } from "@/components/ui/protected-image";
+import { WaitlistForm } from "@/components/ui/waitlist-form";
+import { Heart, UsersThree } from "@phosphor-icons/react/dist/ssr";
 
 export const metadata = {
   title: "About | Chosn",
@@ -25,6 +28,9 @@ export default function AboutPage() {
             >
               Blog
             </Link>
+            <Button asChild variant="accent" size="md">
+              <Link href="/sign-up">Join waitlist</Link>
+            </Button>
           </div>
         </div>
       </nav>
@@ -33,21 +39,21 @@ export default function AboutPage() {
       <section className="pt-28 pb-20 md:pt-36 md:pb-28">
         <div className="container-main">
           <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <div>
+            <div className="order-2 md:order-1">
               <h1 className="font-display text-fluid-h1 text-foreground leading-[0.9] tracking-tight mb-6">
                 Built by someone
                 <br />
-                who gets it.
+                who gets it
               </h1>
               <p className="theme-body text-muted max-w-lg">
-                The story behind Chosn — why we built it, who
-                we built it for, and what&apos;s coming next.
+                The story behind Chosn—why we built it, who
+                we built it for, and what&apos;s coming next
               </p>
             </div>
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+            <div className="order-1 md:order-2 relative aspect-[4/3] rounded-2xl overflow-hidden">
               <Image
-                src="/assets/about/hero.svg"
-                alt="Bauhaus-style illustration of a cityscape with two figures walking together"
+                src="/assets/about/phone-mockup.svg"
+                alt="Chosn app loading screen on a phone mockup"
                 fill
                 className="object-cover"
               />
@@ -56,70 +62,193 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Callout Band */}
-      <section className="py-16 md:py-24 border-y border-[rgba(0,0,0,0.06)]">
-        <div className="container-main">
-          <p className="font-display text-fluid-h2 text-foreground leading-[0.95] tracking-tight text-center">
-            Not anti-anything. Pro-you.
-          </p>
-        </div>
-      </section>
-
       {/* Founder */}
-      <section className="py-20 md:py-28 bg-foreground/[0.02]">
+      <section className="py-12 md:py-16">
         <div className="container-main">
-          <div className="grid md:grid-cols-[280px_1fr] gap-8 lg:gap-16 items-start">
-            <div className="relative aspect-square w-[280px] rounded-2xl overflow-hidden">
-              <Image
-                src="/assets/bio-pic.jpg"
-                alt="Grace, founder of Chosn"
-                fill
-                className="object-cover"
-              />
+          <div className="grid md:grid-cols-[280px_1fr] gap-8 lg:gap-16 items-center">
+            <div className="w-[280px] bg-white rounded-2xl shadow-lg border border-border overflow-hidden">
+              <div className="aspect-[3/4] overflow-hidden relative">
+                <ProtectedImage
+                  src="/assets/bio-pic.jpg"
+                  alt="Grace, founder of Chosn"
+                  className="object-cover !relative"
+                />
+                {/* Bauhaus geometric overlay */}
+                <div className="absolute inset-0 pointer-events-none">
+                  <svg width="100%" height="100%" viewBox="0 0 280 373" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* Quarter circle — top-left corner */}
+                    <path d="M0 0 L0 90 A90 90 0 0 0 90 0 Z" fill="#2F7255" opacity="0.4"/>
+                    {/* Quarter circle — bottom-right corner */}
+                    <path d="M280 373 L280 293 A80 80 0 0 0 200 373 Z" fill="#D4654A" opacity="0.35"/>
+                    {/* Concentric arcs — bottom-left */}
+                    <g transform="translate(0, 373)">
+                      <path d="M0 0 A120 120 0 0 1 120 0" fill="none" stroke="#D9A441" strokeWidth="3" opacity="0.45" transform="rotate(-90)"/>
+                      <path d="M0 0 A85 85 0 0 1 85 0" fill="none" stroke="#D9A441" strokeWidth="2.5" opacity="0.35" transform="rotate(-90)"/>
+                      <path d="M0 0 A50 50 0 0 1 50 0" fill="none" stroke="#D9A441" strokeWidth="2" opacity="0.25" transform="rotate(-90)"/>
+                    </g>
+                    {/* Dot grid — top-right area */}
+                    <g fill="#F5F0E8" opacity="0.4">
+                      <circle cx="200" cy="10" r="2.5"/><circle cx="218" cy="10" r="2.5"/><circle cx="236" cy="10" r="2.5"/><circle cx="254" cy="10" r="2.5"/>
+                      <circle cx="200" cy="28" r="2.5"/><circle cx="218" cy="28" r="2.5"/><circle cx="236" cy="28" r="2.5"/><circle cx="254" cy="28" r="2.5"/>
+                      <circle cx="200" cy="46" r="2.5"/><circle cx="218" cy="46" r="2.5"/><circle cx="236" cy="46" r="2.5"/><circle cx="254" cy="46" r="2.5"/>
+                      <circle cx="200" cy="64" r="2.5"/><circle cx="218" cy="64" r="2.5"/><circle cx="236" cy="64" r="2.5"/><circle cx="254" cy="64" r="2.5"/>
+                    </g>
+                    {/* Diagonal lines — mid-right */}
+                    <g stroke="#F5F0E8" strokeWidth="1.5" opacity="0.25">
+                      <line x1="240" y1="140" x2="280" y2="180"/>
+                      <line x1="240" y1="155" x2="280" y2="195"/>
+                      <line x1="240" y1="170" x2="280" y2="210"/>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+              <div className="p-4">
+                <p className="font-medium text-foreground text-base mb-2">Grace, Founder &amp; CEO</p>
+                <div className="flex flex-wrap gap-1.5">
+                  <span className="text-[12px] px-2 py-0.5 rounded-full bg-foreground/8 text-foreground/70 font-semibold inline-flex items-center gap-1">
+                    <Heart size={11} weight="bold" />
+                    Childfree
+                  </span>
+                  <span className="text-[12px] px-2 py-0.5 rounded-full bg-foreground/8 text-foreground/70 font-semibold inline-flex items-center gap-1">
+                    <UsersThree size={11} weight="bold" />
+                    Community building
+                  </span>
+                </div>
+              </div>
             </div>
             <div>
               <h2 className="font-display text-fluid-h2 text-foreground leading-[0.9] tracking-tight mb-6">
-                Hi, I&apos;m Grace.
+                Why I built Chosn
               </h2>
               <p className="theme-body text-muted mb-5">
-                I&apos;m a product designer, childfree by choice, and I built
-                Chosn because nothing like it existed. There were dating apps
-                with a &ldquo;no kids&rdquo; filter, but no space that brought
-                together dating, friendships, events, and resources for
-                childfree adults in one place. As a designer, I knew this
-                space deserved something better than a clunky niche dating
-                site — something that actually felt good to use.
+                I&apos;ve been childfree my whole life—and as an Asian
+                American woman, that came with no shortage of opinions from
+                everyone around me. I got tired of the judgment at family
+                gatherings and the constant assumption that I&apos;d change
+                my mind. As my closest friends disappeared into parenthood,
+                I realized childfree adults deserved a real space to find
+                connection.
               </p>
               <p className="theme-body text-muted mb-5">
-                I wanted somewhere to find people near me who get it, with
-                content that doesn&apos;t assume I&apos;m a parent and city
-                guides that don&apos;t rank school districts. I wanted a
-                restaurant guide I could find without scrolling past stroller
-                recommendations.
+                I built Chosn because it&apos;s the platform I wish I had
+                growing up. Dating apps had a &ldquo;no kids&rdquo; filter,
+                but nothing exclusively for childfree adults that brought
+                together dating, friendships, and ways to build community
+                online and offline—while actually feeling modern and
+                delightful to use.
               </p>
-              <p className="theme-body text-muted">
-                I just think we deserve a space that&apos;s ours, and
-                that&apos;s what we&apos;re building.
+              <p className="theme-body text-muted mb-5">
+                With a master&apos;s in human-computer interaction + design
+                and a decade spent designing products at startups and big
+                tech, I knew I could build something better. So that&apos;s
+                what I decided to do.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pain points */}
+      <section className="py-12 md:py-16 bg-foreground/[0.02]">
+        <div className="container-main">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="font-display text-fluid-h2 text-foreground leading-[1.05] tracking-tight mb-8 text-center">
+              Common childfree struggles
+            </h2>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="rounded-2xl border border-border bg-background p-6">
+                <p className="font-medium text-foreground mb-2">Finding a partner</p>
+                <p className="theme-body-sm text-muted">
+                  Worrying you&apos;ll never find someone who truly shares your values—not just &ldquo;open to it&rdquo; but genuinely childfree.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-border bg-background p-6">
+                <p className="font-medium text-foreground mb-2">Losing your circle</p>
+                <p className="theme-body-sm text-muted">
+                  Watching your social life shrink as friends enter parenthood and suddenly have nothing in common with you.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-border bg-background p-6">
+                <p className="font-medium text-foreground mb-2">Aging alone</p>
+                <p className="theme-body-sm text-muted">
+                  The quiet fear of getting older without a built-in support system—and no roadmap for what that looks like.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-border bg-background p-6">
+                <p className="font-medium text-foreground mb-2">Constant judgment</p>
+                <p className="theme-body-sm text-muted">
+                  Being called selfish, told you&apos;ll regret it, or treated like something is wrong with you for making a valid choice.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-border bg-background p-6">
+                <p className="font-medium text-foreground mb-2">Feeling invisible</p>
+                <p className="theme-body-sm text-muted">
+                  Living in a world where cities, policies, social norms, and even apps are designed around families—and you&apos;re an afterthought.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-border bg-background p-6">
+                <p className="font-medium text-foreground mb-2">Navigating finances alone</p>
+                <p className="theme-body-sm text-muted">
+                  No child tax credits, no family leave flexibility, and a financial system that rewards parenthood—while your lifestyle goes unrecognized.
+                </p>
+              </div>
+            </div>
+            <p className="theme-body text-muted mt-8 text-center">
+              These aren&apos;t small things. And they&apos;re easier to navigate when you&apos;re not doing it alone.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* What we're building */}
+      <section className="py-12 md:py-16">
+        <div className="container-main">
+          <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div className="order-2 md:order-1">
+              <h2 className="font-display text-fluid-h2 text-foreground leading-[0.9] tracking-tight mb-6">
+                What we&apos;re building
+              </h2>
+              <p className="theme-body text-muted mb-5">
+                The right community changes everything. When you&apos;re
+                surrounded by people who share your values, the weight of
+                your struggles is lifted. Your chosen family can bring just
+                as much—or even more—connection, joy, and support as
+                blood-relatives. Chosn gives you everything you need in
+                one place to build a thriving childfree network.
+              </p>
+              <Link
+                href="/#survey"
+                className="theme-body-sm text-foreground underline underline-offset-4 hover:text-muted transition-colors"
+              >
+                Help shape our product
+              </Link>
+            </div>
+            <div className="order-1 md:order-2 relative aspect-square max-w-[480px] mx-auto w-full">
+              <Image
+                src="/assets/about/node-chart.svg"
+                alt="Node chart showing Chosn connecting dating, friendship, city guides, events, and resources"
+                fill
+                className="object-contain"
+              />
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA — warm, inviting */}
-      <section className="py-20 md:py-28 bg-foreground/[0.02]">
+      <section className="pt-16 pb-20 md:pt-24 md:pb-32">
         <div className="container-main">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="font-display text-fluid-h2 text-foreground leading-[0.9] tracking-tight mb-6">
-              Come as you are.
+              Come as you are
             </h2>
             <p className="theme-body text-muted mb-8">
-              If this sounds like your kind of thing, we&apos;d love to
-              have you.
+              We&apos;re building Chosn for people like us. Join us early
+              and be part of what&apos;s next.
             </p>
-            <Button asChild size="lg">
-              <Link href="/">Join the waitlist</Link>
-            </Button>
+            <div className="flex justify-center">
+              <WaitlistForm source="about-cta" />
+            </div>
           </div>
         </div>
       </section>

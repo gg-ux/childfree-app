@@ -1,11 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { rateLimit, getClientIp } from "@/lib/rate-limit";
 
 // Force dynamic - prevents static analysis at build time
 export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
   try {
+    const ip = getClientIp(request);
+    const { allowed } = rateLimit(`waitlist:${ip}`, { limit: 5, windowSeconds: 60 });
+    if (!allowed) {
+      return NextResponse.json({ error: "Too many requests" }, { status: 429 });
+    }
+
     // Lazy import to avoid build-time initialization
     const { db } = await import("@/lib/db");
     const resend = new Resend(process.env.RESEND_API_KEY);

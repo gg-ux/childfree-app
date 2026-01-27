@@ -1,0 +1,140 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Phone Mockup with Bauhaus community constellation -->
+
+  <!-- No background fill — transparent -->
+
+  <!-- Connection lines -->
+  <g stroke="#19131D" stroke-width="2" opacity="0.12">
+    <!-- Left cluster -->
+    <line x1="95" y1="180" x2="180" y2="380"/>
+    <line x1="180" y1="380" x2="70" y2="560"/>
+    <line x1="180" y1="380" x2="310" y2="320"/>
+    <line x1="310" y1="320" x2="290" y2="500"/>
+    <line x1="70" y1="560" x2="210" y2="700"/>
+    <line x1="290" y1="500" x2="210" y2="700"/>
+    <line x1="95" y1="180" x2="260" y2="120"/>
+
+    <!-- Right cluster -->
+    <line x1="1105" y1="160" x2="1020" y2="320"/>
+    <line x1="1020" y1="320" x2="1130" y2="500"/>
+    <line x1="1020" y1="320" x2="900" y2="360"/>
+    <line x1="900" y1="360" x2="930" y2="540"/>
+    <line x1="1130" y1="500" x2="990" y2="680"/>
+    <line x1="930" y1="540" x2="990" y2="680"/>
+    <line x1="1105" y1="160" x2="950" y2="110"/>
+  </g>
+
+  <!-- Left nodes — solid Bauhaus colors -->
+  <circle cx="95" cy="180" r="22" fill="#2F7255">
+    <animate attributeName="r" values="22;25;22" dur="4s" begin="0s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
+  </circle>
+  <circle cx="95" cy="180" r="9" fill="#F5F0E8"/>
+
+  <circle cx="260" cy="120" r="14" fill="#D9A441">
+    <animate attributeName="r" values="14;16;14" dur="5s" begin="1s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
+  </circle>
+  <circle cx="260" cy="120" r="6" fill="#F5F0E8"/>
+
+  <circle cx="180" cy="380" r="28" fill="#D4654A">
+    <animate attributeName="r" values="28;32;28" dur="4.5s" begin="0.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
+  </circle>
+  <circle cx="180" cy="380" r="12" fill="#F5F0E8"/>
+
+  <circle cx="310" cy="320" r="16" fill="#D9A441"/>
+  <circle cx="310" cy="320" r="7" fill="#F5F0E8"/>
+
+  <circle cx="70" cy="560" r="18" fill="#19131D">
+    <animate attributeName="r" values="18;21;18" dur="5s" begin="2s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
+  </circle>
+  <circle cx="70" cy="560" r="8" fill="#F5F0E8"/>
+
+  <circle cx="290" cy="500" r="12" fill="#2F7255"/>
+  <circle cx="290" cy="500" r="5" fill="#F5F0E8"/>
+
+  <circle cx="210" cy="700" r="20" fill="#D4654A">
+    <animate attributeName="r" values="20;23;20" dur="4s" begin="1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
+  </circle>
+  <circle cx="210" cy="700" r="9" fill="#F5F0E8"/>
+
+  <!-- Right nodes -->
+  <circle cx="1105" cy="160" r="24" fill="#D4654A">
+    <animate attributeName="r" values="24;27;24" dur="4.5s" begin="0.8s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
+  </circle>
+  <circle cx="1105" cy="160" r="10" fill="#F5F0E8"/>
+
+  <circle cx="950" cy="110" r="12" fill="#2F7255"/>
+  <circle cx="950" cy="110" r="5" fill="#F5F0E8"/>
+
+  <circle cx="1020" cy="320" r="20" fill="#D9A441">
+    <animate attributeName="r" values="20;23;20" dur="5s" begin="0.3s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
+  </circle>
+  <circle cx="1020" cy="320" r="9" fill="#F5F0E8"/>
+
+  <circle cx="900" cy="360" r="16" fill="#19131D"/>
+  <circle cx="900" cy="360" r="7" fill="#F5F0E8"/>
+
+  <circle cx="1130" cy="500" r="18" fill="#2F7255">
+    <animate attributeName="r" values="18;21;18" dur="4s" begin="1.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
+  </circle>
+  <circle cx="1130" cy="500" r="8" fill="#F5F0E8"/>
+
+  <circle cx="930" cy="540" r="14" fill="#D4654A"/>
+  <circle cx="930" cy="540" r="6" fill="#F5F0E8"/>
+
+  <circle cx="990" cy="680" r="22" fill="#D9A441">
+    <animate attributeName="r" values="22;25;22" dur="4.5s" begin="2s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
+  </circle>
+  <circle cx="990" cy="680" r="9" fill="#F5F0E8"/>
+
+  <!-- Pulse rings on select nodes -->
+  <circle cx="180" cy="380" r="28" fill="none" stroke="#D4654A" stroke-width="1.5" opacity="0">
+    <animate attributeName="r" values="28;50;28" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.4;0;0.4" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="1020" cy="320" r="20" fill="none" stroke="#D9A441" stroke-width="1.5" opacity="0">
+    <animate attributeName="r" values="20;42;20" dur="3s" begin="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.4;0;0.4" dur="3s" begin="2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Phone — centered -->
+  <g transform="translate(400, 30)">
+    <!-- Phone shell -->
+    <rect x="0" y="0" width="400" height="840" rx="52" fill="#19131D"/>
+    <rect x="10" y="10" width="380" height="820" rx="44" fill="#2F7255"/>
+    <rect x="148" y="18" width="104" height="28" rx="14" fill="#19131D"/>
+
+    <!-- White Chosn sparkle logo -->
+    <g transform="translate(151, 300) scale(1)">
+      <path d="M48.9854 0C48.9854 0 49.4863 15.5 49.4858 21C47.9858 29 40.7474 37.498 40.7474 37.498C40.7474 37.498 39.7474 36.998 35.9089 29.5C30.7851 19.4912 48.9854 0 48.9854 0Z" fill="rgba(255,255,255,0.95)"/>
+      <path d="M48.9854 0C48.9854 0 49.0127 15.5 49.0132 21C50.5132 29 57.7516 37.498 57.7516 37.498C57.7516 37.498 58.7516 36.998 62.5901 29.5C67.7139 19.4912 48.9854 0 48.9854 0Z" fill="rgba(255,255,255,0.6)"/>
+      <path d="M0 48.4922C0 48.4922 15.5 47.9912 21 47.9917C29 49.4917 37.498 56.7301 37.498 56.7301C37.498 56.7301 36.998 57.7301 29.5 61.5686C19.4912 66.6924 0 48.4922 0 48.4922Z" fill="rgba(255,255,255,0.95)"/>
+      <path d="M0 48.4922C0 48.4922 15.5 48.4648 21 48.4643C29 46.9643 37.498 39.7259 37.498 39.7259C37.498 39.7259 36.998 38.7259 29.5 34.8874C19.4912 29.7636 0 48.4922 0 48.4922Z" fill="rgba(255,255,255,0.6)"/>
+      <path d="M49.4922 97.498C49.4922 97.498 48.9912 81.998 48.9917 76.498C50.4917 68.498 57.7301 60 57.7301 60C57.7301 60 58.7301 60.5 62.5686 67.998C67.6924 78.0069 49.4922 97.498 49.4922 97.498Z" fill="rgba(255,255,255,0.95)"/>
+      <path d="M49.4922 97.498C49.4922 97.498 49.4648 81.998 49.4643 76.498C47.9643 68.498 40.7259 60 40.7259 60C40.7259 60 39.7259 60.5 35.8874 67.998C30.7636 78.0069 49.4922 97.498 49.4922 97.498Z" fill="rgba(255,255,255,0.6)"/>
+      <path d="M97.498 48.9854C97.498 48.9854 81.998 49.4863 76.498 49.4858C68.498 47.9858 60 40.7474 60 40.7474C60 40.7474 60.5 39.7474 67.998 35.9089C78.0069 30.7851 97.498 48.9854 97.498 48.9854Z" fill="rgba(255,255,255,0.95)"/>
+      <path d="M97.498 48.9854C97.498 48.9854 81.998 49.0127 76.498 49.0132C68.498 50.5132 60 57.7516 60 57.7516C60 57.7516 60.5 58.7516 67.998 62.5901C78.0069 67.7139 97.498 48.9854 97.498 48.9854Z" fill="rgba(255,255,255,0.6)"/>
+    </g>
+
+    <!-- Pulse ring on logo -->
+    <circle cx="200" cy="350" r="65" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5">
+      <animate attributeName="r" values="65;90;65" dur="2.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
+      <animate attributeName="opacity" values="0.25;0;0.25" dur="2.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
+    </circle>
+
+    <!-- Loading dots -->
+    <g transform="translate(172, 440)">
+      <circle cx="0" cy="0" r="4.5" fill="rgba(255,255,255,0.8)">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" begin="0s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="26" cy="0" r="4.5" fill="rgba(255,255,255,0.8)">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" begin="0.2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="52" cy="0" r="4.5" fill="rgba(255,255,255,0.8)">
+        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" begin="0.4s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+
+    <!-- Home indicator -->
+    <rect x="140" y="808" width="120" height="5" rx="2.5" fill="rgba(255,255,255,0.3)"/>
+  </g>
+</svg>

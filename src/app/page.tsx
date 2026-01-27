@@ -11,7 +11,7 @@ import {
   ShootingStar,
   Dog,
   AirplaneTilt,
-  SquaresFour,
+  GlobeHemisphereWest,
   Fingerprint,
   DeviceMobile,
 } from "@phosphor-icons/react/dist/ssr";
@@ -61,11 +61,11 @@ export default async function Home() {
               <h1 className="font-display text-fluid-h1 text-foreground mb-6 leading-[0.9] tracking-tight">
                 <span className="whitespace-nowrap">Designed for</span>
                 <br />
-                <span className="whitespace-nowrap">the childfree.</span>
+                <span className="whitespace-nowrap">the childfree</span>
               </h1>
 
               <p className="theme-body text-muted max-w-2xl mb-10">
-                Chosn is a dating, friendship, and community platform for childfree adults. Find your people, your city, and your crew — without ever having to explain why you don&apos;t want kids.
+                Chosn is a dating, friendship, and community platform for childfree adults. Find your people, your city, and your crew—without ever having to explain why you don&apos;t want kids.
               </p>
 
               <WaitlistForm source="hero" />
@@ -174,19 +174,19 @@ export default async function Home() {
               Why Chosn
             </h2>
             <p className="theme-body text-muted">
-              Childfree platforms have existed before — a dating site with
+              Childfree platforms have existed before—a dating site with
               ten users, a Discord server, a subreddit. You deserve better
-              than that, and that&apos;s why we built Chosn.
+              than that. That&apos;s why we built Chosn.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {[
               {
-                icon: SquaresFour,
+                icon: GlobeHemisphereWest,
                 title: "Beyond a dating app",
                 description:
-                  "Meet childfree locals for dating and friendship, connect with a global community, and plan trips, meetups, and more — all in one place.",
+                  "Meet childfree locals for dating and friendship, connect with a global community, and plan trips, meetups, and more—all in one place.",
                 iconColor: "text-[#1e5a3a]",
                 bg: "bg-forest/15",
               },
@@ -194,7 +194,7 @@ export default async function Home() {
                 icon: Fingerprint,
                 title: "A safe space to be yourself",
                 description:
-                  "Everyone here shares the same lifestyle choice. No justifying, no debating \u2014 just verified, real people seeking connection with others who get it.",
+                  "Everyone here shares the same lifestyle choice. No justifying, no debating—just verified, real people who get it.",
                 iconColor: "text-[#b8502a]",
                 bg: "bg-coral/15",
               },
@@ -202,7 +202,7 @@ export default async function Home() {
                 icon: DeviceMobile,
                 title: "Intuitively designed",
                 description:
-                  "Built with the same care and polish as the apps you already love — because niche shouldn\u2019t mean rough around the edges.",
+                  "Built with the same care and polish as the apps you already love. Niche shouldn\u2019t mean rough around the edges.",
                 iconColor: "text-[#b07c1a]",
                 bg: "bg-marigold/15",
               },
@@ -230,15 +230,15 @@ export default async function Home() {
       </section>
 
       {/* Survey Section */}
-      <section className="py-20 md:py-28 bg-foreground/[0.02]">
+      <section id="survey" className="py-20 md:py-28 bg-foreground/[0.02]">
         <div className="container-main">
           <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
               <h2 className="font-display text-fluid-h2 text-foreground mb-6 leading-[0.9] tracking-tight">
-                Help us get this right.
+                Help us get this right
               </h2>
               <p className="theme-body text-muted">
-                We&apos;re building Chosn with our community, not just for them. Tell us what matters most to you — it takes about 2 minutes, your answers are anonymous, and your voice will shape everything we build.
+                We&apos;re building Chosn with our community, not just for them. Tell us what matters most to you—it takes about 2 minutes, your answers are anonymous, and your voice will shape everything we build.
               </p>
             </div>
             <ChatSurvey />
@@ -261,10 +261,10 @@ export default async function Home() {
             {/* Text content */}
             <div>
               <h2 className="font-display text-fluid-h2 text-foreground mb-6 leading-[0.9] tracking-tight">
-                Your chosen <span className="whitespace-nowrap">family awaits.</span>
+                Your chosen <span className="whitespace-nowrap">family awaits</span>
               </h2>
               <p className="theme-body text-muted">
-                You made the bold choice to follow your own path and live differently. You&apos;re not alone. Connect with people who get it from day one. Whether you&apos;re looking for your person, people, or place—you&apos;ll find a community that celebrates the life you&apos;re building. Not all family is related by blood.
+                You made the choice to follow your own path. You&apos;re not alone. Whether you&apos;re looking for your person, your people, or your place—you&apos;ll find a community that celebrates the life you&apos;re building. Not all family is blood.
               </p>
               <WaitlistForm source="chosen-family" className="mt-8" />
             </div>
@@ -281,7 +281,7 @@ export default async function Home() {
                 While you wait
               </h2>
               <p className="theme-body text-muted">
-                Stories and resources for the childfree life.
+                Stories and resources for the childfree life
               </p>
             </div>
             <Link
