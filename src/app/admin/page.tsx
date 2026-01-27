@@ -39,23 +39,33 @@ type FilterType = "all" | "sent" | "not_sent";
 
 interface SurveyData {
   totalResponses: number;
-  featurePriorities: { key: string; label: string; score: number; percentage: number }[];
-  connectionTypes: { key: string; label: string; count: number; percentage: number }[];
-  activities: { key: string; label: string; count: number; percentage: number }[];
+  connectionRankings: {
+    first: { key: string; label: string; count: number; percentage: number }[];
+    second: { key: string; label: string; count: number; percentage: number }[];
+    third: { key: string; label: string; count: number; percentage: number }[];
+  };
+  likertAverages: {
+    localDating: number | null;
+    localFriendships: number | null;
+    globalCommunity: number | null;
+  };
   contributionTypes: { key: string; label: string; count: number; percentage: number }[];
   ageRanges: { range: string; count: number; percentage: number }[];
-  countries: { country: string; count: number; percentage: number }[];
-  communityVibeAvg: number | null;
+  locations: { location: string; count: number; percentage: number }[];
   recentResponses: {
     id: string;
     createdAt: string;
-    hardestPart: string | null;
-    painPoints: string | null;
-    idealFirstMonth: string | null;
+    connectionRanking: string[];
+    likertScores: {
+      localDating: number | null;
+      localFriendships: number | null;
+      globalCommunity: number | null;
+    };
     ageRange: string | null;
     country: string | null;
     region: string | null;
-    email: string | null;
+    contributionTypes: string[];
+    hasEmail: boolean;
   }[];
 }
 
@@ -922,55 +932,50 @@ export default function AdminPage() {
                       </p>
                     </div>
                     <div className="p-4 border border-border rounded-lg">
-                      <p className="theme-caption text-muted mb-2">Top Feature Request</p>
+                      <p className="theme-caption text-muted mb-2">Top #1 Choice</p>
                       <p className="text-lg font-display text-foreground">
-                        {surveyData.featurePriorities[0]?.label || "-"}
-                      </p>
-                    </div>
-                    <div className="p-4 border border-border rounded-lg">
-                      <p className="theme-caption text-muted mb-2">Top Connection Type</p>
-                      <p className="text-lg font-display text-foreground">
-                        {surveyData.connectionTypes[0]?.label || "-"}
-                      </p>
-                    </div>
-                    <div className="p-4 border border-border rounded-lg">
-                      <p className="theme-caption text-muted mb-2">Community Vibe</p>
-                      <p className="text-lg font-display text-foreground">
-                        {surveyData.communityVibeAvg
-                          ? `${surveyData.communityVibeAvg}/5`
-                          : "-"}
+                        {surveyData.connectionRankings.first[0]?.label || "-"}
                       </p>
                       <p className="theme-secondary text-muted">
-                        {surveyData.communityVibeAvg && surveyData.communityVibeAvg <= 2
-                          ? "Venting focus"
-                          : surveyData.communityVibeAvg && surveyData.communityVibeAvg >= 4
-                          ? "Celebration focus"
-                          : surveyData.communityVibeAvg
-                          ? "Balanced"
-                          : ""}
+                        {surveyData.connectionRankings.first[0]?.percentage || 0}% picked first
+                      </p>
+                    </div>
+                    <div className="p-4 border border-border rounded-lg">
+                      <p className="theme-caption text-muted mb-2">Avg. Excitement</p>
+                      <p className="text-lg font-display text-foreground">
+                        {surveyData.likertAverages.localDating ||
+                         surveyData.likertAverages.localFriendships ||
+                         surveyData.likertAverages.globalCommunity || "-"}/5
+                      </p>
+                      <p className="theme-secondary text-muted">for top choice</p>
+                    </div>
+                    <div className="p-4 border border-border rounded-lg">
+                      <p className="theme-caption text-muted mb-2">Top Location</p>
+                      <p className="text-lg font-display text-foreground">
+                        {surveyData.locations[0]?.location || "-"}
+                      </p>
+                      <p className="theme-secondary text-muted">
+                        {surveyData.locations[0]?.count || 0} responses
                       </p>
                     </div>
                   </div>
 
                   {/* Charts Grid */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    {/* Feature Priorities */}
+                    {/* #1 Priority Rankings */}
                     <div className="p-4 border border-border rounded-lg">
-                      <p className="theme-caption text-muted mb-4">Feature Priorities (Ranked)</p>
+                      <p className="theme-caption text-muted mb-4">#1 Priority (What they want most)</p>
                       <div className="space-y-3">
-                        {surveyData.featurePriorities.map((feature, i) => (
-                          <div key={feature.key}>
+                        {surveyData.connectionRankings.first.map((item) => (
+                          <div key={item.key}>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="theme-body-sm text-foreground flex items-center gap-2">
-                                <span className="text-muted">#{i + 1}</span>
-                                {feature.label}
-                              </span>
-                              <span className="theme-body-sm text-muted">{feature.percentage}%</span>
+                              <span className="theme-body-sm text-foreground">{item.label}</span>
+                              <span className="theme-body-sm text-muted">{item.percentage}%</span>
                             </div>
                             <div className="h-2 bg-foreground/10 rounded-full overflow-hidden">
                               <div
                                 className="h-full bg-forest rounded-full transition-all"
-                                style={{ width: `${feature.percentage}%` }}
+                                style={{ width: `${item.percentage}%` }}
                               />
                             </div>
                           </div>
@@ -978,41 +983,20 @@ export default function AdminPage() {
                       </div>
                     </div>
 
-                    {/* Connection Types */}
+                    {/* #2 Priority Rankings */}
                     <div className="p-4 border border-border rounded-lg">
-                      <p className="theme-caption text-muted mb-4">Connection Types Sought</p>
+                      <p className="theme-caption text-muted mb-4">#2 Priority (Second choice)</p>
                       <div className="space-y-3">
-                        {surveyData.connectionTypes.map((type) => (
-                          <div key={type.key}>
+                        {surveyData.connectionRankings.second.map((item) => (
+                          <div key={item.key}>
                             <div className="flex items-center justify-between mb-1">
-                              <span className="theme-body-sm text-foreground">{type.label}</span>
-                              <span className="theme-body-sm text-muted">{type.percentage}%</span>
+                              <span className="theme-body-sm text-foreground">{item.label}</span>
+                              <span className="theme-body-sm text-muted">{item.percentage}%</span>
                             </div>
                             <div className="h-2 bg-foreground/10 rounded-full overflow-hidden">
                               <div
                                 className="h-full bg-sage rounded-full transition-all"
-                                style={{ width: `${type.percentage}%` }}
-                              />
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Activities */}
-                    <div className="p-4 border border-border rounded-lg">
-                      <p className="theme-caption text-muted mb-4">Interested Activities</p>
-                      <div className="space-y-3">
-                        {surveyData.activities.slice(0, 6).map((activity) => (
-                          <div key={activity.key}>
-                            <div className="flex items-center justify-between mb-1">
-                              <span className="theme-body-sm text-foreground">{activity.label}</span>
-                              <span className="theme-body-sm text-muted">{activity.percentage}%</span>
-                            </div>
-                            <div className="h-2 bg-foreground/10 rounded-full overflow-hidden">
-                              <div
-                                className="h-full bg-gold rounded-full transition-all"
-                                style={{ width: `${activity.percentage}%` }}
+                                style={{ width: `${item.percentage}%` }}
                               />
                             </div>
                           </div>
@@ -1038,6 +1022,63 @@ export default function AdminPage() {
                             </div>
                           </div>
                         ))}
+                        {surveyData.contributionTypes.length === 0 && (
+                          <p className="theme-body-sm text-muted">No data yet</p>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Excitement Scores */}
+                    <div className="p-4 border border-border rounded-lg">
+                      <p className="theme-caption text-muted mb-4">Excitement Levels (1-5)</p>
+                      <div className="space-y-4">
+                        {surveyData.likertAverages.localDating && (
+                          <div>
+                            <div className="flex items-center justify-between mb-1">
+                              <span className="theme-body-sm text-foreground">Local Dating</span>
+                              <span className="theme-body-sm text-muted">{surveyData.likertAverages.localDating}/5</span>
+                            </div>
+                            <div className="h-2 bg-foreground/10 rounded-full overflow-hidden">
+                              <div
+                                className="h-full bg-marigold rounded-full transition-all"
+                                style={{ width: `${(surveyData.likertAverages.localDating / 5) * 100}%` }}
+                              />
+                            </div>
+                          </div>
+                        )}
+                        {surveyData.likertAverages.localFriendships && (
+                          <div>
+                            <div className="flex items-center justify-between mb-1">
+                              <span className="theme-body-sm text-foreground">Local Friendships</span>
+                              <span className="theme-body-sm text-muted">{surveyData.likertAverages.localFriendships}/5</span>
+                            </div>
+                            <div className="h-2 bg-foreground/10 rounded-full overflow-hidden">
+                              <div
+                                className="h-full bg-marigold rounded-full transition-all"
+                                style={{ width: `${(surveyData.likertAverages.localFriendships / 5) * 100}%` }}
+                              />
+                            </div>
+                          </div>
+                        )}
+                        {surveyData.likertAverages.globalCommunity && (
+                          <div>
+                            <div className="flex items-center justify-between mb-1">
+                              <span className="theme-body-sm text-foreground">Global Community</span>
+                              <span className="theme-body-sm text-muted">{surveyData.likertAverages.globalCommunity}/5</span>
+                            </div>
+                            <div className="h-2 bg-foreground/10 rounded-full overflow-hidden">
+                              <div
+                                className="h-full bg-marigold rounded-full transition-all"
+                                style={{ width: `${(surveyData.likertAverages.globalCommunity / 5) * 100}%` }}
+                              />
+                            </div>
+                          </div>
+                        )}
+                        {!surveyData.likertAverages.localDating &&
+                         !surveyData.likertAverages.localFriendships &&
+                         !surveyData.likertAverages.globalCommunity && (
+                          <p className="theme-body-sm text-muted">No excitement data yet</p>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -1047,46 +1088,50 @@ export default function AdminPage() {
                     {/* Age Ranges */}
                     <div className="p-4 border border-border rounded-lg">
                       <p className="theme-caption text-muted mb-4">Age Distribution</p>
-                      <div className="flex items-end gap-2 h-32">
-                        {surveyData.ageRanges.map((age) => (
-                          <div key={age.range} className="flex-1 flex flex-col items-center">
-                            <div
-                              className="w-full bg-forest/80 rounded-t transition-all"
-                              style={{ height: `${Math.max(age.percentage, 5)}%` }}
-                            />
-                            <p className="theme-secondary text-muted mt-2">{age.range}</p>
-                            <p className="theme-secondary text-foreground">{age.percentage}%</p>
-                          </div>
-                        ))}
-                      </div>
+                      {surveyData.ageRanges.length > 0 ? (
+                        <div className="flex items-end gap-2 h-32">
+                          {surveyData.ageRanges.map((age) => (
+                            <div key={age.range} className="flex-1 flex flex-col items-center">
+                              <div
+                                className="w-full bg-forest/80 rounded-t transition-all"
+                                style={{ height: `${Math.max(age.percentage, 5)}%` }}
+                              />
+                              <p className="theme-secondary text-muted mt-2">{age.range}</p>
+                              <p className="theme-secondary text-foreground">{age.percentage}%</p>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="theme-body-sm text-muted">No age data yet</p>
+                      )}
                     </div>
 
-                    {/* Top Countries */}
+                    {/* Top Locations */}
                     <div className="p-4 border border-border rounded-lg">
                       <p className="theme-caption text-muted mb-4">Top Locations</p>
                       <div className="space-y-2">
-                        {surveyData.countries.slice(0, 5).map((loc) => (
-                          <div key={loc.country} className="flex items-center justify-between">
-                            <span className="theme-body-sm text-foreground">{loc.country}</span>
+                        {surveyData.locations.slice(0, 5).map((loc) => (
+                          <div key={loc.location} className="flex items-center justify-between">
+                            <span className="theme-body-sm text-foreground">{loc.location}</span>
                             <span className="theme-body-sm text-muted">
                               {loc.count} ({loc.percentage}%)
                             </span>
                           </div>
                         ))}
-                        {surveyData.countries.length === 0 && (
+                        {surveyData.locations.length === 0 && (
                           <p className="theme-body-sm text-muted">No location data yet</p>
                         )}
                       </div>
                     </div>
                   </div>
 
-                  {/* Recent Open-Ended Responses */}
+                  {/* Recent Responses */}
                   <div className="border-t border-border pt-8">
                     <h3 className="font-display text-lg text-foreground mb-4">Recent Responses</h3>
                     <div className="space-y-4">
-                      {surveyData.recentResponses.filter(r => r.painPoints || r.idealFirstMonth || r.hardestPart).slice(0, 10).map((response) => (
+                      {surveyData.recentResponses.slice(0, 10).map((response) => (
                         <div key={response.id} className="p-4 border border-border rounded-lg">
-                          <div className="flex items-center gap-3 mb-3">
+                          <div className="flex flex-wrap items-center gap-2 mb-3">
                             <span className="theme-secondary text-muted">
                               {new Date(response.createdAt).toLocaleDateString()}
                             </span>
@@ -1097,38 +1142,42 @@ export default function AdminPage() {
                             )}
                             {response.country && (
                               <span className="px-2 py-0.5 bg-foreground/5 rounded text-xs text-muted">
-                                {response.country}
+                                {response.region ? `${response.region}, ` : ""}{response.country}
                               </span>
                             )}
-                            {response.email && (
+                            {response.hasEmail && (
                               <span className="px-2 py-0.5 bg-forest/10 rounded text-xs text-forest">
                                 Left email
                               </span>
                             )}
                           </div>
-                          {response.hardestPart && (
-                            <div className="mb-2">
-                              <p className="theme-caption text-muted">Hardest Part</p>
-                              <p className="theme-body-sm text-foreground">{response.hardestPart}</p>
-                            </div>
-                          )}
-                          {response.painPoints && (
-                            <div className="mb-2">
-                              <p className="theme-caption text-muted">Pain Points</p>
-                              <p className="theme-body-sm text-foreground">{response.painPoints}</p>
-                            </div>
-                          )}
-                          {response.idealFirstMonth && (
+                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
                             <div>
-                              <p className="theme-caption text-muted">Ideal First Month</p>
-                              <p className="theme-body-sm text-foreground">{response.idealFirstMonth}</p>
+                              <p className="theme-caption text-muted">Priority Ranking</p>
+                              <p className="theme-body-sm text-foreground">
+                                {response.connectionRanking.join(" → ") || "-"}
+                              </p>
                             </div>
-                          )}
+                            <div>
+                              <p className="theme-caption text-muted">Excitement</p>
+                              <p className="theme-body-sm text-foreground">
+                                {response.likertScores.localDating ||
+                                 response.likertScores.localFriendships ||
+                                 response.likertScores.globalCommunity || "-"}/5
+                              </p>
+                            </div>
+                            <div>
+                              <p className="theme-caption text-muted">Wants to</p>
+                              <p className="theme-body-sm text-foreground">
+                                {response.contributionTypes.join(", ") || "-"}
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       ))}
-                      {surveyData.recentResponses.filter(r => r.painPoints || r.idealFirstMonth || r.hardestPart).length === 0 && (
+                      {surveyData.recentResponses.length === 0 && (
                         <p className="theme-body-sm text-muted text-center py-8">
-                          No open-ended responses yet
+                          No responses yet
                         </p>
                       )}
                     </div>
