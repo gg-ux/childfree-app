@@ -38,11 +38,6 @@ export async function GET() {
       return NextResponse.json({
         totalResponses: 0,
         connectionRankings: { first: [], second: [], third: [] },
-        likertAverages: {
-          localDating: null,
-          localFriendships: null,
-          globalCommunity: null,
-        },
         contributionTypes: [],
         ageRanges: [],
         locations: [],
@@ -86,38 +81,6 @@ export async function GET() {
       third: formatRankings(thirdChoice),
     };
 
-    // Calculate Likert score averages
-    const likertDating = responses.filter((r) => r.likertLocalDating !== null);
-    const likertFriendships = responses.filter((r) => r.likertLocalFriendships !== null);
-    const likertCommunity = responses.filter((r) => r.likertGlobalCommunity !== null);
-
-    const likertAverages = {
-      localDating:
-        likertDating.length > 0
-          ? Math.round(
-              (likertDating.reduce((sum, r) => sum + (r.likertLocalDating || 0), 0) /
-                likertDating.length) *
-                10
-            ) / 10
-          : null,
-      localFriendships:
-        likertFriendships.length > 0
-          ? Math.round(
-              (likertFriendships.reduce((sum, r) => sum + (r.likertLocalFriendships || 0), 0) /
-                likertFriendships.length) *
-                10
-            ) / 10
-          : null,
-      globalCommunity:
-        likertCommunity.length > 0
-          ? Math.round(
-              (likertCommunity.reduce((sum, r) => sum + (r.likertGlobalCommunity || 0), 0) /
-                likertCommunity.length) *
-                10
-            ) / 10
-          : null,
-    };
-
     // Count contribution types
     const contributionCounts: Record<string, number> = {};
     responses.forEach((r) => {
@@ -148,16 +111,14 @@ export async function GET() {
         percentage: Math.round((count / totalResponses) * 100),
       }))
       .sort((a, b) => {
-        // Sort by age range order
         const order = ["18-24", "25-34", "35-44", "45-54", "55+"];
         return order.indexOf(a.range) - order.indexOf(b.range);
       });
 
-    // Count locations (combining country and region/city)
+    // Count locations
     const locationCounts: Record<string, number> = {};
     responses.forEach((r) => {
       if (r.region && r.country) {
-        // Use region (city or ZIP) if available
         const location = `${r.region}, ${r.country === "United States" ? "US" : r.country}`;
         locationCounts[location] = (locationCounts[location] || 0) + 1;
       } else if (r.country) {
@@ -171,18 +132,13 @@ export async function GET() {
         percentage: Math.round((count / totalResponses) * 100),
       }))
       .sort((a, b) => b.count - a.count)
-      .slice(0, 15); // Top 15 locations
+      .slice(0, 15);
 
     // Get recent responses
     const recentResponses = responses.slice(0, 20).map((r) => ({
       id: r.id,
       createdAt: r.createdAt.toISOString(),
       connectionRanking: r.connectionTypes,
-      likertScores: {
-        localDating: r.likertLocalDating,
-        localFriendships: r.likertLocalFriendships,
-        globalCommunity: r.likertGlobalCommunity,
-      },
       ageRange: r.ageRange,
       country: r.country,
       region: r.region,
@@ -193,7 +149,6 @@ export async function GET() {
     return NextResponse.json({
       totalResponses,
       connectionRankings,
-      likertAverages,
       contributionTypes,
       ageRanges,
       locations,

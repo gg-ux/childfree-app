@@ -28,7 +28,7 @@ const CONTRIBUTION_OPTIONS: Option[] = [
   { id: "just_member", label: "Just a member", emoji: "✌️" },
 ];
 
-type QuestionType = "first_priority" | "second_priority" | "excitement" | "contribution" | "contribution_more" | "age" | "email";
+type QuestionType = "first_priority" | "second_priority" | "contribution" | "contribution_more" | "age" | "email";
 
 export function ChatSurvey() {
   const [currentQuestion, setCurrentQuestion] = useState<QuestionType>("first_priority");
@@ -45,7 +45,6 @@ export function ChatSurvey() {
   const [secondPriority, setSecondPriority] = useState<string | null>(null);
 
   // Other answers
-  const [excitement, setExcitement] = useState<string | null>(null);
   const [contribution, setContribution] = useState<string[]>([]);
   const [age, setAge] = useState<string | null>(null);
   const [emailInput, setEmailInput] = useState("");
@@ -105,13 +104,6 @@ export function ChatSurvey() {
 
   const handleSecondPriority = (option: Option) => {
     setSecondPriority(option.id);
-    addUserMessage(`${option.emoji} ${option.label}`);
-    addBotMessage("Nice! How excited would you be to use an app for this?");
-    setCurrentQuestion("excitement");
-  };
-
-  const handleExcitement = (option: Option) => {
-    setExcitement(option.id);
     addUserMessage(`${option.emoji} ${option.label}`);
     addBotMessage("How would you want to be involved?");
     setCurrentQuestion("contribution");
@@ -190,11 +182,6 @@ export function ChatSurvey() {
 
     const payload = {
       connectionRanking,
-      likertScores: {
-        local_dating: firstPriority === "dating" ? parseInt(excitement || "0") : null,
-        local_friendships: firstPriority === "friendships" ? parseInt(excitement || "0") : null,
-        global_community: firstPriority === "community" ? parseInt(excitement || "0") : null,
-      },
       contributionTypes: contribution,
       ageRange: age,
       country: detectedLocation?.country || null,
@@ -231,13 +218,6 @@ export function ChatSurvey() {
         return CONNECTION_OPTIONS;
       case "second_priority":
         return remainingConnectionOptions;
-      case "excitement":
-        return [
-          { id: "5", label: "Very excited", emoji: "🔥" },
-          { id: "4", label: "Pretty excited", emoji: "😊" },
-          { id: "3", label: "Somewhat", emoji: "🤔" },
-          { id: "2", label: "Not very", emoji: "😐" },
-        ];
       case "contribution":
         return CONTRIBUTION_OPTIONS;
       case "contribution_more":
@@ -265,9 +245,6 @@ export function ChatSurvey() {
         break;
       case "second_priority":
         handleSecondPriority(option);
-        break;
-      case "excitement":
-        handleExcitement(option);
         break;
       case "contribution":
         handleContribution(option);

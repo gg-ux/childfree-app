@@ -44,11 +44,6 @@ interface SurveyData {
     second: { key: string; label: string; count: number; percentage: number }[];
     third: { key: string; label: string; count: number; percentage: number }[];
   };
-  likertAverages: {
-    localDating: number | null;
-    localFriendships: number | null;
-    globalCommunity: number | null;
-  };
   contributionTypes: { key: string; label: string; count: number; percentage: number }[];
   ageRanges: { range: string; count: number; percentage: number }[];
   locations: { location: string; count: number; percentage: number }[];
@@ -56,11 +51,6 @@ interface SurveyData {
     id: string;
     createdAt: string;
     connectionRanking: string[];
-    likertScores: {
-      localDating: number | null;
-      localFriendships: number | null;
-      globalCommunity: number | null;
-    };
     ageRange: string | null;
     country: string | null;
     region: string | null;
@@ -941,13 +931,13 @@ export default function AdminPage() {
                       </p>
                     </div>
                     <div className="p-4 border border-border rounded-lg">
-                      <p className="theme-caption text-muted mb-2">Avg. Excitement</p>
+                      <p className="theme-caption text-muted mb-2">Top Contribution</p>
                       <p className="text-lg font-display text-foreground">
-                        {surveyData.likertAverages.localDating ||
-                         surveyData.likertAverages.localFriendships ||
-                         surveyData.likertAverages.globalCommunity || "-"}/5
+                        {surveyData.contributionTypes[0]?.label || "-"}
                       </p>
-                      <p className="theme-secondary text-muted">for top choice</p>
+                      <p className="theme-secondary text-muted">
+                        {surveyData.contributionTypes[0]?.percentage || 0}% selected
+                      </p>
                     </div>
                     <div className="p-4 border border-border rounded-lg">
                       <p className="theme-caption text-muted mb-2">Top Location</p>
@@ -1028,59 +1018,6 @@ export default function AdminPage() {
                       </div>
                     </div>
 
-                    {/* Excitement Scores */}
-                    <div className="p-4 border border-border rounded-lg">
-                      <p className="theme-caption text-muted mb-4">Excitement Levels (1-5)</p>
-                      <div className="space-y-4">
-                        {surveyData.likertAverages.localDating && (
-                          <div>
-                            <div className="flex items-center justify-between mb-1">
-                              <span className="theme-body-sm text-foreground">Local Dating</span>
-                              <span className="theme-body-sm text-muted">{surveyData.likertAverages.localDating}/5</span>
-                            </div>
-                            <div className="h-1 bg-foreground/10 rounded-full overflow-hidden">
-                              <div
-                                className="h-full bg-forest rounded-full transition-all"
-                                style={{ width: `${(surveyData.likertAverages.localDating / 5) * 100}%` }}
-                              />
-                            </div>
-                          </div>
-                        )}
-                        {surveyData.likertAverages.localFriendships && (
-                          <div>
-                            <div className="flex items-center justify-between mb-1">
-                              <span className="theme-body-sm text-foreground">Local Friendships</span>
-                              <span className="theme-body-sm text-muted">{surveyData.likertAverages.localFriendships}/5</span>
-                            </div>
-                            <div className="h-1 bg-foreground/10 rounded-full overflow-hidden">
-                              <div
-                                className="h-full bg-forest rounded-full transition-all"
-                                style={{ width: `${(surveyData.likertAverages.localFriendships / 5) * 100}%` }}
-                              />
-                            </div>
-                          </div>
-                        )}
-                        {surveyData.likertAverages.globalCommunity && (
-                          <div>
-                            <div className="flex items-center justify-between mb-1">
-                              <span className="theme-body-sm text-foreground">Global Community</span>
-                              <span className="theme-body-sm text-muted">{surveyData.likertAverages.globalCommunity}/5</span>
-                            </div>
-                            <div className="h-1 bg-foreground/10 rounded-full overflow-hidden">
-                              <div
-                                className="h-full bg-forest rounded-full transition-all"
-                                style={{ width: `${(surveyData.likertAverages.globalCommunity / 5) * 100}%` }}
-                              />
-                            </div>
-                          </div>
-                        )}
-                        {!surveyData.likertAverages.localDating &&
-                         !surveyData.likertAverages.localFriendships &&
-                         !surveyData.likertAverages.globalCommunity && (
-                          <p className="theme-body-sm text-muted">No excitement data yet</p>
-                        )}
-                      </div>
-                    </div>
                   </div>
 
                   {/* Demographics Row */}
@@ -1153,19 +1090,11 @@ export default function AdminPage() {
                               </span>
                             )}
                           </div>
-                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
                             <div>
                               <p className="theme-caption text-muted">Priority Ranking</p>
                               <p className="theme-body-sm text-foreground">
                                 {response.connectionRanking.join(" → ") || "-"}
-                              </p>
-                            </div>
-                            <div>
-                              <p className="theme-caption text-muted">Excitement</p>
-                              <p className="theme-body-sm text-foreground">
-                                {response.likertScores.localDating ||
-                                 response.likertScores.localFriendships ||
-                                 response.likertScores.globalCommunity || "-"}/5
                               </p>
                             </div>
                             <div>
