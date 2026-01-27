@@ -7,8 +7,6 @@ const CONNECTION_LABELS: Record<string, string> = {
   dating: "Dating",
   friendships: "Friendships",
   community: "Community",
-  local_meetups: "Local meetups",
-  online_support: "Online support",
 };
 
 export async function POST(request: Request) {
@@ -16,49 +14,27 @@ export async function POST(request: Request) {
     const body = await request.json();
 
     const {
-      // New simplified survey fields
       connectionRanking,
       likertScores,
-      // Shared fields
       contributionTypes,
       ageRange,
       country,
       region,
       email,
-      // Legacy fields (for backwards compatibility)
-      hardestPart,
-      connectionTypes: legacyConnectionTypes,
-      featurePriorities,
-      painPoints,
-      activities,
-      communityVibe,
-      idealFirstMonth,
-      completionTime,
     } = body;
 
     // Create survey response
     await db.surveyResponse.create({
       data: {
-        // Use new ranking if provided, otherwise fall back to legacy
-        connectionTypes: connectionRanking || legacyConnectionTypes || [],
-        // New Likert scores
+        connectionTypes: connectionRanking || [],
         likertLocalDating: likertScores?.local_dating || null,
         likertLocalFriendships: likertScores?.local_friendships || null,
         likertGlobalCommunity: likertScores?.global_community || null,
-        // Shared fields
         contributionTypes: contributionTypes || [],
         ageRange,
         country,
         region,
         email,
-        // Legacy fields
-        hardestPart,
-        featurePriorities: featurePriorities || [],
-        painPoints,
-        activities: activities || [],
-        communityVibe,
-        idealFirstMonth,
-        completionTime,
       },
     });
 
@@ -75,15 +51,14 @@ export async function POST(request: Request) {
       }
     }
 
-    // Get aggregate results to show user
+    // Get aggregate results
     const totalResponses = await db.surveyResponse.count();
 
-    // Get all responses for aggregate calculation
     const allResponses = await db.surveyResponse.findMany({
       select: { connectionTypes: true },
     });
 
-    // Count #1 rankings (first item in connectionTypes array = top choice)
+    // Count #1 rankings
     const topChoiceVotes: Record<string, number> = {};
     allResponses.forEach((r) => {
       if (r.connectionTypes.length > 0) {
