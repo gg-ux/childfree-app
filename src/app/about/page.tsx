@@ -47,7 +47,7 @@ export default function AboutPage() {
               </h1>
               <p className="theme-body text-muted max-w-lg">
                 Chosn was born from the philosophy that the most meaningful
-                lives and families are the ones we choose for ourselves
+                lives and families are the ones we choose with intention
               </p>
             </div>
             <div className="order-1 md:order-2 relative aspect-[4/3] rounded-2xl overflow-hidden">
@@ -103,7 +103,7 @@ export default function AboutPage() {
                 </div>
               </div>
               <div className="p-4">
-                <p className="font-medium text-foreground text-base mb-2">Grace, Founder &amp; CEO</p>
+                <p className="font-medium text-foreground text-base mb-2">Grace, Founder</p>
                 <div className="flex flex-wrap gap-1.5">
                   <span className="text-[12px] px-2 py-0.5 rounded-full bg-foreground/8 text-foreground/70 font-semibold inline-flex items-center gap-1">
                     <Heart size={11} weight="bold" />
@@ -151,7 +151,7 @@ export default function AboutPage() {
       {/* Pain points */}
       <section className="py-12 md:py-16 bg-foreground/[0.02]">
         <div className="container-main">
-          <div className="max-w-3xl mx-auto">
+          <div>
             <h2 className="font-display text-fluid-h2 text-foreground leading-[1.05] tracking-tight mb-8 text-center">
               Common childfree struggles
             </h2>
@@ -200,13 +200,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* What we're building */}
+      {/* Everything in one place */}
       <section className="py-12 md:py-16">
         <div className="container-main">
           <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div className="order-2 md:order-1">
               <h2 className="font-display text-fluid-h2 text-foreground leading-[0.9] tracking-tight mb-6">
-                What we&apos;re building
+                Everything in one place
               </h2>
               <p className="theme-body text-muted mb-5">
                 The right community changes everything. When you&apos;re

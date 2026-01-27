@@ -59,9 +59,9 @@ export default async function Home() {
               </p>
 
               <h1 className="font-display text-fluid-h1 text-foreground mb-6 leading-[0.9] tracking-tight">
-                <span className="whitespace-nowrap">Designed for</span>
+                <span className="whitespace-nowrap">Your childfree</span>
                 <br />
-                <span className="whitespace-nowrap">the childfree</span>
+                <span className="whitespace-nowrap">home base</span>
               </h1>
 
               <p className="theme-body text-muted max-w-2xl mb-10">
