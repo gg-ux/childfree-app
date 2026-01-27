@@ -68,7 +68,7 @@ export default async function BlogPage({ searchParams }: PageProps) {
               ))}
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-[rgba(0,0,0,0.06)] text-center">
+          <div className="mt-8 pt-8 text-center">
             <p className="theme-caption text-muted">
               &copy; {new Date().getFullYear()} Chosn. All rights reserved.
             </p>
