@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { ChatCircleDots, PaperPlaneTilt, Check, MapPin } from "@phosphor-icons/react";
+import { PaperPlaneTilt, Check, MapPin } from "@phosphor-icons/react";
+import { Logo } from "@/components/ui/logo";
 
 interface ChatMessage {
   id: string;
@@ -28,7 +29,7 @@ const CONTRIBUTION_OPTIONS: Option[] = [
   { id: "just_member", label: "Just a member", emoji: "✌️" },
 ];
 
-type QuestionType = "first_priority" | "second_priority" | "contribution" | "contribution_more" | "age" | "email";
+type QuestionType = "first_priority" | "second_priority" | "contribution" | "contribution_more" | "age" | "freeform" | "email";
 
 export function ChatSurvey() {
   const [currentQuestion, setCurrentQuestion] = useState<QuestionType>("first_priority");
@@ -49,6 +50,7 @@ export function ChatSurvey() {
   const [age, setAge] = useState<string | null>(null);
   const [emailInput, setEmailInput] = useState("");
 
+  const [hasStarted, setHasStarted] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
   const [detectedLocation, setDetectedLocation] = useState<{
     city: string | null;
@@ -159,7 +161,29 @@ export function ChatSurvey() {
   const handleAge = (option: Option) => {
     setAge(option.id);
     addUserMessage(option.label);
-    addBotMessage("Last one! Drop your email if you want early access.");
+    addBotMessage("Is there anything you wish a childfree platform had?");
+    setCurrentQuestion("freeform");
+  };
+
+  const [freeformInput, setFreeformInput] = useState("");
+
+  const getEmailPrompt = () => {
+    if (contribution.includes("moderator")) {
+      return "Since you're interested in moderating, drop your email so we can reach out!";
+    }
+    return "Last one! Drop your email if you want early access.";
+  };
+
+  const handleFreeformSubmit = () => {
+    const text = freeformInput.trim();
+    addUserMessage(text || "Skipped");
+    addBotMessage(getEmailPrompt());
+    setCurrentQuestion("email");
+  };
+
+  const skipFreeform = () => {
+    addUserMessage("Skipped");
+    addBotMessage(getEmailPrompt());
     setCurrentQuestion("email");
   };
 
@@ -183,7 +207,9 @@ export function ChatSurvey() {
     const payload = {
       connectionRanking,
       contributionTypes: contribution,
+      moderatorInterest: contribution.includes("moderator"),
       ageRange: age,
+      freeformResponse: freeformInput.trim() || null,
       country: detectedLocation?.country || null,
       region: detectedLocation?.city || detectedLocation?.region || null,
       email: email || null,
@@ -223,7 +249,7 @@ export function ChatSurvey() {
       case "contribution_more":
         return [
           ...remainingContributionOptions,
-          { id: "no", label: "No", emoji: "👋" },
+          { id: "no", label: "That's it", emoji: "✅" },
         ];
       case "age":
         return [
@@ -239,6 +265,7 @@ export function ChatSurvey() {
   };
 
   const handleOptionClick = (option: Option) => {
+    if (!hasStarted) setHasStarted(true);
     switch (currentQuestion) {
       case "first_priority":
         handleFirstPriority(option);
@@ -262,15 +289,14 @@ export function ChatSurvey() {
   const isEmailQuestion = currentQuestion === "email";
 
   return (
+    <div>
     <div className="bg-white/80 backdrop-blur-sm border border-border rounded-2xl overflow-hidden max-w-md mx-auto shadow-sm flex flex-col h-[420px]">
       {/* Header - Fixed */}
       <div className="bg-forest/10 px-4 py-3 border-b border-border flex items-center gap-3 flex-shrink-0">
-        <div className="w-8 h-8 rounded-full bg-forest/20 flex items-center justify-center">
-          <ChatCircleDots size={18} weight="fill" className="text-forest" />
-        </div>
+        <Logo variant="icon" size="sm" />
         <div>
-          <p className="text-sm font-medium text-foreground">Chosn Chat</p>
-          <p className="text-xs text-muted">2 min · Anonymous</p>
+          <p className="theme-heading text-base text-foreground">Chosn Chat</p>
+          <p className="theme-caption text-muted">Anonymous</p>
         </div>
       </div>
 
@@ -295,10 +321,10 @@ export function ChatSurvey() {
       </div>
 
       {/* Options - Fixed at bottom */}
-      {!isComplete && !isEmailQuestion && options.length > 0 && (
+      {!isComplete && !isEmailQuestion && currentQuestion !== "freeform" && options.length > 0 && (
         <div className="px-4 pb-4 pt-2 flex-shrink-0">
           <div className="flex flex-wrap gap-2">
-            {options.map((option) => (
+            {options.map((option, index) => (
               <button
                 key={option.id}
                 onClick={() => handleOptionClick(option)}
@@ -322,6 +348,36 @@ export function ChatSurvey() {
         </div>
       )}
 
+      {/* Input Area - Freeform */}
+      {!isComplete && currentQuestion === "freeform" && (
+        <div className="p-4 border-t border-border bg-gray-50/50 flex-shrink-0">
+          <div className="space-y-2">
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={freeformInput}
+                onChange={(e) => setFreeformInput(e.target.value)}
+                placeholder="Type your thoughts..."
+                className="flex-1 px-4 py-2.5 rounded-xl border border-border theme-body-sm focus:outline-none focus:ring-2 focus:ring-forest/20"
+                onKeyDown={(e) => e.key === "Enter" && handleFreeformSubmit()}
+              />
+              <button
+                onClick={handleFreeformSubmit}
+                className="w-10 h-10 flex items-center justify-center bg-forest text-white rounded-xl hover:bg-forest/90 transition-colors flex-shrink-0"
+              >
+                <PaperPlaneTilt size={20} weight="fill" />
+              </button>
+            </div>
+            <button
+              onClick={skipFreeform}
+              className="w-full theme-caption text-muted hover:text-foreground transition-colors font-medium"
+            >
+              Skip
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Input Area - Only for email */}
       {!isComplete && isEmailQuestion && (
         <div className="p-4 border-t border-border bg-gray-50/50 flex-shrink-0">
@@ -332,28 +388,28 @@ export function ChatSurvey() {
                 value={emailInput}
                 onChange={(e) => setEmailInput(e.target.value)}
                 placeholder="your@email.com"
-                className="flex-1 px-4 py-2.5 rounded-xl border border-border text-sm focus:outline-none focus:ring-2 focus:ring-forest/20"
+                className="flex-1 px-4 py-2.5 rounded-xl border border-border theme-body-sm focus:outline-none focus:ring-2 focus:ring-forest/20"
                 onKeyDown={(e) => e.key === "Enter" && handleEmailSubmit()}
               />
               <button
                 onClick={handleEmailSubmit}
-                className="p-2.5 bg-forest text-white rounded-xl hover:bg-forest/90 transition-colors"
+                className="w-10 h-10 flex items-center justify-center bg-forest text-white rounded-xl hover:bg-forest/90 transition-colors flex-shrink-0"
               >
                 <PaperPlaneTilt size={20} weight="fill" />
               </button>
             </div>
             <button
               onClick={skipEmail}
-              className="w-full text-sm text-muted hover:text-foreground transition-colors"
+              className="w-full theme-caption text-muted hover:text-foreground transition-colors font-medium"
             >
-              Skip for now
+              Skip
             </button>
           </div>
         </div>
       )}
 
       {/* Location indicator - show at bottom when not email and not complete */}
-      {!isComplete && !isEmailQuestion && detectedLocation?.city && (
+      {!isComplete && !isEmailQuestion && currentQuestion !== "freeform" && detectedLocation?.city && (
         <div className="px-4 py-2 border-t border-border bg-gray-50/30 flex-shrink-0">
           <div className="flex items-center gap-1.5 text-xs text-muted">
             <MapPin size={12} />
@@ -364,6 +420,7 @@ export function ChatSurvey() {
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 }

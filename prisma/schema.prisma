@@ -498,11 +498,15 @@ model SurveyResponse {
 
   // Q8: How they want to contribute (multi-select)
   contributionTypes   String[] // beta_tester, event_organizer, content_creator, moderator, just_member
+  moderatorInterest   Boolean  @default(false)
 
   // Demographics
   ageRange            String?  // 18-29, 30-39, 40-49, 50+
   country             String?
   region              String?  // Optional city/state
+
+  // Freeform: "Is there anything you wish a childfree platform had?"
+  freeformResponse    String?  @db.Text
 
   // Optional email for early access
   email               String?

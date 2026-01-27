@@ -11,6 +11,9 @@ import {
   ShootingStar,
   Dog,
   AirplaneTilt,
+  SquaresFour,
+  Fingerprint,
+  DeviceMobile,
 } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/components/ui/button";
 import { FrostedCard } from "@/components/ui/frosted-card";
@@ -56,13 +59,13 @@ export default async function Home() {
               </p>
 
               <h1 className="font-display text-fluid-h1 text-foreground mb-6 leading-[0.9] tracking-tight">
-                <span className="whitespace-nowrap">Find your people.</span>
+                <span className="whitespace-nowrap">Designed for</span>
                 <br />
-                <span className="whitespace-nowrap">Thrive childfree.</span>
+                <span className="whitespace-nowrap">the childfree.</span>
               </h1>
 
               <p className="theme-body text-muted max-w-2xl mb-10">
-                Connect with childfree adults who share your values. Make friends, find love, and build community all in one place.
+                Chosn is a dating, friendship, and community platform for childfree adults. Find your people, your city, and your crew — without ever having to explain why you don&apos;t want kids.
               </p>
 
               <WaitlistForm source="hero" />
@@ -163,51 +166,45 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id="how-it-works" className="pt-20 pb-12 md:pt-28 md:pb-16">
+      {/* Why Chosn */}
+      <section id="how-it-works" className="py-20 md:py-28">
         <div className="container-main">
           <div className="max-w-2xl mb-16">
             <h2 className="font-display text-fluid-h2 text-foreground mb-6 leading-[0.9] tracking-tight">
-              More than a dating app.
+              Why Chosn
             </h2>
             <p className="theme-body text-muted">
-              Match with locals or connect online—whether you&apos;re looking for love, a travel partner, a best man, or soul&nbsp;sisters.
+              Childfree platforms have existed before — a dating site with
+              ten users, a Discord server, a subreddit. You deserve better
+              than that, and that&apos;s why we built Chosn.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {[
               {
-                icon: Heart,
-                title: "Dating",
+                icon: SquaresFour,
+                title: "Beyond a dating app",
                 description:
-                  "Find someone who shares your values. No more awkward conversations.",
-                iconColor: "text-[#b8502a]",
-                bg: "bg-coral/15",
-              },
-              {
-                icon: Users,
-                title: "Friendship",
-                description:
-                  "Connect with others who get it. Build your chosen family.",
+                  "Meet childfree locals for dating and friendship, connect with a global community, and plan trips, meetups, and more — all in one place.",
                 iconColor: "text-[#1e5a3a]",
                 bg: "bg-forest/15",
               },
               {
-                icon: CalendarBlank,
-                title: "Events",
+                icon: Fingerprint,
+                title: "A safe space to be yourself",
                 description:
-                  "Join local meetups, virtual hangouts, and community gatherings.",
-                iconColor: "text-[#b07c1a]",
-                bg: "bg-marigold/15",
+                  "Everyone here shares the same lifestyle choice. No justifying, no debating \u2014 just verified, real people seeking connection with others who get it.",
+                iconColor: "text-[#b8502a]",
+                bg: "bg-coral/15",
               },
               {
-                icon: ShieldCheck,
-                title: "Verified",
+                icon: DeviceMobile,
+                title: "Intuitively designed",
                 description:
-                  "Every profile is human-reviewed. Real people, real connections.",
-                iconColor: "text-[#2d2438]",
-                bg: "bg-[#19131D]/10",
+                  "Built with the same care and polish as the apps you already love — because niche shouldn\u2019t mean rough around the edges.",
+                iconColor: "text-[#b07c1a]",
+                bg: "bg-marigold/15",
               },
             ].map((feature) => (
               <FrostedCard key={feature.title} className="p-6">
@@ -217,7 +214,7 @@ export default async function Home() {
                   <feature.icon
                     size={26}
                     weight="duotone"
-                    className={`${feature.iconColor}`}
+                    className={feature.iconColor}
                   />
                 </div>
                 <h3 className="theme-heading text-xl text-foreground mb-2">
@@ -240,11 +237,8 @@ export default async function Home() {
               <h2 className="font-display text-fluid-h2 text-foreground mb-6 leading-[0.9] tracking-tight">
                 Help us get this right.
               </h2>
-              <p className="theme-body text-muted mb-4">
-                We&apos;re building Chosn with our community, not just for them. Tell us what matters most to you—your answers are anonymous, but your voice will shape everything we build.
-              </p>
-              <p className="theme-body-sm text-muted">
-                Takes about 2 minutes.
+              <p className="theme-body text-muted">
+                We&apos;re building Chosn with our community, not just for them. Tell us what matters most to you — it takes about 2 minutes, your answers are anonymous, and your voice will shape everything we build.
               </p>
             </div>
             <ChatSurvey />
@@ -272,6 +266,7 @@ export default async function Home() {
               <p className="theme-body text-muted">
                 You made the bold choice to follow your own path and live differently. You&apos;re not alone. Connect with people who get it from day one. Whether you&apos;re looking for your person, people, or place—you&apos;ll find a community that celebrates the life you&apos;re building. Not all family is related by blood.
               </p>
+              <WaitlistForm source="chosen-family" className="mt-8" />
             </div>
           </div>
         </div>
@@ -351,26 +346,6 @@ export default async function Home() {
           </div>
         </section>
       )}
-
-      {/* CTA Section */}
-      <section className="py-20 md:py-28">
-        <div className="container-main">
-          <div className="max-w-xl mx-auto text-center">
-            <h2 className="font-display text-fluid-h2 text-foreground mb-6 leading-[0.9] tracking-tight">
-              Be part of <span className="whitespace-nowrap">something new.</span>
-            </h2>
-            <p className="theme-body text-muted mb-10">
-              We&apos;re building the community that should have existed years ago. Get early access and help shape&nbsp;it.
-            </p>
-
-            <WaitlistForm source="cta" className="mx-auto" />
-
-            <p className="theme-caption text-muted mt-6">
-              We respect your privacy. Unsubscribe at any time.
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="py-12 border-t border-[rgba(0,0,0,0.06)]">
