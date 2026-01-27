@@ -11,11 +11,6 @@ import {
   ArrowSquareOut,
   Calendar,
   MagnifyingGlass,
-  UsersThree,
-  BookOpen,
-  Compass,
-  AirplaneTilt,
-  ArrowRight,
 } from "@phosphor-icons/react";
 import { Loader } from "@/components/ui/loader";
 
@@ -47,32 +42,6 @@ interface MeetupEvent {
   description: string | null;
 }
 
-const COMMUNITY_LINKS = [
-  {
-    name: "We Are Childfree",
-    url: "https://wearechildfree.com/",
-    description: "Community hangouts, book clubs, and online events",
-    icon: UsersThree,
-  },
-  {
-    name: "No Kidding!",
-    url: "http://www.nokidding.net/",
-    description: "Social club with chapters across the US and Canada",
-    icon: Compass,
-  },
-  {
-    name: "r/childfree",
-    url: "https://www.reddit.com/r/childfree/",
-    description: "1.5M+ member community on Reddit",
-    icon: BookOpen,
-  },
-  {
-    name: "CF Travel Groups",
-    url: "https://www.eventbrite.com/o/childfree-travel-groups-80229592223",
-    description: "Group trips to adults-only destinations",
-    icon: AirplaneTilt,
-  },
-];
 
 function formatEventDate(dateTime: string) {
   const date = new Date(dateTime);
@@ -404,66 +373,7 @@ export default function DiscoverPage() {
                 </div>
               )}
 
-              {/* Communities section */}
-              <div className="mt-16">
-                <h2 className="font-display text-lg text-foreground mb-5">
-                  Childfree communities
-                </h2>
-                <div className="grid sm:grid-cols-2 gap-3">
-                  {COMMUNITY_LINKS.map((link) => (
-                    <a
-                      key={link.name}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-4 p-4 rounded-xl border border-border hover:border-forest/30 hover:bg-forest/[0.02] transition-all group"
-                    >
-                      <div className="w-10 h-10 bg-foreground/5 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-forest/10 transition-colors">
-                        <link.icon size={20} className="text-muted group-hover:text-forest transition-colors" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-sm font-[600] text-foreground group-hover:text-forest transition-colors">
-                          {link.name}
-                        </h3>
-                        <p className="text-xs text-muted line-clamp-1">{link.description}</p>
-                      </div>
-                      <ArrowRight size={16} className="text-muted/40 group-hover:text-forest transition-colors flex-shrink-0" />
-                    </a>
-                  ))}
-                </div>
-              </div>
             </>
-          )}
-
-          {/* Communities section when no location */}
-          {!locationCity && (
-            <div className="mt-12">
-              <h2 className="font-display text-lg text-foreground mb-5">
-                Childfree communities
-              </h2>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {COMMUNITY_LINKS.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-4 p-4 rounded-xl border border-border hover:border-forest/30 hover:bg-forest/[0.02] transition-all group"
-                  >
-                    <div className="w-10 h-10 bg-foreground/5 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-forest/10 transition-colors">
-                      <link.icon size={20} className="text-muted group-hover:text-forest transition-colors" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-sm font-[600] text-foreground group-hover:text-forest transition-colors">
-                        {link.name}
-                      </h3>
-                      <p className="text-xs text-muted line-clamp-1">{link.description}</p>
-                    </div>
-                    <ArrowRight size={16} className="text-muted/40 group-hover:text-forest transition-colors flex-shrink-0" />
-                  </a>
-                ))}
-              </div>
-            </div>
           )}
         </div>
       </div>

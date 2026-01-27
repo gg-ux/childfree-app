@@ -41,13 +41,13 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div className="order-2 md:order-1">
               <h1 className="font-display text-fluid-h1 text-foreground leading-[0.9] tracking-tight mb-6">
-                Built by someone
+                Live the life
                 <br />
-                who gets it
+                you chose
               </h1>
               <p className="theme-body text-muted max-w-lg">
-                The story behind Chosn—why we built it, who
-                we built it for, and what&apos;s coming next
+                Chosn was born from the philosophy that the most meaningful
+                lives and families are the ones we choose for ourselves
               </p>
             </div>
             <div className="order-1 md:order-2 relative aspect-[4/3] rounded-2xl overflow-hidden">
@@ -142,11 +142,6 @@ export default function AboutPage() {
                 and a decade spent designing products at startups and big
                 tech, I knew I could build something better. So that&apos;s
                 what I decided to do.
-              </p>
-              <p className="theme-body text-muted mb-5">
-                The name Chosn comes from the philosophy at the heart of
-                this community—that the most meaningful lives and families
-                are the ones we choose for ourselves.
               </p>
             </div>
           </div>
