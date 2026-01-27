@@ -290,7 +290,7 @@ export default function DiscoverPage() {
             <>
               <div className="mb-8">
                 <h1 className="font-display text-2xl md:text-3xl text-foreground mb-1">
-                  Childfree events near you
+                  Events near you
                 </h1>
                 <p className="text-sm text-muted">
                   Meetups and gatherings in and around {locationCity}
@@ -315,7 +315,7 @@ export default function DiscoverPage() {
                     No events found nearby
                   </h3>
                   <p className="text-sm text-muted max-w-sm mx-auto mb-4">
-                    We couldn&apos;t find childfree events near {locationCity} right now.
+                    We couldn&apos;t find events near {locationCity} right now.
                     Check the communities below or try a different location.
                   </p>
                   <Button
