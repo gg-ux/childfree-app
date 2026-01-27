@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { rateLimit, getClientIp } from "@/lib/rate-limit";
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 30; // Allow up to 30s on Vercel
 
 interface MeetupEvent {
   id: string;
@@ -43,12 +44,11 @@ function getEventTag(title: string, description: string | null, groupName: strin
 const eventsCache = new Map<string, { events: MeetupEvent[]; expiry: number }>();
 const CACHE_TTL = 60 * 60 * 1000; // 1 hour
 
+// Keep keyword list small to stay within Vercel's serverless timeout (10s)
 const SEARCH_KEYWORDS = [
-  "childfree", "child-free", "DINK", "no kids",
-  "adults only", "wine tasting", "happy hour", "brunch",
-  "hiking", "game night", "trivia night", "book club",
-  "line dancing", "comedy show", "art walk", "yoga",
-  "live music", "karaoke", "cooking class", "board games",
+  "childfree", "happy hour", "hiking",
+  "game night", "wine tasting", "comedy show",
+  "art walk", "live music",
 ];
 
 async function fetchKeywordEvents(keyword: string, lat: number, lng: number): Promise<MeetupEvent[]> {
