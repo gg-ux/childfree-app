@@ -19,7 +19,10 @@ export async function geocodeZip(zip: string): Promise<{ lat: number; lng: numbe
     if (!data.length) return null;
 
     const { lat, lon, display_name } = data[0];
-    const city = display_name.split(",")[0].trim();
+    // display_name format: "90026, Los Angeles, Los Angeles County, California, United States"
+    // Skip the zip code and grab the city name
+    const parts = display_name.split(",").map((s: string) => s.trim());
+    const city = parts.find((p: string) => !/^\d+$/.test(p) && !p.includes("County") && p !== "United States" && !p.includes("State")) || parts[1] || parts[0];
     const result = { lat: parseFloat(lat), lng: parseFloat(lon), city };
 
     geocodeCache.set(zip, { ...result, expiry: Date.now() + CACHE_TTL });

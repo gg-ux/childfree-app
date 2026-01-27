@@ -14,6 +14,29 @@ interface MeetupEvent {
   venueState: string | null;
   imageUrl: string | null;
   description: string | null;
+  tag: string | null;
+}
+
+const TAG_RULES: { tag: string; patterns: RegExp }[] = [
+  { tag: "Childfree", patterns: /childfree|child-free|child free|no kids|dink\b/i },
+  { tag: "Food & Drink", patterns: /wine|beer|cocktail|happy hour|brunch|dinner|food|tasting|restaurant|bar crawl|cooking class/i },
+  { tag: "Outdoors", patterns: /hik(e|ing)|trail|outdoor|camping|beach|kayak|nature|walk\b/i },
+  { tag: "Games", patterns: /game night|board game|trivia|bingo|bunko|puzzle/i },
+  { tag: "Fitness", patterns: /yoga|gym|fitness|run\b|running|cycling|workout|pilates|CrossFit/i },
+  { tag: "Music", patterns: /live music|concert|karaoke|open mic|jazz|jam session/i },
+  { tag: "Arts", patterns: /art walk|gallery|museum|paint|pottery|craft|theater|theatre|comedy/i },
+  { tag: "Dance", patterns: /danc(e|ing)|salsa|bachata|line danc/i },
+  { tag: "Social", patterns: /meetup|social|mixer|networking|hangout|get.together/i },
+  { tag: "Books", patterns: /book club|reading|literary|author/i },
+  { tag: "Travel", patterns: /travel|adventure|road trip|explore/i },
+];
+
+function getEventTag(title: string, description: string | null, groupName: string): string | null {
+  const text = `${title} ${description || ""} ${groupName}`;
+  for (const rule of TAG_RULES) {
+    if (rule.patterns.test(text)) return rule.tag;
+  }
+  return null;
 }
 
 // In-memory cache: key = "lat,lng", value = { events, expiry }
@@ -68,17 +91,22 @@ async function fetchKeywordEvents(keyword: string, lat: number, lng: number): Pr
       const imageRef = event.featuredEventPhoto?.__ref || event.featuredEventPhoto || event.image?.__ref || event.image;
       const image = typeof imageRef === "string" ? apolloState[imageRef] : imageRef;
 
+      const title = event.title || "";
+      const desc = event.description ? event.description.substring(0, 200) : null;
+      const gName = group?.name || "";
+
       events.push({
         id: event.id || key.replace("Event:", ""),
-        title: event.title || "",
+        title,
         dateTime: event.dateTime || "",
         eventUrl: event.eventUrl || "",
-        groupName: group?.name || "",
+        groupName: gName,
         venueName: venue?.name || null,
         venueCity: venue?.city || null,
         venueState: venue?.state || null,
         imageUrl: image?.highResUrl || image?.baseUrl || null,
-        description: event.description ? event.description.substring(0, 200) : null,
+        description: desc,
+        tag: getEventTag(title, desc, gName),
       });
     }
 
@@ -90,6 +118,7 @@ async function fetchKeywordEvents(keyword: string, lat: number, lng: number): Pr
 
 async function scrapeMeetupEvents(lat: number, lng: number): Promise<MeetupEvent[]> {
   const seenIds = new Set<string>();
+  const seenTitles = new Set<string>();
   const allEvents: MeetupEvent[] = [];
 
   // Fetch in parallel batches of 4 to avoid hammering Meetup
@@ -100,9 +129,14 @@ async function scrapeMeetupEvents(lat: number, lng: number): Promise<MeetupEvent
 
     for (const events of results) {
       for (const event of events) {
-        if (!seenIds.has(event.id)) {
-          seenIds.add(event.id);
-          allEvents.push(event);
+        // Skip broken entries
+        if (!event.title || event.title === "undefined" || !event.dateTime || !event.eventUrl) continue;
+        // Deduplicate by ID and title
+        const titleKey = event.title.toLowerCase().trim();
+        if (seenIds.has(event.id) || seenTitles.has(titleKey)) continue;
+        seenIds.add(event.id);
+        seenTitles.add(titleKey);
+        allEvents.push(event);
         }
       }
     }

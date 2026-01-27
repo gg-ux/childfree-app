@@ -40,6 +40,7 @@ interface MeetupEvent {
   venueState: string | null;
   imageUrl: string | null;
   description: string | null;
+  tag: string | null;
 }
 
 
@@ -352,9 +353,20 @@ export default function DiscoverPage() {
                       )}
 
                       <div className="p-4">
-                        <p className="text-xs font-[500] text-forest mb-1.5">
-                          {formatEventDate(event.dateTime)}
-                        </p>
+                        <div className="flex items-center gap-2 mb-1.5">
+                          <p className="text-xs font-[500] text-forest">
+                            {formatEventDate(event.dateTime)}
+                          </p>
+                          {event.tag && (
+                            <span className={`text-[10px] font-[600] px-2 py-0.5 rounded-full ${
+                              event.tag === "Childfree"
+                                ? "bg-forest/10 text-forest"
+                                : "bg-foreground/5 text-muted"
+                            }`}>
+                              {event.tag}
+                            </span>
+                          )}
+                        </div>
                         <h3 className="font-[600] text-foreground text-sm leading-snug mb-2 line-clamp-2 group-hover:text-forest transition-colors">
                           {event.title}
                         </h3>
