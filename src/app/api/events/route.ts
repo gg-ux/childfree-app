@@ -137,7 +137,6 @@ async function scrapeMeetupEvents(lat: number, lng: number): Promise<MeetupEvent
         seenIds.add(event.id);
         seenTitles.add(titleKey);
         allEvents.push(event);
-        }
       }
     }
 
