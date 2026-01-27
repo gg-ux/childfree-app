@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "Chosn",
     images: [
       {
-        url: "/assets/og-pic.jpg",
+        url: "/assets/og-pic.png",
         width: 1200,
         height: 630,
         alt: "Chosn - Childfree Dating & Community",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title: "Chosn | Childfree Dating & Community. Find Your Chosen Family.",
     description:
       "The modern platform for childfree adults seeking meaningful connections.",
-    images: ["/assets/og-pic.jpg"],
+    images: ["/assets/og-pic.png"],
   },
   robots: {
     index: true,

@@ -45,7 +45,7 @@ export default async function Home() {
         </div>
       </nav>
 
-      {/* Hero Section - Option A: Floating Profile Cards */}
+      {/* Hero Section - Floating Profile Cards */}
       <section className="pt-20 pb-16 md:pt-28 md:pb-24 overflow-hidden">
         <div className="container-main">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -259,7 +259,7 @@ export default async function Home() {
             {/* Group image */}
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
               <img
-                src="/assets/home/group01.webp"
+                src="/assets/home/group-candid.png"
                 alt="Friends enjoying time together"
                 className="w-full h-full object-cover"
               />

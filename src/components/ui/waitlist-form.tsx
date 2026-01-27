@@ -7,9 +7,10 @@ import { Confetti } from "@phosphor-icons/react";
 interface WaitlistFormProps {
   source?: string;
   className?: string;
+  variant?: "light" | "dark";
 }
 
-export function WaitlistForm({ source = "website", className }: WaitlistFormProps) {
+export function WaitlistForm({ source = "website", className, variant = "light" }: WaitlistFormProps) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
