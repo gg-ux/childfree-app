@@ -143,6 +143,11 @@ export default function AboutPage() {
                 tech, I knew I could build something better. So that&apos;s
                 what I decided to do.
               </p>
+              <p className="theme-body text-muted mb-5">
+                The name Chosn comes from the philosophy at the heart of
+                this community—that the most meaningful lives and families
+                are the ones we choose for ourselves.
+              </p>
             </div>
           </div>
         </div>

@@ -11,7 +11,6 @@ import {
   Envelope,
   ArrowRight,
   GoogleLogo,
-  AppleLogo,
 } from "@phosphor-icons/react";
 
 const ERROR_MESSAGES: Record<string, string> = {
@@ -96,9 +95,6 @@ function SignupContent() {
     window.location.href = "/api/auth/google";
   };
 
-  const handleAppleSignIn = () => {
-    window.location.href = "/api/auth/apple";
-  };
 
   if (checkingAuth) {
     return (
@@ -182,15 +178,6 @@ function SignupContent() {
                 >
                   <GoogleLogo size={22} weight="bold" />
                   Continue with Google
-                </Button>
-                <Button
-                  variant="secondary"
-                  size="lg"
-                  onClick={handleAppleSignIn}
-                  className="w-full"
-                >
-                  <AppleLogo size={22} weight="fill" />
-                  Continue with Apple
                 </Button>
               </div>
 

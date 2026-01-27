@@ -43,6 +43,9 @@ export async function GET(request: NextRequest) {
           ? {
               displayName: session.user.profile.displayName,
               isVerified: session.user.profile.isVerified,
+              locationCity: session.user.profile.locationCity,
+              locationLat: session.user.profile.locationLat,
+              locationLng: session.user.profile.locationLng,
             }
           : null,
       },

@@ -87,6 +87,7 @@ export default function OnboardingPage() {
   const [saving, setSaving] = useState(false);
   const [step, setStep] = useState(1);
   const [error, setError] = useState("");
+  const [userEmail, setUserEmail] = useState("");
 
   // Form state
   const [displayName, setDisplayName] = useState("");
@@ -114,6 +115,8 @@ export default function OnboardingPage() {
           router.push("/auth/signup");
           return;
         }
+
+        if (data.user?.email) setUserEmail(data.user.email);
 
         // Load existing onboarding state
         const onboardingRes = await fetch("/api/onboarding");
@@ -305,9 +308,16 @@ export default function OnboardingPage() {
           <Link href="/">
             <Logo variant="full" size="sm" />
           </Link>
-          <span className="text-sm text-muted font-[450]">
-            Step {step} of {TOTAL_STEPS}
-          </span>
+          <div className="flex items-center gap-4">
+            <span className="text-sm text-muted font-[450]">
+              Step {step} of {TOTAL_STEPS}
+            </span>
+            {userEmail && (
+              <span className="text-xs text-muted/60 hidden sm:inline">
+                {userEmail}
+              </span>
+            )}
+          </div>
         </div>
       </header>
 
@@ -490,60 +500,55 @@ export default function OnboardingPage() {
                 <h1 className="font-display text-2xl md:text-3xl text-foreground mb-3">
                   You&apos;re all set, {displayName}!
                 </h1>
-                <p className="theme-body text-muted max-w-sm mx-auto">
-                  Welcome to Chosn — your profile is ready, let&apos;s find your
-                  people
-                </p>
               </div>
 
-              <div className="bg-foreground/5 rounded-2xl p-6 max-w-sm mx-auto">
+              <div className="max-w-[280px] mx-auto bg-white rounded-2xl shadow-lg border border-border overflow-hidden">
                 {/* Photo */}
-                {photos.length > 0 && (
-                  <div className="flex justify-center mb-5">
+                {photos.length > 0 ? (
+                  <div className="aspect-[3/4] relative overflow-hidden">
                     <img
                       src={photos[0].url}
                       alt={displayName}
-                      className="w-24 h-24 rounded-full object-cover"
+                      className="w-full h-full object-cover"
                     />
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/50 to-transparent" />
+                    {/* Name + age overlay */}
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <h3 className="text-white font-display text-xl tracking-tight">
+                        {displayName}{birthYear ? `, ${new Date().getFullYear() - parseInt(birthYear)}` : ""}
+                      </h3>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="aspect-[3/4] bg-foreground/5 flex items-end p-4">
+                    <h3 className="font-display text-xl text-foreground tracking-tight">
+                      {displayName}{birthYear ? `, ${new Date().getFullYear() - parseInt(birthYear)}` : ""}
+                    </h3>
                   </div>
                 )}
 
-                <div className="space-y-4 text-sm font-[450]">
-                  <div className="flex justify-between items-start">
-                    <span className="text-muted">Name</span>
-                    <span className="text-foreground text-right">{displayName}</span>
+                {/* Bottom info */}
+                <div className="p-4 space-y-3">
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {seeking.map((s) => {
+                      const label = CONNECTION_TYPES.find((t) => t.value === s)?.label;
+                      return label ? (
+                        <span key={s} className="text-xs font-[500] text-muted bg-foreground/5 px-3 py-1.5 rounded-full">
+                          {label}
+                        </span>
+                      ) : null;
+                    })}
                   </div>
 
-                  <div className="flex justify-between items-start">
-                    <span className="text-muted">Age</span>
-                    <span className="text-foreground text-right">
-                      {birthYear ? new Date().getFullYear() - parseInt(birthYear) : "—"}
-                    </span>
-                  </div>
-
-                  <div className="flex justify-between items-start">
-                    <span className="text-muted">Gender</span>
-                    <span className="text-foreground text-right capitalize">
-                      {GENDERS.find((g) => g.value === gender)?.label || "—"}
-                    </span>
-                  </div>
-
-                  <div className="flex justify-between items-start">
-                    <span className="text-muted">Looking for</span>
-                    <span className="text-foreground text-right max-w-[180px]">
-                      {seeking
-                        .map((s) => CONNECTION_TYPES.find((t) => t.value === s)?.label)
-                        .filter(Boolean)
-                        .join(", ") || "—"}
-                    </span>
-                  </div>
-
+                  {/* Prompt */}
                   {selectedPrompt && promptAnswer && (
-                    <div className="pt-3 border-t border-border">
-                      <p className="text-muted mb-2">
+                    <div className="pt-2 border-t border-border/50">
+                      <p className="text-xs text-muted mb-1">
                         {PROMPTS.find((p) => p.value === selectedPrompt)?.text || selectedPrompt}
                       </p>
-                      <p className="text-foreground">{promptAnswer}</p>
+                      <p className="text-sm font-[500] text-foreground">{promptAnswer}</p>
                     </div>
                   )}
                 </div>
