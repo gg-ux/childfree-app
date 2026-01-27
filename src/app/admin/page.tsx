@@ -972,7 +972,7 @@ export default function AdminPage() {
                               <span className="theme-body-sm text-foreground">{item.label}</span>
                               <span className="theme-body-sm text-muted">{item.percentage}%</span>
                             </div>
-                            <div className="h-2 bg-foreground/10 rounded-full overflow-hidden">
+                            <div className="h-1 bg-foreground/10 rounded-full overflow-hidden">
                               <div
                                 className="h-full bg-forest rounded-full transition-all"
                                 style={{ width: `${item.percentage}%` }}
@@ -993,9 +993,9 @@ export default function AdminPage() {
                               <span className="theme-body-sm text-foreground">{item.label}</span>
                               <span className="theme-body-sm text-muted">{item.percentage}%</span>
                             </div>
-                            <div className="h-2 bg-foreground/10 rounded-full overflow-hidden">
+                            <div className="h-1 bg-foreground/10 rounded-full overflow-hidden">
                               <div
-                                className="h-full bg-sage rounded-full transition-all"
+                                className="h-full bg-forest rounded-full transition-all"
                                 style={{ width: `${item.percentage}%` }}
                               />
                             </div>
@@ -1014,9 +1014,9 @@ export default function AdminPage() {
                               <span className="theme-body-sm text-foreground">{type.label}</span>
                               <span className="theme-body-sm text-muted">{type.percentage}%</span>
                             </div>
-                            <div className="h-2 bg-foreground/10 rounded-full overflow-hidden">
+                            <div className="h-1 bg-foreground/10 rounded-full overflow-hidden">
                               <div
-                                className="h-full bg-coral rounded-full transition-all"
+                                className="h-full bg-forest rounded-full transition-all"
                                 style={{ width: `${type.percentage}%` }}
                               />
                             </div>
@@ -1038,9 +1038,9 @@ export default function AdminPage() {
                               <span className="theme-body-sm text-foreground">Local Dating</span>
                               <span className="theme-body-sm text-muted">{surveyData.likertAverages.localDating}/5</span>
                             </div>
-                            <div className="h-2 bg-foreground/10 rounded-full overflow-hidden">
+                            <div className="h-1 bg-foreground/10 rounded-full overflow-hidden">
                               <div
-                                className="h-full bg-marigold rounded-full transition-all"
+                                className="h-full bg-forest rounded-full transition-all"
                                 style={{ width: `${(surveyData.likertAverages.localDating / 5) * 100}%` }}
                               />
                             </div>
@@ -1052,9 +1052,9 @@ export default function AdminPage() {
                               <span className="theme-body-sm text-foreground">Local Friendships</span>
                               <span className="theme-body-sm text-muted">{surveyData.likertAverages.localFriendships}/5</span>
                             </div>
-                            <div className="h-2 bg-foreground/10 rounded-full overflow-hidden">
+                            <div className="h-1 bg-foreground/10 rounded-full overflow-hidden">
                               <div
-                                className="h-full bg-marigold rounded-full transition-all"
+                                className="h-full bg-forest rounded-full transition-all"
                                 style={{ width: `${(surveyData.likertAverages.localFriendships / 5) * 100}%` }}
                               />
                             </div>
@@ -1066,9 +1066,9 @@ export default function AdminPage() {
                               <span className="theme-body-sm text-foreground">Global Community</span>
                               <span className="theme-body-sm text-muted">{surveyData.likertAverages.globalCommunity}/5</span>
                             </div>
-                            <div className="h-2 bg-foreground/10 rounded-full overflow-hidden">
+                            <div className="h-1 bg-foreground/10 rounded-full overflow-hidden">
                               <div
-                                className="h-full bg-marigold rounded-full transition-all"
+                                className="h-full bg-forest rounded-full transition-all"
                                 style={{ width: `${(surveyData.likertAverages.globalCommunity / 5) * 100}%` }}
                               />
                             </div>
