@@ -32,6 +32,8 @@ import {
   Briefcase,
   ArrowsClockwise,
   Trash,
+  Moon,
+  GraduationCap,
 } from "@phosphor-icons/react";
 import { Loader } from "@/components/ui/loader";
 import { Button } from "@/components/ui/button";
@@ -40,6 +42,8 @@ import {
   MUSIC_GENRES,
   VALUES,
   WORK_STYLE_OPTIONS,
+  SLEEP_STYLE_OPTIONS,
+  EDUCATION_OPTIONS,
   PETS_OPTIONS,
   DIET_OPTIONS,
   DRINKING_OPTIONS,
@@ -90,6 +94,9 @@ interface ProfileData {
   smoking: string | null;
   cannabis: string | null;
   workStyle: string | null;
+  sleepStyle: string | null;
+  education: string | null;
+  jobTitle: string | null;
   anthem: string | null;
   locationCity: string | null;
   photos: Photo[];
@@ -239,6 +246,7 @@ export default function ProfilePage() {
   const [editSection, setEditSection] = useState<string | null>(null);
   const [editName, setEditName] = useState("");
   const [editCity, setEditCity] = useState("");
+  const [editJobTitle, setEditJobTitle] = useState("");
   const [saving, setSaving] = useState(false);
   const [editInterests, setEditInterests] = useState<string[]>([]);
   const [editMusic, setEditMusic] = useState<string[]>([]);
@@ -407,7 +415,7 @@ export default function ProfilePage() {
   const openEdit = (section: string) => {
     if (!isEditMode) return;
     setEditSection(section);
-    if (section === "basics") { setEditName(profile.displayName); setEditCity(profile.locationCity || ""); setEditPronouns(profile.pronouns || ""); }
+    if (section === "basics") { setEditName(profile.displayName); setEditCity(profile.locationCity || ""); setEditPronouns(profile.pronouns || ""); setEditJobTitle(profile.jobTitle || ""); }
     if (section === "interests") setEditInterests([...profile.interests]);
     if (section === "music") setEditMusic([...profile.musicGenres]);
     if (section === "values") setEditValues([...profile.values]);
@@ -664,11 +672,18 @@ export default function ProfilePage() {
                     {profile.pronouns && <span className="text-muted font-button text-base font-[500]">({profile.pronouns})</span>}
                     {isEditMode && <PencilSimple size={12} weight="bold" className="text-muted" />}
                   </h1>
-                  {profile.locationCity && (
-                    <p className="theme-body-sm text-muted flex items-center gap-1 mt-0.5">
-                      <MapPin size={14} weight="fill" /> {profile.locationCity}
-                    </p>
-                  )}
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 mt-0.5">
+                    {profile.locationCity && (
+                      <p className="theme-body-sm text-muted flex items-center gap-1">
+                        <MapPin size={14} weight="fill" /> {profile.locationCity}
+                      </p>
+                    )}
+                    {(profile.jobTitle || isEditMode) && (
+                      <p className="theme-body-sm text-muted flex items-center gap-1">
+                        <Briefcase size={14} weight="fill" /> {profile.jobTitle || <span className="text-muted/40">Add job title</span>}
+                      </p>
+                    )}
+                  </div>
                 </div>
                 <div className="hidden lg:flex items-center gap-2 shrink-0">
                   {isEditMode ? (
@@ -779,7 +794,7 @@ export default function ProfilePage() {
               </div>
 
               {/* About Me details */}
-              {(isEditMode || profile.birthdate || profile.mbtiType || profile.diet || profile.drinking || profile.smoking || profile.cannabis || profile.workStyle) && (
+              {(isEditMode || profile.birthdate || profile.mbtiType || profile.diet || profile.drinking || profile.smoking || profile.cannabis || profile.sleepStyle || profile.education) && (
               <div className="mb-6">
                 <h2 className="theme-heading text-sm text-foreground mb-3">About Me</h2>
                 {isEditMode ? (
@@ -794,7 +809,8 @@ export default function ProfilePage() {
                       { label: "Drinking", icon: Wine, value: profile.drinking, options: DRINKING_OPTIONS, field: "drinking" },
                       { label: "Smoking", icon: Cigarette, value: profile.smoking, options: SMOKING_OPTIONS, field: "smoking" },
                       { label: "Cannabis", icon: Leaf, value: profile.cannabis, options: CANNABIS_OPTIONS, field: "cannabis" },
-                      { label: "Work", icon: Briefcase, value: profile.workStyle, options: WORK_STYLE_OPTIONS, field: "workStyle" },
+                      { label: "Sleep", icon: Moon, value: profile.sleepStyle, options: SLEEP_STYLE_OPTIONS, field: "sleepStyle" },
+                      { label: "Education", icon: GraduationCap, value: profile.education, options: EDUCATION_OPTIONS, field: "education" },
                     ].map((item) => (
                       <button
                         key={item.field}
@@ -817,7 +833,8 @@ export default function ProfilePage() {
                       { icon: Wine, value: profile.drinking ? getLabel(DRINKING_OPTIONS, profile.drinking) : null },
                       { icon: Cigarette, value: profile.smoking ? getLabel(SMOKING_OPTIONS, profile.smoking) : null },
                       { icon: Leaf, value: profile.cannabis ? getLabel(CANNABIS_OPTIONS, profile.cannabis) : null },
-                      { icon: Briefcase, value: getLabel(WORK_STYLE_OPTIONS, profile.workStyle) },
+                      { icon: Moon, value: getLabel(SLEEP_STYLE_OPTIONS, profile.sleepStyle) },
+                      { icon: GraduationCap, value: getLabel(EDUCATION_OPTIONS, profile.education) },
                     ].filter((item) => item.value).map((item, idx) => (
                       <span key={idx} className={chipClass}>
                         <item.icon size={14} weight="bold" />
@@ -988,13 +1005,17 @@ export default function ProfilePage() {
             <input type="text" value={editCity} onChange={(e) => setEditCity(e.target.value)} className="w-full px-3 h-10 rounded-lg border border-border bg-background theme-body-sm focus:outline-none focus:border-forest transition-colors" />
           </div>
           <div>
+            <label className="theme-caption text-foreground mb-1 block">Job title</label>
+            <input type="text" value={editJobTitle} onChange={(e) => setEditJobTitle(e.target.value)} placeholder="e.g. Product Designer" className="w-full px-3 h-10 rounded-lg border border-border bg-background theme-body-sm focus:outline-none focus:border-forest transition-colors" />
+          </div>
+          <div>
             <label className="theme-caption text-foreground mb-1 block">Pronouns</label>
             <select value={editPronouns} onChange={(e) => setEditPronouns(e.target.value)} className="w-full px-3 h-10 rounded-lg border border-border bg-background theme-body-sm focus:outline-none focus:border-forest transition-colors">
               <option value="">Select...</option>
               {PRONOUNS_OPTIONS.map((p) => (<option key={p.value} value={p.value}>{p.label}</option>))}
             </select>
           </div>
-          <button onClick={async () => { await saveField({ displayName: editName.trim(), locationCity: editCity.trim() || null, pronouns: editPronouns || null }); setEditSection(null); }} disabled={saving || !editName.trim()} className="w-full h-10 rounded-lg bg-forest text-white theme-body-sm font-[600] hover:bg-forest-light transition-colors disabled:opacity-50">
+          <button onClick={async () => { await saveField({ displayName: editName.trim(), locationCity: editCity.trim() || null, jobTitle: editJobTitle.trim() || null, pronouns: editPronouns || null }); setEditSection(null); }} disabled={saving || !editName.trim()} className="w-full h-10 rounded-lg bg-forest text-white theme-body-sm font-[600] hover:bg-forest-light transition-colors disabled:opacity-50">
             {saving ? "Saving..." : "Save"}
           </button>
         </div>
@@ -1281,7 +1302,8 @@ export default function ProfilePage() {
         { field: "drinking", title: "Drinking", options: DRINKING_OPTIONS },
         { field: "smoking", title: "Smoking", options: SMOKING_OPTIONS },
         { field: "cannabis", title: "Cannabis", options: CANNABIS_OPTIONS },
-        { field: "workStyle", title: "Work Style", options: WORK_STYLE_OPTIONS },
+        { field: "sleepStyle", title: "Sleep Style", options: SLEEP_STYLE_OPTIONS },
+        { field: "education", title: "Education", options: EDUCATION_OPTIONS },
       ].map(({ field, title, options }) => (
         <EditModal key={field} title={title} open={editSection === `about-${field}`} onClose={() => setEditSection(null)}>
           <div className="flex flex-wrap gap-2">

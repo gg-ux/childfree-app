@@ -85,6 +85,8 @@ model Profile {
   smoking           String?
   cannabis          String?
   workStyle         String?
+  sleepStyle        String?
+  education         String?
 
   // Music
   musicGenres       String[]
@@ -93,6 +95,9 @@ model Profile {
   // Values
   values            String[]
   dealBreakers      String[]
+
+  // Work
+  jobTitle          String?
 
   // Location (city-level for privacy)
   locationCity      String?

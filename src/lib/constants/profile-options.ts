@@ -174,6 +174,22 @@ export const WORK_STYLE_OPTIONS = [
   { value: "student", label: "Student" },
 ];
 
+export const SLEEP_STYLE_OPTIONS = [
+  { value: "night-owl", label: "Night Owl" },
+  { value: "early-bird", label: "Early Bird" },
+  { value: "depends", label: "It Depends" },
+];
+
+export const EDUCATION_OPTIONS = [
+  { value: "high-school", label: "High School" },
+  { value: "some-college", label: "Some College" },
+  { value: "associates", label: "Associate's" },
+  { value: "bachelors", label: "Bachelor's" },
+  { value: "masters", label: "Master's" },
+  { value: "doctorate", label: "Doctorate" },
+  { value: "trade-school", label: "Trade School" },
+];
+
 export const PRONOUNS_OPTIONS = [
   { value: "she/her", label: "She/Her" },
   { value: "he/him", label: "He/Him" },

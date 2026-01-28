@@ -83,8 +83,8 @@ export async function PATCH(request: NextRequest) {
       "displayName", "bio", "gender", "genderPreferences",
       "childfreeStatus", "relationshipStatus", "seeking",
       "interests", "musicGenres", "anthem", "values", "dealBreakers",
-      "pets", "diet", "drinking", "smoking", "cannabis", "workStyle",
-      "pronouns", "identityTags", "petTypes",
+      "pets", "diet", "drinking", "smoking", "cannabis", "workStyle", "sleepStyle", "education",
+      "pronouns", "identityTags", "petTypes", "jobTitle",
       "zodiacSign", "mbtiType", "locationCity", "locationLat", "locationLng",
       "ageMin", "ageMax", "distanceMax",
     ];
