@@ -144,10 +144,15 @@ function getLabel(options: { value: string; label: string }[], value: string | n
   return options.find((o) => o.value === value)?.label || value;
 }
 
-function getSpotifyTrackId(url: string | null): string | null {
+function getAnthemEmbed(url: string | null): { type: "spotify" | "youtube"; embedUrl: string } | null {
   if (!url) return null;
-  const match = url.match(/open\.spotify\.com\/track\/([a-zA-Z0-9]+)/);
-  return match ? match[1] : null;
+  // Spotify
+  const spotify = url.match(/open\.spotify\.com\/track\/([a-zA-Z0-9]+)/);
+  if (spotify) return { type: "spotify", embedUrl: `https://open.spotify.com/embed/track/${spotify[1]}?theme=0` };
+  // YouTube - various URL formats
+  const yt = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/);
+  if (yt) return { type: "youtube", embedUrl: `https://www.youtube.com/embed/${yt[1]}` };
+  return null;
 }
 
 const RELATIONSHIP_OPTIONS = [
@@ -877,14 +882,14 @@ export default function ProfilePage() {
                   <h2 className="theme-heading text-sm text-foreground mb-3">Anthem</h2>
                 )}
                 {(() => {
-                  const trackId = getSpotifyTrackId(profile.anthem);
-                  if (trackId) {
+                  const embed = getAnthemEmbed(profile.anthem);
+                  if (embed) {
                     return (
                       <div className="rounded-xl overflow-hidden">
                         <iframe
-                          src={`https://open.spotify.com/embed/track/${trackId}?theme=0`}
+                          src={embed.embedUrl}
                           width="100%"
-                          height="80"
+                          height={embed.type === "spotify" ? 80 : 152}
                           frameBorder="0"
                           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                           loading="lazy"
@@ -1191,16 +1196,16 @@ export default function ProfilePage() {
               type="text"
               value={editAnthem}
               onChange={(e) => setEditAnthem(e.target.value)}
-              placeholder="https://open.spotify.com/track/..."
+              placeholder="Paste a Spotify or YouTube link..."
               className="w-full px-3 h-10 rounded-lg border border-border bg-background theme-body-sm focus:outline-none focus:border-forest transition-colors"
             />
-            <p className="theme-caption text-muted mt-1.5">Open Spotify, tap Share on a song, and copy the link.</p>
+            <p className="theme-caption text-muted mt-1.5">Share a song from Spotify or a YouTube music video.</p>
           </div>
           <button
             onClick={async () => {
               const url = editAnthem.trim();
-              const trackId = getSpotifyTrackId(url);
-              await saveField({ anthem: trackId ? url : null });
+              const embed = getAnthemEmbed(url);
+              await saveField({ anthem: embed ? url : null });
               setEditSection(null);
             }}
             disabled={saving}
