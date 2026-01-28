@@ -20,11 +20,13 @@ export function middleware(request: NextRequest) {
 
   // Rate limiting for API routes (simple in-memory, per-IP)
   if (request.nextUrl.pathname.startsWith("/api/")) {
+    // Skip CORS check for OAuth callback redirects
+    const isOAuthCallback = request.nextUrl.pathname.startsWith("/api/auth/google/callback");
     const origin = request.headers.get("origin");
     const host = request.headers.get("host");
 
     // Block requests from unexpected origins (basic CORS)
-    if (origin) {
+    if (origin && !isOAuthCallback) {
       const allowedOrigins = [
         `https://${host}`,
         `http://${host}`,
