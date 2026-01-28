@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.chosn.co";
-  const ogImage = `${baseUrl}/api/og?title=${encodeURIComponent(post.title)}`;
+  const ogImage = `${baseUrl}/api/og?title=${encodeURIComponent(post.title)}&v=2`;
 
   return {
     title: post.title,
