@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
     const author = searchParams.get("author") || "Chosn Team";
     const tags = (searchParams.get("tags") || "").split(",").filter(Boolean);
 
-    return new ImageResponse(
+    const imageResponse = new ImageResponse(
       (
         <div
           style={{
@@ -121,6 +121,15 @@ export async function GET(request: NextRequest) {
         height: 630,
       }
     );
+
+    const buffer = await imageResponse.arrayBuffer();
+    return new Response(buffer, {
+      headers: {
+        "Content-Type": "image/png",
+        "Content-Length": buffer.byteLength.toString(),
+        "Cache-Control": "public, max-age=86400, s-maxage=86400",
+      },
+    });
   } catch (e) {
     return new Response(`OG image generation failed: ${e instanceof Error ? e.message : "unknown error"}`, {
       status: 500,
