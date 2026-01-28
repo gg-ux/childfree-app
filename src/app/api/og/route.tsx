@@ -10,10 +10,10 @@ export async function GET(request: NextRequest) {
   const author = searchParams.get("author") || "Chosn Team";
   const tags = searchParams.get("tags") || "";
 
-  // Load Inter font from Google (reliable on edge)
+  // Load Inter Bold font from Google (latin subset, reliable on edge)
   const fontData = await fetch(
-    "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hjQ.woff2"
-  ).then((res) => res.arrayBuffer()).catch(() => null);
+    "https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYAZ9hiJ-Ek-_EeA.woff2"
+  ).then((res) => res.ok ? res.arrayBuffer() : null).catch(() => null);
 
   return new ImageResponse(
     (
