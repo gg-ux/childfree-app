@@ -65,7 +65,7 @@ export default async function Home() {
               </h1>
 
               <p className="theme-body text-muted max-w-2xl mb-10">
-                Chosn is a dating, friendship, and community platform for childfree adults. Find your people, your city, and your crew—without ever having to explain why you don&apos;t want kids.
+                Chosn is a dating, friendship, and community platform for childfree adults. Date, connect, and build a life you love—without ever having to explain why you don&apos;t want kids.
               </p>
 
               <WaitlistForm source="hero" />

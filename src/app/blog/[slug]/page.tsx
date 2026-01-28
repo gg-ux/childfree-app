@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: PageProps) {
       publishedTime: post.date,
       authors: [post.author],
       url: `${baseUrl}/blog/${slug}`,
-      images: [{ url: ogImage, width: 1200, height: 630 }],
+      images: [{ url: ogImage, width: 1200, height: 630, type: "image/png" }],
     },
     twitter: {
       card: "summary_large_image",

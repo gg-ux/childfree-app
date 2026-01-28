@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
 
-export const dynamic = "force-dynamic";
+export const runtime = "edge";
 
 export async function GET(request: NextRequest) {
   try {
@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
     const author = searchParams.get("author") || "Chosn Team";
     const tags = (searchParams.get("tags") || "").split(",").filter(Boolean);
 
-    const imageResponse = new ImageResponse(
+    return new ImageResponse(
       (
         <div
           style={{
@@ -119,17 +119,12 @@ export async function GET(request: NextRequest) {
       {
         width: 1200,
         height: 630,
+        headers: {
+          "Cache-Control": "public, max-age=86400, s-maxage=86400",
+          "Content-Type": "image/png",
+        },
       }
     );
-
-    const buffer = await imageResponse.arrayBuffer();
-    return new Response(buffer, {
-      headers: {
-        "Content-Type": "image/png",
-        "Content-Length": buffer.byteLength.toString(),
-        "Cache-Control": "public, max-age=86400, s-maxage=86400",
-      },
-    });
   } catch (e) {
     return new Response(`OG image generation failed: ${e instanceof Error ? e.message : "unknown error"}`, {
       status: 500,
