@@ -10,11 +10,10 @@ export async function GET(request: NextRequest) {
   const author = searchParams.get("author") || "Chosn Team";
   const tags = searchParams.get("tags") || "";
 
-  // Load font from public directory
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.chosn.co";
-  const fontData = await fetch(`${baseUrl}/fonts/Satoshi-Variable.woff2`)
-    .then((res) => res.ok ? res.arrayBuffer() : null)
-    .catch(() => null);
+  // Load Inter font from Google (reliable on edge)
+  const fontData = await fetch(
+    "https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hjQ.woff2"
+  ).then((res) => res.arrayBuffer()).catch(() => null);
 
   return new ImageResponse(
     (
@@ -27,7 +26,6 @@ export async function GET(request: NextRequest) {
           justifyContent: "space-between",
           padding: "60px 64px",
           backgroundColor: "#FFFFFF",
-          fontFamily: fontData ? "Satoshi" : "system-ui",
         }}
       >
         {/* Top — tags */}
@@ -134,9 +132,9 @@ export async function GET(request: NextRequest) {
         ? {
             fonts: [
               {
-                name: "Satoshi",
+                name: "Inter",
                 data: fontData,
-                style: "normal",
+                style: "normal" as const,
                 weight: 700,
               },
             ],
