@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { geocodeZip } from "@/lib/geocode";
+import { geocodeLocation } from "@/lib/geocode";
 import { rateLimit, getClientIp } from "@/lib/rate-limit";
 
 export const dynamic = "force-dynamic";
@@ -33,12 +33,12 @@ export async function POST(request: NextRequest) {
 
     const { zip } = await request.json();
     if (!zip || typeof zip !== "string") {
-      return NextResponse.json({ error: "Zip code required" }, { status: 400 });
+      return NextResponse.json({ error: "Location required" }, { status: 400 });
     }
 
-    const location = await geocodeZip(zip.trim());
+    const location = await geocodeLocation(zip.trim());
     if (!location) {
-      return NextResponse.json({ error: "Could not find that zip code" }, { status: 400 });
+      return NextResponse.json({ error: "Could not find that location" }, { status: 400 });
     }
 
     const { db } = await import("@/lib/db");

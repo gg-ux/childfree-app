@@ -4,7 +4,14 @@ import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
 import { ProtectedImage } from "@/components/ui/protected-image";
 import { WaitlistForm } from "@/components/ui/waitlist-form";
-import { Heart, UsersThree } from "@phosphor-icons/react/dist/ssr";
+import {
+  Heart,
+  UsersThree,
+  MagnifyingGlass,
+  UsersFour,
+  HourglassMedium,
+  Eye,
+} from "@phosphor-icons/react/dist/ssr";
 
 export const metadata = {
   title: "About | Chosn",
@@ -121,9 +128,9 @@ export default function AboutPage() {
                 Why I built Chosn
               </h2>
               <p className="theme-body text-muted mb-5">
-                I&apos;ve been childfree my whole life—and as an Asian
-                American woman, that came with no shortage of opinions from
-                everyone around me. I got tired of the judgment at family
+                I&apos;ve been childfree my whole life—and that came
+                with no shortage of opinions from everyone around me. I
+                got tired of the judgment at family
                 gatherings and the constant assumption that I&apos;d change
                 my mind. As my closest friends disappeared into parenthood,
                 I realized childfree adults deserved a real space to find
@@ -152,50 +159,52 @@ export default function AboutPage() {
       <section className="py-12 md:py-16 bg-foreground/[0.02]">
         <div className="container-main">
           <div>
-            <h2 className="font-display text-fluid-h2 text-foreground leading-[1.05] tracking-tight mb-8 text-center">
-              Common childfree struggles
+            <h2 className="font-display text-fluid-h2 text-foreground leading-[1.05] tracking-tight mb-3 text-center">
+              What we hope to alleviate
             </h2>
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div className="rounded-2xl border border-border bg-background p-6">
-                <p className="font-medium text-foreground mb-2">Finding a partner</p>
-                <p className="theme-body-sm text-muted">
-                  Worrying you&apos;ll never find someone who truly shares your values—not just &ldquo;open to it&rdquo; but genuinely childfree.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-border bg-background p-6">
-                <p className="font-medium text-foreground mb-2">Losing your circle</p>
-                <p className="theme-body-sm text-muted">
-                  Watching your social life shrink as friends enter parenthood and suddenly have nothing in common with you.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-border bg-background p-6">
-                <p className="font-medium text-foreground mb-2">Aging alone</p>
-                <p className="theme-body-sm text-muted">
-                  The quiet fear of getting older without a built-in support system—and no roadmap for what that looks like.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-border bg-background p-6">
-                <p className="font-medium text-foreground mb-2">Constant judgment</p>
-                <p className="theme-body-sm text-muted">
-                  Being called selfish, told you&apos;ll regret it, or treated like something is wrong with you for making a valid choice.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-border bg-background p-6">
-                <p className="font-medium text-foreground mb-2">Feeling invisible</p>
-                <p className="theme-body-sm text-muted">
-                  Living in a world where cities, policies, social norms, and even apps are designed around families—and you&apos;re an afterthought.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-border bg-background p-6">
-                <p className="font-medium text-foreground mb-2">Navigating finances alone</p>
-                <p className="theme-body-sm text-muted">
-                  No child tax credits, no family leave flexibility, and a financial system that rewards parenthood—while your lifestyle goes unrecognized.
-                </p>
-              </div>
-            </div>
-            <p className="theme-body text-muted mt-8 text-center">
+            <p className="theme-body text-muted mb-8 text-center">
               These aren&apos;t small things. And they&apos;re easier to navigate when you&apos;re not doing it alone.
             </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {[
+                {
+                  icon: MagnifyingGlass,
+                  title: "Finding a partner",
+                  description: "Worrying you\u2019ll never find someone who truly shares your values\u2014not just \u201Copen to it\u201D but genuinely childfree.",
+                  iconColor: "text-[#1e5a3a]",
+                  bg: "bg-forest/15",
+                },
+                {
+                  icon: UsersFour,
+                  title: "Losing your circle",
+                  description: "Watching your social life shrink as friends enter parenthood and suddenly have nothing in common with you.",
+                  iconColor: "text-[#b8502a]",
+                  bg: "bg-coral/15",
+                },
+                {
+                  icon: HourglassMedium,
+                  title: "Aging alone",
+                  description: "The quiet fear of getting older without a built-in support system\u2014and no roadmap for what that looks like.",
+                  iconColor: "text-[#b07c1a]",
+                  bg: "bg-marigold/15",
+                },
+                {
+                  icon: Eye,
+                  title: "Judgment and invisibility",
+                  description: "Being called selfish, told you\u2019ll regret it\u2014while living in a world where policies, social norms, and even apps are designed around families.",
+                  iconColor: "text-[#1e5a3a]",
+                  bg: "bg-forest/15",
+                },
+              ].map((item) => (
+                <div key={item.title} className="rounded-2xl border border-border bg-background p-6">
+                  <div className={`w-12 h-12 rounded-xl ${item.bg} flex items-center justify-center mb-4`}>
+                    <item.icon size={24} weight="duotone" className={item.iconColor} />
+                  </div>
+                  <h3 className="theme-heading text-xl text-foreground mb-2">{item.title}</h3>
+                  <p className="theme-body-sm text-muted">{item.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -288,18 +297,7 @@ export default function AboutPage() {
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                   </svg>
                 </a>
-                <a
-                  href="https://www.pinterest.com/chosn_hq/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted hover:text-foreground transition-colors duration-300"
-                  aria-label="Pinterest"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
-                  </svg>
-                </a>
-                <a
+<a
                   href="https://www.facebook.com/profile.php?id=61587144091146"
                   target="_blank"
                   rel="noopener noreferrer"

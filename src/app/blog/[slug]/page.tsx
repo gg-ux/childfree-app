@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { Logo } from "@/components/ui/logo";
-import { Button } from "@/components/ui/button";
 import { BlogImage } from "@/components/ui/blog-image";
+import { AuthNav } from "@/components/ui/auth-nav";
 import { getPostBySlug, getAllSlugs, getOtherPosts } from "@/lib/blog";
 import { mdxComponents } from "@/components/mdx-components";
 import { ArrowLeft, ArrowRight, CalendarBlank, Clock } from "@phosphor-icons/react/dist/ssr";
 import { ShareButton } from "@/components/ui/share-button";
+import { BlogFavoriteButton } from "@/components/ui/blog-favorite-button";
+import { Logo } from "@/components/ui/logo";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -86,25 +87,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-[rgba(0,0,0,0.06)]">
-        <div className="container-main h-16 flex items-center justify-between">
-          <Link href="/">
-            <Logo variant="full" size="md" />
-          </Link>
-          <div className="flex items-center gap-6">
-            <Link
-              href="/blog"
-              className="theme-nav text-foreground hover:text-muted"
-            >
-              Blog
-            </Link>
-            <Button asChild variant="accent" size="md">
-              <Link href="/sign-up">Join waitlist</Link>
-            </Button>
-          </div>
-        </div>
-      </nav>
+      <AuthNav />
 
       {/* Article */}
       <article className="pt-28 pb-16 md:pt-36 md:pb-24">
@@ -157,7 +140,10 @@ export default async function BlogPostPage({ params }: PageProps) {
                 {post.readingTime}
               </span>
             </div>
-            <ShareButton title={post.title} />
+            <div className="flex items-center gap-3">
+              <BlogFavoriteButton slug={slug} />
+              <ShareButton title={post.title} />
+            </div>
           </div>
         </header>
 
@@ -189,11 +175,9 @@ export default async function BlogPostPage({ params }: PageProps) {
           <p className="theme-body text-muted mb-8">
             Join the waitlist and be the first to know when we launch.
           </p>
-          <Button asChild variant="accent" size="lg">
-            <Link href="/sign-up" className="gap-2">
-              Join waitlist
-            </Link>
-          </Button>
+          <Link href="/sign-up" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-forest text-white font-[600] hover:bg-forest-light transition-colors">
+            Join waitlist
+          </Link>
         </div>
       </section>
 

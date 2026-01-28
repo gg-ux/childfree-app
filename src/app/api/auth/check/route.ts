@@ -16,7 +16,16 @@ export async function GET(request: NextRequest) {
       where: { token: sessionToken },
       include: {
         user: {
-          include: { profile: true },
+          include: {
+            profile: {
+              include: {
+                photos: {
+                  where: { position: 0 },
+                  take: 1,
+                },
+              },
+            },
+          },
         },
       },
     });
@@ -46,6 +55,7 @@ export async function GET(request: NextRequest) {
               locationCity: session.user.profile.locationCity,
               locationLat: session.user.profile.locationLat,
               locationLng: session.user.profile.locationLng,
+              avatarUrl: session.user.profile.photos?.[0]?.url || null,
             }
           : null,
       },

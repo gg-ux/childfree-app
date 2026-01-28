@@ -34,6 +34,7 @@ model User {
   eventRsvps    EventRsvp[]
   reportsMade   Report[]   @relation("Reporter")
   reportsReceived Report[] @relation("ReportedUser")
+  blogFavorites BlogFavorite[]
 
   @@index([email])
 }
@@ -67,6 +68,15 @@ model Profile {
 
   // Interests & Hobbies
   interests         String[]
+
+  // Identity
+  pronouns          String?
+  identityTags      String[]
+  petTypes          String[]          // multi-select: ["cat", "dog", "bird", etc.]
+
+  // Personality
+  zodiacSign        String?
+  mbtiType          String?
 
   // Lifestyle
   pets              String?
@@ -121,13 +131,19 @@ enum RelationshipStatus {
   RELATIONSHIP
   COMPLICATED
   ENM           // Ethically non-monogamous
+  POLYAMOROUS
+  OPEN          // Open relationship
 }
 
 enum SeekingType {
   DATING              // Find a childfree partner
   FRIENDSHIP          // Platonic connections
   ACTIVITY_PARTNERS   // Hiking, gym, events companions
-  COMMUNITY           // Connect with childfree folks
+  LIFE_PARTNER
+  CASUAL_DATING
+  FRIENDS
+  ADVENTURE_BUDDY
+  COMMUNITY
 }
 
 // ============================================
@@ -372,6 +388,21 @@ model PromptTemplate {
   createdAt   DateTime @default(now())
 
   @@index([category, isActive])
+}
+
+// ============================================
+// BLOG FAVORITES
+// ============================================
+
+model BlogFavorite {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  slug      String
+  createdAt DateTime @default(now())
+
+  @@unique([userId, slug])
+  @@index([userId])
 }
 
 // ============================================

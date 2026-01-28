@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Logo } from "@/components/ui/logo";
-import { Button } from "@/components/ui/button";
 import { BlogList } from "@/components/ui/blog-list";
 import { getAllPosts } from "@/lib/blog";
+import { AuthNav } from "@/components/ui/auth-nav";
 
 export const metadata = {
   title: "Blog | Chosn",
@@ -29,25 +29,7 @@ export default async function BlogPage({ searchParams }: PageProps) {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-[rgba(0,0,0,0.06)]">
-        <div className="container-main h-16 flex items-center justify-between">
-          <Link href="/">
-            <Logo variant="full" size="md" />
-          </Link>
-          <div className="flex items-center gap-6">
-            <Link
-              href="/blog"
-              className="theme-nav text-foreground hover:text-muted"
-            >
-              Blog
-            </Link>
-            <Button asChild variant="accent" size="md">
-              <Link href="/sign-up">Join waitlist</Link>
-            </Button>
-          </div>
-        </div>
-      </nav>
+      <AuthNav />
 
       <BlogList posts={filteredPosts} activeTag={activeTag} allTags={allTags} />
 

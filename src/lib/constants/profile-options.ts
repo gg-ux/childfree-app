@@ -90,7 +90,6 @@ export const DIET_OPTIONS = [
   { value: "vegan", label: "Vegan" },
   { value: "pescatarian", label: "Pescatarian" },
   { value: "gluten-free", label: "Gluten-free" },
-  { value: "other", label: "Other" },
 ];
 
 export const DRINKING_OPTIONS = [
@@ -131,6 +130,83 @@ export const VALUES = [
   { value: "minimalist", label: "Minimalist" },
 ];
 
+export const ZODIAC_SIGNS = [
+  { value: "aries", label: "Aries ♈" },
+  { value: "taurus", label: "Taurus ♉" },
+  { value: "gemini", label: "Gemini ♊" },
+  { value: "cancer", label: "Cancer ♋" },
+  { value: "leo", label: "Leo ♌" },
+  { value: "virgo", label: "Virgo ♍" },
+  { value: "libra", label: "Libra ♎" },
+  { value: "scorpio", label: "Scorpio ♏" },
+  { value: "sagittarius", label: "Sagittarius ♐" },
+  { value: "capricorn", label: "Capricorn ♑" },
+  { value: "aquarius", label: "Aquarius ♒" },
+  { value: "pisces", label: "Pisces ♓" },
+];
+
+export const MBTI_OPTIONS = [
+  { value: "INTJ", label: "INTJ" },
+  { value: "INTP", label: "INTP" },
+  { value: "ENTJ", label: "ENTJ" },
+  { value: "ENTP", label: "ENTP" },
+  { value: "INFJ", label: "INFJ" },
+  { value: "INFP", label: "INFP" },
+  { value: "ENFJ", label: "ENFJ" },
+  { value: "ENFP", label: "ENFP" },
+  { value: "ISTJ", label: "ISTJ" },
+  { value: "ISFJ", label: "ISFJ" },
+  { value: "ESTJ", label: "ESTJ" },
+  { value: "ESFJ", label: "ESFJ" },
+  { value: "ISTP", label: "ISTP" },
+  { value: "ISFP", label: "ISFP" },
+  { value: "ESTP", label: "ESTP" },
+  { value: "ESFP", label: "ESFP" },
+];
+
+export const WORK_STYLE_OPTIONS = [
+  { value: "office", label: "Office" },
+  { value: "remote", label: "Remote" },
+  { value: "hybrid", label: "Hybrid" },
+  { value: "freelance", label: "Freelance" },
+  { value: "entrepreneur", label: "Entrepreneur" },
+  { value: "retired", label: "Retired" },
+  { value: "student", label: "Student" },
+];
+
+export const PRONOUNS_OPTIONS = [
+  { value: "she/her", label: "She/Her" },
+  { value: "he/him", label: "He/Him" },
+  { value: "they/them", label: "They/Them" },
+  { value: "she/they", label: "She/They" },
+  { value: "he/they", label: "He/They" },
+  { value: "other", label: "Other" },
+];
+
+export const IDENTITY_TAG_OPTIONS = [
+  { value: "DINK", label: "DINK", description: "Dual Income, No Kids" },
+  { value: "SINK", label: "SINK", description: "Single Income, No Kids" },
+  { value: "PANK", label: "PANK", description: "Pro Aunt, No Kids" },
+  { value: "PUNK", label: "PUNK", description: "Pro Uncle, No Kids" },
+];
+
+export const LOOKING_FOR_OPTIONS = [
+  { value: "LIFE_PARTNER", label: "Life partner" },
+  { value: "CASUAL_DATING", label: "Casual dating" },
+  { value: "FRIENDS", label: "Friends" },
+  { value: "ADVENTURE_BUDDY", label: "Adventure buddy" },
+  { value: "COMMUNITY", label: "Community" },
+];
+
+export const PET_PARENT_OPTIONS = [
+  { value: "cat", label: "Cat" },
+  { value: "dog", label: "Dog" },
+  { value: "bird", label: "Bird" },
+  { value: "rabbit", label: "Rabbit" },
+  { value: "reptile", label: "Reptile" },
+  { value: "fish", label: "Fish" },
+];
+
 export const PROMPTS = [
   // Childfree-specific
   { value: "childfree-best", text: "The best part about being childfree is..." },
@@ -150,4 +226,12 @@ export const PROMPTS = [
   { value: "looking-for", text: "I'm looking for someone who..." },
   { value: "most-grateful", text: "I'm most grateful for..." },
   { value: "believe-in", text: "I believe in..." },
+  // Quirky
+  { value: "need-to-know", text: "Something people need to know about me is..." },
+  { value: "hot-take", text: "My hottest take is..." },
+  { value: "guilty-pleasure", text: "My guilty pleasure is..." },
+  { value: "weirdly-good-at", text: "I'm weirdly good at..." },
+  { value: "hill-to-die-on", text: "A hill I'll die on..." },
+  { value: "unusual-skill", text: "The most unusual thing I can do is..." },
+  { value: "unpopular-opinion", text: "My most unpopular opinion is..." },
 ];

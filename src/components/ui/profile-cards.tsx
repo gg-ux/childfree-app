@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MagnifyingGlass, Heart, Dog } from "@phosphor-icons/react";
+import { MagnifyingGlass, Star, PawPrint } from "@phosphor-icons/react";
 
 export function ProfileCards() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
@@ -82,8 +82,8 @@ export function ProfileCards() {
               Friends
             </span>
             <span className="text-[11px] px-2 py-0.5 rounded-full bg-foreground/8 text-foreground/70 font-semibold inline-flex items-center gap-1">
-              <Dog size={10} weight="fill" />
-              Dog dad
+              <PawPrint size={10} weight="bold" />
+              Dog parent
             </span>
           </div>
         </div>
@@ -112,7 +112,7 @@ export function ProfileCards() {
               Life partner
             </span>
             <span className="text-[12px] px-2 py-0.5 rounded-full bg-foreground/8 text-foreground/70 font-semibold inline-flex items-center gap-1">
-              <Heart size={11} weight="bold" />
+              <Star size={11} weight="bold" />
               DINK
             </span>
           </div>
