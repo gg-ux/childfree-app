@@ -675,12 +675,12 @@ export default function ProfilePage() {
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 mt-0.5">
                     {profile.locationCity && (
                       <p className="theme-body-sm text-muted flex items-center gap-1">
-                        <MapPin size={14} weight="fill" /> {profile.locationCity}
+                        <MapPin size={14} weight="bold" /> {profile.locationCity}
                       </p>
                     )}
                     {(profile.jobTitle || isEditMode) && (
                       <p className="theme-body-sm text-muted flex items-center gap-1">
-                        <Briefcase size={14} weight="fill" /> {profile.jobTitle || <span className="text-muted/40">Add job title</span>}
+                        <Briefcase size={14} weight="bold" /> {profile.jobTitle || <span className="text-muted/40">Add job title</span>}
                       </p>
                     )}
                   </div>
