@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.chosn.co";
-  const ogImage = `${baseUrl}/api/og?title=${encodeURIComponent(post.title)}&v=2`;
+  const ogImage = `${baseUrl}/assets/og-pic.png`;
 
   return {
     title: post.title,
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: PageProps) {
       publishedTime: post.date,
       authors: [post.author],
       url: `${baseUrl}/blog/${slug}`,
-      images: [{ url: ogImage, width: 1200, height: 630, type: "image/png" }],
+      images: [{ url: ogImage, width: 1640, height: 856, type: "image/png" }],
     },
     twitter: {
       card: "summary_large_image",
