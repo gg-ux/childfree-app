@@ -92,14 +92,13 @@ export default function SettingsPage() {
   };
 
   const savePref = async (fields: Record<string, unknown>) => {
-    setPrefsSaving(true);
     try {
       await fetch("/api/profile", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(fields),
       });
-    } catch {} finally { setPrefsSaving(false); }
+    } catch {}
   };
 
   const GENDER_OPTIONS = [
@@ -280,8 +279,8 @@ export default function SettingsPage() {
                 <span className="theme-body-sm text-muted ml-auto">{ageMin} – {ageMax}</span>
               </div>
               <div className="flex items-center gap-3 ml-8">
-                <input type="range" min={18} max={99} value={ageMin} onChange={(e) => { const v = Number(e.target.value); if (v <= ageMax) setAgeMin(v); }} onPointerUp={(e) => savePref({ ageMin: Number((e.target as HTMLInputElement).value) })} className="flex-1 accent-forest" />
-                <input type="range" min={18} max={99} value={ageMax} onChange={(e) => { const v = Number(e.target.value); if (v >= ageMin) setAgeMax(v); }} onPointerUp={(e) => savePref({ ageMax: Number((e.target as HTMLInputElement).value) })} className="flex-1 accent-forest" />
+                <input type="range" min={18} max={99} value={ageMin} onChange={(e) => { const v = Number(e.target.value); if (v <= ageMax) setAgeMin(v); }} onPointerUp={(e) => savePref({ ageMin: Number((e.target as HTMLInputElement).value) })} className="flex-1 accent-forest range-slim" />
+                <input type="range" min={18} max={99} value={ageMax} onChange={(e) => { const v = Number(e.target.value); if (v >= ageMin) setAgeMax(v); }} onPointerUp={(e) => savePref({ ageMax: Number((e.target as HTMLInputElement).value) })} className="flex-1 accent-forest range-slim" />
               </div>
             </div>
             <div className="px-4 py-3.5">
@@ -291,7 +290,7 @@ export default function SettingsPage() {
                 <span className="theme-body-sm text-muted ml-auto">{distanceMax} mi</span>
               </div>
               <div className="ml-8">
-                <input type="range" min={5} max={200} step={5} value={distanceMax} onChange={(e) => setDistanceMax(Number(e.target.value))} onPointerUp={(e) => savePref({ distanceMax: Number((e.target as HTMLInputElement).value) })} className="w-full accent-forest" />
+                <input type="range" min={5} max={200} step={5} value={distanceMax} onChange={(e) => setDistanceMax(Number(e.target.value))} onPointerUp={(e) => savePref({ distanceMax: Number((e.target as HTMLInputElement).value) })} className="w-full accent-forest range-slim" />
               </div>
             </div>
             <div className="px-4 py-3.5">

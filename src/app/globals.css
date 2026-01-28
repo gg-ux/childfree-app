@@ -188,6 +188,38 @@ body {
   display: none;
 }
 
+/* Slim range slider — 4px track */
+.range-slim {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border);
+  outline: none;
+}
+.range-slim::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--forest);
+  cursor: pointer;
+}
+.range-slim::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border);
+}
+.range-slim::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--forest);
+  border: none;
+  cursor: pointer;
+}
+
 /* Frosted glass effect */
 .frosted {
   backdrop-filter: blur(12px);

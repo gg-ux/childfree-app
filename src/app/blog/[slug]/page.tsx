@@ -27,6 +27,15 @@ export async function generateMetadata({ params }: PageProps) {
     return { title: "Post Not Found | Chosn" };
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.chosn.co";
+  const ogParams = new URLSearchParams({
+    title: post.title,
+    description: post.description || "",
+    author: post.author || "Chosn Team",
+    tags: (post.tags || []).join(","),
+  });
+  const ogImage = `${baseUrl}/api/og?${ogParams.toString()}`;
+
   return {
     title: post.title,
     description: post.description,
@@ -36,13 +45,14 @@ export async function generateMetadata({ params }: PageProps) {
       type: "article",
       publishedTime: post.date,
       authors: [post.author],
-      images: post.image ? [{ url: post.image }] : [],
+      url: `${baseUrl}/blog/${slug}`,
+      images: [{ url: ogImage, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
-      images: post.image ? [post.image] : [],
+      images: [ogImage],
     },
   };
 }

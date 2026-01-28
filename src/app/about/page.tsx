@@ -53,8 +53,7 @@ export default function AboutPage() {
                 you chose
               </h1>
               <p className="theme-body text-muted max-w-lg">
-                Chosn was born from the philosophy that the most meaningful
-                lives and families are the ones we choose with intention
+                Chosn was born from a simple belief: the best life is one you design on your own terms.
               </p>
             </div>
             <div className="order-1 md:order-2 relative aspect-[4/3] rounded-2xl overflow-hidden">

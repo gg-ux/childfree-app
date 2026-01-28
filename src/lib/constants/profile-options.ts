@@ -186,8 +186,8 @@ export const PRONOUNS_OPTIONS = [
 export const IDENTITY_TAG_OPTIONS = [
   { value: "DINK", label: "DINK", description: "Dual Income, No Kids" },
   { value: "SINK", label: "SINK", description: "Single Income, No Kids" },
-  { value: "PANK", label: "PANK", description: "Pro Aunt, No Kids" },
-  { value: "PUNK", label: "PUNK", description: "Pro Uncle, No Kids" },
+  { value: "PANK", label: "PANK", description: "Professional Aunt, No Kids" },
+  { value: "PUNK", label: "PUNK", description: "Professional Uncle, No Kids" },
 ];
 
 export const LOOKING_FOR_OPTIONS = [

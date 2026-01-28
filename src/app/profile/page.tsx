@@ -167,7 +167,7 @@ function computeCompletion(profile: ProfileData) {
   if (profile.photos.length > 0) score += 20;
   if (profile.prompts.length > 0) score += 30;
   if (profile.interests.length > 0) score += 10;
-  const aboutFields = [profile.pets, profile.diet, profile.drinking, profile.smoking, profile.cannabis, profile.workStyle].filter(Boolean);
+  const aboutFields = [profile.diet, profile.drinking, profile.smoking, profile.cannabis, profile.workStyle].filter(Boolean);
   if (aboutFields.length >= 3) score += 15;
   if (profile.musicGenres.length > 0) score += 10;
   if (profile.values.length > 0) score += 15;
@@ -178,7 +178,7 @@ function getNudge(profile: ProfileData) {
   if (profile.photos.length === 0) return "Add a photo to make your profile stand out";
   if (profile.prompts.length === 0) return "Add a prompt to spark conversation";
   if (profile.interests.length === 0) return "Add interests so people can find you";
-  const aboutFields = [profile.zodiacSign, profile.pets, profile.diet, profile.drinking, profile.smoking, profile.cannabis, profile.workStyle].filter(Boolean);
+  const aboutFields = [profile.zodiacSign, profile.diet, profile.drinking, profile.smoking, profile.cannabis, profile.workStyle].filter(Boolean);
   if (aboutFields.length < 3) return "Fill out your About Me details";
   if (profile.values.length === 0) return "Share your values";
   if (profile.musicGenres.length === 0) return "Add your music taste";
@@ -617,7 +617,7 @@ export default function ProfilePage() {
             </div>
 
             {/* RIGHT COLUMN — Profile details */}
-            <div className="lg:overflow-y-auto lg:pl-2 scrollbar-hide">
+            <div className="lg:overflow-y-auto lg:pl-2 lg:pb-16 scrollbar-hide">
               {/* Name + Edit button */}
               <div className="flex items-start justify-between mb-1">
                 <div
@@ -683,7 +683,7 @@ export default function ProfilePage() {
                   <div className="mt-4 mb-6">
                     {isEditMode && sectionHeader("Tags", "tags")}
                     {hasTags ? (
-                      <div className="flex flex-wrap gap-2">
+                      <div className={`flex flex-wrap gap-2 ${isEditMode ? "cursor-pointer" : ""}`} onClick={() => isEditMode && openEdit("tags")}>
                         {allTags.slice(0, 4).map((tag) => (
                           <span key={tag.key} className={chipClass}>
                             <tag.icon size={14} weight="bold" />
@@ -704,24 +704,25 @@ export default function ProfilePage() {
                 {profile.prompts.map((prompt) => {
                   const promptDef = PROMPTS.find((p) => p.value === prompt.promptType);
                   return (
-                    <div key={prompt.id} className="rounded-2xl border border-border p-4">
+                    <div
+                      key={prompt.id}
+                      className={`rounded-2xl border border-border p-4 ${isEditMode ? "cursor-pointer hover:border-forest/30 transition-colors" : ""}`}
+                      onClick={() => isEditMode && (() => {
+                        setEditSection("prompt");
+                        setEditPromptId(prompt.id);
+                        setEditPromptType(prompt.promptType);
+                        setEditPromptAnswer(prompt.answer);
+                      })()}
+                    >
                       <div className="flex items-start justify-between">
                         <div>
                           <p className="theme-caption text-forest mb-1">{promptDef?.text || prompt.promptType}</p>
                           <p className="theme-body-sm text-foreground">{prompt.answer}</p>
                         </div>
                         {isEditMode && (
-                          <button
-                            onClick={() => {
-                              setEditSection("prompt");
-                              setEditPromptId(prompt.id);
-                              setEditPromptType(prompt.promptType);
-                              setEditPromptAnswer(prompt.answer);
-                            }}
-                            className="text-muted hover:text-forest transition-colors shrink-0 ml-2"
-                          >
+                          <span className="text-muted shrink-0 ml-2">
                             <PencilSimple size={14} weight="bold" />
-                          </button>
+                          </span>
                         )}
                       </div>
                     </div>
@@ -738,7 +739,7 @@ export default function ProfilePage() {
               </div>
 
               {/* About Me details */}
-              {(isEditMode || profile.birthdate || profile.mbtiType || profile.pets || profile.diet || profile.drinking || profile.smoking || profile.cannabis || profile.workStyle) && (
+              {(isEditMode || profile.birthdate || profile.mbtiType || profile.diet || profile.drinking || profile.smoking || profile.cannabis || profile.workStyle) && (
               <div className="mb-6">
                 <h2 className="theme-heading text-sm text-foreground mb-3">About Me</h2>
                 {isEditMode ? (
@@ -749,7 +750,6 @@ export default function ProfilePage() {
                     </div>
                     {[
                       { label: "MBTI", icon: Brain, value: profile.mbtiType, options: MBTI_OPTIONS, field: "mbtiType" },
-                      { label: "Pets", icon: PawPrint, value: profile.pets, options: PETS_OPTIONS, field: "pets" },
                       { label: "Diet", icon: ForkKnife, value: profile.diet, options: DIET_OPTIONS, field: "diet" },
                       { label: "Drinking", icon: Wine, value: profile.drinking, options: DRINKING_OPTIONS, field: "drinking" },
                       { label: "Smoking", icon: Cigarette, value: profile.smoking, options: SMOKING_OPTIONS, field: "smoking" },
@@ -794,7 +794,7 @@ export default function ProfilePage() {
               <div className="mb-6">
                 {sectionHeader("Interests", "interests")}
                 {profile.interests.length > 0 ? (
-                  <div className="flex flex-wrap gap-2">
+                  <div className={`flex flex-wrap gap-2 ${isEditMode ? "cursor-pointer" : ""}`} onClick={() => isEditMode && openEdit("interests")}>
                     {profile.interests.map((v) => (
                       <span key={v} className={chipClass}>
                         {INTERESTS.find((i) => i.value === v)?.label || v}
@@ -812,7 +812,7 @@ export default function ProfilePage() {
               <div className="mb-6">
                 {sectionHeader("Music", "music")}
                 {profile.musicGenres.length > 0 ? (
-                  <div className="flex flex-wrap gap-2">
+                  <div className={`flex flex-wrap gap-2 ${isEditMode ? "cursor-pointer" : ""}`} onClick={() => isEditMode && openEdit("music")}>
                     {profile.musicGenres.map((v) => (
                       <span key={v} className={chipClass}>
                         {MUSIC_GENRES.find((m) => m.value === v)?.label || v}
@@ -830,7 +830,7 @@ export default function ProfilePage() {
               <div className="mb-6">
                 {sectionHeader("Values", "values")}
                 {profile.values.length > 0 ? (
-                  <div className="flex flex-wrap gap-2">
+                  <div className={`flex flex-wrap gap-2 ${isEditMode ? "cursor-pointer" : ""}`} onClick={() => isEditMode && openEdit("values")}>
                     {profile.values.map((v) => (
                       <span key={v} className={chipClass}>
                         {VALUES.find((val) => val.value === v)?.label || v}
@@ -984,7 +984,7 @@ export default function ProfilePage() {
                       {IDENTITY_TAG_OPTIONS.map((opt) => (
                         <div key={opt.value} className="contents">
                           <span className="theme-caption font-[600] text-foreground">{opt.label}</span>
-                          <span className="theme-caption text-muted whitespace-nowrap">{opt.description}</span>
+                          <span className="theme-caption text-muted whitespace-nowrap normal-case">{opt.description}</span>
                         </div>
                       ))}
                     </div>
@@ -1151,7 +1151,6 @@ export default function ProfilePage() {
       {/* About Me single-select modals */}
       {[
         { field: "mbtiType", title: "MBTI", options: MBTI_OPTIONS },
-        { field: "pets", title: "Pets", options: PETS_OPTIONS },
         { field: "diet", title: "Diet", options: DIET_OPTIONS },
         { field: "drinking", title: "Drinking", options: DRINKING_OPTIONS },
         { field: "smoking", title: "Smoking", options: SMOKING_OPTIONS },
@@ -1159,16 +1158,16 @@ export default function ProfilePage() {
         { field: "workStyle", title: "Work Style", options: WORK_STYLE_OPTIONS },
       ].map(({ field, title, options }) => (
         <EditModal key={field} title={title} open={editSection === `about-${field}`} onClose={() => setEditSection(null)}>
-          <div className={field === "mbtiType" ? "flex flex-wrap gap-2" : "space-y-2"}>
+          <div className="flex flex-wrap gap-2">
             {options.map((opt) => (
               <button key={opt.value} onClick={async () => { const newVal = profile[field as keyof ProfileData] === opt.value ? null : opt.value; await saveField({ [field]: newVal }); setEditSection(null); }}
-                className={`${field === "mbtiType" ? "px-4 py-2.5" : "w-full px-4 py-3 text-left"} rounded-xl border theme-body-sm transition-colors ${profile[field as keyof ProfileData] === opt.value ? "border-forest bg-forest/10 text-forest" : "border-border text-foreground hover:bg-foreground/5"}`}>
+                className={`px-4 py-2.5 rounded-xl border theme-body-sm transition-colors ${profile[field as keyof ProfileData] === opt.value ? "border-forest bg-forest/10 text-forest" : "border-border text-foreground hover:bg-foreground/5"}`}>
                 {opt.label}
               </button>
             ))}
             {profile[field as keyof ProfileData] && (
               <button onClick={async () => { await saveField({ [field]: null }); setEditSection(null); }}
-                className={`${field === "mbtiType" ? "px-4 py-2.5" : "w-full px-4 py-3 text-left"} rounded-xl border border-red-200 theme-body-sm text-red-500 hover:bg-red-50 transition-colors`}>
+                className="px-4 py-2.5 rounded-xl border border-red-200 theme-body-sm text-red-500 hover:bg-red-50 transition-colors">
                 Clear
               </button>
             )}
