@@ -90,6 +90,7 @@ interface ProfileData {
   smoking: string | null;
   cannabis: string | null;
   workStyle: string | null;
+  anthem: string | null;
   locationCity: string | null;
   photos: Photo[];
   prompts: PromptData[];
@@ -141,6 +142,12 @@ function getZodiac(birthdate: string) {
 function getLabel(options: { value: string; label: string }[], value: string | null) {
   if (!value) return null;
   return options.find((o) => o.value === value)?.label || value;
+}
+
+function getSpotifyTrackId(url: string | null): string | null {
+  if (!url) return null;
+  const match = url.match(/open\.spotify\.com\/track\/([a-zA-Z0-9]+)/);
+  return match ? match[1] : null;
 }
 
 const RELATIONSHIP_OPTIONS = [
@@ -235,6 +242,7 @@ export default function ProfilePage() {
   const [editPronouns, setEditPronouns] = useState("");
   const [editTags, setEditTags] = useState<{ looking: string[]; identity: string[]; pet: string[]; relationship: string }>({ looking: [], identity: [], pet: [], relationship: "" });
   const [showIdentityInfo, setShowIdentityInfo] = useState(false);
+  const [editAnthem, setEditAnthem] = useState("");
   const [photoMenuId, setPhotoMenuId] = useState<string | null>(null);
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
   const photoMenuRef = useRef<HTMLDivElement>(null);
@@ -423,7 +431,7 @@ export default function ProfilePage() {
     </div>
   );
 
-  const chipToggle = (value: string, list: string[], setList: (v: string[]) => void, max = 15) => {
+  const chipToggle = (value: string, list: string[], setList: (v: string[]) => void, max = 5) => {
     if (list.includes(value)) setList(list.filter((v) => v !== value));
     else if (list.length < max) setList([...list, value]);
   };
@@ -852,6 +860,54 @@ export default function ProfilePage() {
               </div>
               )}
 
+              {/* Anthem */}
+              {(isEditMode || profile.anthem) && (
+              <div className="mb-6">
+                {isEditMode ? (
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => { setEditAnthem(profile.anthem || ""); setEditSection("anthem"); }}
+                  >
+                    <h2 className="theme-heading text-sm text-foreground mb-3 inline-flex items-center gap-1.5 hover:text-forest transition-colors">
+                      Anthem
+                      <PencilSimple size={12} weight="bold" className="text-muted" />
+                    </h2>
+                  </div>
+                ) : (
+                  <h2 className="theme-heading text-sm text-foreground mb-3">Anthem</h2>
+                )}
+                {(() => {
+                  const trackId = getSpotifyTrackId(profile.anthem);
+                  if (trackId) {
+                    return (
+                      <div className="rounded-xl overflow-hidden">
+                        <iframe
+                          src={`https://open.spotify.com/embed/track/${trackId}?theme=0`}
+                          width="100%"
+                          height="80"
+                          frameBorder="0"
+                          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                          loading="lazy"
+                          className="rounded-xl"
+                        />
+                      </div>
+                    );
+                  }
+                  if (isEditMode) {
+                    return (
+                      <button
+                        onClick={() => { setEditAnthem(""); setEditSection("anthem"); }}
+                        className="theme-body-sm text-muted hover:text-forest transition-colors"
+                      >
+                        + Add your anthem
+                      </button>
+                    );
+                  }
+                  return null;
+                })()}
+              </div>
+              )}
+
               {/* Values */}
               {(isEditMode || profile.values.length > 0) && (
               <div className="mb-6">
@@ -1096,7 +1152,7 @@ export default function ProfilePage() {
 
       {/* Interests */}
       <EditModal title="Interests" open={editSection === "interests"} onClose={() => setEditSection(null)}>
-        <p className="theme-caption text-muted mb-3">Select up to 15</p>
+        <p className="theme-caption text-muted mb-3">Select up to 5</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {INTERESTS.map((i) => (
             <button key={i.value} onClick={() => chipToggle(i.value, editInterests, setEditInterests)}
@@ -1112,7 +1168,7 @@ export default function ProfilePage() {
 
       {/* Music */}
       <EditModal title="Music Taste" open={editSection === "music"} onClose={() => setEditSection(null)}>
-        <p className="theme-caption text-muted mb-3">Select your favorites</p>
+        <p className="theme-caption text-muted mb-3">Select up to 5</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {MUSIC_GENRES.map((m) => (
             <button key={m.value} onClick={() => chipToggle(m.value, editMusic, setEditMusic)}
@@ -1126,8 +1182,46 @@ export default function ProfilePage() {
         </button>
       </EditModal>
 
+      {/* Anthem */}
+      <EditModal title="Anthem" open={editSection === "anthem"} onClose={() => setEditSection(null)}>
+        <div className="space-y-3">
+          <div>
+            <label className="theme-caption text-foreground mb-1 block">Spotify song link</label>
+            <input
+              type="text"
+              value={editAnthem}
+              onChange={(e) => setEditAnthem(e.target.value)}
+              placeholder="https://open.spotify.com/track/..."
+              className="w-full px-3 h-10 rounded-lg border border-border bg-background theme-body-sm focus:outline-none focus:border-forest transition-colors"
+            />
+            <p className="theme-caption text-muted mt-1.5">Open Spotify, tap Share on a song, and copy the link.</p>
+          </div>
+          <button
+            onClick={async () => {
+              const url = editAnthem.trim();
+              const trackId = getSpotifyTrackId(url);
+              await saveField({ anthem: trackId ? url : null });
+              setEditSection(null);
+            }}
+            disabled={saving}
+            className="w-full h-10 rounded-lg bg-forest text-white theme-body-sm font-[600] hover:bg-forest-light transition-colors disabled:opacity-50"
+          >
+            {saving ? "Saving..." : "Save"}
+          </button>
+          {profile.anthem && (
+            <button
+              onClick={async () => { await saveField({ anthem: null }); setEditSection(null); }}
+              className="w-full h-10 rounded-lg border border-red-200 theme-body-sm text-red-500 hover:bg-red-50 transition-colors"
+            >
+              Remove anthem
+            </button>
+          )}
+        </div>
+      </EditModal>
+
       {/* Values */}
       <EditModal title="Values" open={editSection === "values"} onClose={() => setEditSection(null)}>
+        <p className="theme-caption text-muted mb-3">Select up to 5</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {VALUES.map((v) => (
             <button key={v.value} onClick={() => chipToggle(v.value, editValues, setEditValues)}

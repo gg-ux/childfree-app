@@ -82,7 +82,7 @@ export async function PATCH(request: NextRequest) {
     const allowedFields = [
       "displayName", "bio", "gender", "genderPreferences",
       "childfreeStatus", "relationshipStatus", "seeking",
-      "interests", "musicGenres", "values", "dealBreakers",
+      "interests", "musicGenres", "anthem", "values", "dealBreakers",
       "pets", "diet", "drinking", "smoking", "cannabis", "workStyle",
       "pronouns", "identityTags", "petTypes",
       "zodiacSign", "mbtiType", "locationCity", "locationLat", "locationLng",
