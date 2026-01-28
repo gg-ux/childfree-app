@@ -187,11 +187,16 @@ function getNudge(profile: ProfileData) {
 
 // Edit modal
 function EditModal({ title, open, onClose, children }: { title: string; open: boolean; onClose: () => void; children: React.ReactNode }) {
+  const [visible, setVisible] = React.useState(false);
+  React.useEffect(() => {
+    if (open) requestAnimationFrame(() => setVisible(true));
+    else setVisible(false);
+  }, [open]);
   if (!open) return null;
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div className={`fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 transition-opacity duration-200 ${visible ? "opacity-100" : "opacity-0"}`}>
       <div className="absolute inset-0 bg-foreground/40 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative w-full sm:max-w-md bg-background rounded-t-2xl sm:rounded-2xl shadow-xl border border-border overflow-hidden max-h-[85vh] flex flex-col">
+      <div className={`relative w-full sm:max-w-md bg-background rounded-t-2xl sm:rounded-2xl shadow-xl border border-border overflow-hidden max-h-[85vh] flex flex-col transition-transform duration-300 ease-out ${visible ? "translate-y-0" : "translate-y-8 sm:translate-y-4"}`}>
         <div className="flex items-center justify-between px-5 py-3.5 border-b border-border shrink-0">
           <h2 className="theme-heading text-sm text-foreground">{title}</h2>
           <button onClick={onClose} className="text-muted hover:text-foreground transition-colors">
@@ -210,8 +215,10 @@ export default function ProfilePage() {
   const [events, setEvents] = useState<EventAttended[]>([]);
   const [loading, setLoading] = useState(true);
   const [showAvatarMenu, setShowAvatarMenu] = useState(false);
-  const [isEditMode, setIsEditMode] = useState(true);
-  const [isOnline, setIsOnline] = useState(true);
+  const [isEditMode, setIsEditMode] = useState(false);
+  // Online status — placeholder until backend wiring
+  // const [isOnline, setIsOnline] = useState(true);
+  const [animatedCompletion, setAnimatedCompletion] = useState(0);
   const [mobilePhotoIndex, setMobilePhotoIndex] = useState(0);
   const touchStartY = useRef<number | null>(null);
   const avatarMenuRef = useRef<HTMLDivElement>(null);
@@ -229,6 +236,7 @@ export default function ProfilePage() {
   const [editTags, setEditTags] = useState<{ looking: string[]; identity: string[]; pet: string[]; relationship: string }>({ looking: [], identity: [], pet: [], relationship: "" });
   const [showIdentityInfo, setShowIdentityInfo] = useState(false);
   const [photoMenuId, setPhotoMenuId] = useState<string | null>(null);
+  const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
   const photoMenuRef = useRef<HTMLDivElement>(null);
   const [editPromptType, setEditPromptType] = useState("");
   const [editPromptAnswer, setEditPromptAnswer] = useState("");
@@ -261,16 +269,27 @@ export default function ProfilePage() {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
+  const showToast = useCallback((message: string, type: "success" | "error") => {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 2500);
+  }, []);
+
   const saveField = useCallback(async (data: Record<string, unknown>) => {
     setSaving(true);
     try {
       const res = await fetch("/api/profile", { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
       const result = await res.json();
-      console.log("PATCH response:", res.status, result);
-      if (res.ok && result.profile) setProfile((prev) => prev ? { ...prev, ...result.profile, email: prev.email } : prev);
-    } catch (err) { console.error("Save error:", err); }
+      if (res.ok && result.profile) {
+        setProfile((prev) => prev ? { ...prev, ...result.profile, email: prev.email } : prev);
+        showToast("Saved", "success");
+      } else {
+        showToast("Something went wrong", "error");
+      }
+    } catch {
+      showToast("Something went wrong", "error");
+    }
     finally { setSaving(false); }
-  }, []);
+  }, [showToast]);
 
   const handleLogout = async () => { await fetch("/api/auth/logout", { method: "POST" }); router.push("/"); };
 
@@ -354,6 +373,16 @@ export default function ProfilePage() {
     e.target.value = "";
   };
 
+  const completion = profile ? computeCompletion(profile) : 0;
+  const nudge = profile ? getNudge(profile) : null;
+  const age = profile ? getAge(profile.birthdate) : 0;
+
+  // Animate completion bar on change
+  useEffect(() => {
+    const timer = setTimeout(() => setAnimatedCompletion(completion), 100);
+    return () => clearTimeout(timer);
+  }, [completion]);
+
   if (loading || !profile) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -361,10 +390,6 @@ export default function ProfilePage() {
       </div>
     );
   }
-
-  const completion = computeCompletion(profile);
-  const nudge = getNudge(profile);
-  const age = getAge(profile.birthdate);
 
   const openEdit = (section: string) => {
     if (!isEditMode) return;
@@ -435,13 +460,10 @@ export default function ProfilePage() {
                     )}
                     <div className="min-w-0 flex-1">
                       <p className="font-display text-lg text-foreground leading-tight">{profile.displayName}</p>
-                      <button
-                        onClick={(e) => { e.stopPropagation(); setIsOnline(!isOnline); }}
-                        className="mt-1 text-xs font-button flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-border hover:bg-foreground/5 transition-colors"
-                      >
-                        <span className={`w-2 h-2 rounded-full ${isOnline ? "bg-forest" : "bg-muted-light"}`} />
-                        <span className={isOnline ? "text-forest" : "text-muted"}>{isOnline ? "Online" : "Appear Offline"}</span>
-                      </button>
+                      <span className="mt-1 text-xs font-button flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-border">
+                        <span className="w-2 h-2 rounded-full bg-forest" />
+                        <span className="text-forest">Online</span>
+                      </span>
                     </div>
                   </div>
                   <Link href="/profile" onClick={() => setShowAvatarMenu(false)} className="flex items-center gap-3 px-4 py-2.5 theme-body-sm text-foreground hover:bg-foreground/5 transition-colors">
@@ -472,7 +494,7 @@ export default function ProfilePage() {
                 <span className="theme-caption text-muted">{completion}% complete</span>
               </div>
               <div className="h-[4px] bg-foreground/5 rounded-full overflow-hidden">
-                <div className="h-full bg-forest rounded-full transition-all duration-500" style={{ width: `${completion}%` }} />
+                <div className="h-full bg-forest rounded-full transition-all duration-700 ease-out" style={{ width: `${animatedCompletion}%` }} />
               </div>
               {nudge && <p className="theme-body-sm text-muted mt-2">{nudge}</p>}
             </div>
@@ -736,6 +758,11 @@ export default function ProfilePage() {
                     + Add a prompt
                   </button>
                 )}
+                {!isEditMode && profile.prompts.length === 0 && (
+                  <div className="rounded-2xl border border-dashed border-border/60 p-4 text-center">
+                    <p className="theme-caption text-muted/50 italic">The best part about being childfree is...</p>
+                  </div>
+                )}
               </div>
 
               {/* About Me details */}
@@ -744,9 +771,9 @@ export default function ProfilePage() {
                 <h2 className="theme-heading text-sm text-foreground mb-3">About Me</h2>
                 {isEditMode ? (
                   <div className="grid grid-cols-2 gap-2">
-                    <div className="flex items-center justify-between px-3 py-2.5 rounded-xl border border-border">
+                    <div className="flex items-center justify-between px-3 py-2.5 rounded-xl border border-border bg-foreground/[0.02] opacity-70">
                       <span className="theme-caption text-muted inline-flex items-center gap-1.5"><Sparkle size={14} weight="bold" /> Zodiac</span>
-                      <span className="theme-body-sm text-foreground">{getZodiac(profile.birthdate)}</span>
+                      <span className="theme-body-sm text-muted">{getZodiac(profile.birthdate)}</span>
                     </div>
                     {[
                       { label: "MBTI", icon: Brain, value: profile.mbtiType, options: MBTI_OPTIONS, field: "mbtiType" },
@@ -1174,6 +1201,13 @@ export default function ProfilePage() {
           </div>
         </EditModal>
       ))}
+
+      {/* Toast */}
+      {toast && (
+        <div className={`fixed top-20 left-1/2 -translate-x-1/2 z-[60] px-4 py-2.5 rounded-full shadow-lg theme-body-sm font-[500] transition-all animate-in fade-in slide-in-from-top-2 duration-300 ${toast.type === "success" ? "bg-forest text-white" : "bg-red-500 text-white"}`}>
+          {toast.message}
+        </div>
+      )}
 
       {/* Mobile sticky bottom bar */}
       <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-border px-4 py-3 bg-background/95 backdrop-blur-md">
