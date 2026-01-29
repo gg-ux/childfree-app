@@ -34,7 +34,7 @@ export default async function Home() {
           <Link href="/">
             <Logo variant="full" size="md" />
           </Link>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3 sm:gap-6">
             <Link
               href="/about"
               className="theme-nav text-foreground hover:text-muted"
