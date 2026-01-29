@@ -136,6 +136,12 @@ export function AuthNav() {
         </Link>
         <div className="flex items-center gap-6">
           <Link
+            href="/about"
+            className="theme-nav text-foreground hover:text-muted"
+          >
+            About
+          </Link>
+          <Link
             href="/blog"
             className="theme-nav text-foreground hover:text-muted"
           >
