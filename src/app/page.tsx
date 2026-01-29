@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SmoothScrollLink } from "@/components/ui/smooth-scroll-link";
 import { getAllPosts } from "@/lib/blog";
 import { BlogImage } from "@/components/ui/blog-image";
 import {
@@ -87,12 +88,12 @@ export default async function Home() {
               </p>
 
               <WaitlistForm source="hero" />
-              <Link
+              <SmoothScrollLink
                 href="#survey"
                 className="inline-block mt-4 theme-body-sm text-foreground underline underline-offset-4 hover:text-muted transition-colors"
               >
                 Help shape Chosn
-              </Link>
+              </SmoothScrollLink>
             </div>
 
             {/* Floating Profile Cards */}
