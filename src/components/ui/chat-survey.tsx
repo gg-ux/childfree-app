@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { PaperPlaneTilt, Check, MapPin } from "@phosphor-icons/react";
+import { PaperPlaneTilt, Check } from "@phosphor-icons/react";
 import { Logo } from "@/components/ui/logo";
 
 interface ChatMessage {
@@ -408,18 +408,6 @@ export function ChatSurvey() {
         </div>
       )}
 
-      {/* Location indicator - show at bottom when not email and not complete */}
-      {!isComplete && !isEmailQuestion && currentQuestion !== "freeform" && detectedLocation?.city && (
-        <div className="px-4 py-2 border-t border-border bg-gray-50/30 flex-shrink-0">
-          <div className="flex items-center gap-1.5 text-xs text-muted">
-            <MapPin size={12} />
-            <span>
-              {detectedLocation.city}
-              {detectedLocation.country && `, ${detectedLocation.country}`}
-            </span>
-          </div>
-        </div>
-      )}
     </div>
     </div>
   );
