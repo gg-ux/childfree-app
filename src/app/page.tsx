@@ -84,7 +84,7 @@ export default async function Home() {
               </h1>
 
               <p className="theme-body text-muted max-w-2xl mb-10">
-                Chosn is your childfree home base. Date, connect, and build a life you love without ever having to explain why you don&apos;t want kids.
+                Chosn is your childfree home base. Date, connect, and build the life you chose without ever having to explain why you don&apos;t want kids.
               </p>
 
               <WaitlistForm source="hero" />
