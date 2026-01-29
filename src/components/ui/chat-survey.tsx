@@ -37,7 +37,7 @@ export function ChatSurvey() {
     {
       id: "q-0",
       type: "bot",
-      content: "As a childfree person, what are you most interested in?",
+      content: "As a childfree person, what are you most interested in? Choose an option below.",
     },
   ]);
 
