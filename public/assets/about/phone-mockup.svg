@@ -121,17 +121,16 @@
       <animate attributeName="opacity" values="0.25;0;0.25" dur="2.5s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
     </circle>
 
-    <!-- Loading dots -->
-    <g transform="translate(172, 440)">
-      <circle cx="0" cy="0" r="4.5" fill="rgba(255,255,255,0.8)">
-        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" begin="0s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="26" cy="0" r="4.5" fill="rgba(255,255,255,0.8)">
-        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" begin="0.2s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="52" cy="0" r="4.5" fill="rgba(255,255,255,0.8)">
-        <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" begin="0.4s" repeatCount="indefinite"/>
-      </circle>
+    <!-- Tagline -->
+    <g transform="translate(200, 450)">
+      <text text-anchor="middle" fill="rgba(255,255,255,0.9)" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="500" letter-spacing="0.5">
+        <tspan x="0" dy="0" opacity="0">thrive
+          <animate attributeName="opacity" values="0;1;1" dur="1.5s" begin="0.5s" fill="freeze"/>
+        </tspan>
+        <tspan x="0" dy="36" opacity="0">childfree
+          <animate attributeName="opacity" values="0;1;1" dur="1.5s" begin="1s" fill="freeze"/>
+        </tspan>
+      </text>
     </g>
 
     <!-- Home indicator -->
