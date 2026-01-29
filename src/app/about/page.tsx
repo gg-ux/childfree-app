@@ -77,7 +77,7 @@ export default function AboutPage() {
                 <ProtectedImage
                   src="/assets/bio-pic2.jpg"
                   alt="Grace, founder of Chosn"
-                  className="object-cover !relative"
+                  className="object-cover !relative scale-110 origin-top"
                 />
                 {/* Bauhaus geometric overlay */}
                 <div className="absolute inset-0 pointer-events-none">
@@ -117,7 +117,7 @@ export default function AboutPage() {
                   </span>
                   <span className="text-[12px] px-2 py-0.5 rounded-full bg-foreground/8 text-foreground/70 font-semibold inline-flex items-center gap-1">
                     <UsersThree size={11} weight="bold" />
-                    Community building
+                    Community builder
                   </span>
                 </div>
               </div>
