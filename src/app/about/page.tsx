@@ -28,7 +28,7 @@ export default function AboutPage() {
           <Link href="/">
             <Logo variant="full" size="md" />
           </Link>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3 sm:gap-6">
             <Link
               href="/blog"
               className="theme-nav text-foreground hover:text-muted"
