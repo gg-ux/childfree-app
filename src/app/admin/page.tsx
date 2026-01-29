@@ -86,11 +86,21 @@ export default function AdminPage() {
     avgSessionDuration: number;
     topPages: { page: string; views: number }[];
     trafficSources: { source: string; sessions: number; percentage: number }[];
+    referrers: { source: string; medium: string; sessions: number; percentage: number }[];
   } | null>(null);
   const [blogPosts, setBlogPosts] = useState<{ slug: string; title: string; image?: string }[]>([]);
-  const [activeTab, setActiveTab] = useState<"dashboard" | "social" | "survey">("dashboard");
+  const [activeTab, setActiveTab] = useState<"dashboard" | "social" | "survey" | "waitlist">("dashboard");
   const [surveyData, setSurveyData] = useState<SurveyData | null>(null);
   const [surveyLoading, setSurveyLoading] = useState(false);
+  const [visitors, setVisitors] = useState<{
+    uniqueVisitorCount: number;
+    totalPageViews: number;
+    adminPageViews: number;
+    recentVisits: { id: string; ip: string; path: string; isAdmin: boolean; city: string | null; country: string | null; referrer: string | null; createdAt: string }[];
+  } | null>(null);
+  const [visitorsLoading, setVisitorsLoading] = useState(false);
+  const [visitorsPeriod, setVisitorsPeriod] = useState("7");
+  const [showAdminMenu, setShowAdminMenu] = useState(false);
 
   // Check if already authenticated
   useEffect(() => {
@@ -106,6 +116,7 @@ export default function AdminPage() {
           fetchAnalytics();
           fetchBlogPosts();
           fetchSurveyData();
+          fetchVisitors();
         }
       } catch {
         // Not authenticated
@@ -142,6 +153,7 @@ export default function AdminPage() {
   const fetchAnalytics = async (period: string = analyticsPeriod) => {
     setAnalyticsLoading(true);
     setInsight(null); // Clear previous insight when refreshing
+    fetchVisitors(period);
     try {
       const res = await fetch(`/api/admin/analytics?period=${period}`);
       const data = await res.json();
@@ -180,6 +192,21 @@ export default function AdminPage() {
       console.error("Failed to fetch survey data");
     } finally {
       setSurveyLoading(false);
+    }
+  };
+
+  const fetchVisitors = async (period: string = visitorsPeriod) => {
+    setVisitorsLoading(true);
+    try {
+      const res = await fetch(`/api/admin/visitors?days=${period}`);
+      const data = await res.json();
+      if (res.ok) {
+        setVisitors(data);
+      }
+    } catch {
+      console.error("Failed to fetch visitors");
+    } finally {
+      setVisitorsLoading(false);
     }
   };
 
@@ -429,43 +456,45 @@ export default function AdminPage() {
             <Link href="/">
               <Logo variant="full" size="md" />
             </Link>
-            <button
-              onClick={() => setActiveTab("dashboard")}
-              className={`theme-nav ${
-                activeTab === "dashboard"
-                  ? "text-foreground"
-                  : "text-muted hover:text-foreground"
-              }`}
-            >
-              Dashboard
-            </button>
-            <button
-              onClick={() => setActiveTab("social")}
-              className={`theme-nav ${
-                activeTab === "social"
-                  ? "text-foreground"
-                  : "text-muted hover:text-foreground"
-              }`}
-            >
-              Social
-            </button>
-            <button
-              onClick={() => setActiveTab("survey")}
-              className={`theme-nav ${
-                activeTab === "survey"
-                  ? "text-foreground"
-                  : "text-muted hover:text-foreground"
-              }`}
-            >
-              Survey
-            </button>
+            {(["dashboard", "waitlist", "social", "survey"] as const).map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`theme-body-sm transition-colors ${
+                  activeTab === tab
+                    ? "text-foreground font-[550]"
+                    : "text-muted font-[450] hover:text-foreground"
+                }`}
+              >
+                {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              </button>
+            ))}
           </div>
-          <div className="flex items-center gap-4">
-            <span className="theme-body-sm text-muted hidden sm:block">{email}</span>
-            <Button variant="secondary" size="md" onClick={handleLogout} className="gap-2">
-              <SignOut size={16} weight="bold" />
-              Logout
-            </Button>
+          <div className="flex items-center gap-3">
+            <div className="relative">
+              <button
+                onClick={() => setShowAdminMenu(!showAdminMenu)}
+                className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+              >
+                <span className="theme-secondary hidden sm:block">{email}</span>
+                <div className="w-8 h-8 rounded-full bg-forest/20 flex items-center justify-center">
+                  <span className="text-forest text-xs font-[600]">
+                    {email[0].toUpperCase()}
+                  </span>
+                </div>
+              </button>
+              {showAdminMenu && (
+                <div className="absolute right-0 top-full mt-2 w-48 bg-background rounded-xl border border-border shadow-lg overflow-hidden z-50">
+                  <button
+                    onClick={() => { setShowAdminMenu(false); handleLogout(); }}
+                    className="flex items-center gap-3 px-4 py-2.5 theme-body-sm text-foreground hover:bg-foreground/5 transition-colors w-full text-left"
+                  >
+                    <SignOut size={18} weight="duotone" />
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </nav>
@@ -524,6 +553,7 @@ export default function AdminPage() {
                   }}
                   className="appearance-none h-8 px-4 pr-8 rounded-lg border border-[rgba(0,0,0,0.08)] bg-background text-[14px] font-button text-foreground focus:outline-none focus:border-forest cursor-pointer"
                 >
+                  <option value="1">Last 24 hours</option>
                   <option value="7">Last 7 days</option>
                   <option value="14">Last 14 days</option>
                   <option value="30">Last 30 days</option>
@@ -577,6 +607,11 @@ export default function AdminPage() {
                       )}
                       {Math.abs(analytics.visitorsChange)}% vs prev period
                     </div>
+                    {visitors && (
+                      <p className="theme-secondary text-muted mt-1">
+                        {visitors.uniqueVisitorCount} real · {visitors.adminPageViews > 0 ? "1 you" : "0 you"}
+                      </p>
+                    )}
                   </div>
 
                   <div className="p-4 border border-border rounded-lg">
@@ -590,6 +625,11 @@ export default function AdminPage() {
                     <p className="theme-secondary text-muted mt-1">
                       {analytics.sessions} sessions
                     </p>
+                    {visitors && (
+                      <p className="theme-secondary text-muted mt-0.5">
+                        {visitors.totalPageViews - visitors.adminPageViews} real · {visitors.adminPageViews} you
+                      </p>
+                    )}
                   </div>
 
                   <div className="p-4 border border-border rounded-lg">
@@ -657,21 +697,24 @@ export default function AdminPage() {
                   <div className="p-4 border border-border rounded-lg">
                     <p className="theme-caption text-muted mb-4">Traffic Sources</p>
                     <div className="space-y-3">
-                      {analytics.trafficSources.map((source) => (
-                        <div key={source.source}>
+                      {analytics.referrers.map((ref) => (
+                        <div key={`${ref.source}-${ref.medium}`}>
                           <div className="flex items-center justify-between mb-1">
-                            <span className="theme-body-sm text-foreground">{source.source}</span>
-                            <span className="theme-body-sm text-muted">{source.percentage}%</span>
+                            <div className="flex items-center gap-2">
+                              <span className="theme-body-sm text-foreground">{ref.source}</span>
+                              <span className="theme-secondary text-muted">/ {ref.medium}</span>
+                            </div>
+                            <span className="theme-body-sm text-muted">{ref.sessions}</span>
                           </div>
                           <div className="h-1 bg-foreground/10 rounded-full overflow-hidden">
                             <div
                               className="h-full bg-forest rounded-full"
-                              style={{ width: `${source.percentage}%` }}
+                              style={{ width: `${ref.percentage}%` }}
                             />
                           </div>
                         </div>
                       ))}
-                      {analytics.trafficSources.length === 0 && (
+                      {analytics.referrers.length === 0 && (
                         <p className="theme-body-sm text-muted">No data yet</p>
                       )}
                     </div>
@@ -693,8 +736,96 @@ export default function AdminPage() {
             )}
           </div>
 
-          {/* Waitlist Section */}
-          <div className="pt-12 border-t border-border">
+          {/* Recent Visitors */}
+          {visitors && visitors.recentVisits.length > 0 && (() => {
+            const grouped = new Map<string, { ip: string; isAdmin: boolean; pages: number; topPages: Map<string, number>; lastSeen: string; city: string | null; country: string | null; referrers: Set<string> }>();
+            for (const visit of visitors.recentVisits) {
+              const existing = grouped.get(visit.ip);
+              if (existing) {
+                existing.pages++;
+                existing.topPages.set(visit.path, (existing.topPages.get(visit.path) || 0) + 1);
+                if (visit.createdAt > existing.lastSeen) existing.lastSeen = visit.createdAt;
+                if (!existing.city && visit.city) existing.city = visit.city;
+                if (!existing.country && visit.country) existing.country = visit.country;
+                if (visit.referrer) existing.referrers.add(visit.referrer);
+              } else {
+                const topPages = new Map<string, number>();
+                topPages.set(visit.path, 1);
+                const referrers = new Set<string>();
+                if (visit.referrer) referrers.add(visit.referrer);
+                grouped.set(visit.ip, { ip: visit.ip, isAdmin: visit.isAdmin, pages: 1, topPages, lastSeen: visit.createdAt, city: visit.city, country: visit.country, referrers });
+              }
+            }
+            const visitorsList = Array.from(grouped.values()).sort((a, b) => b.lastSeen.localeCompare(a.lastSeen));
+
+            return (
+              <div className="pt-12 mb-0">
+                <h2 className="font-display text-xl md:text-2xl text-foreground mb-1">
+                  Recent Visitors
+                </h2>
+                <p className="theme-body-sm text-muted mb-6">
+                  {visitors.uniqueVisitorCount} unique visitor{visitors.uniqueVisitorCount !== 1 ? "s" : ""} (excluding you)
+                </p>
+                <div className="space-y-3">
+                  {visitorsList.map((v) => {
+                    const maskedIp = v.ip.replace(/\.\d+$/, ".x");
+                    const topPagesArr = Array.from(v.topPages.entries())
+                      .sort((a, b) => b[1] - a[1])
+                      .slice(0, 3);
+                    const location = [v.city, v.country].filter(Boolean).join(", ");
+                    // Extract domain from referrer URLs, exclude own site
+                    const externalRefs = Array.from(v.referrers)
+                      .map((r) => { try { return new URL(r).hostname; } catch { return null; } })
+                      .filter((h): h is string => !!h && !h.includes("chosn.co") && !h.includes("localhost"));
+                    const uniqueRefs = [...new Set(externalRefs)];
+                    return (
+                      <div key={v.ip} className={`p-4 border border-border rounded-lg ${v.isAdmin ? "bg-amber-50/30" : ""}`}>
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center gap-2">
+                            <span className="font-mono text-xs text-foreground">{maskedIp}</span>
+                            {v.isAdmin ? (
+                              <span className="px-2 py-0.5 bg-amber-100 text-amber-700 rounded text-xs font-medium">You</span>
+                            ) : (
+                              <span className="px-2 py-0.5 bg-forest/10 text-forest rounded text-xs font-medium">Visitor</span>
+                            )}
+                            {location && (
+                              <span className="theme-secondary text-muted">{location}</span>
+                            )}
+                          </div>
+                          <span className="theme-secondary text-muted">
+                            {v.pages} page view{v.pages !== 1 ? "s" : ""}
+                          </span>
+                        </div>
+                        <div className="flex flex-wrap items-center gap-2">
+                          {topPagesArr.map(([page, count]) => (
+                            <span key={page} className="px-2 py-0.5 bg-foreground/5 rounded text-xs text-muted">
+                              {page === "/" ? "Home" : page} {count > 1 ? `(${count})` : ""}
+                            </span>
+                          ))}
+                          {uniqueRefs.map((ref) => (
+                            <span key={ref} className="px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-xs font-medium">
+                              via {ref}
+                            </span>
+                          ))}
+                          <span className="theme-secondary text-muted ml-auto">
+                            {new Date(v.lastSeen).toLocaleString()}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })()}
+
+          </>
+          )}
+
+          {/* Waitlist Tab */}
+          {activeTab === "waitlist" && (
+          <>
+          <div>
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
               <div>
                 <h2 className="font-display text-xl md:text-2xl text-foreground">
@@ -1117,6 +1248,7 @@ export default function AdminPage() {
               )}
             </>
           )}
+
 
         </div>
       </div>

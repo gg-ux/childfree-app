@@ -79,7 +79,7 @@ export async function GET(request: Request) {
       limit: 5,
     });
 
-    // Get traffic sources
+    // Get traffic sources (channel groupings)
     const [sourcesResponse] = await analyticsDataClient.runReport({
       property: `properties/${propertyId}`,
       dateRanges: [
@@ -97,6 +97,26 @@ export async function GET(request: Request) {
         },
       ],
       limit: 5,
+    });
+
+    // Get specific referrers (source / medium)
+    const [referrersResponse] = await analyticsDataClient.runReport({
+      property: `properties/${propertyId}`,
+      dateRanges: [
+        {
+          startDate: `${period}daysAgo`,
+          endDate: "today",
+        },
+      ],
+      dimensions: [{ name: "sessionSource" }, { name: "sessionMedium" }],
+      metrics: [{ name: "sessions" }],
+      orderBys: [
+        {
+          metric: { metricName: "sessions" },
+          desc: true,
+        },
+      ],
+      limit: 10,
     });
 
     // Parse metrics
@@ -135,6 +155,21 @@ export async function GET(request: Request) {
       ),
     })) || [];
 
+    // Parse referrers
+    const totalReferrerSessions = referrersResponse.rows?.reduce(
+      (sum, row) => sum + parseInt(row.metricValues?.[0]?.value || "0"),
+      0
+    ) || 1;
+
+    const referrers = referrersResponse.rows?.map((row) => ({
+      source: row.dimensionValues?.[0]?.value || "",
+      medium: row.dimensionValues?.[1]?.value || "",
+      sessions: parseInt(row.metricValues?.[0]?.value || "0"),
+      percentage: Math.round(
+        (parseInt(row.metricValues?.[0]?.value || "0") / totalReferrerSessions) * 100
+      ),
+    })) || [];
+
     return NextResponse.json({
       visitors,
       visitorsChange: Math.round(visitorsChange),
@@ -144,6 +179,7 @@ export async function GET(request: Request) {
       avgSessionDuration: Math.round(avgSessionDuration),
       topPages,
       trafficSources,
+      referrers,
     });
   } catch (error) {
     console.error("Analytics API error:", error);
