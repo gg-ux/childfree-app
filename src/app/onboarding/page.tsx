@@ -408,7 +408,7 @@ export default function OnboardingPage() {
                 What are you looking for?
               </h1>
               <p className="theme-body text-muted mb-8">
-                Select all that apply — you can always change this later
+                Select all that apply. You can always change this later
               </p>
 
               <div className="space-y-3">

@@ -65,7 +65,7 @@ export default async function Home() {
               </h1>
 
               <p className="theme-body text-muted max-w-2xl mb-10">
-                Chosn is a dating, friendship, and community platform for childfree adults. Date, connect, and build a life you love—without ever having to explain why you don&apos;t want kids.
+                Chosn is a dating, friendship, and community platform for childfree adults. Date, connect, and build a life you love without ever having to explain why you don&apos;t want kids.
               </p>
 
               <WaitlistForm source="hero" />
@@ -174,7 +174,7 @@ export default async function Home() {
               Why Chosn
             </h2>
             <p className="theme-body text-muted">
-              Childfree platforms have existed before—a dating site with
+              Childfree platforms have existed before: a dating site with
               ten users, a Discord server, a subreddit. You deserve better
               than that. That&apos;s why we built Chosn.
             </p>
@@ -194,7 +194,7 @@ export default async function Home() {
                 icon: Fingerprint,
                 title: "A safe space to be yourself",
                 description:
-                  "Everyone here shares the same lifestyle choice. No justifying, no debating—just verified, real people who get it.",
+                  "Everyone here shares the same lifestyle choice. No justifying or debating—just real, verified people who get what it's like.",
                 iconColor: "text-[#b8502a]",
                 bg: "bg-coral/15",
               },
@@ -238,7 +238,7 @@ export default async function Home() {
                 Help us get this right
               </h2>
               <p className="theme-body text-muted">
-                We&apos;re building Chosn with our community, not just for them. Tell us what matters most to you—it takes about 2 minutes, your answers are anonymous, and your voice will shape everything we build.
+                We&apos;re building Chosn with our community, not just for them. Tell us what matters most to you. It takes about 2 minutes, your answers are anonymous, and your voice will shape everything we build.
               </p>
             </div>
             <ChatSurvey />
@@ -264,7 +264,7 @@ export default async function Home() {
                 Your chosen <span className="whitespace-nowrap">family awaits</span>
               </h2>
               <p className="theme-body text-muted">
-                You made the bold choice to follow your own path. You&apos;re not alone. Whether you&apos;re looking for your person, your people, or your place—you&apos;ll find a community that celebrates the life you&apos;re building. Not all family is blood-related.
+                You made the bold choice to follow your own path. You&apos;re not alone. Whether you&apos;re looking for your person, your people, or your place. You&apos;ll find a community that celebrates the life you&apos;re building. Not all family is blood-related.
               </p>
               <WaitlistForm source="chosen-family" className="mt-8" />
             </div>

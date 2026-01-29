@@ -127,7 +127,7 @@ export default function AboutPage() {
                 Why I built Chosn
               </h2>
               <p className="theme-body text-muted mb-5">
-                Hi, I&apos;m Grace. I&apos;ve been childfree my whole life—and that came
+                Hi, I&apos;m Grace. I&apos;ve been childfree my whole life, and that came
                 with no shortage of opinions from everyone around me. I
                 got tired of the judgment at family
                 gatherings and the constant assumption that I&apos;d change
@@ -140,7 +140,7 @@ export default function AboutPage() {
                 growing up. Dating apps had a &ldquo;no kids&rdquo; filter,
                 but nothing exclusively for childfree adults that brought
                 together dating, friendships, and ways to build community
-                online and offline—while actually feeling modern and
+                online and offline, while actually feeling modern and
                 delightful to use.
               </p>
               <p className="theme-body text-muted mb-5">
@@ -169,7 +169,7 @@ export default function AboutPage() {
                 {
                   icon: MagnifyingGlass,
                   title: "Finding a partner",
-                  description: "Worrying you\u2019ll never find someone who truly shares your values\u2014not just \u201Copen to it\u201D but genuinely childfree.",
+                  description: "Worrying you\u2019ll never find someone who truly shares your values, not just \u201Copen to it\u201D but genuinely childfree.",
                   iconColor: "text-[#1e5a3a]",
                   bg: "bg-forest/15",
                 },
@@ -183,14 +183,14 @@ export default function AboutPage() {
                 {
                   icon: HourglassMedium,
                   title: "Aging alone",
-                  description: "The quiet fear of getting older without a built-in support system\u2014and no roadmap for what that looks like.",
+                  description: "The quiet fear of getting older without a built-in support system, and no roadmap for what that looks like.",
                   iconColor: "text-[#b07c1a]",
                   bg: "bg-marigold/15",
                 },
                 {
                   icon: Eye,
                   title: "Judgment and invisibility",
-                  description: "Being called selfish, told you\u2019ll regret it\u2014while living in a world where policies, social norms, and even apps are designed around families.",
+                  description: "Being called selfish, told you\u2019ll regret it, while living in a world where policies, social norms, and even apps are designed around families.",
                   iconColor: "text-[#1e5a3a]",
                   bg: "bg-forest/15",
                 },
