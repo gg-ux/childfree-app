@@ -28,7 +28,7 @@ export default function AboutPage() {
           <Link href="/" className="flex-shrink-0">
             <Logo variant="full" size="md" />
           </Link>
-          <div className="flex items-center gap-3 sm:gap-4">
+          <div className="flex items-center gap-4 sm:gap-6">
             <Link
               href="/about"
               className="theme-nav text-foreground hover:text-muted"
