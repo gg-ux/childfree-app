@@ -122,12 +122,12 @@
     </circle>
 
     <!-- Tagline -->
-    <g transform="translate(200, 450)">
-      <text text-anchor="middle" fill="rgba(255,255,255,0.9)" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="500" letter-spacing="0.5">
+    <g transform="translate(200, 460)">
+      <text text-anchor="middle" fill="rgba(255,255,255,0.9)" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="500" letter-spacing="1">
         <tspan x="0" dy="0" opacity="0">thrive
           <animate attributeName="opacity" values="0;1;1" dur="1.5s" begin="0.5s" fill="freeze"/>
         </tspan>
-        <tspan x="0" dy="36" opacity="0">childfree
+        <tspan x="0" dy="52" opacity="0">childfree
           <animate attributeName="opacity" values="0;1;1" dur="1.5s" begin="1s" fill="freeze"/>
         </tspan>
       </text>
