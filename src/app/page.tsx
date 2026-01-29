@@ -13,7 +13,6 @@ import {
   Dog,
   AirplaneTilt,
   GlobeHemisphereWest,
-  Fingerprint,
   DeviceMobile,
 } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/components/ui/button";
@@ -216,7 +215,7 @@ export default async function Home() {
                 bg: "bg-forest/15",
               },
               {
-                icon: Fingerprint,
+                icon: ShieldCheck,
                 title: "A safe space to be yourself",
                 description:
                   "Everyone here shares the same lifestyle choice. No justifying or debating—just real, verified people who get what it's like.",
