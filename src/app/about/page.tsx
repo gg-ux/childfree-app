@@ -75,7 +75,7 @@ export default function AboutPage() {
             <div className="w-[280px] bg-white rounded-2xl shadow-lg border border-border overflow-hidden">
               <div className="aspect-[3/4] overflow-hidden relative">
                 <ProtectedImage
-                  src="/assets/bio-pic.jpg"
+                  src="/assets/bio-pic2.jpg"
                   alt="Grace, founder of Chosn"
                   className="object-cover !relative"
                 />
