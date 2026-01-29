@@ -657,23 +657,29 @@ export default function AdminPage() {
                   </div>
                 </div>
 
-                {/* Conversion Rate */}
-                {entries.length > 0 && analytics.visitors > 0 && (
-                  <div className="p-4 border border-border rounded-lg mb-6">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="theme-caption text-muted mb-2">Conversion Rate</p>
-                        <p className="text-2xl font-display text-foreground">
-                          {((entries.length / analytics.visitors) * 100).toFixed(1)}%
-                        </p>
-                      </div>
-                      <div className="text-right theme-secondary text-muted">
-                        <p>{entries.length} signups</p>
-                        <p>{analytics.visitors} visitors</p>
-                      </div>
-                    </div>
+                {/* Waitlist Count & Conversion Rate */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  <div className="p-4 border border-border rounded-lg">
+                    <p className="theme-caption text-muted mb-2">Waitlist Signups</p>
+                    <p className="text-2xl font-display text-foreground">
+                      {entries.length}
+                    </p>
+                    <p className="theme-secondary text-muted mt-1">
+                      {sentCount} invited · {notSentCount} pending
+                    </p>
                   </div>
-                )}
+                  {analytics.visitors > 0 && (
+                    <div className="p-4 border border-border rounded-lg">
+                      <p className="theme-caption text-muted mb-2">Conversion Rate</p>
+                      <p className="text-2xl font-display text-foreground">
+                        {((entries.length / analytics.visitors) * 100).toFixed(1)}%
+                      </p>
+                      <p className="theme-secondary text-muted mt-1">
+                        {entries.length} signups / {analytics.visitors} visitors
+                      </p>
+                    </div>
+                  )}
+                </div>
 
                 {/* Top Pages & Traffic Sources */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
