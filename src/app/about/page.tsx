@@ -137,7 +137,7 @@ export default function AboutPage() {
               </p>
               <p className="theme-body text-muted mb-5">
                 I built Chosn because it&apos;s the platform I wish I had
-                growing up. Dating apps had a &ldquo;no kids&rdquo; filter,
+                growing up. Dating apps had a &ldquo;don&apos;t want kids&rdquo; filter,
                 but nothing exclusively for childfree adults that brought
                 together dating, friendships, and ways to build community
                 online and offline, while actually feeling modern and
