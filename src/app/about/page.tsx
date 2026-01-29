@@ -127,7 +127,7 @@ export default function AboutPage() {
                 Why I built Chosn
               </h2>
               <p className="theme-body text-muted mb-5">
-                I&apos;ve been childfree my whole life—and that came
+                Hi, I&apos;m Grace. I&apos;ve been childfree my whole life—and that came
                 with no shortage of opinions from everyone around me. I
                 got tired of the judgment at family
                 gatherings and the constant assumption that I&apos;d change
