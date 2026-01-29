@@ -137,8 +137,7 @@ export function AuthNav() {
         <div className="flex items-center gap-6">
           <Link
             href="/blog"
-            className="text-[15px] text-muted hover:text-foreground transition-colors"
-            style={{ fontFamily: "'Satoshi', sans-serif", fontWeight: 450 }}
+            className="theme-nav text-foreground hover:text-muted"
           >
             Blog
           </Link>
