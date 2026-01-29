@@ -34,6 +34,8 @@ import {
   Trash,
   Moon,
   GraduationCap,
+  ArrowLeft,
+  ArrowRight,
 } from "@phosphor-icons/react";
 import { Loader } from "@/components/ui/loader";
 import { Button } from "@/components/ui/button";
@@ -55,6 +57,7 @@ import {
   LOOKING_FOR_OPTIONS,
   PET_PARENT_OPTIONS,
   MBTI_OPTIONS,
+  PHOTO_CAPTIONS,
 } from "@/lib/constants/profile-options";
 
 // Types
@@ -62,6 +65,7 @@ interface Photo {
   id: string;
   url: string;
   position: number;
+  caption: string | null;
 }
 
 interface PromptData {
@@ -239,6 +243,7 @@ export default function ProfilePage() {
   // const [isOnline, setIsOnline] = useState(true);
   const [animatedCompletion, setAnimatedCompletion] = useState(0);
   const [mobilePhotoIndex, setMobilePhotoIndex] = useState(0);
+  const [autoRotate, setAutoRotate] = useState(true);
   const touchStartY = useRef<number | null>(null);
   const avatarMenuRef = useRef<HTMLDivElement>(null);
 
@@ -262,6 +267,8 @@ export default function ProfilePage() {
   const [editPromptType, setEditPromptType] = useState("");
   const [editPromptAnswer, setEditPromptAnswer] = useState("");
   const [editPromptId, setEditPromptId] = useState<string | null>(null);
+  const [captionPhotoId, setCaptionPhotoId] = useState<string | null>(null);
+  const [customCaption, setCustomCaption] = useState("");
 
   useEffect(() => {
     async function load() {
@@ -328,6 +335,25 @@ export default function ProfilePage() {
         if (profileRes.ok) setProfile((prev) => prev ? { ...prev, photos: data.profile.photos } : prev);
       }
     } catch { /* silent */ }
+  };
+
+  const handleSaveCaption = async (photoId: string, caption: string | null) => {
+    try {
+      const res = await fetch("/api/profile/photos/caption", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ photoId, caption }),
+      });
+      if (res.ok) {
+        setProfile((prev) => prev ? {
+          ...prev,
+          photos: prev.photos.map((p) => p.id === photoId ? { ...p, caption } : p)
+        } : prev);
+        showToast("Caption saved", "success");
+      }
+    } catch { /* silent */ }
+    setCaptionPhotoId(null);
+    setPhotoMenuId(null);
   };
 
   const handleSetFeatured = async (photoId: string) => {
@@ -403,6 +429,15 @@ export default function ProfilePage() {
     const timer = setTimeout(() => setAnimatedCompletion(completion), 100);
     return () => clearTimeout(timer);
   }, [completion]);
+
+  // Auto-rotate photos every 4 seconds (desktop view mode only)
+  useEffect(() => {
+    if (!autoRotate || isEditMode || !profile || profile.photos.length <= 1) return;
+    const interval = setInterval(() => {
+      setMobilePhotoIndex((prev) => (prev + 1) % profile.photos.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [autoRotate, isEditMode, profile]);
 
   if (loading || !profile) {
     return (
@@ -542,14 +577,15 @@ export default function ProfilePage() {
                           </button>
                           {photoMenuId === profile.photos[0].id && (
                             <div className="absolute right-0 top-full mt-1 w-44 bg-background rounded-xl border border-border shadow-lg overflow-hidden z-10">
+                              <button onClick={() => { setCaptionPhotoId(profile.photos[0].id); setPhotoMenuId(null); }} className="flex items-center gap-2 px-3 py-1.5 theme-body-sm text-foreground hover:bg-foreground/5 transition-colors w-full text-left"><PencilSimple size={16} weight="duotone" /> Caption</button>
                               <button onClick={() => { setReplacePhotoId(profile.photos[0].id); replacePhotoInputRef.current?.click(); }} className="flex items-center gap-2 px-3 py-1.5 theme-body-sm text-foreground hover:bg-foreground/5 transition-colors w-full text-left"><ArrowsClockwise size={16} weight="duotone" /> Replace</button>
                               <button onClick={() => handleDeletePhoto(profile.photos[0].id)} className="flex items-center gap-2 px-3 py-1.5 theme-body-sm text-red-500 hover:bg-foreground/5 transition-colors w-full text-left"><Trash size={16} weight="duotone" /> Remove</button>
                             </div>
                           )}
                         </div>
                       </div>
-                      <div className="grid grid-cols-4 gap-1.5 mt-1.5">
-                        {[1, 2, 3, 4].map((i) => (
+                      <div className="grid grid-cols-5 gap-1.5 mt-1.5">
+                        {[1, 2, 3, 4, 5].map((i) => (
                           <div key={i} className="aspect-square rounded-lg border border-dashed border-foreground/15 bg-foreground/[0.03] relative">
                             {profile.photos[i] ? (
                               <div ref={photoMenuId === profile.photos[i].id ? photoMenuRef : undefined} className="w-full h-full">
@@ -563,12 +599,13 @@ export default function ProfilePage() {
                                 {photoMenuId === profile.photos[i].id && (
                                   <div className={`absolute top-8 w-44 bg-background rounded-xl border border-border shadow-lg overflow-hidden z-50 ${i <= 2 ? "left-0" : "right-0"}`}>
                                     <button onClick={() => { handleSetFeatured(profile.photos[i].id); setPhotoMenuId(null); }} className="flex items-center gap-2 px-3 py-1.5 theme-body-sm text-foreground hover:bg-foreground/5 transition-colors w-full text-left"><Star size={16} weight="duotone" /> Feature</button>
+                                    <button onClick={() => { setCaptionPhotoId(profile.photos[i].id); setPhotoMenuId(null); }} className="flex items-center gap-2 px-3 py-1.5 theme-body-sm text-foreground hover:bg-foreground/5 transition-colors w-full text-left"><PencilSimple size={16} weight="duotone" /> Caption</button>
                                     <button onClick={() => { setReplacePhotoId(profile.photos[i].id); replacePhotoInputRef.current?.click(); }} className="flex items-center gap-2 px-3 py-1.5 theme-body-sm text-foreground hover:bg-foreground/5 transition-colors w-full text-left"><ArrowsClockwise size={16} weight="duotone" /> Replace</button>
                                     <button onClick={() => handleDeletePhoto(profile.photos[i].id)} className="flex items-center gap-2 px-3 py-1.5 theme-body-sm text-red-500 hover:bg-foreground/5 transition-colors w-full text-left"><Trash size={16} weight="duotone" /> Remove</button>
                                   </div>
                                 )}
                               </div>
-                            ) : profile.photos.length < 5 ? (
+                            ) : profile.photos.length < 6 ? (
                               <label className="w-full h-full flex items-center justify-center cursor-pointer hover:bg-foreground/[0.06] transition-colors">
                                 <Plus size={18} className="text-muted/60" />
                                 <input type="file" accept="image/*" onChange={handlePhotoUpload} className="hidden" />
@@ -632,13 +669,47 @@ export default function ProfilePage() {
                         )}
                       </div>
 
-                      {/* Desktop (2-col): all photos stacked */}
-                      <div className="hidden lg:flex flex-col gap-3">
-                        {profile.photos.map((photo) => (
-                          <div key={photo.id} className="aspect-square rounded-2xl overflow-hidden bg-foreground/5">
-                            <img src={photo.url} alt="" className="w-full h-full object-cover" />
+                      {/* Desktop (2-col): main image + responsive thumbnails */}
+                      <div className="hidden lg:block">
+                        {/* Main image */}
+                        <div className="aspect-square rounded-2xl overflow-hidden bg-foreground/5 mb-2 relative">
+                          <img
+                            key={mobilePhotoIndex}
+                            src={profile.photos[mobilePhotoIndex]?.url || profile.photos[0]?.url}
+                            alt=""
+                            className="w-full h-full object-cover animate-in fade-in duration-500"
+                          />
+                          {/* Caption overlay */}
+                          {profile.photos[mobilePhotoIndex]?.caption && (
+                            <div className="absolute bottom-3 left-3 bg-black/50 backdrop-blur-sm text-white text-sm font-medium px-3 py-1.5 rounded-full max-w-[80%] truncate">
+                              {PHOTO_CAPTIONS.find((c) => c.value === profile.photos[mobilePhotoIndex].caption)?.label || profile.photos[mobilePhotoIndex].caption}
+                            </div>
+                          )}
+                          {/* Photo counter */}
+                          {profile.photos.length > 1 && (
+                            <div className="absolute bottom-3 right-3 bg-black/50 backdrop-blur-sm text-white text-xs font-medium px-2.5 py-1 rounded-full">
+                              {mobilePhotoIndex + 1} / {profile.photos.length}
+                            </div>
+                          )}
+                        </div>
+                        {/* Responsive thumbnails - scale based on count */}
+                        {profile.photos.length > 1 && (
+                          <div className="flex gap-2 p-1 -m-1">
+                            {profile.photos.map((photo, idx) => (
+                              <button
+                                key={photo.id}
+                                onClick={() => { setMobilePhotoIndex(idx); setAutoRotate(false); }}
+                                className={`flex-1 aspect-square rounded-lg overflow-hidden bg-foreground/5 transition-all ${
+                                  idx === mobilePhotoIndex
+                                    ? "ring-2 ring-forest ring-offset-2"
+                                    : "opacity-60 hover:opacity-100"
+                                }`}
+                              >
+                                <img src={photo.url} alt="" className="w-full h-full object-cover" />
+                              </button>
+                            ))}
                           </div>
-                        ))}
+                        )}
                       </div>
                     </>
                   )}
@@ -660,7 +731,7 @@ export default function ProfilePage() {
             </div>
 
             {/* RIGHT COLUMN — Profile details */}
-            <div className="lg:overflow-y-auto lg:pl-2 lg:pb-16 scrollbar-hide">
+            <div className="lg:overflow-y-auto lg:pl-2 lg:pr-1 lg:pb-16 scrollbar-hide">
               {/* Name + Edit button */}
               <div className="flex items-start justify-between mb-1">
                 <div
@@ -825,7 +896,7 @@ export default function ProfilePage() {
                     ))}
                   </div>
                 ) : (
-                  <div className="flex flex-wrap gap-2">
+                  <div className="grid grid-cols-3 gap-x-4 gap-y-1.5">
                     {[
                       { icon: Sparkle, value: getZodiac(profile.birthdate) },
                       { icon: Brain, value: profile.mbtiType },
@@ -836,8 +907,8 @@ export default function ProfilePage() {
                       { icon: Moon, value: getLabel(SLEEP_STYLE_OPTIONS, profile.sleepStyle) },
                       { icon: GraduationCap, value: getLabel(EDUCATION_OPTIONS, profile.education) },
                     ].filter((item) => item.value).map((item, idx) => (
-                      <span key={idx} className={chipClass}>
-                        <item.icon size={14} weight="bold" />
+                      <span key={idx} className="theme-body-sm text-foreground flex items-center gap-1.5">
+                        <item.icon size={14} weight="bold" className="text-muted" />
                         {item.value}
                       </span>
                     ))}
@@ -948,41 +1019,6 @@ export default function ProfilePage() {
               </div>
               )}
 
-              {/* Groups placeholder */}
-              {isEditMode && (
-              <div className="mb-6">
-                <div className="flex items-center justify-between mb-3">
-                  <h2 className="theme-heading text-sm text-foreground">Groups</h2>
-                  <span className="theme-caption text-white px-2.5 py-1 rounded-full bg-forest/80">Coming Soon</span>
-                </div>
-                <p className="theme-body-sm text-muted">Interest groups you join will appear here.</p>
-              </div>
-              )}
-
-              {/* Events attended */}
-              {(isEditMode || events.length > 0) && (
-              <div className="mb-6">
-                <h2 className="theme-heading text-sm text-foreground mb-3">Events Attended</h2>
-                {events.length > 0 ? (
-                  <div className="space-y-2">
-                    {events.map((evt) => (
-                      <div key={evt.id} className="flex items-center gap-3 px-3 py-2.5 rounded-xl border border-border">
-                        <CalendarBlank size={18} weight="duotone" className="text-forest shrink-0" />
-                        <div className="min-w-0">
-                          <p className="theme-body-sm text-foreground truncate">{evt.title}</p>
-                          <p className="theme-caption text-muted">
-                            {new Date(evt.startsAt).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
-                            {evt.locationCity ? ` · ${evt.locationCity}` : ""}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="theme-body-sm text-muted">No events yet. <Link href="/discover" className="text-forest hover:underline">Discover events</Link></p>
-                )}
-              </div>
-              )}
             </div>
           </div>
         </div>
@@ -1293,6 +1329,68 @@ export default function ProfilePage() {
             {editPromptId ? "Update" : "Add"} Prompt
           </button>
         </div>
+      </EditModal>
+
+      {/* Caption selection modal */}
+      <EditModal title="Add Caption" open={!!captionPhotoId} onClose={() => { setCaptionPhotoId(null); setCustomCaption(""); }}>
+        {(() => {
+          const currentCaption = profile.photos.find((p) => p.id === captionPhotoId)?.caption;
+          const isCustom = currentCaption && !PHOTO_CAPTIONS.find((c) => c.value === currentCaption);
+          return (
+            <div className="space-y-2">
+              {PHOTO_CAPTIONS.map((caption) => {
+                const selected = currentCaption === caption.value;
+                return (
+                  <button
+                    key={caption.value}
+                    onClick={() => handleSaveCaption(captionPhotoId!, caption.value)}
+                    className={`w-full px-4 py-3 rounded-xl border text-left theme-body-sm transition-colors ${
+                      selected
+                        ? "border-forest bg-forest/10 text-forest"
+                        : "border-border text-foreground hover:bg-foreground/5"
+                    }`}
+                  >
+                    {caption.label}
+                  </button>
+                );
+              })}
+              {/* Custom caption */}
+              <div className="pt-2 border-t border-border mt-3">
+                <p className="theme-caption text-muted mb-2">Or write your own</p>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={customCaption || (isCustom ? currentCaption : "")}
+                    onChange={(e) => setCustomCaption(e.target.value)}
+                    placeholder="Your caption..."
+                    maxLength={30}
+                    className="flex-1 px-3 h-10 rounded-lg border border-border bg-background theme-body-sm focus:outline-none focus:border-forest transition-colors"
+                  />
+                  <button
+                    onClick={() => {
+                      if (customCaption.trim()) {
+                        handleSaveCaption(captionPhotoId!, customCaption.trim());
+                        setCustomCaption("");
+                      }
+                    }}
+                    disabled={!customCaption.trim()}
+                    className="px-4 h-10 rounded-lg bg-forest text-white theme-body-sm font-[600] hover:bg-forest-light transition-colors disabled:opacity-50"
+                  >
+                    Save
+                  </button>
+                </div>
+              </div>
+              {currentCaption && (
+                <button
+                  onClick={() => handleSaveCaption(captionPhotoId!, null)}
+                  className="w-full px-4 py-3 rounded-xl border border-red-200 text-left theme-body-sm text-red-500 hover:bg-red-50 transition-colors mt-2"
+                >
+                  Remove caption
+                </button>
+              )}
+            </div>
+          );
+        })()}
       </EditModal>
 
       {/* About Me single-select modals */}

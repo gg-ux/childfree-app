@@ -251,3 +251,27 @@ export const PROMPTS = [
   { value: "unusual-skill", text: "The most unusual thing I can do is..." },
   { value: "unpopular-opinion", text: "My most unpopular opinion is..." },
 ];
+
+export const PHOTO_CAPTIONS = [
+  // Childfree vibes
+  { value: "living-my-best-dink-life", label: "Living my best DINK life" },
+  { value: "no-kids-just-vibes", label: "No kids, just vibes" },
+  { value: "this-is-what-freedom-looks-like", label: "This is what freedom looks like" },
+  { value: "spontaneous-because-i-can-be", label: "Spontaneous because I can be" },
+  { value: "slept-in-today", label: "Slept in today" },
+  // Quirky & fun
+  { value: "main-character-energy", label: "Main character energy" },
+  { value: "do-not-disturb", label: "Do not disturb" },
+  { value: "chaotic-good", label: "Chaotic good" },
+  { value: "unhinged-but-cute", label: "Unhinged but cute" },
+  { value: "my-therapist-would-be-proud", label: "My therapist would be proud" },
+  { value: "touched-grass-today", label: "Touched grass today" },
+  { value: "feral-mode-activated", label: "Feral mode: activated" },
+  // Classic but better
+  { value: "in-my-element", label: "In my element" },
+  { value: "happy-place-unlocked", label: "Happy place unlocked" },
+  { value: "pet-tax", label: "Pet tax" },
+  { value: "golden-hour-hits-different", label: "Golden hour hits different" },
+  { value: "caught-in-4k", label: "Caught in 4K" },
+  { value: "the-vibe-is-immaculate", label: "The vibe is immaculate" },
+];

@@ -77,9 +77,9 @@ export default async function Home() {
               </p>
 
               <h1 className="font-display text-fluid-h1 text-foreground mb-6 leading-[0.9] tracking-tight">
-                <span className="whitespace-nowrap">Thrive</span>
+                <span className="whitespace-nowrap">Find Your People.</span>
                 <br />
-                <span className="whitespace-nowrap">Childfree</span>
+                <span className="whitespace-nowrap">Thrive Childfree.</span>
               </h1>
 
               <p className="theme-body text-muted max-w-2xl mb-10">
