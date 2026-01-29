@@ -123,9 +123,13 @@ export default async function BlogPostPage({ params }: PageProps) {
             </div>
           )}
 
-          <h1 className="font-display text-fluid-h2 text-foreground mb-6 leading-tight tracking-tight">
+          <h1 className="font-display text-fluid-h2 text-foreground mb-4 leading-tight tracking-tight">
             {post.title}
           </h1>
+
+          {post.description && (
+            <p className="theme-body text-muted mb-6">{post.description}</p>
+          )}
 
           {/* Meta */}
           <div className="flex flex-wrap items-center justify-between gap-4">
