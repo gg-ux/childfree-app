@@ -165,7 +165,7 @@ export default function AboutPage() {
                 With a master&apos;s in human-computer interaction + design
                 and a decade spent designing products at startups and big
                 tech, I knew I could build something better. So that&apos;s
-                what I decided to do.
+                what I&apos;m doing.
               </p>
             </div>
           </div>
