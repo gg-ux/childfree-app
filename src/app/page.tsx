@@ -371,6 +371,28 @@ export default async function Home() {
         </section>
       )}
 
+      {/* Final CTA Section */}
+      <section className="py-20 md:py-28">
+        <div className="container-main">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="font-display text-fluid-h2 text-foreground leading-[0.9] tracking-tight mb-6">
+              Come as you are
+            </h2>
+            <p className="theme-body text-muted mb-8">
+              We&apos;re building Chosn for people like us. Join us early and be part of what&apos;s next.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Button asChild variant="secondary" size="lg">
+                <Link href="/about">Learn more</Link>
+              </Button>
+              <Button asChild variant="accent" size="lg">
+                <Link href="/sign-up">Join waitlist</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="py-12 border-t border-[rgba(0,0,0,0.06)]">
         <div className="container-main">

@@ -180,7 +180,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           <p className="theme-body text-muted mb-8">
             Join the waitlist and be the first to know when we launch.
           </p>
-          <Button asChild variant="accent" size="md">
+          <Button asChild variant="accent" size="lg">
             <Link href="/sign-up">Join waitlist</Link>
           </Button>
         </div>
