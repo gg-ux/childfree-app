@@ -53,8 +53,13 @@ export function middleware(request: NextRequest) {
     !pathname.includes(".")
   ) {
     const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+
+    // Skip localhost in production
+    if (ip === "::1" || ip === "127.0.0.1") return response;
+
     const isAdmin = !!request.cookies.get("admin_session")?.value;
-    const city = request.headers.get("x-vercel-ip-city") || null;
+    const cityRaw = request.headers.get("x-vercel-ip-city");
+    const city = cityRaw ? decodeURIComponent(cityRaw) : null;
     const country = request.headers.get("x-vercel-ip-country") || null;
     const referrer = request.headers.get("referer") || null;
     const origin = request.nextUrl.origin;
