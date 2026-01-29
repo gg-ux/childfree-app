@@ -30,7 +30,7 @@ export default function SignUpPage() {
             Join waitlist
           </h1>
           <p className="theme-body text-muted text-lg mb-8">
-            Be the first to know when Chosn launches in your city.
+            Get early access when Chosn launches.
           </p>
 
           {/* Form */}
