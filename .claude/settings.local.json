@@ -8,7 +8,9 @@
       "Bash(ls:*)",
       "WebSearch",
       "Bash(lsof:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(gh pr view:*)",
+      "Bash(git fetch:*)"
     ]
   }
 }
