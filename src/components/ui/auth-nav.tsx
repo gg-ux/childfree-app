@@ -134,7 +134,7 @@ export function AuthNav() {
         <Link href="/">
           <Logo variant="full" size="md" />
         </Link>
-        <div className="flex items-center gap-3 sm:gap-6">
+        <div className="flex items-center gap-3 sm:gap-4">
           <Link
             href="/about"
             className="theme-nav text-foreground hover:text-muted"
@@ -147,10 +147,10 @@ export function AuthNav() {
           >
             Blog
           </Link>
-          <Button asChild variant="accent" size="md">
-            <Link href="/sign-up">Join waitlist</Link>
-          </Button>
         </div>
+        <Button asChild variant="accent" size="md" className="flex-shrink-0">
+          <Link href="/sign-up">Join waitlist</Link>
+        </Button>
       </div>
     </nav>
   );
