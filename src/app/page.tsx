@@ -264,7 +264,7 @@ export default async function Home() {
                 Your chosen <span className="whitespace-nowrap">family awaits</span>
               </h2>
               <p className="theme-body text-muted">
-                You made the bold choice to follow your own path. You&apos;re not alone. Whether you&apos;re looking for your person, your people, or your place. You&apos;ll find a community that celebrates the life you&apos;re building. Not all family is blood-related.
+                You made the bold choice to follow your own path. You&apos;re not alone. Whether you&apos;re looking for your person, your people, or your place, you&apos;ll find a community that celebrates the life you&apos;re building. Not all family is blood-related.
               </p>
               <WaitlistForm source="chosen-family" className="mt-8" />
             </div>
