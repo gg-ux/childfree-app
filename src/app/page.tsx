@@ -31,24 +31,36 @@ export default async function Home() {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-[rgba(0,0,0,0.06)]">
         <div className="container-main h-16 flex items-center justify-between">
-          <Link href="/" className="flex-shrink-0">
-            <Logo variant="full" size="md" />
-          </Link>
-          <div className="flex items-center gap-4 sm:gap-6">
-            <Link
-              href="/about"
-              className="theme-nav text-foreground hover:text-muted"
-            >
+          {/* Mobile: logo + links grouped on left */}
+          <div className="flex items-center gap-4 sm:hidden">
+            <Link href="/" className="flex-shrink-0">
+              <Logo variant="full" size="md" />
+            </Link>
+            <Link href="/about" className="theme-nav text-foreground hover:text-muted">
               About
             </Link>
-            <Link
-              href="/blog"
-              className="theme-nav text-foreground hover:text-muted"
-            >
+            <Link href="/blog" className="theme-nav text-foreground hover:text-muted">
               Blog
             </Link>
           </div>
-          <Button asChild variant="accent" size="md" className="flex-shrink-0">
+          {/* Desktop: logo on left */}
+          <Link href="/" className="hidden sm:block flex-shrink-0">
+            <Logo variant="full" size="md" />
+          </Link>
+          {/* Desktop: links + button grouped on right */}
+          <div className="hidden sm:flex items-center gap-6">
+            <Link href="/about" className="theme-nav text-foreground hover:text-muted">
+              About
+            </Link>
+            <Link href="/blog" className="theme-nav text-foreground hover:text-muted">
+              Blog
+            </Link>
+            <Button asChild variant="accent" size="md">
+              <Link href="/sign-up">Join waitlist</Link>
+            </Button>
+          </div>
+          {/* Mobile: button on right */}
+          <Button asChild variant="accent" size="md" className="flex-shrink-0 sm:hidden">
             <Link href="/sign-up">Join waitlist</Link>
           </Button>
         </div>
