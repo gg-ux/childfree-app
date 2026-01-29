@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Heart } from "@phosphor-icons/react";
+import { BookmarkSimple } from "@phosphor-icons/react";
 
 export function BlogFavoriteButton({ slug }: { slug: string }) {
   const [favorited, setFavorited] = useState(false);
@@ -48,15 +48,14 @@ export function BlogFavoriteButton({ slug }: { slug: string }) {
   return (
     <button
       onClick={toggle}
-      className="group flex items-center gap-1.5 text-muted hover:text-coral transition-colors"
-      title={favorited ? "Remove from favorites" : "Add to favorites"}
+      className="group flex items-center text-muted hover:text-foreground transition-colors"
+      title={favorited ? "Remove from saved" : "Save"}
     >
-      <Heart
+      <BookmarkSimple
         size={20}
         weight={favorited ? "fill" : "regular"}
-        className={favorited ? "text-coral" : "group-hover:text-coral"}
+        className={favorited ? "text-foreground" : "group-hover:text-foreground"}
       />
-      <span className="theme-body-sm">{favorited ? "Saved" : "Save"}</span>
     </button>
   );
 }

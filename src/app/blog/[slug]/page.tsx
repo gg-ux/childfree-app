@@ -6,6 +6,7 @@ import { AuthNav } from "@/components/ui/auth-nav";
 import { getPostBySlug, getAllSlugs, getOtherPosts } from "@/lib/blog";
 import { mdxComponents } from "@/components/mdx-components";
 import { ArrowLeft, ArrowRight, CalendarBlank, Clock } from "@phosphor-icons/react/dist/ssr";
+import { Button } from "@/components/ui/button";
 import { ShareButton } from "@/components/ui/share-button";
 import { BlogFavoriteButton } from "@/components/ui/blog-favorite-button";
 import { Logo } from "@/components/ui/logo";
@@ -179,9 +180,9 @@ export default async function BlogPostPage({ params }: PageProps) {
           <p className="theme-body text-muted mb-8">
             Join the waitlist and be the first to know when we launch.
           </p>
-          <Link href="/sign-up" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-forest text-white font-[600] hover:bg-forest-light transition-colors">
-            Join waitlist
-          </Link>
+          <Button asChild variant="accent" size="md">
+            <Link href="/sign-up">Join waitlist</Link>
+          </Button>
         </div>
       </section>
 
