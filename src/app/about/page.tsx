@@ -246,7 +246,7 @@ export default function AboutPage() {
                 href="/#survey"
                 className="theme-body-sm text-foreground underline underline-offset-4 hover:text-muted transition-colors"
               >
-                Help shape our product
+                Help shape Chosn
               </Link>
             </div>
             <div className="order-1 md:order-2 relative aspect-square max-w-[480px] mx-auto w-full">

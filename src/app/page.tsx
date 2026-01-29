@@ -91,7 +91,7 @@ export default async function Home() {
                 href="#survey"
                 className="inline-block mt-4 theme-body-sm text-foreground underline underline-offset-4 hover:text-muted transition-colors"
               >
-                Help shape our product
+                Help shape Chosn
               </Link>
             </div>
 
