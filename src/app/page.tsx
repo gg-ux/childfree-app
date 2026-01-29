@@ -78,13 +78,13 @@ export default async function Home() {
               </p>
 
               <h1 className="font-display text-fluid-h1 text-foreground mb-6 leading-[0.9] tracking-tight">
-                <span className="whitespace-nowrap">Your childfree</span>
+                <span className="whitespace-nowrap">Thrive</span>
                 <br />
-                <span className="whitespace-nowrap">home base</span>
+                <span className="whitespace-nowrap">Childfree</span>
               </h1>
 
               <p className="theme-body text-muted max-w-2xl mb-10">
-                Chosn is a dating, friendship, and community platform for childfree adults. Date, connect, and build a life you love without ever having to explain why you don&apos;t want kids.
+                Chosn is your childfree home base. Date, connect, and build a life you love without ever having to explain why you don&apos;t want kids.
               </p>
 
               <WaitlistForm source="hero" />
